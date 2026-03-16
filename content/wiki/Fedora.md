@@ -4,4 +4,4 @@ tags: fedora wiki
 
 # Official site
 
--   <http://fedoraproject.org/>
+- <http://fedoraproject.org/>

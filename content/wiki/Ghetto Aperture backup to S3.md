@@ -62,22 +62,22 @@ As of February 2015, [Arq](/wiki/Arq) can be [used for this purpose](http://www.
 
 ## Migrating to Arq archives
 
-1.  Create a directory at `~/Archives/` and tell Arq to ignore it when doing its usual backup runs
-2.  Create a subdirectory `~/Archives/Aperture/2015-03` that will contain the images to be archived
-3.  Pull down the masters previously backed up using `s3cmd sync s3://yourbucket/Masters .`
-4.  Flatten folder structure (in my case, this meant taking a deeply nested folder hierarchy with about 400 folders in it and turning it into a single-level structure with about 7,000 images; I used the ghetto script below for that purpose); without this, importing the images into Aperture will require you to separately navigate to each folder
-5.  Import photos back into Aperture, making sure the "Store Files" option is set to "In their current location" (ie. treat the images as "referenced" rather than "managed"); Aperture maintains previews of these referenced images even if you get rid of your local copy of the master images
-6.  In Arq, add the `~/Archives/Aperture/2015-03` folder to the backup set and back it up
-7.  Once that's finished, click "Detach"; at this point, the somewhat cryptic "2015-03" folder name in the Arq UI will change to "2015-03 (archived)" (you may want to name your folders something like "Aperture-2015-03" to make this clearer, but I'm not anticipating doing this for anything but Aperture for now, so I'm going with the shorter name)
-8.  Repeat for each backup source (in my case, that's Amazon S3, DropBox and Google Drive)
-9.  Empty the `~/Archives/Aperture/2015-03` directory
+1. Create a directory at `~/Archives/` and tell Arq to ignore it when doing its usual backup runs
+2. Create a subdirectory `~/Archives/Aperture/2015-03` that will contain the images to be archived
+3. Pull down the masters previously backed up using `s3cmd sync s3://yourbucket/Masters .`
+4. Flatten folder structure (in my case, this meant taking a deeply nested folder hierarchy with about 400 folders in it and turning it into a single-level structure with about 7,000 images; I used the ghetto script below for that purpose); without this, importing the images into Aperture will require you to separately navigate to each folder
+5. Import photos back into Aperture, making sure the "Store Files" option is set to "In their current location" (ie. treat the images as "referenced" rather than "managed"); Aperture maintains previews of these referenced images even if you get rid of your local copy of the master images
+6. In Arq, add the `~/Archives/Aperture/2015-03` folder to the backup set and back it up
+7. Once that's finished, click "Detach"; at this point, the somewhat cryptic "2015-03" folder name in the Arq UI will change to "2015-03 (archived)" (you may want to name your folders something like "Aperture-2015-03" to make this clearer, but I'm not anticipating doing this for anything but Aperture for now, so I'm going with the shorter name)
+8. Repeat for each backup source (in my case, that's Amazon S3, DropBox and Google Drive)
+9. Empty the `~/Archives/Aperture/2015-03` directory
 10. Delete the redundant copy still on S3 with `s3cmd del s3://yourbucket/Masters -r`
 
 On upgrading to a new machine with more storage, you can reattach these folders as follows:
 
-1.  Restore the backup of the archive at the original location
-2.  Click "Attach..." in Arq
-3.  Note that Aperture now has access to the masters again, provided you didn't change their locations
+1. Restore the backup of the archive at the original location
+2. Click "Attach..." in Arq
+3. Note that Aperture now has access to the masters again, provided you didn't change their locations
 
 ### `flatten.rb` script
 
@@ -124,7 +124,7 @@ end
 
 Note: another reason why we want a flat folder structure is because that is what we'll get when we create new archive folders from stuff that's already in Aperture:
 
-1.  Import photos into Aperture as usual; use "managed" rather than "referenced" photos by setting the "Store Files" option to "In the Aperture Library"
-2.  Edit, publish, share photos on Facebook or elsewhere as usual
-3.  When it's time to create a new Archive, use "Relocate Originals..." in the "File" menu to convert the managed photos to referenced ones; this is where you'll get a flat folder structure
-4.  Use Arq to upload, detach, and delete your new `~/Archives/Aperture/2015-03` archive
+1. Import photos into Aperture as usual; use "managed" rather than "referenced" photos by setting the "Store Files" option to "In the Aperture Library"
+2. Edit, publish, share photos on Facebook or elsewhere as usual
+3. When it's time to create a new Archive, use "Relocate Originals..." in the "File" menu to convert the managed photos to referenced ones; this is where you'll get a flat folder structure
+4. Use Arq to upload, detach, and delete your new `~/Archives/Aperture/2015-03` archive

@@ -21,7 +21,7 @@ This is bad UI design. My first attempt at finding out what the options meant wa
 
 I wondered if `h` might provide "**h**elp", so I tried it and boom, what do I see?
 
-           force  README
+    force  README
 
 So `h` forces an overwrite. Not very helpful.
 

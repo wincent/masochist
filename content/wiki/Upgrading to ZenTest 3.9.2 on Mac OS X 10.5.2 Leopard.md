@@ -26,8 +26,8 @@ These notes were made while upgrading to [ZenTest 3.9.2](/wiki/ZenTest_3.9.2) on
 
 Note that [ZenTest](/wiki/ZenTest)'s dependencies were also updated to their latest versions automatically:
 
--   [rubyforge 0.4.5](/wiki/rubyforge_0.4.5)
--   [hoe 1.5.1](/wiki/hoe_1.5.1)
+- [rubyforge 0.4.5](/wiki/rubyforge_0.4.5)
+- [hoe 1.5.1](/wiki/hoe_1.5.1)
 
 # Updating the [FastRI](/wiki/FastRI) index
 

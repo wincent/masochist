@@ -8,8 +8,8 @@ From the [Kelbt](/wiki/Kelbt) project page:
 
 # Links
 
--   Official project page: <http://www.cs.queensu.ca/~thurston/kelbt/>
+- Official project page: <http://www.cs.queensu.ca/~thurston/kelbt/>
 
 # See also
 
--   [Ragel](/wiki/Ragel) (by the same author)
+- [Ragel](/wiki/Ragel) (by the same author)

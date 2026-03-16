@@ -5,9 +5,9 @@ title: UBB.threads 6.5.1.1 to 7.0 upgrade notes
 
 # Backup
 
--   Log in to control panel and close board
--   Copy text from control panel, "Display Options", "General", "HTML Includes"
--   Perform backup of database:
+- Log in to control panel and close board
+- Copy text from control panel, "Display Options", "General", "HTML Includes"
+- Perform backup of database:
 
 <!-- -->
 
@@ -16,7 +16,7 @@ title: UBB.threads 6.5.1.1 to 7.0 upgrade notes
 
 # Installation
 
--   Create a new database for the new forums:
+- Create a new database for the new forums:
 
 <!-- -->
 
@@ -28,7 +28,7 @@ title: UBB.threads 6.5.1.1 to 7.0 upgrade notes
 
 (The `OLD_PASSWORD` trick is necessary because [UBB.threads](/wiki/UBB.threads) will be connecting to the database using PHP, and the version of PHP on the server is compiled against a pre-4.1 version of the MySQL libraries; see [this page on password hashing](http://dev.mysql.com/doc/refman/4.1/en/password-hashing.html) for more information.)
 
--   Create new forums directory:
+- Create new forums directory:
 
 <!-- -->
 
@@ -36,20 +36,20 @@ title: UBB.threads 6.5.1.1 to 7.0 upgrade notes
     sudo -u WEB_USER /bin/echo "Forums currently unavailable while upgrade is in progress" > \
       new-forums/index.html
 
--   Move old forums out-of-the-way:
+- Move old forums out-of-the-way:
 
 <!-- -->
 
     sudo -u WEB_USER mv forums old-forums
     sudo -u WEB_USER mv new-forums forums
 
--   Install the new forums according to the instructions into `new-forums`:
+- Install the new forums according to the instructions into `new-forums`:
 
 <!-- -->
 
     sudo -u WEB_USER mkdir new-forums
 
--   Upload the files into, then set permissions and move new forums into place:
+- Upload the files into, then set permissions and move new forums into place:
 
 <!-- -->
 
@@ -69,14 +69,14 @@ title: UBB.threads 6.5.1.1 to 7.0 upgrade notes
     sudo rm -r forums
     sudo mv new-forums forums
 
--   Run the upgrade script at: <http://example.com/path_to_forums/install/install.php>
--   Use a custom cookie prefix to prevent cookies from other apps (such as [Bugzilla](/wiki/Bugzilla)) from interfering with the forums.
--   As this is an upgrade installation, do not create an admin user; instead proceed directly to the "Creating your tables" step.
+- Run the upgrade script at: <http://example.com/path_to_forums/install/install.php>
+- Use a custom cookie prefix to prevent cookies from other apps (such as [Bugzilla](/wiki/Bugzilla)) from interfering with the forums.
+- As this is an upgrade installation, do not create an admin user; instead proceed directly to the "Creating your tables" step.
 
 # Import
 
--   Upload importer script
--   Execute in browser
+- Upload importer script
+- Execute in browser
 
 <!-- -->
 
@@ -104,67 +104,67 @@ Inspection of the `threads_import.php` script indicated that it would probably b
 
 Only glitch at end is that I saw some [PHP](/wiki/PHP) warnings with regard to my `open_basedir` restriction; may have to disable that for the forums directory.
 
--   Restore settings not transferred in the import:
-    -   Master Settings
-        -   Primary Settings
-            -   General
-                -   Community Name: Wincent Forums
-                -   Board Email Address: <noreply@example.com>
-                -   Show Debug Information in Footer? no
-            -   Censor
-                -   Enable Censor?: yes
-        -   Feature Settings
-            -   General
-                -   Member List Visibility: No Users
-                -   Enable "Mail Topic to Friend"?: no
-                -   Flood Check Time: 60
-                -   Enable Topic Ratings?: yes
-                -   Enable Member Ratings?: yes
-    -   Display Options
-        -   General
-            -   Primary
-                -   Homepage URL: <https://wincent.dev/>
-                -   Text for homepage URL: Wincent
-                -   Contact Link Type: Contact URL
-                -   "Contact Us" URL: <https://wincent.dev/a/contact/mail/>
-                -   Text for contact link: Contact
-                -   Privacy Statement Link: Use Privacy Statement URL
-                -   Privacy Statement URL: <https://wincent.dev/a/about/privacy/>
-                -   Who's Online Timeframe: 60
-                -   Show Forum Moderators? no
-            -   Date & Time
-                -   Default Time Format: d M Y | h:i A
-                -   Available Time Formats: (add) d M Y | h:i A
-    -   Membership
-        -   Registration Settings
-            -   Basic Options
-                -   Enable Email Verification?: yes
-                -   Allow Special Characters in Display Names?: no
-                -   Board Rules: (update)
-            -   Registration Screen
-                -   Add "Show" for:
-                    -   Avatar
-                    -   Accept Private Messages
-                    -   Signature
-                    -   Homepage
-                    -   Occupation
-                    -   Hobbies
-                    -   Location
-                    -   Time Format
-                    -   Time Offset
-                    -   View Signatures
-                    -   Flat or Threaded
-                    -   Topics Per Page
-                    -   Replies Per Page
-                    -   Show Users's Avatars
-                    -   Email on Private Message Receipt
-                -   Add "Show & Require" for:
-                    -   Visible on "Who's Online"
-            -   Reserved Names: (add) (.\*?)wincent(.\*?)
--   Customize forum templates to get old "look and feel" back
-    -   See "Default Header" and "Header Insert" in the "Display Options/General/HTML Includes" section of the control panel.
--   Replace ugly redirect in `index.php` with immediate ([PHP](/wiki/PHP)) redirect
--   [Apply fix](http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&Number=165070&page=0#Post165064) for RSS template bug
+- Restore settings not transferred in the import:
+  - Master Settings
+    - Primary Settings
+      - General
+        - Community Name: Wincent Forums
+        - Board Email Address: <noreply@example.com>
+        - Show Debug Information in Footer? no
+      - Censor
+        - Enable Censor?: yes
+    - Feature Settings
+      - General
+        - Member List Visibility: No Users
+        - Enable "Mail Topic to Friend"?: no
+        - Flood Check Time: 60
+        - Enable Topic Ratings?: yes
+        - Enable Member Ratings?: yes
+  - Display Options
+    - General
+      - Primary
+        - Homepage URL: <https://wincent.dev/>
+        - Text for homepage URL: Wincent
+        - Contact Link Type: Contact URL
+        - "Contact Us" URL: <https://wincent.dev/a/contact/mail/>
+        - Text for contact link: Contact
+        - Privacy Statement Link: Use Privacy Statement URL
+        - Privacy Statement URL: <https://wincent.dev/a/about/privacy/>
+        - Who's Online Timeframe: 60
+        - Show Forum Moderators? no
+      - Date & Time
+        - Default Time Format: d M Y | h:i A
+        - Available Time Formats: (add) d M Y | h:i A
+  - Membership
+    - Registration Settings
+      - Basic Options
+        - Enable Email Verification?: yes
+        - Allow Special Characters in Display Names?: no
+        - Board Rules: (update)
+      - Registration Screen
+        - Add "Show" for:
+          - Avatar
+          - Accept Private Messages
+          - Signature
+          - Homepage
+          - Occupation
+          - Hobbies
+          - Location
+          - Time Format
+          - Time Offset
+          - View Signatures
+          - Flat or Threaded
+          - Topics Per Page
+          - Replies Per Page
+          - Show Users's Avatars
+          - Email on Private Message Receipt
+        - Add "Show & Require" for:
+          - Visible on "Who's Online"
+      - Reserved Names: (add) (.\*?)wincent(.\*?)
+- Customize forum templates to get old "look and feel" back
+  - See "Default Header" and "Header Insert" in the "Display Options/General/HTML Includes" section of the control panel.
+- Replace ugly redirect in `index.php` with immediate ([PHP](/wiki/PHP)) redirect
+- [Apply fix](http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&Number=165070&page=0#Post165064) for RSS template bug
 
 # Cleanup
 
@@ -173,7 +173,7 @@ Due to permissions errors I'm temporarily turning off [PHP](/wiki/PHP) [Safe Mo
     cd path_to_forums
     sudo chown -R apache_user:apache_group *
 
--   Drop old database
+- Drop old database
 
 <!-- -->
 
@@ -183,6 +183,6 @@ Due to permissions errors I'm temporarily turning off [PHP](/wiki/PHP) [Safe Mo
     DELETE FROM db WHERE Db = 'old_database_name';
     FLUSH PRIVILEGES;
 
--   Remove old forum files
--   Upload redirection scripts so that old links will continue to work
--   Delete `importers` and `install` subdirectories
+- Remove old forum files
+- Upload redirection scripts so that old links will continue to work
+- Delete `importers` and `install` subdirectories

@@ -6,11 +6,11 @@ cache_breaker: 1
 
 For me the [Rails](/wiki/Rails) 2.3 release cycle was pretty painful. Here are the posts that I wrote during the cycle chronicling my suffering, in chronological order:
 
--   [Lack of stability in the Rails/Ruby ecosystem (rant)](/blog/lack-of-stability-in-the-rails-ruby-ecosystem-rant)
--   [Rails update headaches](/blog/rails-update-headaches)
--   [More breakage in Rails 2.3.0 RC1](/blog/more-breakage-in-rails-2.3.0-rc1)
--   [Living in a world of bugs](/blog/living-in-a-world-of-bugs)
--   [What is a "release candidate"](/blog/what-is-a-release-candidate)
+- [Lack of stability in the Rails/Ruby ecosystem (rant)](/blog/lack-of-stability-in-the-rails-ruby-ecosystem-rant)
+- [Rails update headaches](/blog/rails-update-headaches)
+- [More breakage in Rails 2.3.0 RC1](/blog/more-breakage-in-rails-2.3.0-rc1)
+- [Living in a world of bugs](/blog/living-in-a-world-of-bugs)
+- [What is a "release candidate"](/blog/what-is-a-release-candidate)
 
 I had thought that by installing the release candidates I could at least mitigate the pain by distributing it over a period of time, and by filing bug reports I could at least contribute and stop any show-stoppers from making it into the final release.
 

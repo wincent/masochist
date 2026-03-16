@@ -4,4 +4,4 @@ tags: objective.c wiki
 
 # See also
 
--   [Coding standards](/wiki/Coding_standards)
+- [Coding standards](/wiki/Coding_standards)

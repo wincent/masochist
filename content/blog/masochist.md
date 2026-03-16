@@ -63,24 +63,24 @@ As an added benefit, I get to produce most of my content using the writing tool 
 
 As noted above, Masochist is still a work in progress, but I've gone into it with some principles in mind to guide my decisions, and as the work has progressed my thinking has evolved. Here are some of the guiding ideas:
 
--   Go where the people are:
-    -   Source code and issues should live on GitHub. Product pages can live on their respective GitHub project pages.
-    -   If you have something ephemeral to say, say it on Twitter.
-    -   It's nice to own some of your content, so track things like wiki articles in this repo. Even if only you are hosting them, Google can still index them and they can provide value to others.
-    -   If you want people to read your blog-type content, maybe you should just stick it on Facebook or Medium, where people who care about you, or who share you interests, can see it.
-    -   Writing content in this repo and having a low-friction way to export it elsewhere (eg. to Facebook, Medium etc) is a bonus (note: haven't gotten to the low-friction exports yet).
--   Most content should be in plain-text (minimal vendor lock-in) with Markdown preferred.
--   At the same time, I should be able to keep my legion wikitext files and not have to do a forced upgrade of them all at once, even if that means doing something hacky and expedient like forking a Ruby process or spinning up a microservice to do the translation to HTML (note from the future: I ended up building the microservice, and eventually [doing an automated translation](https://wincent.dev/blog/filter-branch) from wikitext to Markdown).
--   You should be able to `git push` to publish content. There should be no complicated build step (with a zillion dependencies).
--   You should be able to `git push` to deploy code too.
--   These content and code pushes should involve separate branches, because you should be able to do one without the other.
--   Can't create content from the website (no mutations); this is an explicit trade-off that I am making in the name of simplicity (note: I am thinking of doing something else crazy, which is putting an Electron-powered front end over the local Git repo for publishing and editing).
--   Note that not being able to create content extends even to things like tagging; tags are embedded in files and mostly only get set up at initial creation time, with later (infrequent) updates requiring a push.
--   Things should be fast by default (assets should be efficiently packaged, for example).
--   Old URLs should not break, so that means having a router smart enough to redirect to static mirrors of pages from the old Rails app, or to migrated content on GitHub if necessary. Note that a lot of this can possibly be baked into the nginx config, allowing for more simplicity in the router.
--   Don't rebuild an auth system. Delegate to a trusted company like Facebook for [login](https://developers.facebook.com/docs/facebook-login/web), and use their [comment board](https://developers.facebook.com/docs/plugins/comments) and [social plugin](https://developers.facebook.com/docs/plugins/like-button) to get interactivity and distribution "for free" (note: you might not even need an auth system.)
--   Given that data lives in a Git repo which is the source of truth, make spinning up a new "stateless" EC2 instance easy via Ansible; as the instances are effectively throwaway, it means you don't even need to worry about backups.
--   End goal includes complete elimination of dependency on the business logic in the Rails app, and eventually turning it off entirely (note: I've already cut over from the Rails app, but haven't turned it off yet).
+- Go where the people are:
+  - Source code and issues should live on GitHub. Product pages can live on their respective GitHub project pages.
+  - If you have something ephemeral to say, say it on Twitter.
+  - It's nice to own some of your content, so track things like wiki articles in this repo. Even if only you are hosting them, Google can still index them and they can provide value to others.
+  - If you want people to read your blog-type content, maybe you should just stick it on Facebook or Medium, where people who care about you, or who share you interests, can see it.
+  - Writing content in this repo and having a low-friction way to export it elsewhere (eg. to Facebook, Medium etc) is a bonus (note: haven't gotten to the low-friction exports yet).
+- Most content should be in plain-text (minimal vendor lock-in) with Markdown preferred.
+- At the same time, I should be able to keep my legion wikitext files and not have to do a forced upgrade of them all at once, even if that means doing something hacky and expedient like forking a Ruby process or spinning up a microservice to do the translation to HTML (note from the future: I ended up building the microservice, and eventually [doing an automated translation](https://wincent.dev/blog/filter-branch) from wikitext to Markdown).
+- You should be able to `git push` to publish content. There should be no complicated build step (with a zillion dependencies).
+- You should be able to `git push` to deploy code too.
+- These content and code pushes should involve separate branches, because you should be able to do one without the other.
+- Can't create content from the website (no mutations); this is an explicit trade-off that I am making in the name of simplicity (note: I am thinking of doing something else crazy, which is putting an Electron-powered front end over the local Git repo for publishing and editing).
+- Note that not being able to create content extends even to things like tagging; tags are embedded in files and mostly only get set up at initial creation time, with later (infrequent) updates requiring a push.
+- Things should be fast by default (assets should be efficiently packaged, for example).
+- Old URLs should not break, so that means having a router smart enough to redirect to static mirrors of pages from the old Rails app, or to migrated content on GitHub if necessary. Note that a lot of this can possibly be baked into the nginx config, allowing for more simplicity in the router.
+- Don't rebuild an auth system. Delegate to a trusted company like Facebook for [login](https://developers.facebook.com/docs/facebook-login/web), and use their [comment board](https://developers.facebook.com/docs/plugins/comments) and [social plugin](https://developers.facebook.com/docs/plugins/like-button) to get interactivity and distribution "for free" (note: you might not even need an auth system.)
+- Given that data lives in a Git repo which is the source of truth, make spinning up a new "stateless" EC2 instance easy via Ansible; as the instances are effectively throwaway, it means you don't even need to worry about backups.
+- End goal includes complete elimination of dependency on the business logic in the Rails app, and eventually turning it off entirely (note: I've already cut over from the Rails app, but haven't turned it off yet).
 
 # Addenda: 2026 update
 

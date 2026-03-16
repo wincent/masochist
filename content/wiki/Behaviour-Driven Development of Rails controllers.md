@@ -6,4 +6,4 @@ Of the three components in the [Model-View-Controller](/wiki/Model-View-Controll
 
 # See also
 
--   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
+- [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)

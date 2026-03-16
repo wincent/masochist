@@ -25,16 +25,16 @@ $ sudo -s
 
 **Note:** The [nginx upload module](https://github.com/vkholodkov/nginx-upload-module) that I used to use is not compatible with 1.4.2. [This issue](https://github.com/vkholodkov/nginx-upload-module/issues/41) explores it at length. [One of the comments](https://github.com/vkholodkov/nginx-upload-module/issues/41#issuecomment-15650730) suggests using built-in functionality to obtain "async non-blocking upload without upstream":
 
-       location /upload {
-         limit_except POST              { deny all; }
-         client_body_temp_path          /tmp/;
-         client_body_in_file_only       on;
-         client_body_buffer_size        128K;
-         client_max_body_size           50M;
-         proxy_pass_request_headers     on;
-         proxy_set_body                 $request_body_file;
-         proxy_pass                     http://upstream; # will receive file_name only
-         proxy_redirect                 off;
-       }
+    location /upload {
+      limit_except POST              { deny all; }
+      client_body_temp_path          /tmp/;
+      client_body_in_file_only       on;
+      client_body_buffer_size        128K;
+      client_max_body_size           50M;
+      proxy_pass_request_headers     on;
+      proxy_set_body                 $request_body_file;
+      proxy_pass                     http://upstream; # will receive file_name only
+      proxy_redirect                 off;
+    }
 
 There's no resume support there, but it's still probably workable.

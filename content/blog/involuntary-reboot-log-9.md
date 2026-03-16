@@ -11,14 +11,14 @@ I had hoped I could tolerate the bugs and with a bit of perseverance get some wo
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** undisclosed
--   **Kernel panics:** 6
--   **Hard resets:** 3
--   **Total failures:** 9
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 341 days
--   **Average time between failures:** 37 days
--   **Uptime at moment of failure(s):** 1 day
+- **Operating system version:** undisclosed
+- **Kernel panics:** 6
+- **Hard resets:** 3
+- **Total failures:** 9
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 341 days
+- **Average time between failures:** 37 days
+- **Uptime at moment of failure(s):** 1 day
 
 As per usual I used the interactive Ruby interpreter, `irb`, to do the date calculations for me:
 

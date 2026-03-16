@@ -17,8 +17,8 @@ As Torvalds sums up in [this post](http://marc.info/?l=git&m=119638337122721&w=2
 
 > The thing to take away from this is:
 >
-> -   git really doesn't even _care_ about the whole "rename detection" internally, and any commits you have done with renames are totally independent of the heuristics we then use to _show_ the renames.
-> -   the rename detection really is for just two reasons:
->     -   keep humans happy, and keep the diffs small and
->     -   help automatic merging across renames. So getting renames right is certainly good, but it's more of a "politeness" issue than a "correctness" issue, although the merge portion of it does matter a lot sometimes.
-> -   the important thing here is that you can commit your changes and not worry about them being somehow "corrupted" by lack of rename detection, even if you commit them with a version of git that doesn't do rename detection the way you expected it. The rename detection is an "after-the-fact" thing, not something that actually gets saved in the repository, which is why we can change the heuristics _after_ seeing examples, and the examples magically correct themselves!
+> - git really doesn't even _care_ about the whole "rename detection" internally, and any commits you have done with renames are totally independent of the heuristics we then use to _show_ the renames.
+> - the rename detection really is for just two reasons:
+>   - keep humans happy, and keep the diffs small and
+>   - help automatic merging across renames. So getting renames right is certainly good, but it's more of a "politeness" issue than a "correctness" issue, although the merge portion of it does matter a lot sometimes.
+> - the important thing here is that you can commit your changes and not worry about them being somehow "corrupted" by lack of rename detection, even if you commit them with a version of git that doesn't do rename detection the way you expected it. The rename detection is an "after-the-fact" thing, not something that actually gets saved in the repository, which is why we can change the heuristics _after_ seeing examples, and the examples magically correct themselves!

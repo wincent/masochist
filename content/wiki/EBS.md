@@ -6,5 +6,5 @@ tags: aws ebs wiki
 
 # Links
 
--   Official EBS site: <http://aws.amazon.com/ebs/>
--   An excellent overview of EBS: <http://blog.rightscale.com/2008/08/20/amazon-ebs-explained/>
+- Official EBS site: <http://aws.amazon.com/ebs/>
+- An excellent overview of EBS: <http://blog.rightscale.com/2008/08/20/amazon-ebs-explained/>

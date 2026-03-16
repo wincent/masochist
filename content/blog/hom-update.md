@@ -57,7 +57,7 @@ Array size HOM relative speed (optimized) HOM relative speed (unoptimized)
 
 1 Not tested 1133% 10 218% 238% 100 122% 148% 1000 98% 139% 10000 94% 141% 100000 Not tested 134%
 
-So for very small collections the performance difference is negligible, but as the collection size grows the optimized HOM implementation approaches better-than-100% performance penalty whereas the non-optimized case tends towards somewhere between 130 and 140% performance penalty. [Premature optimization is the root of all evil](<http://en.wikipedia.org/wiki/Optimization_(computer_science)>), so I think I'll leave things the way they are until real-application profiling indicates that I should be optimizing my HOM stuff or replacing it with non-HOM alternatives.
+So for very small collections the performance difference is negligible, but as the collection size grows the optimized HOM implementation approaches better-than-100% performance penalty whereas the non-optimized case tends towards somewhere between 130 and 140% performance penalty. [Premature optimization is the root of all evil](http://en.wikipedia.org/wiki/Optimization_(computer_science)), so I think I'll leave things the way they are until real-application profiling indicates that I should be optimizing my HOM stuff or replacing it with non-HOM alternatives.
 
 #### Is HOM really HOM?
 

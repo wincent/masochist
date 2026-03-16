@@ -18,9 +18,9 @@ It appears that in reality, the only place that `DEFAULT_KCODE` is used is in `r
 
 There are three main string creation methods defined in `string.c` and they appear to be largely encoding-agnostic:
 
--   `str_new`
--   `rb_str_new`
--   `rb_str_new2`
+- `str_new`
+- `rb_str_new`
+- `rb_str_new2`
 
 Ultimately it seems that `String` objects are nothing more than containers for bytes of data. There is no default encoding enforced at the [Ruby](/wiki/Ruby) level.
 
@@ -42,10 +42,10 @@ Methods like `puts` eventually end up calling the `io_write` function, which in 
 
 Basically, then, the input encoding depends on one of several things:
 
--   The input file encoding, if reading from a file
--   The terminal encoding, if running inside a [terminal](/wiki/terminal) (for example, when using `IRB`)
--   The transmission encoding, if sent by a client to a [web](/wiki/web) server
--   The database encoding, if the input comes from a database
+- The input file encoding, if reading from a file
+- The terminal encoding, if running inside a [terminal](/wiki/terminal) (for example, when using `IRB`)
+- The transmission encoding, if sent by a client to a [web](/wiki/web) server
+- The database encoding, if the input comes from a database
 
 # Empirical analysis
 

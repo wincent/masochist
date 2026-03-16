@@ -4,4 +4,4 @@ tags: slate wiki
 
 # Official site
 
--   <https://github.com/jigish/slate>
+- <https://github.com/jigish/slate>

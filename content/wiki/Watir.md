@@ -8,5 +8,5 @@ I use it to perform automated in-browser testing of [Rails](/wiki/Rails) applica
 
 # See also
 
--   [Watir](/wiki/Watir) project page: <http://wtr.rubyforge.org/>
--   [Safari](/wiki/Safari)-compatible [Watir](/wiki/Watir): <http://safariwatir.rubyforge.org/>
+- [Watir](/wiki/Watir) project page: <http://wtr.rubyforge.org/>
+- [Safari](/wiki/Safari)-compatible [Watir](/wiki/Watir): <http://safariwatir.rubyforge.org/>

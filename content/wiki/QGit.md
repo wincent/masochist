@@ -6,4 +6,4 @@ tags: git wiki
 
 # See also
 
--   My first-time installation notes: [Installing QGit 2.0rc1 on Mac OS X Tiger](/wiki/Installing_QGit_2.0rc1_on_Mac_OS_X_Tiger)
+- My first-time installation notes: [Installing QGit 2.0rc1 on Mac OS X Tiger](/wiki/Installing_QGit_2.0rc1_on_Mac_OS_X_Tiger)

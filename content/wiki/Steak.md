@@ -19,8 +19,8 @@ Up until February 2011, Steak and Capybara made a great combination. As of [this
 
 # Official site
 
--   <http://github.com/cavalle/steak>
+- <http://github.com/cavalle/steak>
 
 # External resources
 
--   A tutorial: <http://jeffkreeftmeijer.com/2010/steak-because-cucumber-is-for-vegetarians/>
+- A tutorial: <http://jeffkreeftmeijer.com/2010/steak-because-cucumber-is-for-vegetarians/>

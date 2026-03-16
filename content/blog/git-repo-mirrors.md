@@ -9,8 +9,8 @@ The _authoritative, official_ repositories continue to be hosted at git.wincent.
 
 But now there are _mirror, backup_ repositories hosted at:
 
--   <http://gitorious.org/~wincent>; and
--   <http://github.com/wincent/>
+- <http://gitorious.org/~wincent>; and
+- <http://github.com/wincent/>
 
 Changes are automatically pushed out from the authoritative repo to the backup/mirror repos on an hourly basis.
 
@@ -18,5 +18,5 @@ The sheer flexibility of [distributed version control](/wiki/distributed_version
 
 For the curious, here are some notes I made on the process:
 
--   [Setting up backup (mirror) repositories on GitHub](/wiki/Setting_up_backup_%28mirror%29_repositories_on_GitHub)
--   [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)
+- [Setting up backup (mirror) repositories on GitHub](/wiki/Setting_up_backup_%28mirror%29_repositories_on_GitHub)
+- [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)

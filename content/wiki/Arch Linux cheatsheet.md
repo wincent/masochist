@@ -63,8 +63,8 @@ gpg --edit-key $KEY_ID # run `trust` to set trust level to ultimate
 
 Source:
 
--   [Stack Overflow, "How to transfer pgp private key to another computer?"](https://stackoverflow.com/a/3176373/2103996) (on using `ssh` to run `gpg --import`)
--   [Stack Overflow, "gpg-agent forwarding: inappropriate ioctl for device"](https://stackoverflow.com/a/73169380/2103996) (on using `--batch`)
+- [Stack Overflow, "How to transfer pgp private key to another computer?"](https://stackoverflow.com/a/3176373/2103996) (on using `ssh` to run `gpg --import`)
+- [Stack Overflow, "gpg-agent forwarding: inappropriate ioctl for device"](https://stackoverflow.com/a/73169380/2103996) (on using `--batch`)
 
 # Managing WiFi with `iwctl` (part of [`iwd`](https://wiki.archlinux.org/title/iwd))
 
@@ -218,19 +218,19 @@ xev
 
 # Terminating the X session
 
--   `Control-Alt-Backspace`
+- `Control-Alt-Backspace`
 
 # Switching to another virtual console
 
--   `Control-Alt-1`, `Control-Alt-2` etc.
+- `Control-Alt-1`, `Control-Alt-2` etc.
 
 # Entering BIOS at power-on
 
--   Tap `Delete` (probably repeatedly).
+- Tap `Delete` (probably repeatedly).
 
 # Selecting boot device at power-on
 
--   Tap `F12` (probably repeatedly).
+- Tap `F12` (probably repeatedly).
 
 # Applying BIOS updates
 
@@ -346,61 +346,61 @@ xprop
 
 ## See also
 
--   [Source](https://blog.crunchprank.net/connecting-to-twitch-chat-via-irssi/)
--   [TL;DR](https://gist.github.com/lambdan/4d9ac5a63e56c6d1d9169f5b81de9dd6)
--   https://dev.twitch.tv/docs/irc/guide
+- [Source](https://blog.crunchprank.net/connecting-to-twitch-chat-via-irssi/)
+- [TL;DR](https://gist.github.com/lambdan/4d9ac5a63e56c6d1d9169f5b81de9dd6)
+- https://dev.twitch.tv/docs/irc/guide
 
 # Kitty
 
 ## Font size
 
--   `Ctrl-Shift-Minus`: Decrease font size by 2 pts.
--   `Ctrl-Shift-Equals`: Decrease font size by 2 pts.
--   `Ctrl-Shift-Backspace`: Reset font size to original.
+- `Ctrl-Shift-Minus`: Decrease font size by 2 pts.
+- `Ctrl-Shift-Equals`: Decrease font size by 2 pts.
+- `Ctrl-Shift-Backspace`: Reset font size to original.
 
 # i3
 
 ## Application
 
--   `Alt-Shift-C`: Reload config.
--   `Alt-Shift-P`: Restart i3.
--   `Alt-Shift-Q`: Quit i3.
+- `Alt-Shift-C`: Reload config.
+- `Alt-Shift-P`: Restart i3.
+- `Alt-Shift-Q`: Quit i3.
 
 ## Windows
 
--   `Alt-Q`: Kill focused window.
--   `Alt-Shift-Space`: Toggle floating.
--   `Super-B`: Do next split below.
--   `Super-R`: Do next split to right.
--   `Super-T`: Toggle fullscreen for currently focused container.
--   `Super-Y`: Cycle through container layouts (eg. vertical splits, horizontal splits, tabbed, stacking).
+- `Alt-Q`: Kill focused window.
+- `Alt-Shift-Space`: Toggle floating.
+- `Super-B`: Do next split below.
+- `Super-R`: Do next split to right.
+- `Super-T`: Toggle fullscreen for currently focused container.
+- `Super-Y`: Cycle through container layouts (eg. vertical splits, horizontal splits, tabbed, stacking).
 
 ### Focus
 
--   `Super-h`: Focus left.
--   `Super-l`: Focus right.
--   `Super-j`: Focus below.
--   `Super-k`: Focus above.
--   `Super-a`: Focus parent.
+- `Super-h`: Focus left.
+- `Super-l`: Focus right.
+- `Super-j`: Focus below.
+- `Super-k`: Focus above.
+- `Super-a`: Focus parent.
 
 ### Moving
 
--   `Super+mouse`: Drag floating window.
--   `Super-Shift-h`: Move focused window left.
--   `Super-Shift-l`: Move focused window right.
--   `Super-Shift-j`: Move focused window down.
--   `Super-Shift-k`: Move focused window up.
+- `Super+mouse`: Drag floating window.
+- `Super-Shift-h`: Move focused window left.
+- `Super-Shift-l`: Move focused window right.
+- `Super-Shift-j`: Move focused window down.
+- `Super-Shift-k`: Move focused window up.
 
 ### Resizing
 
--   `Control-Super-Left`: Grow window leftwards.
--   `Control-Super-Right`: Grow window rightwards.
--   `Control-Super-Up`: Grow window upwards.
--   `Control-Super-Down`: Grow window downwards.
--   `Control-Super-Shift-Left`: Shrink window leftwards.
--   `Control-Super-Shift-Right`: Shrink window rightwards.
--   `Control-Super-Shift-Up`: Shrink window upwards.
--   `Control-Super-Shift-Down`: Shrink window downwards.
+- `Control-Super-Left`: Grow window leftwards.
+- `Control-Super-Right`: Grow window rightwards.
+- `Control-Super-Up`: Grow window upwards.
+- `Control-Super-Down`: Grow window downwards.
+- `Control-Super-Shift-Left`: Shrink window leftwards.
+- `Control-Super-Shift-Right`: Shrink window rightwards.
+- `Control-Super-Shift-Up`: Shrink window upwards.
+- `Control-Super-Shift-Down`: Shrink window downwards.
 
 <!-- References -->
 

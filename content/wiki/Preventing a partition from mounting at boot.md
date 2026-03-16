@@ -30,6 +30,6 @@ This modification is made only to the startup disk (the internal drive). That me
 
 # See also
 
--   <http://www.macosxhints.com/article.php?story=20060930150059172&query=fstab>
--   <http://www.macosxhints.com/article.php?story=20050805062520199>
--   <http://developer.apple.com/documentation/Darwin/Reference/Manpages/man5/fstab.5.html>
+- <http://www.macosxhints.com/article.php?story=20060930150059172&query=fstab>
+- <http://www.macosxhints.com/article.php?story=20050805062520199>
+- <http://developer.apple.com/documentation/Darwin/Reference/Manpages/man5/fstab.5.html>

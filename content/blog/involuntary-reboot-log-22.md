@@ -13,11 +13,11 @@ So it seems that this is the price of all the eye candy and the polished user ex
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5.1
--   **Kernel panics:** 6
--   **Hard resets:** 16
--   **Total failures:** 22
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 579 days
--   **Average time between failures:** 26.32 days
--   **Uptime at moment of failure(s):** roughly 24 hours
+- **Operating system version:** 10.5.1
+- **Kernel panics:** 6
+- **Hard resets:** 16
+- **Total failures:** 22
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 579 days
+- **Average time between failures:** 26.32 days
+- **Uptime at moment of failure(s):** roughly 24 hours

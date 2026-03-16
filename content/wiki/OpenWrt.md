@@ -4,4 +4,4 @@ tags: openwrt wiki
 
 # Official site
 
--   <https://openwrt.org/>
+- <https://openwrt.org/>

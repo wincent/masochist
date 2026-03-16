@@ -83,4 +83,4 @@ The latest maintenance release GIT 1.6.5.2 is available at the usual places:
 
 # See also
 
--   [Updating to Git 1.6.5.2](/wiki/Updating_to_Git_1.6.5.2)
+- [Updating to Git 1.6.5.2](/wiki/Updating_to_Git_1.6.5.2)

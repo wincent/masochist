@@ -24,18 +24,18 @@ If you are an independent Mac software vendor it seems that _the_ way to come up
 
 Examples:
 
--   [Flying Meat](http://flyingmeat.com/) (by the way, listen to [this screencast](http://flyingmeat.com/voodoopad/images/linkback.mov) and see if you can spot the G5-user... I've been overcome with a wave of nostalgia for my G5-owning days).
--   [Shirt Pocket](http://shirtpocket.com/).
--   [Red Sweater](http://www.red-sweater.com/products/index.html).
--   [Blacktree](http://blacktree.com/).
+- [Flying Meat](http://flyingmeat.com/) (by the way, listen to [this screencast](http://flyingmeat.com/voodoopad/images/linkback.mov) and see if you can spot the G5-user... I've been overcome with a wave of nostalgia for my G5-owning days).
+- [Shirt Pocket](http://shirtpocket.com/).
+- [Red Sweater](http://www.red-sweater.com/products/index.html).
+- [Blacktree](http://blacktree.com/).
 
 These are just a few respected companies that I pulled off the top of my head. If I included not-so-respected companies then I could make a list that is much, much longer.
 
 Notable exceptions to the modifier-plus-noun naming algorithm:
 
--   [Omni](http://www.omnigroup.com/).
--   [Karelia](http://www.karelia.com/).
--   [Ambrosia](http://www.ambrosiasw.com/).
+- [Omni](http://www.omnigroup.com/).
+- [Karelia](http://www.karelia.com/).
+- [Ambrosia](http://www.ambrosiasw.com/).
 
 I must admit, I don't really like the modifier-plus-noun algorithm because I think the names it produces are too generic. Imagine that Flying Meat starts to gain momentum and become increasingly popular (but not so popular that it can afford to protect its name in the judicial system); a bunch of competitors start to register names like "Running Meat" and "Flying Steak". Or someone impressed with Blacktree decides to go through their dictionary until they hit an available domain name: Redtree, Bluetree, Graytree, Blackhouse, Blackstock, Blackbarn... On the other hand, names like Omni, Karelia and Ambrosia are much more distinctive and I think they make for better brands.
 

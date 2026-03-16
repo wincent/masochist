@@ -6,4 +6,4 @@ tags: rubycocoa wiki
 
 # See also
 
--   [Laurent Sansonetti](/wiki/Laurent_Sansonetti)'s [weblog](/wiki/weblog): <http://chopine.be/lrz/diary>
+- [Laurent Sansonetti](/wiki/Laurent_Sansonetti)'s [weblog](/wiki/weblog): <http://chopine.be/lrz/diary>

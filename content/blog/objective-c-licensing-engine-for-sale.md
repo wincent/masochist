@@ -16,22 +16,22 @@ The system was designed according to the specifications originally provided to m
 
 This is a low-level system which provides facilities for generating and verifying license codes. It also handles details such as reading and writing license codes to disk. For the sake of simplicity and flexibility it does not include a user-interface component.
 
--   Implemented in [Objective-C](/wiki/Objective-C)
--   Can be used with or without Garbage Collection
--   Targets Mac OS X 10.4 and 10.5; not yet tested on 10.6 but expected to work as it uses conservative coding techniques and sticks to well-documented, "modern" [APIs](/wiki/APIs)
--   Secure license keys generated using public key cryptography
--   Short license keys (39 characters long) thanks to use of Elliptic Key cryptography
--   Ambiguous characters (like 0 and O) never appear in license codes, reducing support queries
--   License codes are _not_ tied to user email addresses, again to reduce support queries and streamline the purchasing process
--   Extensive inlining and basic symbol obfuscation are used to make cracking more difficult
--   Includes extensive test suite
--   Includes [command line](/wiki/command_line) tool for generating keys and license codes
--   Very easy to incorporate in existing projects (just include 2 headers and 1 implementation file)
--   Engine can be used with up to 256 different applications
--   Over 4 billion unique codes per application
--   Optional expiring licenses (trial licenses)
--   Optional version-limited licenses (valid only for certain versions)
--   Optional "bundle" licenses (use of a single license code to unlock a bundle containing multiple software products)
+- Implemented in [Objective-C](/wiki/Objective-C)
+- Can be used with or without Garbage Collection
+- Targets Mac OS X 10.4 and 10.5; not yet tested on 10.6 but expected to work as it uses conservative coding techniques and sticks to well-documented, "modern" [APIs](/wiki/APIs)
+- Secure license keys generated using public key cryptography
+- Short license keys (39 characters long) thanks to use of Elliptic Key cryptography
+- Ambiguous characters (like 0 and O) never appear in license codes, reducing support queries
+- License codes are _not_ tied to user email addresses, again to reduce support queries and streamline the purchasing process
+- Extensive inlining and basic symbol obfuscation are used to make cracking more difficult
+- Includes extensive test suite
+- Includes [command line](/wiki/command_line) tool for generating keys and license codes
+- Very easy to incorporate in existing projects (just include 2 headers and 1 implementation file)
+- Engine can be used with up to 256 different applications
+- Over 4 billion unique codes per application
+- Optional expiring licenses (trial licenses)
+- Optional version-limited licenses (valid only for certain versions)
+- Optional "bundle" licenses (use of a single license code to unlock a bundle containing multiple software products)
 
 As I've written [elsewhere](/blog/on-piracy), I think developers often spend too much time worrying about piracy. The goal of this system is to make a _reasonable_ effort to deter software piracy, but not to go crazy trying to be "uncrackable" or win what is essentially an unwinnable war.
 
@@ -47,12 +47,12 @@ The system as it stands is a way for a developer to buy an "off-the-shelf" licen
 
 You will receive:
 
--   a copy of the code base (Xcode project, source files, test suite)
--   extensive documentation (18 page PDF guide in addition to the code-level [Doxygen](/wiki/Doxygen) documentation)
--   demo screencast showing the key and code generation process
--   installer package
--   buildable demo executable (including source code) showing how to use the system
--   full [Git](/wiki/Git) repository containing entire project history (currently 107 commits)
--   full rights to the code base; that is, rather than merely licensing the code base you will be acquiring it along with all rights to it, to do with as you please
+- a copy of the code base (Xcode project, source files, test suite)
+- extensive documentation (18 page PDF guide in addition to the code-level [Doxygen](/wiki/Doxygen) documentation)
+- demo screencast showing the key and code generation process
+- installer package
+- buildable demo executable (including source code) showing how to use the system
+- full [Git](/wiki/Git) repository containing entire project history (currently 107 commits)
+- full rights to the code base; that is, rather than merely licensing the code base you will be acquiring it along with all rights to it, to do with as you please
 
 If you're interested and have any questions, please feel free to get in touch with me via email (<example@example.com>) or by posting a comment here. In the case of official enquiries from known software companies (ie. received from an official, public email address associated with the company) I'm prepared to discuss technical details or provide sample code as appropriate.

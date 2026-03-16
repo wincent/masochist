@@ -7,15 +7,15 @@ cache_breaker: 1
 
 Principal criticisms of RDoc include:
 
--   slow
--   buggy
--   inconsistent
--   stagnated development
--   ugly default output
--   brittle parser extremely sensitive to input variation
--   large disparity between capabilities of Ruby parser and C parser, making documentation for C extensions in C files basically infeasible
--   inadequate escaping options
+- slow
+- buggy
+- inconsistent
+- stagnated development
+- ugly default output
+- brittle parser extremely sensitive to input variation
+- large disparity between capabilities of Ruby parser and C parser, making documentation for C extensions in C files basically infeasible
+- inadequate escaping options
 
 ## See also
 
--   Official project page: <http://rubyforge.org/projects/rdoc/>
+- Official project page: <http://rubyforge.org/projects/rdoc/>

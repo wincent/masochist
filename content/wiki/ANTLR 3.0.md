@@ -8,11 +8,11 @@ Finally examples demonstrating the use of the [C language target](/wiki/C_langua
 
 # Links
 
--   README: <http://antlr.org/doc/README.txt>
--   Source distribution: <http://antlr.org/download/antlr-3.0.tar.gz>
--   ANTLRWorks development environment: <http://www.antlr.org/download/antlrworks-1.0.zip>
--   Examples: <http://www.antlr.org/download/examples-v3.tar.gz>
+- README: <http://antlr.org/doc/README.txt>
+- Source distribution: <http://antlr.org/download/antlr-3.0.tar.gz>
+- ANTLRWorks development environment: <http://www.antlr.org/download/antlrworks-1.0.zip>
+- Examples: <http://www.antlr.org/download/examples-v3.tar.gz>
 
 # See also
 
--   [Installing ANTLR 3.0 on Mac OS X Tiger](/wiki/Installing_ANTLR_3.0_on_Mac_OS_X_Tiger)
+- [Installing ANTLR 3.0 on Mac OS X Tiger](/wiki/Installing_ANTLR_3.0_on_Mac_OS_X_Tiger)

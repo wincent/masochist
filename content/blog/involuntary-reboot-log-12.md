@@ -23,11 +23,11 @@ So I'll be watching this disk very carefully over the next few days and possibly
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.10
--   **Kernel panics:** 6
--   **Hard resets:** 6
--   **Total failures:** 12
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 425 days
--   **Average time between failures:** 35 days
--   **Uptime at moment of failure(s):** less than 2 hours
+- **Operating system version:** 10.4.10
+- **Kernel panics:** 6
+- **Hard resets:** 6
+- **Total failures:** 12
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 425 days
+- **Average time between failures:** 35 days
+- **Uptime at moment of failure(s):** less than 2 hours

@@ -45,4 +45,4 @@ cache_breaker: 1
 
 ## See also
 
--   [Rails 2.1.1](/wiki/Rails_2.1.1)
+- [Rails 2.1.1](/wiki/Rails_2.1.1)

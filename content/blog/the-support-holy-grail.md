@@ -15,11 +15,11 @@ I currently have a Bugzilla install set up for taking feature requests and bug r
 
 All of this is going to be replaced with a single unified issue tracker. There will be five categories of tickets:
 
--   _Feature requests_: "I wish your app would do _this_..."
--   _Bug reports_: "This doesn't work like I expect..."
--   _Crash reports_: "Things went boom..."
--   _Feedback_: "I have a suggestion or comment..."
--   _Support tickets_: "How do I do _X_?"
+- _Feature requests_: "I wish your app would do _this_..."
+- _Bug reports_: "This doesn't work like I expect..."
+- _Crash reports_: "Things went boom..."
+- _Feedback_: "I have a suggestion or comment..."
+- _Support tickets_: "How do I do _X_?"
 
 In reality all of these tickets are the same; there's only one issue tracker and there's only one (extremely simple) interface to learn. The categories are really just there to help me organize issues into groups.
 

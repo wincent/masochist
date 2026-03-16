@@ -15,9 +15,9 @@ Based on information found [here](http://www.openidenabled.com/openid/use-your-o
 
 Generate en [MD5](/wiki/MD5) hash of:
 
--   a username, `the_username`
--   realm, `OpenID`
--   password, `the_password`
+- a username, `the_username`
+- realm, `OpenID`
+- password, `the_password`
 
 <!-- -->
 
@@ -34,9 +34,9 @@ I then exported a copy of the latest version of the relevant files from [phpMyID
 
 Three things to note:
 
--   Use of `sudo` because I wasn't running as a user with write privileges
--   Renaming the files to `id.php` and `id_config.php` for aesthetic reasons
--   Storing the configuration file, `id_config.php`, outside of the web root
+- Use of `sudo` because I wasn't running as a user with write privileges
+- Renaming the files to `id.php` and `id_config.php` for aesthetic reasons
+- Storing the configuration file, `id_config.php`, outside of the web root
 
 This last point is just basic security practice whenever I'm forced to use [PHP](/wiki/PHP): passwords and other sensitive configuration should always be stored outside of the webroot, just in case there is ever a problem with the [Apache](/wiki/Apache)/[PHP](/wiki/PHP) configuration that might cause the files to be served up as raw text rather than executed as a [PHP](/wiki/PHP) script. In this case the risks are mitigated by the fact that the password is not stored in the configuration file (only a hash is stored) but it is basic security practice to adopt a multi-layered "onion" approach that implements multiple, separate barriers to guard against breaches. If an attacker were to access the configuration file brute-forcing a working password would be fairly easy because the user name wouldn't be hard to guess, the realm is publicly discoverable, and the hash isn't even generated using a salt.
 
@@ -85,8 +85,8 @@ The following [HTML](/wiki/HTML) needed to be added to the page residing at my "
 
 To test the system I made my first post using [OpenID](/wiki/OpenID)-based authentication [here](http://chanson.livejournal.com/170068.html). There are two problems with the result:
 
-1.  The "from" line reads as <https://wincent.dev/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
-2.  The [the user profile](http://www.livejournal.com/userinfo.bml?userid=12856127&t=I&mode=full) linked to from the comment doesn't include the extra information that I included in my configuration.
+1. The "from" line reads as <https://wincent.dev/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
+2. The [the user profile](http://www.livejournal.com/userinfo.bml?userid=12856127&t=I&mode=full) linked to from the comment doesn't include the extra information that I included in my configuration.
 
 The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) and there's not much that I can do about that. I decided to address the former problem by choosing a better [URL](/wiki/URL) for future identification. So I set up a simple page with the following content:
 

@@ -6,4 +6,4 @@ An [RFC](/wiki/RFC) ("[Request For Comments](/wiki/Request_For_Comments)") is a 
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [RFCs](/wiki/RFCs): <http://en.wikipedia.org/wiki/Request_for_Comments>
+- [Wikipedia](/wiki/Wikipedia) article on [RFCs](/wiki/RFCs): <http://en.wikipedia.org/wiki/Request_for_Comments>

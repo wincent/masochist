@@ -7,5 +7,5 @@ cache_breaker: 1
 
 # Links
 
--   <https://www.facebook.com/>
--   <http://en.wikipedia.org/wiki/Facebook>
+- <https://www.facebook.com/>
+- <http://en.wikipedia.org/wiki/Facebook>

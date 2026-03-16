@@ -6,4 +6,4 @@ tags: domain tld wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) page on [TLDs](/wiki/TLDs): <http://en.wikipedia.org/wiki/TLD>
+- [Wikipedia](/wiki/Wikipedia) page on [TLDs](/wiki/TLDs): <http://en.wikipedia.org/wiki/TLD>

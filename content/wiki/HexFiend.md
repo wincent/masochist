@@ -6,5 +6,5 @@ tags: macos wiki
 
 # See also
 
--   Official website: <http://ridiculousfish.com/hexfiend/>
--   [Testing whether a bit is set](/wiki/Testing_whether_a_bit_is_set)
+- Official website: <http://ridiculousfish.com/hexfiend/>
+- [Testing whether a bit is set](/wiki/Testing_whether_a_bit_is_set)

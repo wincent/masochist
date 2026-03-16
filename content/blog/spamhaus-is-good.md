@@ -7,9 +7,9 @@ tags: blog
 
 I don't agree for three reasons:
 
--   Spam is such a massive problem nowadays that not just private individuals, but businesses also have to take steps to protect themselves
--   Spamhaus is remarkably accurate (see below) and effective
--   It's possible to reject email based on a DNS-based blacklist and include alternative contact information in the bounce message, meaning that people will always have a means of getting in touch regardless of the filter
+- Spam is such a massive problem nowadays that not just private individuals, but businesses also have to take steps to protect themselves
+- Spamhaus is remarkably accurate (see below) and effective
+- It's possible to reject email based on a DNS-based blacklist and include alternative contact information in the bounce message, meaning that people will always have a means of getting in touch regardless of the filter
 
 In the past 24 hours, for example, Spamhaus has shielded me from 479 connection attempts from known spammer IP addresses. That's several hundred messages that would otherwise have passed on to the next line of defense ([blocking non-local senders for local-only recipients](https://wincent.dev/wiki/Blocking_non-local_senders_for_local-only_recipients), 53 additional messages stopped in the last 24 hours), and the next ([SpamAssassin](https://wincent.dev/wiki/Combatting_spam)).
 

@@ -6,4 +6,4 @@ tags: development wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [security through obscurity](/wiki/security_through_obscurity): <http://en.wikipedia.org/wiki/Security_through_obscurity>
+- [Wikipedia](/wiki/Wikipedia) article on [security through obscurity](/wiki/security_through_obscurity): <http://en.wikipedia.org/wiki/Security_through_obscurity>

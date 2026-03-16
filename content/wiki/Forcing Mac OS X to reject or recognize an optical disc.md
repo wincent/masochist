@@ -14,8 +14,8 @@ Given that the iMac has a slot-loading drive with no eject button, there seems t
 
 # Solution
 
-1.  Put the computer to sleep.
-2.  Wake it up.
+1. Put the computer to sleep.
+2. Wake it up.
 
 The system will recognize the disc. You can then erase it, eject it, or access it normally.
 

@@ -126,4 +126,4 @@ From the official announcement posted to the [Git](/wiki/Git) mailing list:
 
 # See also
 
--   [Updating to Git 1.6.3.3](/wiki/Updating_to_Git_1.6.3.3)
+- [Updating to Git 1.6.3.3](/wiki/Updating_to_Git_1.6.3.3)

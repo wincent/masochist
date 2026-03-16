@@ -7,6 +7,6 @@ cache_breaker: 1
 
 # Links
 
--   Official site: <http://www.selenic.com/mercurial/>
-    -   Downloads: <http://mercurial.selenic.com/downloads/>
--   [Wikipedia](/wiki/Wikipedia) article on [Mercurial](/wiki/Mercurial): <http://en.wikipedia.org/wiki/Mercurial_(software>)
+- Official site: <http://www.selenic.com/mercurial/>
+  - Downloads: <http://mercurial.selenic.com/downloads/>
+- [Wikipedia](/wiki/Wikipedia) article on [Mercurial](/wiki/Mercurial): <http://en.wikipedia.org/wiki/Mercurial_(software>)

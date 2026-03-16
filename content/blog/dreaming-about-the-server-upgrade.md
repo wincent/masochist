@@ -29,7 +29,7 @@ So we're talking about retiring the old server and replacing it with two new ser
 
 The dream set-up has a few key elements that are improvements over the old system:
 
-####
+#### 
 
 The machine I've been looking at is the IBM xSeries [336 model](http://www-8.ibm.com/servers/eserver/au/xseries/x336.html). It uses Xeon processors instead of Pentiums and has more memory capacity, but I'm really not interested in it for the improved performance that it boasts over its little brother the 305; the thing which interests me are its quick disaster recovery features.
 

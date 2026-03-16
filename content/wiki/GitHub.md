@@ -8,14 +8,14 @@ Not to be confused with [Git](/wiki/Git) (currently the most popular [distribute
 
 Alternatives to GitHub include (or included):
 
--   [Codeberg](https://codeberg.org).
--   [sourcehut](https://git.sr.ht).
--   [GitLab](https://gitlab.com/).
--   [BitBucket](https://bitbucket.org/).
--   [Gitorious](/wiki/Gitorious) (now defunct).
--   Git itself, which includes tools for hosting your own repositories using your own infrastructure.
--   Many others...
+- [Codeberg](https://codeberg.org).
+- [sourcehut](https://git.sr.ht).
+- [GitLab](https://gitlab.com/).
+- [BitBucket](https://bitbucket.org/).
+- [Gitorious](/wiki/Gitorious) (now defunct).
+- Git itself, which includes tools for hosting your own repositories using your own infrastructure.
+- Many others...
 
 # Official site
 
--   <http://github.com/>
+- <http://github.com/>

@@ -6,4 +6,4 @@ tags: ruby wiki
 
 # See also
 
--   [multiruby](/wiki/multiruby)
+- [multiruby](/wiki/multiruby)

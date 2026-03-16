@@ -16,4 +16,4 @@ In my opinion now, Hammerspoon (itself a fork or Mjolnir, and one which [Steven 
 
 # Official site
 
--   http://www.hammerspoon.org/
+- http://www.hammerspoon.org/

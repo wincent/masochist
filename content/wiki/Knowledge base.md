@@ -16,8 +16,8 @@ In addition, the old content was exported from the [MediaWiki](/wiki/MediaWiki) 
 
 As time permits I intend to clean up the old content in a couple of key areas:
 
--   [Markup](/wiki/Markup): [MediaWiki](/wiki/MediaWiki) sometimes needed additional markup like `<br />` tags to produce the desired layout, but the `<br />` tag is neither needed nor supported by the new [wikitext](/wiki/wikitext) module; this kind of markup needs to be removed (and I will probably be able to automate this to a certain degree).
--   [Tags](/wiki/Tags): [MediaWiki](/wiki/MediaWiki) used a hierarchical system of categories to organize content, but the new [wiki](/wiki/wiki) uses "[Web 2.0](/wiki/Web_2.0)"-style tags. During the data import categories were automatically converted into tags but many of these will need to be "massaged" by hand because categories and tags, although similar, have slightly different semantics and don't really map perfectly onto one another.
+- [Markup](/wiki/Markup): [MediaWiki](/wiki/MediaWiki) sometimes needed additional markup like `<br />` tags to produce the desired layout, but the `<br />` tag is neither needed nor supported by the new [wikitext](/wiki/wikitext) module; this kind of markup needs to be removed (and I will probably be able to automate this to a certain degree).
+- [Tags](/wiki/Tags): [MediaWiki](/wiki/MediaWiki) used a hierarchical system of categories to organize content, but the new [wiki](/wiki/wiki) uses "[Web 2.0](/wiki/Web_2.0)"-style tags. During the data import categories were automatically converted into tags but many of these will need to be "massaged" by hand because categories and tags, although similar, have slightly different semantics and don't really map perfectly onto one another.
 
 ## Naming
 

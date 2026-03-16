@@ -13,36 +13,36 @@ These examples only look at the cost of the instance-hours. Additional charges f
 
 # Standard Pricing
 
--   2 instances at: 8.5c/hr
--   Running: 24 x 7 x 52 hours per year
--   **Total:**
-    -   **\$1,485.12/year**
-    -   **\$123.76/month**
+- 2 instances at: 8.5c/hr
+- Running: 24 x 7 x 52 hours per year
+- **Total:**
+  - **\$1,485.12/year**
+  - **\$123.76/month**
 
 This corresponds to a per-instance price of 8.5c/hr
 
 # 1-year reserved pricing
 
--   2 instances at: 3c/hr
--   Running: 24 x 7 x 52 hours per year
--   Cost before adjustment: \$524.16/year
--   Cost of 1-year reservation: \$227.50
-    -   Total cost for reservation of 2 instances: \$455
--   **Total:**
-    -   **\$979.16/year**
-    -   **\$81.60/month**
+- 2 instances at: 3c/hr
+- Running: 24 x 7 x 52 hours per year
+- Cost before adjustment: \$524.16/year
+- Cost of 1-year reservation: \$227.50
+  - Total cost for reservation of 2 instances: \$455
+- **Total:**
+  - **\$979.16/year**
+  - **\$81.60/month**
 
 This corresponds to a per-instance price of 6c/hr
 
 # 3-year reserved pricing
 
--   2 instances at: 3.1c/hr
--   Running: 24 x 7 x 52 hours per year
--   Cost before adjustment: \$541.63/year
--   Cost of 3-year reservation: \$106.30
-    -   Total cost for reservation of 2 instances for 3 years: \$1731.19
--   **Total:**
-    -   **\$577.06/year**
-    -   **\$48.09/month**
+- 2 instances at: 3.1c/hr
+- Running: 24 x 7 x 52 hours per year
+- Cost before adjustment: \$541.63/year
+- Cost of 3-year reservation: \$106.30
+  - Total cost for reservation of 2 instances for 3 years: \$1731.19
+- **Total:**
+  - **\$577.06/year**
+  - **\$48.09/month**
 
 This corresponds to a per-instance price of 3.3c/hr.

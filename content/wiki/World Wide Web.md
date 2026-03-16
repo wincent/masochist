@@ -6,4 +6,4 @@ The [World Wide Web](/wiki/World_Wide_Web), or simply the [web](/wiki/web), is t
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on the [web](/wiki/web): <http://en.wikipedia.org/wiki/World_Wide_Web>
+- [Wikipedia](/wiki/Wikipedia) article on the [web](/wiki/web): <http://en.wikipedia.org/wiki/World_Wide_Web>

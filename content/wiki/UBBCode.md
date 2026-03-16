@@ -7,4 +7,4 @@ cache_breaker: 1
 
 ## See also
 
--   <http://friendsofed.infopop.net/infopop/ubbcode.html>
+- <http://friendsofed.infopop.net/infopop/ubbcode.html>

@@ -10,5 +10,5 @@ The published code is derived from code that's shipped with a couple of applicat
 
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorous](/wiki/Gitorous):
 
--   <http://github.com/wincent/WOHotKey/>
--   <http://gitorious.org/wohotkey>
+- <http://github.com/wincent/WOHotKey/>
+- <http://gitorious.org/wohotkey>

@@ -8,9 +8,9 @@ Installing is considerably easier now than it was in the past. It basically cons
 
 # Prerequisites
 
--   [ZenTest](/wiki/ZenTest) (see "[Setting up autotest](/wiki/Setting_up_autotest)")
--   [diff-lcs](/wiki/diff-lcs) (already installed in my case)
--   [RSpec](/wiki/RSpec) (again, already installed in my case)
+- [ZenTest](/wiki/ZenTest) (see "[Setting up autotest](/wiki/Setting_up_autotest)")
+- [diff-lcs](/wiki/diff-lcs) (already installed in my case)
+- [RSpec](/wiki/RSpec) (again, already installed in my case)
 
 # Installing the [RSpec](/wiki/RSpec) [Rails](/wiki/Rails) plugin
 
@@ -41,7 +41,7 @@ This prevented the tests from failing continuously when an example fails; [autot
 
 # See also
 
--   [Setting up autotest](/wiki/Setting_up_autotest)
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
--   Official plug-in announcement: <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
--   "Developing a Rails model using BDD and RSpec": <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1>
+- [Setting up autotest](/wiki/Setting_up_autotest)
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
+- Official plug-in announcement: <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
+- "Developing a Rails model using BDD and RSpec": <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1>

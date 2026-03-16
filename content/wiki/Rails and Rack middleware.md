@@ -38,33 +38,33 @@ Note that directives like `insert_after` insert middleware "after" the preceding
 
 This "before" and "after" language is actually a little misleading however, as the stack is traversed in two directions:
 
--   each layer in the stack calls the next layer (ie. set-up performed in "earlier" layers can be passed through to "later" layers)
--   as layers finish processing, their responses are made visible to the layers which called them (ie. modifications performed by "later" layers are passed back to "earlier" layers)
+- each layer in the stack calls the next layer (ie. set-up performed in "earlier" layers can be passed through to "later" layers)
+- as layers finish processing, their responses are made visible to the layers which called them (ie. modifications performed by "later" layers are passed back to "earlier" layers)
 
 This can be quite confusing, and it may appear at times that _the effective execution order is reversed_, depending on how you look at it. This is because each piece of middleware is being called by the item before it in the stack, and ends up doing a `call` on the next item in the stack. So while "earlier" items in the stack _start_ before "later" items, "later" items _finish_ before "earlier" ones.
 
 As an example, the `ÀctionDispatch::Cookies` middleware:
 
--   appears _before_ the `ActionDispatch::Session::CookieStore` middleware in the list
--   _begins_ executing _before_ the `CookieStore` middleware
--   _but_ effectively does nothing important before calling the `CookieStore` middleware
+- appears _before_ the `ActionDispatch::Session::CookieStore` middleware in the list
+- _begins_ executing _before_ the `CookieStore` middleware
+- _but_ effectively does nothing important before calling the `CookieStore` middleware
 
 The `CookieStore` middleware, on the other hand:
 
--   is called _after_ the `Cookies`middleware
--   but _finishes_ execution _before_ the `Cookies` middleware
--   then returns control to the `Cookies` middleware
+- is called _after_ the `Cookies`middleware
+- but _finishes_ execution _before_ the `Cookies` middleware
+- then returns control to the `Cookies` middleware
 
 Note that any changes made to the environment by the `CookieStore` middleware will be "visible" to the `Cookies` middleware.
 
 So taking a look at this part of the middleware stack:
 
--   `ActionDispatch::Cookies`
--   `ActionDispatch::Session::CookieStore`
--   `ActionDispatch::Flash`
+- `ActionDispatch::Cookies`
+- `ActionDispatch::Session::CookieStore`
+- `ActionDispatch::Flash`
 
 At least on one level, the order in which things actually happen is reversed, seeing as the changes made at the "later" levels are visible to the "earlier" ones:
 
--   first, the `Flash` middleware stores the flash messages in the session
--   second, the `CookieStore` middleware stores the session data in a cookie
--   third, the `Cookies` middleware translates the cookie into the appropriate HTTP headers
+- first, the `Flash` middleware stores the flash messages in the session
+- second, the `CookieStore` middleware stores the session data in a cookie
+- third, the `Cookies` middleware translates the cookie into the appropriate HTTP headers

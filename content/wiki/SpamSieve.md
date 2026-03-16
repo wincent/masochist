@@ -8,4 +8,4 @@ As of January 2010, it has made email life bearable even in the face of over 280
 
 # See also
 
--   Official site: <http://c-command.com/spamsieve/>
+- Official site: <http://c-command.com/spamsieve/>

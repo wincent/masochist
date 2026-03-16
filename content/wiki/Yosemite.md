@@ -8,4 +8,4 @@ For other release dates, see [OS X timeline](/wiki/OS_X_timeline).
 
 # See also
 
--   "The" review, from John Siracusa: <http://arstechnica.com/apple/2014/10/os-x-10-10/>
+- "The" review, from John Siracusa: <http://arstechnica.com/apple/2014/10/os-x-10-10/>

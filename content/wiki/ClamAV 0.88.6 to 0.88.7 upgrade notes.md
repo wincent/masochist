@@ -6,5 +6,5 @@ wget http://ovh.dl.sourceforge.net/sourceforge/clamav/clamav-0.88.7.tar.gz tar x
 
 # See also
 
--   Release notes: <http://sourceforge.net/project/shownotes.php?release_id=470383>
--   Download: <http://sourceforge.net/project/showfiles.php?group_id=86638&release_id=470383>
+- Release notes: <http://sourceforge.net/project/shownotes.php?release_id=470383>
+- Download: <http://sourceforge.net/project/showfiles.php?group_id=86638&release_id=470383>

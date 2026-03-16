@@ -4,8 +4,8 @@ tags: notational.velocity wiki
 
 # Official site
 
--   <http://notational.net/>
+- <http://notational.net/>
 
 # Source
 
--   <https://github.com/scrod/nv>
+- <https://github.com/scrod/nv>

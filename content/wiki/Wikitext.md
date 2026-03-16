@@ -8,12 +8,12 @@ title: Wikitext
 
 I've written a [wikitext](/wiki/wikitext) translator for use in this website. See:
 
--   Official [Wikitext product page](/products/wikitext)
--   A quick-reference "[cheatsheet](/misc/wikitext_cheatsheet)" showing a subset of the available markup and output
--   rubygems.org page: <http://rubygems.org/gems/wikitext>
--   [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/wikitext> (no longer updated)
--   [Git](/wiki/Git) repository browsers:
-    -   [integrated repo browser](/repos/wikitext)
+- Official [Wikitext product page](/products/wikitext)
+- A quick-reference "[cheatsheet](/misc/wikitext_cheatsheet)" showing a subset of the available markup and output
+- rubygems.org page: <http://rubygems.org/gems/wikitext>
+- [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/wikitext> (no longer updated)
+- [Git](/wiki/Git) repository browsers:
+  - [integrated repo browser](/repos/wikitext)
 
 # Sample markup
 

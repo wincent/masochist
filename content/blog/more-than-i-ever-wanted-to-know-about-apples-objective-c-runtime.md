@@ -14,8 +14,8 @@ Mock objects in WOTest are basically used like this:
 
 That's a simple example (that you'd probably never ever see in real testing) that sets up the mock, tells it to expect a message, sends the messages, and then asks the mock for confirmation that it received the message. Why would you want to set up a mock to stand in for `NSString` anyway? Why not just use `NSString` itself directly? There are two reasons:
 
-1.  You can't ask `NSString` for confirmation that it received a message but you can ask a mock object. This may seem ridiculous in this contrived example — after all, you know it received the message because you yourself sent it right then and there! — but there are testing situations in which the message should be sent by some other "third-party" object not under your direct control and you'll want to confirm that it fulfilled the expectation.
-2.  It doesn't matter if the documented (or undocumented) behaviour of`NSString` changes in the future because your mock will always behave the same. The mock provides you with a consistent foundation that you can use to test something else (after all, if you want to test the behaviour of `NSString` you should probably be testing it directly!).
+1. You can't ask `NSString` for confirmation that it received a message but you can ask a mock object. This may seem ridiculous in this contrived example — after all, you know it received the message because you yourself sent it right then and there! — but there are testing situations in which the message should be sent by some other "third-party" object not under your direct control and you'll want to confirm that it fulfilled the expectation.
+2. It doesn't matter if the documented (or undocumented) behaviour of`NSString` changes in the future because your mock will always behave the same. The mock provides you with a consistent foundation that you can use to test something else (after all, if you want to test the behaviour of `NSString` you should probably be testing it directly!).
 
 A much more common example involves using mock objects to stand in for classes of your own design that are under construction but not finished yet, or which can't conveniently be used in a testing scenario. For example:
 
@@ -118,19 +118,19 @@ I started looking at the Darwin source to see if I could figure out what was bei
 
 The Darwin source also notes:
 
-     * But the marg_list is prepended with the 13 double precision
-     * floating point registers that could be used as parameters into
-     * the method (fortunately, the same registers are used for either
-     * single or double precision floats).  These registers are layed
-     * down by _objc_msgForward, and picked up by _objc_msgSendv.  So
-     * the "marg_list" is actually:
-     *
-     * typedef struct objc_sendv_margs {
-     *  double      floatingPointArgs[13];
-     *  int     linkageArea[6];
-     *  int     registerArgs[8];
-     *  int     stackArgs[variable];
-     * };
+    * But the marg_list is prepended with the 13 double precision
+    * floating point registers that could be used as parameters into
+    * the method (fortunately, the same registers are used for either
+    * single or double precision floats).  These registers are layed
+    * down by _objc_msgForward, and picked up by _objc_msgSendv.  So
+    * the "marg_list" is actually:
+    *
+    * typedef struct objc_sendv_margs {
+    *  double      floatingPointArgs[13];
+    *  int     linkageArea[6];
+    *  int     registerArgs[8];
+    *  int     stackArgs[variable];
+    * };
 
 Notes on `objc_msgSendv` for i386:
 

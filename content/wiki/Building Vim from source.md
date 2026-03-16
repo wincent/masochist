@@ -7,7 +7,7 @@ cache_breaker: 1
 
 You can get the source from this [Git](/wiki/Git) mirror of the upstream Mercurial repo:
 
--   <https://github.com/b4winckler/vim>
+- <https://github.com/b4winckler/vim>
 
 (kindly provided by Björn Winckler, maintainer of [MacVim](/wiki/MacVim))
 
@@ -67,4 +67,4 @@ $ make install
 
 # See also
 
--   [Building MacVim from source](/wiki/Building_MacVim_from_source)
+- [Building MacVim from source](/wiki/Building_MacVim_from_source)

@@ -74,12 +74,12 @@ In another window I used `tail -f` to observe what was being appended to my `mai
 
 In the final version I decided to run [Stunnel](/wiki/Stunnel) on demand using [Xinetd](/wiki/Xinetd). In part I was motivated to do this by the provision for managing this in the "SSL Tunnel" section of [Webmin](/wiki/Webmin).
 
--   Service name: SSMTP (service names may not include spaces)
--   TCP port: 465
--   Active?: Yes
--   Connect to remote host: Yes
--   Remote hostname: localhost
--   Remote port: 25
+- Service name: SSMTP (service names may not include spaces)
+- TCP port: 465
+- Active?: Yes
+- Connect to remote host: Yes
+- Remote hostname: localhost
+- Remote port: 25
 
 This decision renders my earlier preparation (creating the [Stunnel](/wiki/Stunnel) user and group, and setting up the [chroot](/wiki/chroot) jail) useless, but one consolation is that with this set-up [Stunnel](/wiki/Stunnel) can log using the [syslog](/wiki/syslog) facility.
 
@@ -93,8 +93,8 @@ Apparently there is a bug in [Mail.app](/wiki/Mail.app) that requires you to re-
 
 After the transition was complete I performed testing at two levels to verify that everything was working:
 
-1.  Manually as described in the article, "[Testing services with telnet](/wiki/Testing_services_with_telnet)".
-2.  Using my mail client, [Mail.app](/wiki/Mail.app).
+1. Manually as described in the article, "[Testing services with telnet](/wiki/Testing_services_with_telnet)".
+2. Using my mail client, [Mail.app](/wiki/Mail.app).
 
 ### Headers
 

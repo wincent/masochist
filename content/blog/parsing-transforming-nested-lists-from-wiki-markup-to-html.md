@@ -62,19 +62,19 @@ Looking at this HTML makes my brain hurt, but this is what we want to produce:
 
 When rendered this will look like this:
 
-1.  this is an ordered list
-2.  which continues
-    1.  and has another ordered list
-    2.  nested inside it
-3.  and then falls back
-    -   and then nests another list
-    -   this time an unordered one
-        -   itself containing a nested list
-        -   which continues
-            1.  and finally nests yet another ordered list
-            2.  which continues
-    -   drops back quite a way
-4.  and finally all the way
-    -   \*\*\*\*\* and finishes with an invalid item
+1. this is an ordered list
+2. which continues
+   1. and has another ordered list
+   2. nested inside it
+3. and then falls back
+   - and then nests another list
+   - this time an unordered one
+     - itself containing a nested list
+     - which continues
+       1. and finally nests yet another ordered list
+       2. which continues
+   - drops back quite a way
+4. and finally all the way
+   - \*\*\*\*\* and finishes with an invalid item
 
 So anyway, it's done now, in about 130 lines of well-commented [C](https://wincent.dev/wiki/C) code. Surprisingly, despite the recursive structure of the lists the actual transformation code is entirely iterative and no recursion is involved. I still don't know if this is the best way to do it but it is what seemed to be the simplest solution. Indenting could be added to make the structure of the source clearer but as this is intended to be (mostly) read by machines and not humans it doesn't seem like its worth the trade-offs in complexity and speed.

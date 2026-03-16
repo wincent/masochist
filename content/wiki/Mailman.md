@@ -9,4 +9,4 @@ I previously used it to host mailing lists, but I am currently (as of April 2008
 
 ## See also
 
--   Official [Mailman](/wiki/Mailman) website: <http://www.gnu.org/software/mailman/index.html>
+- Official [Mailman](/wiki/Mailman) website: <http://www.gnu.org/software/mailman/index.html>

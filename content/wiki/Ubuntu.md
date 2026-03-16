@@ -4,4 +4,4 @@ tags: ubuntu wiki
 
 # Official site
 
--   <http://www.ubuntu.com/>
+- <http://www.ubuntu.com/>

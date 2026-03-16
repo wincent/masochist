@@ -82,17 +82,17 @@ Style any `img` element whose `alt` attribute _contains_ the hyphen-delimited wo
 
 Other selectors:
 
--   `a[href^="http:"]`: attribute _starts with_ "http:"
--   `a[href$=".png"]`: attribute _ends with_ ".png"
--   `a[href*="foo"]`: attribute _contains_ "foo"
+- `a[href^="http:"]`: attribute _starts with_ "http:"
+- `a[href$=".png"]`: attribute _ends with_ ".png"
+- `a[href*="foo"]`: attribute _contains_ "foo"
 
 Note that selectors can be combined; eg:
 
--   `a[href^="http:"][href$=".png"]`: attribute _starts with_ "http:" and _ends with_ ".png"
+- `a[href^="http:"][href$=".png"]`: attribute _starts with_ "http:" and _ends with_ ".png"
 
 See also:
 
--   <http://reference.sitepoint.com/css/css3attributeselectors>
+- <http://reference.sitepoint.com/css/css3attributeselectors>
 
 # Pseudo-class selectors
 
@@ -109,9 +109,9 @@ The order is important, because if multiple possible matches are found the last-
 
 Other pseudo-class selectors:
 
--   `:first-child`
--   `:focus`
--   `:lang(n)`
+- `:first-child`
+- `:focus`
+- `:lang(n)`
 
 # Pseudo-element selectors
 
@@ -125,9 +125,9 @@ Style the first letter of the `p` element:
 
 Other pseudo-element selectors:
 
--   `:before`
--   `:after`
+- `:before`
+- `:after`
 
 # See also
 
--   The best [CSS](/wiki/CSS) selector tutorial on the web: <http://css.maxdesign.com.au/selectutorial/index.htm>
+- The best [CSS](/wiki/CSS) selector tutorial on the web: <http://css.maxdesign.com.au/selectutorial/index.htm>

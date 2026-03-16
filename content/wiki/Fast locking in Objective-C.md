@@ -4,7 +4,7 @@ tags: wiki
 
 This article is a summary of information found here:
 
--   <http://googlemac.blogspot.com/2006/10/synchronized-swimming.html>
+- <http://googlemac.blogspot.com/2006/10/synchronized-swimming.html>
 
 # The problem with `@synchronized`
 
@@ -18,7 +18,7 @@ Working directly with `pthread` mutex locks is a bit faster, but it's relatively
 
 By simply compiling as [Objective-C++](/wiki/Objective-C%2b%2b) rather than Objective-C it is possible to achieve a considerable speed-up compared with `@synchronized`, while making the code much easier to read:
 
--   <http://googlemac.blogspot.com/2006/11/synchronized-swimming-part-2.html>
+- <http://googlemac.blogspot.com/2006/11/synchronized-swimming-part-2.html>
 
 Example:
 
@@ -33,22 +33,22 @@ Example:
 
 > To maximize thread safety, GCC 4.0 automatically adds locks around any code that initializes local static variables in C++. If you do not need this protection and want to reduce your code size slightly, you can disable the locking behavior by passing the -fno-threadsafe-statics option to the compiler.
 
--   <http://developer.apple.com/releasenotes/DeveloperTools/GCC40PortingReleaseNotes/Articles/PortingToGCC.html>
+- <http://developer.apple.com/releasenotes/DeveloperTools/GCC40PortingReleaseNotes/Articles/PortingToGCC.html>
 
 > The compiler now uses the library interface specified by the C++ ABI for thread-safe initialization of function-scope static variables. Most users should leave this alone, but embedded programmers may want to disable this by specifying -fno-threadsafe-statics for a small savings in code size.
 
--   <http://gcc.gnu.org/gcc-4.0/changes.html>
+- <http://gcc.gnu.org/gcc-4.0/changes.html>
 
 > If a function-scope static variable or a static data member with vague linkage (i.e., a static data member of a class template) is dynamically initialized, then there is an associated guard variable which is used to guarantee that construction occurs only once.
 
--   <http://www.codesourcery.com/cxx-abi/abi.html>
+- <http://www.codesourcery.com/cxx-abi/abi.html>
 
 The good thing about this approach is that it requires no special action on the part of the programmer (no additional compiler switches, for example). All you have to do is use Objective-C++.
 
 Before switching to Objective-C++ see these articles:
 
--   <http://en.wikipedia.org/wiki/Compatibility_of_C_and_C%2B%2B>
--   <http://en.wikipedia.org/wiki/Objective_C#Objective-C.2B.2B>
+- <http://en.wikipedia.org/wiki/Compatibility_of_C_and_C%2B%2B>
+- <http://en.wikipedia.org/wiki/Objective_C#Objective-C.2B.2B>
 
 # An alternative solution using swizzling
 

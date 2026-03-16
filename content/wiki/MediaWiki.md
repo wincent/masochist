@@ -7,4 +7,4 @@ cache_breaker: 1
 
 ## See also
 
--   Official website: <http://mediawiki.org/>
+- Official website: <http://mediawiki.org/>

@@ -11,16 +11,16 @@ An example of a [BDD](/wiki/BDD) framework is [RSpec](/wiki/RSpec). I've used it
 
 ## Related
 
--   [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
--   [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
--   [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
--   [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
--   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
--   [RR cheatsheet](/wiki/RR_cheatsheet)
--   [Steak cheatsheet](/wiki/Steak_cheatsheet)
+- [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
+- [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
+- [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
+- [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
+- [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
+- [RR cheatsheet](/wiki/RR_cheatsheet)
+- [Steak cheatsheet](/wiki/Steak_cheatsheet)
 
 ## Older
 
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
--   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
--   [Mocking in Rails](/wiki/Mocking_in_Rails)
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
+- [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
+- [Mocking in Rails](/wiki/Mocking_in_Rails)

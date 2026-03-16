@@ -8,8 +8,8 @@ title: aws (command line tool)
 
 # Official website
 
--   <http://timkay.com/aws/>
--   <http://github.com/timkay/aws>
+- <http://timkay.com/aws/>
+- <http://github.com/timkay/aws>
 
 # Installation
 
@@ -45,9 +45,9 @@ The main bucket I use for public distribution via [HTTP](/wiki/HTTP) ~~is~~ was 
 
 "Objects" uploaded into the bucket (really files) are identified by textual keys. Keys can have path-like names to give the appearance of hierarchical organization, but in reality buckets are just shallow/flat collections. This means that the following "paths" all refer to objects in the "top" (and _only_) level in the bucket:
 
--   `synergy/releases/synergy-4.3.zip`
--   `wikitext/releases/wikitext-2.0.gem.bz2`
--   `publications/novel.pdf`
+- `synergy/releases/synergy-4.3.zip`
+- `wikitext/releases/wikitext-2.0.gem.bz2`
+- `publications/novel.pdf`
 
 As an example, to upload `synergy-4.4.zip` into the appropriate bucket:
 
@@ -60,4 +60,4 @@ The second line is necessary to override the default ACL (which only allows the 
 
 # See also
 
--   [Deleting old Amazon EBS snapshots](/wiki/Deleting_old_Amazon_EBS_snapshots): the `aws` tool is about 10 to 20 times faster than Amazon's Java-based [command line](/wiki/command_line) tools for batch jobs such as deleting snapshots
+- [Deleting old Amazon EBS snapshots](/wiki/Deleting_old_Amazon_EBS_snapshots): the `aws` tool is about 10 to 20 times faster than Amazon's Java-based [command line](/wiki/command_line) tools for batch jobs such as deleting snapshots

@@ -5,11 +5,11 @@ tags: involuntary.reboot.log blog
 
 The most unpleasant kind of kernel panic: you leave the machine idle, leave the office, and come back to find the machine has panicked. Sigh. Had a bunch of unsaved work ready for tomorrow too, the kind you can't save (stuff in browser windows), and documents open in Finder and BBEdit windows ready for uploading. Hope there was no damage to the file system or the files. Sigh.
 
--   **Operating system version:** Mac OS X 10.4.7
--   **Average time between failures:** 52.5 days
--   **Uptime at moment of failure:** Approximately 10 days?
--   **Kernel panics:** 2
--   **Hard resets:** 0
+- **Operating system version:** Mac OS X 10.4.7
+- **Average time between failures:** 52.5 days
+- **Uptime at moment of failure:** Approximately 10 days?
+- **Kernel panics:** 2
+- **Hard resets:** 0
 
 ```
 panic(cpu 1 caller 0x0019CADF): Unresolved kernel trap (CPU 1, Type 14=page fault), registers:

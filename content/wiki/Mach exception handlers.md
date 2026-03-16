@@ -21,24 +21,24 @@ Jim Magee, Apple, <http://lists.apple.com/archives/darwin-kernel/2003/Nov/msg000
 
 # Example code
 
--   <http://pre.plt-scheme.org/plt/src/mzscheme/gc2/vm_osx.c>
--   <http://paste.lisp.org/display/19593>
--   <http://www.cebix.net/viewcvs/cebix/BasiliskII/src/Unix/sigsegv.cpp?rev=1.27>
--   <http://www.brianweb.net/misc/mach_exceptions_demo.chttp://www.brianweb.net/misc/mach_exceptions_demo.c>
--   <http://www.opensource.apple.com/darwinsource/projects/other/gdb-365/src/gdb/macosx/macosx-nat-inferior-util.c>
--   <http://www.opensource.apple.com/darwinsource/Current/gcc-5250/boehm-gc/os_dep.c>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/kern/ipc_tt.c>
+- <http://pre.plt-scheme.org/plt/src/mzscheme/gc2/vm_osx.c>
+- <http://paste.lisp.org/display/19593>
+- <http://www.cebix.net/viewcvs/cebix/BasiliskII/src/Unix/sigsegv.cpp?rev=1.27>
+- <http://www.brianweb.net/misc/mach_exceptions_demo.chttp://www.brianweb.net/misc/mach_exceptions_demo.c>
+- <http://www.opensource.apple.com/darwinsource/projects/other/gdb-365/src/gdb/macosx/macosx-nat-inferior-util.c>
+- <http://www.opensource.apple.com/darwinsource/Current/gcc-5250/boehm-gc/os_dep.c>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/kern/ipc_tt.c>
 
 # Related Mach documentation
 
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/catch_exception_raise.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/exc_server.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_deallocate.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_allocate.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_mod_refs.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_task_self.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_destroy.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/task_get_exception_ports.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/task_set_exception_ports.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/thread_get_state.html>
--   <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/thread_set_state.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/catch_exception_raise.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/exc_server.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_deallocate.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_allocate.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_mod_refs.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_task_self.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/mach_port_destroy.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/task_get_exception_ports.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/task_set_exception_ports.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/thread_get_state.html>
+- <http://www.opensource.apple.com/darwinsource/10.4/xnu-792/osfmk/man/thread_set_state.html>

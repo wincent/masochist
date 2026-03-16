@@ -28,4 +28,4 @@ I made a `git hub` command (source [here](https://github.com/wincent/wincent/blo
 
 # See also
 
--   Assortment of tips/comments for working with pull requests from the [command line](/wiki/command_line): <https://gist.github.com/piscisaureus/3342247>
+- Assortment of tips/comments for working with pull requests from the [command line](/wiki/command_line): <https://gist.github.com/piscisaureus/3342247>

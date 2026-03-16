@@ -17,8 +17,8 @@ For example, changing your user's shell to `/usr/local/bin/zsh`:
 
 Go to the "Users & Groups" pane of the System Preferences application:
 
-1.  Click the padlock to unlock the pane
-2.  Right click on your user account in the list on the left, and select "Advanced Options"
-3.  Select the desired shell from the list of available shells
+1. Click the padlock to unlock the pane
+2. Right click on your user account in the list on the left, and select "Advanced Options"
+3. Select the desired shell from the list of available shells
 
 Note that if you've added a custom shell to `/etc/shells` it may not be visible in the list until your next login.

@@ -308,11 +308,11 @@ A quick [Google](/wiki/Google) (too quick, seeing as I didn't find this page aga
 
 Finally I found a bunch of other results which indicated what the real solution to the problem would be:
 
--   <http://trac.macosforge.org/projects/ruby/wiki/Troubleshooting>
--   <http://www.zonageek.com/blog/archivos/2007/10/25-162515.php>
--   <http://www.notsostupid.com/blog/2007/10/25/ruby-leopard-and-gems/>
--   <http://nullcreations.net/entry/installing-ruby-mysql-gem-in-osx-10-5-leopard>
--   <http://reinh.com/2007/11/19/leopard-s-rubygem-macports-mysql-and-installing-the-mysql-gem>
+- <http://trac.macosforge.org/projects/ruby/wiki/Troubleshooting>
+- <http://www.zonageek.com/blog/archivos/2007/10/25-162515.php>
+- <http://www.notsostupid.com/blog/2007/10/25/ruby-leopard-and-gems/>
+- <http://nullcreations.net/entry/installing-ruby-mysql-gem-in-osx-10-5-leopard>
+- <http://reinh.com/2007/11/19/leopard-s-rubygem-macports-mysql-and-installing-the-mysql-gem>
 
 <!-- -->
 
@@ -339,5 +339,5 @@ The `install_name_tool` trick doesn't seem to be necessary with this version of 
 
 Points of interest:
 
--   The warnings in the [Rails](/wiki/Rails) log have gone away
--   But notice that the reported version of the [gem](/wiki/gem) is still 2.7, just like the one that was already installed, and not 2.7.3 as is reported as being available by `gem list --remote`
+- The warnings in the [Rails](/wiki/Rails) log have gone away
+- But notice that the reported version of the [gem](/wiki/gem) is still 2.7, just like the one that was already installed, and not 2.7.3 as is reported as being available by `gem list --remote`

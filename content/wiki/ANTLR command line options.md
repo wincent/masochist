@@ -29,17 +29,17 @@ Obtained using `java org.antlr.Tool`:
 
 Obtained using `java org.antlr.Tool -X`:
 
-      -Xgrtree               print the grammar AST
-      -Xdfa                  print DFA as text
-      -Xnoprune              test lookahead against EBNF block exit branches
-      -Xnocollapse           collapse incident edges into DFA states
-      -Xdbgconversion        dump lots of info during NFA conversion
-      -Xmultithreaded        run the analysis in 2 threads
-      -Xnomergestopstates    do not merge stop states
-      -Xdfaverbose           generate DFA states in DOT with NFA configs
-      -Xwatchconversion      print a message for each NFA before converting
-      -XdbgST                put tags at start/stop of all templates in output
-      -Xm m                  max number of rule invocations during conversion
-      -Xmaxdfaedges m        max "comfortable" number of edges for single DFA state
-      -Xconversiontimeout t  set NFA conversion timeout for each decision
-      -Xnoinlinedfa          make all DFA with tables; no inline prediction with IFs
+    -Xgrtree               print the grammar AST
+    -Xdfa                  print DFA as text
+    -Xnoprune              test lookahead against EBNF block exit branches
+    -Xnocollapse           collapse incident edges into DFA states
+    -Xdbgconversion        dump lots of info during NFA conversion
+    -Xmultithreaded        run the analysis in 2 threads
+    -Xnomergestopstates    do not merge stop states
+    -Xdfaverbose           generate DFA states in DOT with NFA configs
+    -Xwatchconversion      print a message for each NFA before converting
+    -XdbgST                put tags at start/stop of all templates in output
+    -Xm m                  max number of rule invocations during conversion
+    -Xmaxdfaedges m        max "comfortable" number of edges for single DFA state
+    -Xconversiontimeout t  set NFA conversion timeout for each decision
+    -Xnoinlinedfa          make all DFA with tables; no inline prediction with IFs

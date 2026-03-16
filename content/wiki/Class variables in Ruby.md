@@ -4,10 +4,10 @@ tags: ruby wiki
 
 Differences between class variables and instance variables:
 
--   `@@foo`: shared by a class and all its subclasses
--   `@foo`:
-    -   on an instance method, becomes an instance variable
-    -   on a class method (or an instance method of a metaclass), becomes a class variable visible only to the class (ie. not shared with subclasses)
+- `@@foo`: shared by a class and all its subclasses
+- `@foo`:
+  - on an instance method, becomes an instance variable
+  - on a class method (or an instance method of a metaclass), becomes a class variable visible only to the class (ie. not shared with subclasses)
 
 Example:
 

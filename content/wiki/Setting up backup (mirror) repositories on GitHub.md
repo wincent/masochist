@@ -78,14 +78,14 @@ If there isn't a key pair already, make one thusly:
 
 **A note about passphraseless key files:** Seeing as this key is _only_ for pushing to the backup/mirror repository, _and_ you want such backups to run automatically (unattended), _and_ you're not going to be around every time the server reboots to feed a passphrase into `ssh-agent`, _and_ the backup is not supposed to be "authoritative" (it's just there for some data redundancy) so you literally don't care about security, you _might_ want to hit "enter" for no passphrase above.
 
-1.  Visit: <http://github.com/account#keys>
-2.  Click on the "add another public key" link
-3.  Copy and paste the contents of `/path/to/git/home/.ssh/id_dsa.pub`
-4.  Assign it a descriptive name like "<git-backups@git.example.com>"
+1. Visit: <http://github.com/account#keys>
+2. Click on the "add another public key" link
+3. Copy and paste the contents of `/path/to/git/home/.ssh/id_dsa.pub`
+4. Assign it a descriptive name like "<git-backups@git.example.com>"
 
 ## See also
 
--   <http://github.com/guides/providing-your-ssh-key>
+- <http://github.com/guides/providing-your-ssh-key>
 
 ## Optional setup
 
@@ -106,13 +106,13 @@ Instead of the longer:
 
 # Creating the repository on GitHub
 
-1.  Log in to [GitHub](https://github.com/)
-2.  Under "Your Repositories", click "New Repository"
-3.  Fill out the "Project Name", "Description" and "Homepage URL" fields:
-    1.  "Project Name", for example, might be something like "Wikitext"
-    2.  "Description" could be something like "Mirror of the official Wikitext repository at git.wincent.dev"
-    3.  "Homepage URL", for example, could be something like <http://wikitext.rubyforge.org/>
-4.  Turn off the "Wiki", "Issues" and "Downloads" features (that functionality is already provided on the wincent.dev site)
+1. Log in to [GitHub](https://github.com/)
+2. Under "Your Repositories", click "New Repository"
+3. Fill out the "Project Name", "Description" and "Homepage URL" fields:
+   1. "Project Name", for example, might be something like "Wikitext"
+   2. "Description" could be something like "Mirror of the official Wikitext repository at git.wincent.dev"
+   3. "Homepage URL", for example, could be something like <http://wikitext.rubyforge.org/>
+4. Turn off the "Wiki", "Issues" and "Downloads" features (that functionality is already provided on the wincent.dev site)
 
 # Setting up a `README` file
 
@@ -287,8 +287,8 @@ Where `${HOME}/tools/github-mirror.sh` is a simple shell script that looks somet
 
 # Inspecting the mirror
 
--   <http://github.com/wincent/Wikitext/tree/master>
+- <http://github.com/wincent/Wikitext/tree/master>
 
 # See also
 
--   [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)
+- [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)

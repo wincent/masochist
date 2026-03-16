@@ -7,4 +7,4 @@ Cyrus is the standard [POP](/wiki/POP) and [IMAP](/wiki/IMAP) server on many [Li
 
 # See also
 
--   Official site: <http://cyrusimap.web.cmu.edu/>
+- Official site: <http://cyrusimap.web.cmu.edu/>

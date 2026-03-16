@@ -41,9 +41,15 @@ This thing wouldn't seek to be a replacement for the hierarchical file system, a
 I think I'll stop here, as that basically lays out the high-level vision, and from here the only direction to go is the indeterminate "off into the weeds". I _am_ interested in going there in due time, so watch this space for a follow-up in which I get into some details about what I think the underlying architecture might be, and maybe I'll even sketch up some mocks for the kind of UI I'm imagining. In the meantime, thanks for reading!
 
 [^copies]: Other than the obvious workaround of _copying_ a file so that it appears in multiple places, with the evident downside that if you ever edit one of these copies, you've now created a divergence.
+
 [^distraction]: And not just "don't want" in the sense of "this thing is not interesting to me", but rather "I actively wish for this thing _not_ to be here", because I think the lack of focus leads to a more complex, less stable product.
+
 [^git]: With the small disclaimer that I'm not actually manually managing so many items — those numbers are definitely inflated by the presence of a number of machine-managed subtrees in the form of Git repositories and the like.
+
 [^reading]: You're reading it right now.
+
 [^declarative]: I also thought of the ability to define programmatically derived "views" (like views in a relational database) that would allow you to do really bend this thing into your desired shape, but very quickly concluded that the dumb column-based UI would probably be just as effective for search, _provided_ the quality of the tagging was good. There's always time to build a more "sophisticated" search interface later on if the dumb version turns out to be insufficient in practice.
+
 [^filechute]: A name apparently already used for one or more things, based on [this Google search](https://www.google.com/search?q=filechute) that currently returns a little over 19,000 results.
+
 [^break]: You can break a symlink quite easily by moving the file it points at and forgetting to recreate the symlink. And in the specific case of Sync, I am not sure what would happen if you tried _editing_ a file that you opened via a symlink (that is, when I tested this, I only verified that you can _view_ such a file in the iOS client and in the web, neither of which permit you to actually edit the contents — it's not clear what would happen if you tried such an edit on another machine running the Sync client, and I'm not even sure whether it would present itself as a symlink or an apparent copy).

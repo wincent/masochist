@@ -142,8 +142,8 @@ Processing command: spec
 
 With this script I can basically employ a two-step deployment process:
 
-1.  Run all my steps up to and including running the spec suite
-2.  If that goes well, run the remaining steps
+1. Run all my steps up to and including running the spec suite
+2. If that goes well, run the remaining steps
 
 It looks like this; note that even if you change the order of the parameters it still does things in the correct order:
 

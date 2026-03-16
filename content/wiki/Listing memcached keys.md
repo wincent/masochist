@@ -31,8 +31,8 @@ And you can retrieve using the listed key(s):
 
 # Source
 
--   <http://www.darkcoding.net/software/memcached-list-all-keys/>
+- <http://www.darkcoding.net/software/memcached-list-all-keys/>
 
 # See also
 
--   Ruby script implementing this technique: <https://gist.github.com/bkimble/1365005>
+- Ruby script implementing this technique: <https://gist.github.com/bkimble/1365005>

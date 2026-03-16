@@ -6,4 +6,4 @@ tags: security wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [CSRF](/wiki/CSRF): <http://en.wikipedia.org/wiki/Cross-site_request_forgery>
+- [Wikipedia](/wiki/Wikipedia) article on [CSRF](/wiki/CSRF): <http://en.wikipedia.org/wiki/Cross-site_request_forgery>

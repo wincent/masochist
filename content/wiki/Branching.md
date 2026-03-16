@@ -12,8 +12,8 @@ Because manually managing two branches requires considerable effort under [Subve
 
 [SVK](/wiki/SVK) makes branching and merging so easy that you can afford to adopt a much more cavalier attitude to branching. You can use it to manage branches at two levels:
 
-1.  Branches in the remote repository, typically stored in `project/branches/`.
-2.  Local-only branches not stored in the remote repository.
+1. Branches in the remote repository, typically stored in `project/branches/`.
+2. Local-only branches not stored in the remote repository.
 
 This latter class of branch is enabled by the fact that [SVK](/wiki/SVK) uses a distributed model rather than a centralized client/server model. It's not an all or nothing affair, however, because the distributed model of [SVK](/wiki/SVK) can work seamlessly with an existing centralized, client/server infrastructure.
 
@@ -27,9 +27,9 @@ Lightweight branches tend to be short-lived branches in which you carry out a di
 
 Examples of reasons for creating lightweight branches include:
 
--   Working on a bug fix
--   Implementing a new feature
--   Carrying out experimental work
+- Working on a bug fix
+- Implementing a new feature
+- Carrying out experimental work
 
 These lightweight branches are often best suited to be local-only [SVK](/wiki/SVK) branches. You can then `push` and `pull` changes from and to the lightweight branch. See the "[Microbranching](/wiki/Microbranching)" article for an example.
 
@@ -39,14 +39,14 @@ I like to think of these two branching styles as being like left and right-recur
 
 I'm inclined to think that a blend of the two styles is actually the optimum work style. To illustrate, this is my current thinking about what I will do with [Synergy](/wiki/Synergy) (currently 3.1.1 is in beta testing):
 
-1.  Release 3.1.1 (actually from the `panther` branch)
-2.  Create a tag, `tags/3.1.1`
-3.  Merge back to `trunk`; mainline development will continue there.
-4.  Let the misnamed `panther` branch die off.
-5.  Make a new branch, `branches/jaguar`; this will actually be for the 3.1.x series and could just as easily have been called the `3.1` branch but I prefer the mnemonic animal-based naming.
-6.  Continue development work on `trunk`; this [Leopard](/wiki/Leopard)-centric release will be numbered version 3.5.
-7.  If it becomes necessary to do a 3.1.2 release can do that work on the `jaguar` branch.
-8.  If it becomes necessary to do an even finer-grained branch (`3.1.2`, for example) can do so later on using a local-only [SVK](/wiki/SVK) branch.
+1. Release 3.1.1 (actually from the `panther` branch)
+2. Create a tag, `tags/3.1.1`
+3. Merge back to `trunk`; mainline development will continue there.
+4. Let the misnamed `panther` branch die off.
+5. Make a new branch, `branches/jaguar`; this will actually be for the 3.1.x series and could just as easily have been called the `3.1` branch but I prefer the mnemonic animal-based naming.
+6. Continue development work on `trunk`; this [Leopard](/wiki/Leopard)-centric release will be numbered version 3.5.
+7. If it becomes necessary to do a 3.1.2 release can do that work on the `jaguar` branch.
+8. If it becomes necessary to do an even finer-grained branch (`3.1.2`, for example) can do so later on using a local-only [SVK](/wiki/SVK) branch.
 
 Given that the trunk is intended for [Leopard](/wiki/Leopard) releases I want to keep disruptive feature work off of the trunk. So for bugfixes and feature additions that may take more than a day to complete I'll use [SVK](/wiki/SVK) to make local-only micro-branches and then merge them back into the trunk once they're done:
 
@@ -77,10 +77,10 @@ The `--verbatim` switch to `svk push` prevents it from including [SVK](/wiki/SVK
 
 ## General articles
 
--   [Cherry picking](/wiki/Cherry_picking)
--   [Merging](/wiki/Merging)
--   [Tagging](/wiki/Tagging)
+- [Cherry picking](/wiki/Cherry_picking)
+- [Merging](/wiki/Merging)
+- [Tagging](/wiki/Tagging)
 
 ## Project-specific branch notes
 
--   [Branch notes](/wiki/Branch_notes)
+- [Branch notes](/wiki/Branch_notes)

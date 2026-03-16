@@ -9,9 +9,9 @@ Since the last log entry and over the last month I've had 3 [kernel panics](/wik
 
 Now more than ever I am hoping that my finances will permit purchasing a new machine before the end of the year (if this one even lasts that long).
 
--   Kernel panics: 15
--   Hard resets: 24
--   Total failures: 39
--   Start of recording keeping: 21 May 2006
--   Total days to date: 807 days
--   Average time between failures: 20.69 days
+- Kernel panics: 15
+- Hard resets: 24
+- Total failures: 39
+- Start of recording keeping: 21 May 2006
+- Total days to date: 807 days
+- Average time between failures: 20.69 days

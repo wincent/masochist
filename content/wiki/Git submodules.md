@@ -9,8 +9,8 @@ cache_breaker: 1
 
 One typical workflow: public project, public submodules.
 
--   you want anonymous users to be able to clone the public project and its submodules
--   but you want to be able to push changes from within the submodules
+- you want anonymous users to be able to clone the public project and its submodules
+- but you want to be able to push changes from within the submodules
 
 <!-- -->
 

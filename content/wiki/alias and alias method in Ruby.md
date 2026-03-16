@@ -46,4 +46,4 @@ Bar.new.hello3 # => puts "Hello from Bar"
 
 # Source
 
--   <http://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html>
+- <http://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html>

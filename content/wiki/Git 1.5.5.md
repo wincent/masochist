@@ -218,4 +218,4 @@ This is a local copy of the [official release notes](http://repo.or.cz/w/git.git
 
 ## See also
 
--   [Upgrading to Git 1.5.5](/wiki/Upgrading_to_Git_1.5.5)
+- [Upgrading to Git 1.5.5](/wiki/Upgrading_to_Git_1.5.5)

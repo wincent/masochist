@@ -13,18 +13,18 @@ This approach described in [Railscast](/wiki/Railscast) episode 19, "[Where Admi
 
 The contrasting approach is to put administration controls in a completely separate part of the site. For example, given [URLs](/wiki/URLs) like:
 
--   <http://example.com/posts/>
--   <http://example.com/products/>
+- <http://example.com/posts/>
+- <http://example.com/products/>
 
 The administration interfaces might be found at:
 
--   <http://example.com/posts/admin/>
--   <http://example.com/products/admin/>
+- <http://example.com/posts/admin/>
+- <http://example.com/products/admin/>
 
 Or:
 
--   <http://example.com/admin/posts/>
--   <http://example.com/admin/products/>
+- <http://example.com/admin/posts/>
+- <http://example.com/admin/products/>
 
 This approach has fallen out of favour in many circles because it's not "[DRY](/wiki/DRY)"; for example, you have to provide a page for the "show" action in two places, one for unprivileged and one for privileged users.
 

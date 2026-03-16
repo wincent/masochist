@@ -6,5 +6,5 @@ tags: aws route.53 wiki
 
 # Links
 
--   Official site: <http://aws.amazon.com/route53/>
--   Getting started guide: <http://docs.amazonwebservices.com/Route53/latest/GettingStartedGuide/>
+- Official site: <http://aws.amazon.com/route53/>
+- Getting started guide: <http://docs.amazonwebservices.com/Route53/latest/GettingStartedGuide/>

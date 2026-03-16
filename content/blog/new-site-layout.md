@@ -11,15 +11,15 @@ My favorite part of the new navigation bar, however, is the set of pop-up menus 
 
 The following browsers have been tested with the new layout (all running on Mac OS X 10.3.6):
 
--   [Apple Safari 1.2.4 (v125.11)](http://www.apple.com/safari/): correct display.
--   [Mozilla Firefox 1.0 RC2, 1.0](http://www.mozilla.org/products/firefox/): correct display.
--   [Mozilla 1.7.3](http://www.mozilla.org/products/mozilla1.x/): correct display.
--   [Camino 0.8.1](http://www.mozilla.org/products/camino/): correct display.
--   [OmniWeb 5.0.1](http://www.omnigroup.com/applications/omniweb/): correct display.
--   [Opera 7.54](http://www.opera.com/): correct display.
--   [Netscape 7.2](http://channels.netscape.com/ns/browsers/download.jsp): correct display.
--   [Internet Explorer 5.2.3 (5815.1)](http://www.microsoft.com/mac/products/internetexplorer/internetexplorer.aspx?pid=internetexplorer): popup menus do not appear, but page layout is correct and the row of buttons in the navigation bar works.
--   [iCab 2.9.8](http://www.icab.de/): page layout completely broken, but site is navegable.
+- [Apple Safari 1.2.4 (v125.11)](http://www.apple.com/safari/): correct display.
+- [Mozilla Firefox 1.0 RC2, 1.0](http://www.mozilla.org/products/firefox/): correct display.
+- [Mozilla 1.7.3](http://www.mozilla.org/products/mozilla1.x/): correct display.
+- [Camino 0.8.1](http://www.mozilla.org/products/camino/): correct display.
+- [OmniWeb 5.0.1](http://www.omnigroup.com/applications/omniweb/): correct display.
+- [Opera 7.54](http://www.opera.com/): correct display.
+- [Netscape 7.2](http://channels.netscape.com/ns/browsers/download.jsp): correct display.
+- [Internet Explorer 5.2.3 (5815.1)](http://www.microsoft.com/mac/products/internetexplorer/internetexplorer.aspx?pid=internetexplorer): popup menus do not appear, but page layout is correct and the row of buttons in the navigation bar works.
+- [iCab 2.9.8](http://www.icab.de/): page layout completely broken, but site is navegable.
 
 I am hoping that this will be a win-win situation for site visitors and for me. Although it has been a big task perfecting the new layout and moving all the material from the old sites into position, the administration burden in the future should be greatly reduced. Most of the dynamic elements are either stored on the server as [PHP](http://www.php.net/) includes (so that a single file can be edited and every page on the site will immediately reflect any changes), or built using [Movable Type](http://movabletype.org/) (where I can post content from my desktop using [ecto](http://ecto.kung-foo.tv/); no need to fire up a browser or a behemoth like [Dreamweaver MX 2004](http://www.macromedia.com/software/dreamweaver/)). Site appearance is largely controlled through a single, site-wide style sheet (once again, editing one file can change the appearance of the entire site). And apart from the maintenance improvements, if people can find their way around more easily and access support services like the forums, the bug-tracking and feature requests database, and the lost license code retrieval system, then I'll be able to spend more time working on new products.
 

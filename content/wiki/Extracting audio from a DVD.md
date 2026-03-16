@@ -20,10 +20,10 @@ After demuxing you will have a bunch of [AC3](/wiki/AC3) files, one per [VOB](/w
 
 I then tried using the "Streaming/Export Wizard" of [VLC](/wiki/VLC):
 
-1.  Drag the [AC3](/wiki/AC3) files to the [VLC](/wiki/VLC) playlist window.
-2.  From the "File" menu choose "Streaming/Export Wizard".
-3.  Choose "Transcode/Save to file".
-4.  Choose an audio-only transcode. I choose to use the [FLAC](/wiki/FLAC) codec because it is lossless, and a [RAW](/wiki/RAW) container type.
+1. Drag the [AC3](/wiki/AC3) files to the [VLC](/wiki/VLC) playlist window.
+2. From the "File" menu choose "Streaming/Export Wizard".
+3. Choose "Transcode/Save to file".
+4. Choose an audio-only transcode. I choose to use the [FLAC](/wiki/FLAC) codec because it is lossless, and a [RAW](/wiki/RAW) container type.
 
 I then tried using [PAC](/wiki/PAC) as follows:
 

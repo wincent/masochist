@@ -75,7 +75,7 @@ p thing # => NameError: undefined local variable or method `thing'
 
 Keywords available for use inside Ruby looping constructs:
 
--   `break`: break out of (ie. stop) the iteration
--   `next`: proceed to next round of the iteration
--   `redo`: restart iteration from the beginning
--   `retry`: retry current iteration
+- `break`: break out of (ie. stop) the iteration
+- `next`: proceed to next round of the iteration
+- `redo`: restart iteration from the beginning
+- `retry`: retry current iteration

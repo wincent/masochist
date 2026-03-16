@@ -5,9 +5,9 @@ tags: git blog
 
 When [GitHub](/wiki/GitHub) first launched I was far from impressed with it. I had 3 main complaints about it:
 
-1.  It was little more than a prettified [GitWeb](/wiki/GitWeb) replacement written in [Ruby on Rails](/wiki/Ruby_on_Rails) and with some attractive [CSS](/wiki/CSS).
-2.  It seemed absurd to me that people would pay for the service when [Git](/wiki/Git) itself comes with everything you need to reliably, securely serve repositories. (And if you make a living off your development work, why would you entrust your most prized asset, your code, to an unknown third-party with a non-existent track record?)
-3.  Its "fork-happy" design encouraged a veritable forking-frenzy that seemed to be an overexcited reaction to the "D" in [DVCS](/wiki/DVCS) (and just because you _can_ splinter a project into a thousand public forks doesn't necessarily mean that you _should_).
+1. It was little more than a prettified [GitWeb](/wiki/GitWeb) replacement written in [Ruby on Rails](/wiki/Ruby_on_Rails) and with some attractive [CSS](/wiki/CSS).
+2. It seemed absurd to me that people would pay for the service when [Git](/wiki/Git) itself comes with everything you need to reliably, securely serve repositories. (And if you make a living off your development work, why would you entrust your most prized asset, your code, to an unknown third-party with a non-existent track record?)
+3. Its "fork-happy" design encouraged a veritable forking-frenzy that seemed to be an overexcited reaction to the "D" in [DVCS](/wiki/DVCS) (and just because you _can_ splinter a project into a thousand public forks doesn't necessarily mean that you _should_).
 
 Within the [Ruby](/wiki/Ruby) community, ever quick to embrace the latest and greatest, it took off absolutely explosively once Rails itself switched to Git and chose GitHub as its home. For many newcomers to Git, GitHub _was_ Git.
 
@@ -29,15 +29,15 @@ Under GitHub, we have go far beyond this initial distributed model, to one in wh
 
 There _is_ a time and a place for public forks, but I don't think it need be the norm. There are many times when it is simpler to just:
 
-1.  `git clone` the upstream project
-2.  Prepare your patch, then run `git format-patch` to submit it (via email, or issue tracker ticket) upstream
+1. `git clone` the upstream project
+2. Prepare your patch, then run `git format-patch` to submit it (via email, or issue tracker ticket) upstream
 
 Instead of:
 
-1.  Fork the upstream project on GitHub
-2.  `git clone` either the upstream project or your fork of it
-3.  Prepare your changes, then push your changes to your fork
-4.  Request that upstream look at your fork and pull it in
+1. Fork the upstream project on GitHub
+2. `git clone` either the upstream project or your fork of it
+3. Prepare your changes, then push your changes to your fork
+4. Request that upstream look at your fork and pull it in
 
 Public forks are great for long-running feature development, but in most cases when you just want to submit a spelling fix to a project's documentation, forking is just needless overhead that does nothing other than inflate the number of repos hosted by GitHub for its marketing statistics.
 
@@ -55,14 +55,14 @@ It would also facilitate an improvement feedback loop which you don't get with p
 
 But despite my complaints about forking, like I said, the GitHub team has worked assiduously on adding new features, and some of them are awesomely good for this kind of collaboration:
 
--   commit comments
--   the ability to comment on specific lines of a commit, or the commit as a whole
--   the ability to reply to these in-line comments
--   annotation of commit logs showing which commits have comments on them
--   email notifications of anyone doing anything in your repos, any changes on your tickets, and any changes on anything you've commented on, anywhere (not just your own projects)
--   historical, hyperlinked record of all those notifications at GitHub
--   ubiquitous hyperlinking of commits, branches and other references
--   overviews and RSS feeds of all activity (commits, comments, issues) in the projects you're watching
+- commit comments
+- the ability to comment on specific lines of a commit, or the commit as a whole
+- the ability to reply to these in-line comments
+- annotation of commit logs showing which commits have comments on them
+- email notifications of anyone doing anything in your repos, any changes on your tickets, and any changes on anything you've commented on, anywhere (not just your own projects)
+- historical, hyperlinked record of all those notifications at GitHub
+- ubiquitous hyperlinking of commits, branches and other references
+- overviews and RSS feeds of all activity (commits, comments, issues) in the projects you're watching
 
 I ended up spending a lot of time complaining in this post, and it took me less than a minute to write those bullet points where I describe the good stuff, but there really is no overstating the usefulness of those features.
 

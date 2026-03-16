@@ -10,4 +10,4 @@ You can read how [SuperDuper!](/wiki/SuperDuper%21) saved my butt in [this weblo
 
 # See also
 
--   Official site: <http://shirt-pocket.com/SuperDuper/>
+- Official site: <http://shirt-pocket.com/SuperDuper/>

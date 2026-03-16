@@ -7,7 +7,7 @@ tags: releases vim ferret blog
 
 While [Loupe](https://github.com/loupe) enhances within-file search in Vim, Ferret enhances multi-file search:
 
--   Multi-file search via `ag`, `ack` or `grep` using the `:Ack` and `:Lack` commands
--   Multi-file replace via `:Acks`
--   Quickfix listing enhancements for better usability (deletion mappings, enhanced `:cn`, `:cnf` and friends, optimized settings)
--   A `:Qargs` command for performing bulk operations on files in the quickfix listing
+- Multi-file search via `ag`, `ack` or `grep` using the `:Ack` and `:Lack` commands
+- Multi-file replace via `:Acks`
+- Quickfix listing enhancements for better usability (deletion mappings, enhanced `:cn`, `:cnf` and friends, optimized settings)
+- A `:Qargs` command for performing bulk operations on files in the quickfix listing

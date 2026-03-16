@@ -15,11 +15,11 @@ There are lots of articles on how to write accessors and I won't rehash them her
 
 Things to bear in mind when choosing an accessor for "the job":
 
--   _How important is performance for this accessor (how often will it be called)?_ An accessor that's called 200 times per second (or 2000) has different design requirements than one called once every five minutes.
--   _How important is thread safety for this accessor?_ If it's important then you'll have to worry more about synchronization, locks and the persistence (or otherwise) of autoreleased objects.
--   _Will this be a long-lived instance variable or a short-lived one?_ The kind of accessor you'll write for an instance variable that is set at program launch and exists for the lifetime of the program will be very different from the kind you'd write for an instance variable that changes more often or less predictably.
--   _Is this a collection or a non-collection instance variable?_ And if it's a collection object, do you want a copy of the contents or will you mostly be focussed on adding/removing objects to/from it?
--   _Do I care more about the specific instance of this variable or its contents?_ And relatedly, if you care about a specific instance of the variable, where else in the program is it likely to be used?
--   _How likely is it that this accessor will be used to re-set the same value?_ Should you be testing for pointer equality before trying to re-set things?
--   _Will this class belong to a reusable, general framework?_ If so, you should probably be more conservative in your design because you have no way of knowing in what kinds of situations your accessor will be called.
--   _Is this class highly customized, specific and unlikely to be reused?_ In a controlled situation you don't have to worry so much about the general case and you therefore it's not so important to be conservative in your design; you can use exactly the right accessor for the job.
+- _How important is performance for this accessor (how often will it be called)?_ An accessor that's called 200 times per second (or 2000) has different design requirements than one called once every five minutes.
+- _How important is thread safety for this accessor?_ If it's important then you'll have to worry more about synchronization, locks and the persistence (or otherwise) of autoreleased objects.
+- _Will this be a long-lived instance variable or a short-lived one?_ The kind of accessor you'll write for an instance variable that is set at program launch and exists for the lifetime of the program will be very different from the kind you'd write for an instance variable that changes more often or less predictably.
+- _Is this a collection or a non-collection instance variable?_ And if it's a collection object, do you want a copy of the contents or will you mostly be focussed on adding/removing objects to/from it?
+- _Do I care more about the specific instance of this variable or its contents?_ And relatedly, if you care about a specific instance of the variable, where else in the program is it likely to be used?
+- _How likely is it that this accessor will be used to re-set the same value?_ Should you be testing for pointer equality before trying to re-set things?
+- _Will this class belong to a reusable, general framework?_ If so, you should probably be more conservative in your design because you have no way of knowing in what kinds of situations your accessor will be called.
+- _Is this class highly customized, specific and unlikely to be reused?_ In a controlled situation you don't have to worry so much about the general case and you therefore it's not so important to be conservative in your design; you can use exactly the right accessor for the job.

@@ -11,4 +11,4 @@ cache_breaker: 1
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [CSS](/wiki/CSS): <http://en.wikipedia.org/wiki/CSS>
+- [Wikipedia](/wiki/Wikipedia) article on [CSS](/wiki/CSS): <http://en.wikipedia.org/wiki/CSS>

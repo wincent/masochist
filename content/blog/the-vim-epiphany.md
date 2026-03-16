@@ -36,16 +36,16 @@ Imagine you're editing the above snippet and the cursor is at the end of the fou
 
 With a "normal" text editor your typical pattern will be:
 
-1.  Hit the "up" cursor key to go to the previous line
-2.  Hit "Return" to open up a new line
-3.  Start typing the additional function call
+1. Hit the "up" cursor key to go to the previous line
+2. Hit "Return" to open up a new line
+3. Start typing the additional function call
 
 Note that if your editor is indentation-aware at least you won't have to worry about tabbing over before you start adding your function call, because you'll already be in the fourth column.
 
 Now let's compare the [Vim](/wiki/Vim) way of doing this:
 
-1.  Hit "O" to open a new line above the current line
-2.  Start typing the additional function call
+1. Hit "O" to open a new line above the current line
+2. Start typing the additional function call
 
 The obvious advantage here is that we've achieved what we wanted in two steps rather than three; a very important distinction when we're talking about something that you probably want to do dozens or even hundreds of times in a normal day of coding. This two-step pattern is something that will come up again and again in Vim: "prepare to do something" and then "do it".
 
@@ -53,9 +53,9 @@ The not-so-obvious advantage but equally important in my mind, is the fact that 
 
 In a normal editor on the other hand, the cognitive gap is larger. We can make the gap even more evident if instead of placing the cursor at the end of the line we imagine that it is somewhere in the middle (perhaps we moved it there to correct a typo). Note the cognitive gap between what we want to do (open a new line above the current line) and what we actually have to instruct the editor to do in order to get what we want:
 
-1.  Hit the "up" cursor key to go to the previous line
-2.  Hold down "Command" and the "right" cursor key to jump to the end of the line
-3.  Hit "Return" to open up a new line
+1. Hit the "up" cursor key to go to the previous line
+2. Hold down "Command" and the "right" cursor key to jump to the end of the line
+3. Hit "Return" to open up a new line
 
 So that's three steps and only _one_ of them actually matches up with our final intention (opening a new line); the first two steps instead have us thinking about completely unrelated things, like moving to the previous line (a line we don't even want to edit) and jumping to the end of a line (again, not even one we want to edit).
 
@@ -63,12 +63,12 @@ If you give Vim a try and start analyzing how you do things in Vim and how you d
 
 And the reason this is _so_ important is because it applies to operations which are _so_ common while editing code. Things like:
 
--   opening up a new line before the current line
--   opening up a new line after the current line
--   appending to the current line
--   deleting a line
--   moving a line
--   copying a line
+- opening up a new line before the current line
+- opening up a new line after the current line
+- appending to the current line
+- deleting a line
+- moving a line
+- copying a line
 
 Learn these basics and you will be loving Vim already. The basics alone are enough to make a compelling case. But that's not all you get.
 

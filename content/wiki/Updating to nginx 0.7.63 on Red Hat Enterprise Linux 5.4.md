@@ -39,5 +39,5 @@ $ sudo kill -s QUIT 2961
 
 # See also
 
--   Example of an update that didn't use the "updating the binary on the fly" method: [Installing nginx 0.7.62 on Red Hat Enterprise Linux 5.3](/wiki/Installing_nginx_0.7.62_on_Red_Hat_Enterprise_Linux_5.3)
--   [Updating to a new nginx binary on the fly](/wiki/Updating_to_a_new_nginx_binary_on_the_fly)
+- Example of an update that didn't use the "updating the binary on the fly" method: [Installing nginx 0.7.62 on Red Hat Enterprise Linux 5.3](/wiki/Installing_nginx_0.7.62_on_Red_Hat_Enterprise_Linux_5.3)
+- [Updating to a new nginx binary on the fly](/wiki/Updating_to_a_new_nginx_binary_on_the_fly)

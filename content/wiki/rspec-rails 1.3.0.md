@@ -24,4 +24,4 @@ From the official announcement posted to the [rspec-users](/wiki/rspec-users) ma
 
 # See also
 
--   Release notes: <http://rubyforge.org/pipermail/rspec-users/2010-January/016220.html>
+- Release notes: <http://rubyforge.org/pipermail/rspec-users/2010-January/016220.html>

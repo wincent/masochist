@@ -4,4 +4,4 @@ tags: memcached libmemcache wiki
 
 # Official site
 
--   <http://libmemcached.org/>
+- <http://libmemcached.org/>

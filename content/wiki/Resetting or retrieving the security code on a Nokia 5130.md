@@ -7,8 +7,8 @@ cache_breaker: 1
 
 There are sites out there which purport to give you a 10-digit "master" code, derived from your phone's IMEI (serial number), which you can use in lieu of your actual security code if you ever forget it:
 
--   <http://www.unlockme.co.uk/master.php>
--   <http://nfader.su/>
+- <http://www.unlockme.co.uk/master.php>
+- <http://nfader.su/>
 
 You enter your IMEI (which you can most likely find on your phone's packaging, or by entering `*#06#`), and it spits out a master code in return.
 
@@ -32,15 +32,15 @@ From there it's just a case of following the instructions in the video. I person
 
 So here's the basic procedure:
 
--   Run NSS
--   Click "Search"
--   Click "Phone Info"
--   Click "Scan"; I basically just kept plugging in the phone in "PC Suite" mode before, during and after the "Scan" until I finally got it to get past the "Scan for product" message without reporting an error
--   Click "Permanent Memory"
--   Click "Read"
--   Note the path to `.pm` file, open it in Notepad
--   Scroll down to entry \[308\]
--   Look at the 5th line below that (5=x)
--   Your 5-digit security code can be determined by removing the 3s in odd spots (position 1,3,5 etc) and deleting the trailing zeros (for example, if the line reads `5=31323334350000000000`, then the security code is 12345)
+- Run NSS
+- Click "Search"
+- Click "Phone Info"
+- Click "Scan"; I basically just kept plugging in the phone in "PC Suite" mode before, during and after the "Scan" until I finally got it to get past the "Scan for product" message without reporting an error
+- Click "Permanent Memory"
+- Click "Read"
+- Note the path to `.pm` file, open it in Notepad
+- Scroll down to entry \[308\]
+- Look at the 5th line below that (5=x)
+- Your 5-digit security code can be determined by removing the 3s in odd spots (position 1,3,5 etc) and deleting the trailing zeros (for example, if the line reads `5=31323334350000000000`, then the security code is 12345)
 
 You can then use the extracted security code in the phone to, for example, set a new code.

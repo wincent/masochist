@@ -4,4 +4,4 @@ tags: javascript wiki
 
 # See also
 
--   Nice overview of different templating libraries: <http://engineering.linkedin.com/frontend/client-side-templating-throwdown-mustache-handlebars-dustjs-and-more>
+- Nice overview of different templating libraries: <http://engineering.linkedin.com/frontend/client-side-templating-throwdown-mustache-handlebars-dustjs-and-more>

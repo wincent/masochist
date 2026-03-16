@@ -15,10 +15,10 @@ But whatever the reason, it's good to see it.
 
 Fraser seems to have spent the time digging into [Git](https://wincent.dev/wiki/Git) so as to gain an appreciation for its architecture.
 
--   The index: Fraser seems to "get" the index but I would add that I think the key concept here is that the index is not a cache, it's a _staging area_. When you start thinking about it in those terms you start to see its possibilities rather than worrying about the inconvenience of the "additional step".
--   Merging nibs: Good points on that; I haven't done a merge involving nibs yet, so I'll have to reserve judgement on that.
--   Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with [SVK](https://wincent.dev/wiki/SVK); and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your "externals" don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.
--   Repository layout: spot on, the `.svn` directories littered throughout a Subversion checkout are a hideous mess; "litter" is the operative word.
+- The index: Fraser seems to "get" the index but I would add that I think the key concept here is that the index is not a cache, it's a _staging area_. When you start thinking about it in those terms you start to see its possibilities rather than worrying about the inconvenience of the "additional step".
+- Merging nibs: Good points on that; I haven't done a merge involving nibs yet, so I'll have to reserve judgement on that.
+- Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with [SVK](https://wincent.dev/wiki/SVK); and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your "externals" don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.
+- Repository layout: spot on, the `.svn` directories littered throughout a Subversion checkout are a hideous mess; "litter" is the operative word.
 
 ## Bill's take
 
@@ -40,12 +40,12 @@ On the other hand:
 
 And when we throw the myriad other benefits that Git has over Subversion, Git becomes pretty darn compelling:
 
--   An extremely active, competent developer community engaged in real innovation
--   A distributed model which can still do the client-server style if that's what you need; by reference incorporate all the benefits the distributed model brings (redundancy, offline commits, speed of operation, amendable commits etc)
--   Amazing branching and merging support; and branches, like tags are not tacked on as an afterthought like they are in Subversion
--   An incredibly simple, elegant architecutre
--   Working copy (repository) format that is often more compact and always richer than the Subversion equivalent
--   A powerful, flexible [command line](https://wincent.dev/wiki/command%20line) interface which is pleasant to use and blows the doors off Subversion once you've taken the trouble to learn it
+- An extremely active, competent developer community engaged in real innovation
+- A distributed model which can still do the client-server style if that's what you need; by reference incorporate all the benefits the distributed model brings (redundancy, offline commits, speed of operation, amendable commits etc)
+- Amazing branching and merging support; and branches, like tags are not tacked on as an afterthought like they are in Subversion
+- An incredibly simple, elegant architecutre
+- Working copy (repository) format that is often more compact and always richer than the Subversion equivalent
+- A powerful, flexible [command line](https://wincent.dev/wiki/command%20line) interface which is pleasant to use and blows the doors off Subversion once you've taken the trouble to learn it
 
 Bill finishes with:
 

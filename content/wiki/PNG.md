@@ -6,4 +6,4 @@ The [PNG](/wiki/PNG) or [Portable Network Graphics](/wiki/Portable_Network_Graph
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [PNG](/wiki/PNG): <http://en.wikipedia.org/wiki/Portable_Network_Graphics>
+- [Wikipedia](/wiki/Wikipedia) article on [PNG](/wiki/PNG): <http://en.wikipedia.org/wiki/Portable_Network_Graphics>

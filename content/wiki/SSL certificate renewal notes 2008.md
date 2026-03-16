@@ -8,12 +8,12 @@ My previous [SSL](/wiki/SSL) certificate was a [RapidSSL](/wiki/RapidSSL)-issued
 
 The basic process for renewal is:
 
-1.  Go to servertastic
-2.  Go through the checkout process
-3.  Receive email with link to page where you submit your CSR (Certificate Signing Request)
-4.  Generate the CSR and paste it into the web page from the previous step
-5.  Receive another email requesting approval to generate a new certificate
-6.  Install the new certificate
+1. Go to servertastic
+2. Go through the checkout process
+3. Receive email with link to page where you submit your CSR (Certificate Signing Request)
+4. Generate the CSR and paste it into the web page from the previous step
+5. Receive another email requesting approval to generate a new certificate
+6. Install the new certificate
 
 ## Generating the CSR
 

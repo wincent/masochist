@@ -6,4 +6,4 @@ tags: godaddy wiki
 
 # Official site
 
--   <http://godaddy.com/>
+- <http://godaddy.com/>

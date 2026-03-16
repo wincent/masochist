@@ -6,4 +6,4 @@ tags: ragel wiki
 
 ## See also
 
--   Official homepage: <http://www.cs.queensu.ca/home/thurston/>
+- Official homepage: <http://www.cs.queensu.ca/home/thurston/>

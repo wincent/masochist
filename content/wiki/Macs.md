@@ -26,7 +26,11 @@ Here's a list of Macs I've owned or used over the years:
 So, one desktop with a PowerPC 604 CPU (later upgraded to a G3), one G3 laptop, one G4 desktop, one G4 laptop, one G5 desktop, two Intel iMacs, 7 Intel laptops, and 3 Apple Silicon laptops.
 
 [^causes]: https://en.wikipedia.org/wiki/Causes_(company)
+
 [^datadog]: https://en.wikipedia.org/wiki/Datadog
+
 [^facebook]: https://en.wikipedia.org/wiki/Facebook
+
 [^liferay]: https://en.wikipedia.org/wiki/Liferay
+
 [^github]: https://en.wikipedia.org/wiki/GitHub

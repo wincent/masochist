@@ -49,4 +49,4 @@ Eventually broadened the search and found 3 files of encoding "data". Visually i
 
 ## See also
 
--   [Corresponding mailing list thread](https://sourceforge.net/p/isync/mailman/message/35628449/) on [isync-devel](https://lists.sourceforge.net/lists/listinfo/isync-devel).
+- [Corresponding mailing list thread](https://sourceforge.net/p/isync/mailman/message/35628449/) on [isync-devel](https://lists.sourceforge.net/lists/listinfo/isync-devel).

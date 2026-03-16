@@ -15,9 +15,9 @@ Better still, RapidSSL certificates are directly signed by a root certificate ra
 
 When I set up secure IMAP and POP access for the first time it was actually quite a tricky process because I had to not only ensure that I provided my server with my certificate, the signing certificate, and my private key, but I also had to make sure that the items were in the right order. This was entirely a trial-and-error process as I couldn't find any information about it on the web. In the end I found that the required order was:
 
-1.  Private key
-2.  Certificate
-3.  Signing certificate
+1. Private key
+2. Certificate
+3. Signing certificate
 
 Any other order and things simply didn't work. With RapidSSL, however, all of this is a non-issue. The certificate is directly signed by a well-known root certificate, so it should be a drop-in replacement for HTTPS, IMAP, POP and whatever other service you wish to use it with.
 

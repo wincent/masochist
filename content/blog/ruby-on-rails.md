@@ -5,8 +5,8 @@ tags: blog
 
 I've spent today getting to know Ruby on Rails and I must say I am very impressed with two things about it so far:
 
-1.  The automatic, transparent mapping between the model classes (Ruby code) and the underlying database storage (tables, columns, rows).
-2.  The migrations functionality, which produces a database schema for you and can incrementally update it (or roll it back for you) without you having to execute a single SQL statement.
+1. The automatic, transparent mapping between the model classes (Ruby code) and the underlying database storage (tables, columns, rows).
+2. The migrations functionality, which produces a database schema for you and can incrementally update it (or roll it back for you) without you having to execute a single SQL statement.
 
 These two features combine to mean that you can come up with your model in Ruby and iteratively develop it without ever having to worry about the implementation details of your database. I've seen abstraction layers before but never anything so transparently, elegantly and extensively database agnostic. Amazing. Combine it with the incredibly easy deployment using Locomotive and SQLite and you're laughing.
 

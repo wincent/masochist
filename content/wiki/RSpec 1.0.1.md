@@ -10,16 +10,16 @@ tags: rspec wiki
 
 # Changelog
 
--   Renamed Spec::Rails' rspec_resource generator to rspec_scaffold.
--   Removed Spec::Rails' be_feed matcher since it's based on assert_select_feed which is not part of Rails (despite that docs for assert_select_encoded says it is).
--   describe(SomeModule) will include that module in the examples. Like for Spec::Rails helpers, but now also in core.
--   Header in HTML report will be yellow instead of red if there is one failed example
--   Applied \#10951 Odd instance variable name in rspec_model template (patch from Kyle Hargraves)
--   Improved integration with autotest (Patches from Ryan Davis and David Goodland)
--   Some small fixes to make all specs run on JRuby.
+- Renamed Spec::Rails' rspec_resource generator to rspec_scaffold.
+- Removed Spec::Rails' be_feed matcher since it's based on assert_select_feed which is not part of Rails (despite that docs for assert_select_encoded says it is).
+- describe(SomeModule) will include that module in the examples. Like for Spec::Rails helpers, but now also in core.
+- Header in HTML report will be yellow instead of red if there is one failed example
+- Applied \#10951 Odd instance variable name in rspec_model template (patch from Kyle Hargraves)
+- Improved integration with autotest (Patches from Ryan Davis and David Goodland)
+- Some small fixes to make all specs run on JRuby.
 
 # See also
 
--   Official release notes and changelog: <http://rubyforge.org/frs/shownotes.php?release_id=11892>
--   [Upgrading to RSpec 1.0.1 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.1_on_Mac_OS_X_Tiger)
--   [Upgrading to RSpec 1.0.2 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.2_on_Mac_OS_X_Tiger)
+- Official release notes and changelog: <http://rubyforge.org/frs/shownotes.php?release_id=11892>
+- [Upgrading to RSpec 1.0.1 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.1_on_Mac_OS_X_Tiger)
+- [Upgrading to RSpec 1.0.2 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.2_on_Mac_OS_X_Tiger)

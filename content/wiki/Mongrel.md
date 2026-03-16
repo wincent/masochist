@@ -9,4 +9,4 @@ I personally used Mongrel to host this site from its initial deployment (in Marc
 
 # Official site
 
--   Official site: <http://mongrel.rubyforge.org/>
+- Official site: <http://mongrel.rubyforge.org/>

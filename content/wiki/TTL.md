@@ -6,4 +6,4 @@ tags: wiki
 
 ## See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [TTLs](/wiki/TTLs): <http://en.wikipedia.org/wiki/Time_to_live>
+- [Wikipedia](/wiki/Wikipedia) article on [TTLs](/wiki/TTLs): <http://en.wikipedia.org/wiki/Time_to_live>

@@ -38,22 +38,22 @@ Once all the work on the branch is done:
 
 So the basic characteristics here are:
 
--   At the end we want there to be total synchronization between the branch and the trunk.
--   That is, the development lines are not intended to diverge in the long term.
--   Any divergence is intended to be temporary only.
--   The purpose of the short-lived branch is to shield the trunk from disturbance and temporary breakage during this period of minimal divergence.
--   Merges are wholesale; that is, when pushing and pulling we want all changes to be merged.
--   Once the work on the branch is completed its usefulness has effectively come to an end.
--   With such a short lifetime there is probably no reason for the branch to exist in the remote repository; a local branch is good enough.
--   The local branch provides a degree of backup, redundancy and progress tracking that would not be possible without it (the developer would have to "hold back" their changes and only commit them at the very end).
--   [SVK](/wiki/SVK) makes pushing and pulling very easy, so this kind of short-lived branch is very feasible.
+- At the end we want there to be total synchronization between the branch and the trunk.
+- That is, the development lines are not intended to diverge in the long term.
+- Any divergence is intended to be temporary only.
+- The purpose of the short-lived branch is to shield the trunk from disturbance and temporary breakage during this period of minimal divergence.
+- Merges are wholesale; that is, when pushing and pulling we want all changes to be merged.
+- Once the work on the branch is completed its usefulness has effectively come to an end.
+- With such a short lifetime there is probably no reason for the branch to exist in the remote repository; a local branch is good enough.
+- The local branch provides a degree of backup, redundancy and progress tracking that would not be possible without it (the developer would have to "hold back" their changes and only commit them at the very end).
+- [SVK](/wiki/SVK) makes pushing and pulling very easy, so this kind of short-lived branch is very feasible.
 
 ## Long-lived branches (cherry-picking)
 
 As a one-man shop I don't have the time or the resources to actively work on multiple long-lived branches. This does not mean, however, that long-lived branches don't have their usefulness; rather, it means that the branches tend to fall into two categories:
 
--   **Active branches**: typically there is only _one_ active branch, the trunk.
--   **Maintenance branches**: long-lived but not very active branches. These correspond to stable points in the development which may need to receive minimal updates periodically.
+- **Active branches**: typically there is only _one_ active branch, the trunk.
+- **Maintenance branches**: long-lived but not very active branches. These correspond to stable points in the development which may need to receive minimal updates periodically.
 
 These branches are typically created as in the following example. This is a project, `project_x` which has just released version 2.8. Development work is to continue on the trunk (for version 3.0) and a maintenance branch will be created for the 2.8 series:
 
@@ -228,5 +228,5 @@ From this point on I'll be using [SVK](/wiki/SVK) to manage these branches as de
 
 # See also
 
--   [Branching](/wiki/Branching)
--   [Tagging](/wiki/Tagging)
+- [Branching](/wiki/Branching)
+- [Tagging](/wiki/Tagging)

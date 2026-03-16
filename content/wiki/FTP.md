@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [FTP](/wiki/FTP): <http://en.wikipedia.org/wiki/FTP>
+- [Wikipedia](/wiki/Wikipedia) article on [FTP](/wiki/FTP): <http://en.wikipedia.org/wiki/FTP>

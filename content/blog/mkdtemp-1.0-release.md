@@ -9,6 +9,6 @@ From the docs, mkdtemp:
 
 > securely creates temporary directories. It is a wrapper for the mkdtemp() function in the standard C library.
 
--   Downloads: <http://rubyforge.org/frs/?group_id=7076>
--   Official project page: <http://rubyforge.org/projects/mkdtemp>
--   Documentation: <http://mkdtemp.rubyforge.org/>
+- Downloads: <http://rubyforge.org/frs/?group_id=7076>
+- Official project page: <http://rubyforge.org/projects/mkdtemp>
+- Documentation: <http://mkdtemp.rubyforge.org/>

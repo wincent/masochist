@@ -285,4 +285,4 @@ A release candidate GIT 1.6.2.rc2 is available at the usual places for testing:
 
 # See also
 
--   [Updating to Git 1.6.2.rc2 on Mac OS X Leopard 10.5.6](/wiki/Updating_to_Git_1.6.2.rc2_on_Mac_OS_X_Leopard_10.5.6)
+- [Updating to Git 1.6.2.rc2 on Mac OS X Leopard 10.5.6](/wiki/Updating_to_Git_1.6.2.rc2_on_Mac_OS_X_Leopard_10.5.6)

@@ -22,11 +22,11 @@ Or by hitting `Ctrl-]` over a keyword.
 
 For cycling through matches we have:
 
--   `:tn` (next)
--   `:tp` (previous)
--   `:tf` (first)
--   `:tl` (last)
--   `:ts` (select from list)
+- `:tn` (next)
+- `:tp` (previous)
+- `:tf` (first)
+- `:tl` (last)
+- `:ts` (select from list)
 
 For jumping back, `Ctrl-T` (or use `Ctrl-I`/`Ctrl-O` to move through the `:jump` list).
 
@@ -36,5 +36,5 @@ For jumping back, `Ctrl-T` (or use `Ctrl-I`/`Ctrl-O` to move through the `:jump`
 
 # External links
 
--   <http://robots.thoughtbot.com/post/159805638/integrating-vim-into-a-life>
--   <http://blog.bojica.com/2010/06/27/ctags-and-vim-for-ruby-on-rails-development>
+- <http://robots.thoughtbot.com/post/159805638/integrating-vim-into-a-life>
+- <http://blog.bojica.com/2010/06/27/ctags-and-vim-for-ruby-on-rails-development>

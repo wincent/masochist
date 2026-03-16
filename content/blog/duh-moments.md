@@ -17,15 +17,15 @@ So there I was in that sticky place where things are starting to look very ugly.
 
 Then I had my "duh!" moment while I popped out to buy the bread for the day. Luckily I had only spent about one hour crafting the kludge. A classic case of not seeing the wood for the trees, my brain had started off so impregnated with the "request notification, don't poll" mentality that I hadn't seen the most obvious and elegant implementation. The appropriate sequence is not:
 
-1.  Launch helper
-2.  Wait for it to finish launching
-3.  Try setting up link
+1. Launch helper
+2. Wait for it to finish launching
+3. Try setting up link
 
 But instead I had to throw the client-server distinction out the window and think of the two apps as peers and use the following sequence:
 
-1.  Launch peer
-2.  Peer notifies when it has finished launching
-3.  Set up link
+1. Launch peer
+2. Peer notifies when it has finished launching
+3. Set up link
 
 I hadn't thought of this because my initial boxed-in thinking had me thinking of the helper as a server and the main app as a client, and that implied a one-way communication channel in which the main app would send commands to the server but the server wouldn't send anything back. As soon as I realized that they should be peers I saw that there was no reason why the link shouldn't be two-way and that either peer could initiate communication with the other and saying "I'm ready!".
 

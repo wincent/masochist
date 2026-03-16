@@ -8,8 +8,8 @@ After yesterday's [big deploy](/blog/site-updates-0.18) there were a couple of o
 
 The main user visible changes are:
 
--   fixed broken [forum indexes](/forums) (actually, this was hot-fixed immediately after deploying)
--   outgoing emails are now `text/plain` again, instead of being inappropriately tagged with a `text/html` content type
+- fixed broken [forum indexes](/forums) (actually, this was hot-fixed immediately after deploying)
+- outgoing emails are now `text/plain` again, instead of being inappropriately tagged with a `text/html` content type
 
 Read on for a list of all commits in this update.
 

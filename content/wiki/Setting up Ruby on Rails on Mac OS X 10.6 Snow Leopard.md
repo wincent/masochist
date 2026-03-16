@@ -67,21 +67,21 @@ My workflow requires [nginx](/wiki/nginx), [memcached](/wiki/memcached) and [MyS
 
 See:
 
--   [Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_nginx_0.7.61_on_Mac_OS_X_10.6_Snow_Leopard)
--   [Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_nginx_0.7.61_on_Red_Hat_Enterprise_Linux_5.3)
+- [Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_nginx_0.7.61_on_Mac_OS_X_10.6_Snow_Leopard)
+- [Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_nginx_0.7.61_on_Red_Hat_Enterprise_Linux_5.3)
 
 ## [memcached](/wiki/memcached)
 
 See:
 
--   [Installing memcached 1.4.1 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_memcached_1.4.1_on_Mac_OS_X_10.6_Snow_Leopard)
--   [Updating to memcached 1.4.1 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_memcached_1.4.1_on_Red_Hat_Enterprise_Linux_5.3)
+- [Installing memcached 1.4.1 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_memcached_1.4.1_on_Mac_OS_X_10.6_Snow_Leopard)
+- [Updating to memcached 1.4.1 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_memcached_1.4.1_on_Red_Hat_Enterprise_Linux_5.3)
 
 ## [MySQL](/wiki/MySQL)
 
 See:
 
--   [Installing MySQL 5.0.85 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_MySQL_5.0.85_on_Mac_OS_X_10.6_Snow_Leopard)
+- [Installing MySQL 5.0.85 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_MySQL_5.0.85_on_Mac_OS_X_10.6_Snow_Leopard)
 
 Note that this is not an exact match with the version running on the server (5.0.45-7.el5), but it is at least in the same major version series. I did not update to the 5.1 "GA" (General Availability) release on the server because I did not want to lose the automatic patches pushed out via the [Red Hat](/wiki/Red_Hat) network.
 

@@ -6,4 +6,4 @@ tags: git wiki
 
 # See also
 
--   [Upgrading to Git 1.5.2.4](/wiki/Upgrading_to_Git_1.5.2.4)
+- [Upgrading to Git 1.5.2.4](/wiki/Upgrading_to_Git_1.5.2.4)

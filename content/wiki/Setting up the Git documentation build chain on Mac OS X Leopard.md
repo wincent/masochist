@@ -404,4 +404,4 @@ And we can try building the Git documentation again:
 
 # Alternatives to building the documentation manually
 
--   [Installing pre-built Git documentation from the Git repo](/wiki/Installing_pre-built_Git_documentation_from_the_Git_repo)
+- [Installing pre-built Git documentation from the Git repo](/wiki/Installing_pre-built_Git_documentation_from_the_Git_repo)

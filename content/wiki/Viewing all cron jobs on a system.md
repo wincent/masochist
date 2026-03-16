@@ -14,15 +14,15 @@ As root:
 
 You'll also want to inspect:
 
--   `/etc/crontab`
+- `/etc/crontab`
 
 And the contents of:
 
--   `/etc/cron.d/`
--   `/etc/cron.daily`
--   `/etc/cron.hourly`
--   `/etc/cron.monthly`
--   `/etc/cron.weekly`
+- `/etc/cron.d/`
+- `/etc/cron.daily`
+- `/etc/cron.hourly`
+- `/etc/cron.monthly`
+- `/etc/cron.weekly`
 
 For this purpose `find` might come in handy:
 

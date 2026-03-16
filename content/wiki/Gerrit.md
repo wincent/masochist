@@ -6,5 +6,5 @@ tags: gerrit wiki
 
 # Project page
 
--   <http://code.google.com/p/gerrit/>
--   <https://android-review.googlesource.com/> (Gerrit install where all Android development takes place)
+- <http://code.google.com/p/gerrit/>
+- <https://android-review.googlesource.com/> (Gerrit install where all Android development takes place)

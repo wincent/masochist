@@ -8,13 +8,13 @@ According to [Apple's Chris Espinosa](http://lists.apple.com/archives/Xcode-user
 
 # What is actually stored in a `.pbxuser` file?
 
--   Scott Tooker (Apple): "the locations for built products and intermediates files."
--   David Ewing (Apple): "The currently active target, executable, and build style are all stored in the file ... Other information includes window/view sizes, bookmarks, breakpoints, custom executables, smart groups and code sense settings."
+- Scott Tooker (Apple): "the locations for built products and intermediates files."
+- David Ewing (Apple): "The currently active target, executable, and build style are all stored in the file ... Other information includes window/view sizes, bookmarks, breakpoints, custom executables, smart groups and code sense settings."
 
 # What is actually stored in a `.mode1` file?
 
--   Scott Tooker: "The .mode1 file contains layout information for the project (like window positions and sizes, including sizes of sub-views and the like)."
--   Scott Tooker: "\[T\]he various \*.mode\* files track information about your workspace configuration. It's nothing critical to the project so it is safe to throw them away."
+- Scott Tooker: "The .mode1 file contains layout information for the project (like window positions and sizes, including sizes of sub-views and the like)."
+- Scott Tooker: "\[T\]he various \*.mode\* files track information about your workspace configuration. It's nothing critical to the project so it is safe to throw them away."
 
 Another post from Scott:
 

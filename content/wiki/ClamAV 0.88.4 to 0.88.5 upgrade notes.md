@@ -6,7 +6,7 @@ These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/C
 
 # Upgrade procedure
 
--   Download and extract:
+- Download and extract:
 
 <!-- -->
 
@@ -14,33 +14,33 @@ These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/C
     tar xzvf clamav-0.88.5.tar.gz
     cd clamav-0.88.5
 
--   Read upgrade instructions (directs you to: <http://wiki.clamav.net/index.php/UpgradeInstructions>)
+- Read upgrade instructions (directs you to: <http://wiki.clamav.net/index.php/UpgradeInstructions>)
 
 <!-- -->
 
     cat UPGRADE
 
--   Build:
+- Build:
 
 <!-- -->
 
     ./configure --sysconfdir=/etc
     make
 
--   Backup configuration files:
+- Backup configuration files:
 
 <!-- -->
 
     sudo cp /etc/freshclam.conf /etc/freshclam.conf.old
     sudo cp /etc/clamd.conf /etc/clamd.conf.old
 
--   Check to make sure that the startup procedure hasn't changed:
+- Check to make sure that the startup procedure hasn't changed:
 
 <!-- -->
 
     diff contrib/init/RedHat/clamd /etc/init.d/clamd
 
--   Perform the actual install:
+- Perform the actual install:
 
 <!-- -->
 
@@ -55,7 +55,7 @@ These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/C
     sudo service clamd restart
     sudo service --status-all | grep clamd
 
--   Check to ensure that nothing changed in the configuration files:
+- Check to ensure that nothing changed in the configuration files:
 
 <!-- -->
 
@@ -64,4 +64,4 @@ These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/C
 
 # See also
 
--   Release notes: <http://sourceforge.net/project/shownotes.php?release_id=455799>
+- Release notes: <http://sourceforge.net/project/shownotes.php?release_id=455799>

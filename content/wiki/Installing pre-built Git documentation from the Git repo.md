@@ -25,5 +25,5 @@ This is _considerably_ easier than building the documentation yourself.
 
 # See also
 
--   [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard) (for those who really want to do things the hard way)
--   [Git documentation](/wiki/Git_documentation)
+- [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard) (for those who really want to do things the hard way)
+- [Git documentation](/wiki/Git_documentation)

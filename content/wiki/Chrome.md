@@ -6,4 +6,4 @@ tags: chrome wiki
 
 # Official site
 
--   <https://ww.google.com/chrome>
+- <https://ww.google.com/chrome>

@@ -11,5 +11,5 @@ Exploring a [directed acyclic graph](/wiki/directed_acyclic_graph) using [depth-
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [depth-first search](/wiki/depth-first_search): <http://en.wikipedia.org/wiki/Depth-first_search>
--   [Breadth-first search](/wiki/Breadth-first_search)
+- [Wikipedia](/wiki/Wikipedia) article on [depth-first search](/wiki/depth-first_search): <http://en.wikipedia.org/wiki/Depth-first_search>
+- [Breadth-first search](/wiki/Breadth-first_search)

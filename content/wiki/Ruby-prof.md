@@ -6,4 +6,4 @@ tags: ruby.prof wiki
 
 # See also
 
--   [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/ruby-prof/>
+- [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/ruby-prof/>

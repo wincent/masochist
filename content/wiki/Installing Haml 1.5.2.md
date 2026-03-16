@@ -81,4 +81,4 @@ Because I'm doing [Behaviour-Driven Development](/wiki/Behaviour-Driven_Developm
 
 # See also
 
--   [Installing the Haml TextMate bundle](/wiki/Installing_the_Haml_TextMate_bundle)
+- [Installing the Haml TextMate bundle](/wiki/Installing_the_Haml_TextMate_bundle)

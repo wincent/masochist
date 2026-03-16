@@ -37,5 +37,5 @@ The output should include information such as:
 
 # See also
 
--   [Setting the encoding of a MySQL database](/wiki/Setting_the_encoding_of_a_MySQL_database)
--   Official [MySQL](/wiki/MySQL) documentation for 4.1 series: <http://dev.mysql.com/doc/refman/4.1/en/charset-connection.html>
+- [Setting the encoding of a MySQL database](/wiki/Setting_the_encoding_of_a_MySQL_database)
+- Official [MySQL](/wiki/MySQL) documentation for 4.1 series: <http://dev.mysql.com/doc/refman/4.1/en/charset-connection.html>

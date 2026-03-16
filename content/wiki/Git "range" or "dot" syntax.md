@@ -6,8 +6,8 @@ tags: git wiki
 
 While this syntax looks like a "range" of commits from `A` to `B`, it is actually a short hand for `git log ^A B`; ie:
 
--   show all commits reachable from `B`; `B` itself is _included_
--   excluding those reachable from `A`; `A` itself is _excluded_
+- show all commits reachable from `B`; `B` itself is _included_
+- excluding those reachable from `A`; `A` itself is _excluded_
 
 So given the following history (with the oldest commits on the left, the newest on the right):
 
@@ -33,8 +33,8 @@ $ git cherry -v master topic
 
 This prints a list of commits from the topic branch that aren't yet in the master branch, with a couple of possible prefixes:
 
--   `-` indicates that the equivalent change for this commit is already in the master branch (for example, via cherry-picking)
--   `+` indicates that the commit is only in the topic branch
+- `-` indicates that the equivalent change for this commit is already in the master branch (for example, via cherry-picking)
+- `+` indicates that the commit is only in the topic branch
 
 Note that all params to `git-cherry` are optional. The first param, the "upstream", defaults to the first tracked remote, and the second param, the "head", defaults to the current branch head. This means that if you are on the topic branch already, then simply running `git cherry -v` will often do the right thing.
 
@@ -58,23 +58,23 @@ Equivalent to `git diff $(git merge-base A B) B` (ie. shows changes in branch `B
 
 A common usage scenario is to run something like `git diff master...topic`, to see what changes have been made in a topic branch since it was branched from the master branch, even when the master branch has moved on in the meantime:
 
-            X
-            |
-            | T
-            | |
-            | |
-            | |
-            |/
-            B
-            |
-            |
-            S
+    X
+    |
+    | T
+    | |
+    | |
+    | |
+    |/
+    B
+    |
+    |
+    S
 
 So, if we start development at `S` on the master branch, branch a topic off at `B` and develop it to `T`, and meanwhile development on master continues to its current HEAD at `X`, then:
 
--   `git diff master..topic` will show us the difference between `X` and `T`
--   `git diff master...topic` will show us the difference between `B` and `T`
+- `git diff master..topic` will show us the difference between `X` and `T`
+- `git diff master...topic` will show us the difference between `B` and `T`
 
 # See also
 
--   <http://stackoverflow.com/questions/462974/whats-the-difference-between-and-in-git-commit-ranges>
+- <http://stackoverflow.com/questions/462974/whats-the-difference-between-and-in-git-commit-ranges>

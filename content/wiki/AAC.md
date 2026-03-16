@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [AAC](/wiki/AAC): <http://en.wikipedia.org/wiki/Advanced_Audio_Coding>
+- [Wikipedia](/wiki/Wikipedia) article on [AAC](/wiki/AAC): <http://en.wikipedia.org/wiki/Advanced_Audio_Coding>

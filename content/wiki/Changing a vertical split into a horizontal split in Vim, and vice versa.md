@@ -13,9 +13,9 @@ Turn a horizontal split into a vertical split:
 
 ie:
 
--   `^Wt`: make top-left window current
--   `^WK`: move current window to full-width, top position
--   `^WH`: move current window to full-height, far left position
+- `^Wt`: make top-left window current
+- `^WK`: move current window to full-width, top position
+- `^WH`: move current window to full-height, far left position
 
 If there are only two windows, the `^Wt` can be omitted.
 
@@ -23,5 +23,5 @@ As a mnemonic, each of `^WH`, `^WJ`, `^WK` and `^WL` (ie. the basic directional 
 
 Source:
 
--   <http://stackoverflow.com/questions/1269603/to-switch-from-vertical-split-to-horizontal-split-fast-in-vim>
--   <http://www.mail-archive.com/vim@vim.org/msg11206.html>
+- <http://stackoverflow.com/questions/1269603/to-switch-from-vertical-split-to-horizontal-split-fast-in-vim>
+- <http://www.mail-archive.com/vim@vim.org/msg11206.html>

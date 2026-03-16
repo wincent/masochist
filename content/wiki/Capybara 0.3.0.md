@@ -31,4 +31,4 @@ From the official release announcement:
 
 # See also
 
--   Release announcement: <http://groups.google.com/group/ruby-capybara/browse_thread/thread/45fb5edfd20db60e>
+- Release announcement: <http://groups.google.com/group/ruby-capybara/browse_thread/thread/45fb5edfd20db60e>

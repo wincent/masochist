@@ -34,11 +34,11 @@ Take the following piece of [HTML](/wiki/HTML) as an example:
 
 The high-level specifications that led to this [HTML](/wiki/HTML) are:
 
--   Users should be displayed in a list
--   The list should have alternating "odd" and "even" rows
--   Each row should show the login name, display name and email address for the user
--   The login name, display name and email address should each have corresponding labels
--   Each element should have an appropriate class or ID so that the output can be styled using [CSS](/wiki/CSS)
+- Users should be displayed in a list
+- The list should have alternating "odd" and "even" rows
+- Each row should show the login name, display name and email address for the user
+- The login name, display name and email address should each have corresponding labels
+- Each element should have an appropriate class or ID so that the output can be styled using [CSS](/wiki/CSS)
 
 The [Rails](/wiki/Rails) view that generates this view is:
 
@@ -59,8 +59,8 @@ The question is, how many [specs](/wiki/specs) should we employ while going from
 
 For example, we might start with a spec that states:
 
--   A user list with 2 users
-    -   Should display an odd and even row
+- A user list with 2 users
+  - Should display an odd and even row
 
 And begin with this view code:
 
@@ -70,24 +70,24 @@ And begin with this view code:
 
 And then successively add [specs](/wiki/specs) and additions to the [view](/wiki/view) until we have the final result. A final spec might look like this:
 
-      it 'should display the login name, displays name and email address in each row' do
-        response.should have_tag('div.odd>div', 6) do
-          with_tag('div.label', 'Login name:')
-          with_tag('div.info', 'user1')
-          with_tag('div.label', 'Display name:')
-          with_tag('div.info', 'user1')
-          with_tag('div.label', 'Email address:')
-          with_tag('div.info', 'user1@example.com')
-        end
-        response.should have_tag('div.even>div', 6) do
-          with_tag('div.label', 'Login name:')
-          with_tag('div.info', 'user2')
-          with_tag('div.label', 'Display name:')
-          with_tag('div.info', 'user2')
-          with_tag('div.label', 'Email address:')
-          with_tag('div.info', 'user2@example.com')
-        end
+    it 'should display the login name, displays name and email address in each row' do
+      response.should have_tag('div.odd>div', 6) do
+        with_tag('div.label', 'Login name:')
+        with_tag('div.info', 'user1')
+        with_tag('div.label', 'Display name:')
+        with_tag('div.info', 'user1')
+        with_tag('div.label', 'Email address:')
+        with_tag('div.info', 'user1@example.com')
       end
+      response.should have_tag('div.even>div', 6) do
+        with_tag('div.label', 'Login name:')
+        with_tag('div.info', 'user2')
+        with_tag('div.label', 'Display name:')
+        with_tag('div.info', 'user2')
+        with_tag('div.label', 'Email address:')
+        with_tag('div.info', 'user2@example.com')
+      end
+    end
 
 The problem with this approach is that we now have a [spec](/wiki/spec) which is extremely tightly bound to our [view](/wiki/view) implementation, so tightly bound that changing the [view](/wiki/view) in any way will almost certainly break the [spec](/wiki/spec). This is good in the sense that mistakes introduced in the [view](/wiki/view) will not likely escape our attention, but bad in the sense that it impedes change (and possible improvement) in the view.
 
@@ -97,18 +97,18 @@ It is my opinion that pure [BDD](/wiki/BDD) shouldn't apply to [views](/wiki/vie
 
 My rule of thumb is that you should write [specs](/wiki/specs) for everything in your view that involves code. The specs are there to help you catch errors in your code. So, in the example above, the items in the view that should be checked include:
 
--   That the list of users is produced (that the `for` construct works)
--   That the table rows alternate (that the `cycle` method has been correctly applied)
--   That the `user` attributes are shown
+- That the list of users is produced (that the `for` construct works)
+- That the table rows alternate (that the `cycle` method has been correctly applied)
+- That the `user` attributes are shown
 
 It would also be possible to check things such as:
 
--   That all the elements appear in the expected order
--   That each element has the appropriate identification for \[\[CSS\]
+- That all the elements appear in the expected order
+- That each element has the appropriate identification for \[\[CSS\]
 
 But I think that going that far is not a wise investment of programmer time; such visual aspects are easily checked by inspection and automating their verification comes at a high cost because it makes future change more difficult.
 
 # See also
 
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
--   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
+- [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)

@@ -31,8 +31,8 @@ Then when I migrated to [Subversion](/wiki/Subversion) some time after it hit 1.
 
 This was because I had two choices:
 
-1.  Keep the old naming scheme but live with the inconsistency of path names that provided misleading information.
-2.  Use a new scheme but have to update all the relative path references I had that depended on having `cvs` in the name.
+1. Keep the old naming scheme but live with the inconsistency of path names that provided misleading information.
+2. Use a new scheme but have to update all the relative path references I had that depended on having `cvs` in the name.
 
 By the time I switched to [SVK](/wiki/SVK) I had finally learned my lesson: I should have chosen generic names all along:
 
@@ -66,9 +66,9 @@ Use Doxgen to document your code, even if it is not for a public audience.
 
 Writing a program is really a three-fold thing, comprising three interdependent activities:
 
--   The code itself: does what you think it should do
--   The unit tests or [behavioural specs](/wiki/behavioural_specs): confirm that the code does what you think it should do
--   The documentation: explicitly states what you think the code should do
+- The code itself: does what you think it should do
+- The unit tests or [behavioural specs](/wiki/behavioural_specs): confirm that the code does what you think it should do
+- The documentation: explicitly states what you think the code should do
 
 In reality, the three are closely interwoven and you often go back and forth between writing each. For example, sometimes the things you've specified in the documentation provide you with a guide for what you should test in your unit tests; and in turn, your unit tests help you decide what to write (and when to stop writing) in the code.
 

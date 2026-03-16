@@ -8,8 +8,8 @@ Please note that this solution is only required with [ANTLR](/wiki/ANTLR) 3.0. N
 
 These two posts were made to the [antlr-interest](/wiki/antlr-interest) mailing list in a thread titled, 'Implementing "include" functionality with C runtime':
 
--   <http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021502.html>
--   <http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021503.html>
+- <http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021502.html>
+- <http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021503.html>
 
 Here, Cameron Esfahani of [Apple](/wiki/Apple) describes how to implement "include" functionality when using the [C target](/wiki/C_target).
 

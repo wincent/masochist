@@ -6,4 +6,4 @@ tags: ruby usenet wiki
 
 # See also
 
--   [Google](/wiki/Google) interface to [comp.lang.ruby](/wiki/comp.lang.ruby): <http://groups.google.com/group/comp.lang.ruby>
+- [Google](/wiki/Google) interface to [comp.lang.ruby](/wiki/comp.lang.ruby): <http://groups.google.com/group/comp.lang.ruby>

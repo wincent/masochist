@@ -11,18 +11,18 @@ In addition to correcting this oversight I also took the time to tighten up the 
 
 The base figures we started with yesterday:
 
--   **Total number of parse events (without memoization):** 15,585 (understated; the real number is slightly higher)
--   **Total number of parse events (with memoization):** 12,183
--   **Cache hits:** 556
--   **Cache misses:** 11,627
--   **Execution time (without memoization)**: 2.0 seconds
--   **Execution time (without memoization)**: 2.5 seconds
+- **Total number of parse events (without memoization):** 15,585 (understated; the real number is slightly higher)
+- **Total number of parse events (with memoization):** 12,183
+- **Cache hits:** 556
+- **Cache misses:** 11,627
+- **Execution time (without memoization)**: 2.0 seconds
+- **Execution time (without memoization)**: 2.5 seconds
 
 After adding `hash` and `eql?` methods to my parslet classes the number of cache hits doubled and cache misses fell by nearly 1,000. After these changes processing was slightly faster (2.4 seconds). Continuing to add methods to my parslet combination classes I was able to shave off another 100 misses and get the execution time down to just over 2.3 seconds. The final results were as follows; I expect the improvements to be more notable on larger data sets (and I haven't even started profiling yet):
 
--   **Total number of parse events (without memoization):** 15,834
--   **Total number of parse events (with memoization):** 11,701 (4% improvement)
--   **Cache hits:** 1,084 (95% improvement)
--   **Cache misses:** 10,566 (9% improvement)
--   **Execution time (without memoization)**: 2.018 seconds
--   **Execution time (without memoization)**: 2.368 seconds (5% improvement)
+- **Total number of parse events (without memoization):** 15,834
+- **Total number of parse events (with memoization):** 11,701 (4% improvement)
+- **Cache hits:** 1,084 (95% improvement)
+- **Cache misses:** 10,566 (9% improvement)
+- **Execution time (without memoization)**: 2.018 seconds
+- **Execution time (without memoization)**: 2.368 seconds (5% improvement)

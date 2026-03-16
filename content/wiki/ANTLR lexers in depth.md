@@ -557,10 +557,10 @@ This grammar will handle things input strings like `....foobaaaaa....bar:baz...`
 
 As already mentioned above, filtering mode changes the precedence and matching behaviour of the generated lexer in the following ways:
 
--   ANTLR synthesizes a `Tokens` rule that will try the lexer rules one at a time _in the exact order that they appear in the grammar_.
--   Greedy matching does not apply; the first match found wins regardless of length.
--   If no rules match, the lexer skips a character (throwing it away) and tries again, restarting from the top of the rules list.
--   This behaviour is equivalent to having backtracking turned on (failing options do not result in an exception message being emitted; the lexer merely rewinds ready to try the next option) with a fixed lookahead of `k = 1`, combined with a strict ordering of the alternatives.
+- ANTLR synthesizes a `Tokens` rule that will try the lexer rules one at a time _in the exact order that they appear in the grammar_.
+- Greedy matching does not apply; the first match found wins regardless of length.
+- If no rules match, the lexer skips a character (throwing it away) and tries again, restarting from the top of the rules list.
+- This behaviour is equivalent to having backtracking turned on (failing options do not result in an exception message being emitted; the lexer merely rewinds ready to try the next option) with a fixed lookahead of `k = 1`, combined with a strict ordering of the alternatives.
 
 ## Limitations
 
@@ -624,9 +624,9 @@ Likewise, input of "foo" yields:
 
 To consider why this is the case, we look at the generated lexer:
 
--   The `mTokens` method will always predict `BAR` and never predict `FOO` (in keeping with the "unreachable" warning for `FOO`.
--   The `mBAR` method will throw an `EarlyExitException` exception for the first character scanned, no matter what the character is; this is once again in keeping with the "unreachable" alternative warning within `BAR`.
--   The parser will catch the exception and keep asking the lexer for tokens, resulting in two more exceptions before the input is exhausted.
+- The `mTokens` method will always predict `BAR` and never predict `FOO` (in keeping with the "unreachable" warning for `FOO`.
+- The `mBAR` method will throw an `EarlyExitException` exception for the first character scanned, no matter what the character is; this is once again in keeping with the "unreachable" alternative warning within `BAR`.
+- The parser will catch the exception and keep asking the lexer for tokens, resulting in two more exceptions before the input is exhausted.
 
 Both warnings go away if the `BAR` rule is rewritten as follows:
 
@@ -667,8 +667,8 @@ Also, I am not sure why the warning for `FOO` goes away because it still is unre
 
 The generated code is different in the following ways:
 
--   The `mBAR` method uses `matchRange('\u0000','\uFFFE')` range under the covers, instead of `matchAny()`.
--   The `mBAR` method uses look-ahead to see if the input character is in the range of `0000` to `FFFE` (it always is); this is different from the other lexer which did not use lookahead and which by default assumes that no match is possible and never follows the `matchAny()` path.
+- The `mBAR` method uses `matchRange('\u0000','\uFFFE')` range under the covers, instead of `matchAny()`.
+- The `mBAR` method uses look-ahead to see if the input character is in the range of `0000` to `FFFE` (it always is); this is different from the other lexer which did not use lookahead and which by default assumes that no match is possible and never follows the `matchAny()` path.
 
 With the rule order inverted ANTLR issues no warnings:
 
@@ -850,4 +850,4 @@ Empty lexer rules are a "no no"; that is, `*` and `?` are bad in the lexer if th
 
 # See also
 
--   [ANTLR prediction](/wiki/ANTLR_prediction)
+- [ANTLR prediction](/wiki/ANTLR_prediction)

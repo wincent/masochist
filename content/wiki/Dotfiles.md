@@ -4,4 +4,4 @@ tags: wiki
 
 # See also
 
--   My [dotfiles](/wiki/dotfiles): <https://github.com/wincent/wincent>
+- My [dotfiles](/wiki/dotfiles): <https://github.com/wincent/wincent>

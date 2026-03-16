@@ -8,5 +8,5 @@ For more information, see "[Using Watir with RSpec and Rails](/wiki/Using_Watir_
 
 # See also
 
--   Official project page: <http://safariwatir.rubyforge.org/>
--   Mailing list: <http://rubyforge.org/mailman/listinfo/safariwatir-general>
+- Official project page: <http://safariwatir.rubyforge.org/>
+- Mailing list: <http://rubyforge.org/mailman/listinfo/safariwatir-general>

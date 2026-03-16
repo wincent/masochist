@@ -8,7 +8,7 @@ title: Adding text to images with ImageMagick
 Taking a Palpatine GIF which already has a caption, "Use my knowledge. I beg you." and:
 
 1. Adding "Review my PR." immediately above.
-2. Drawing a line through "Use my  knowledge."
+2. Drawing a line through "Use my knowledge."
 
 ```sh
 magick convert \

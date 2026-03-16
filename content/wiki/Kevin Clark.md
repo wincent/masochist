@@ -6,4 +6,4 @@ tags: ruby wiki
 
 # See also
 
--   [Kevin Clark](/wiki/Kevin_Clark)'s [weblog](/wiki/weblog): <http://glu.ttono.us/>
+- [Kevin Clark](/wiki/Kevin_Clark)'s [weblog](/wiki/weblog): <http://glu.ttono.us/>

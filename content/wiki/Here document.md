@@ -4,4 +4,4 @@ tags: wiki
 
 See:
 
--   [Shell here documents](/wiki/Shell_here_documents)
+- [Shell here documents](/wiki/Shell_here_documents)

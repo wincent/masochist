@@ -6,4 +6,4 @@ tags: ruby rvm wiki
 
 # Official site
 
--   <https://rvm.io/>
+- <https://rvm.io/>

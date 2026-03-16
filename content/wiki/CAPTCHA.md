@@ -6,4 +6,4 @@ A [CAPTCHA](/wiki/CAPTCHA) or [Completely Automated Public Turing test to tell C
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [CAPTCHAs](/wiki/CAPTCHAs): <http://en.wikipedia.org/wiki/CAPTCHA>
+- [Wikipedia](/wiki/Wikipedia) article on [CAPTCHAs](/wiki/CAPTCHAs): <http://en.wikipedia.org/wiki/CAPTCHA>

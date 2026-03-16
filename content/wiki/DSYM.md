@@ -6,4 +6,4 @@ tags: development wiki
 
 # See also
 
--   [Automated moving of files using find](/wiki/Automated_moving_of_files_using_find).
+- [Automated moving of files using find](/wiki/Automated_moving_of_files_using_find).

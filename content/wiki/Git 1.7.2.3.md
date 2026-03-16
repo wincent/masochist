@@ -154,4 +154,4 @@ From the official announcement to the [Git mailing list](/wiki/Git_mailing_list)
 
 # See also
 
--   [Updating to Git 1.7.2.3](/wiki/Updating_to_Git_1.7.2.3)
+- [Updating to Git 1.7.2.3](/wiki/Updating_to_Git_1.7.2.3)

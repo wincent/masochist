@@ -94,4 +94,4 @@ Output of `ri --help`:
 
 # See also
 
--   [FastRI](/wiki/FastRI)
+- [FastRI](/wiki/FastRI)

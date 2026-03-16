@@ -7,4 +7,4 @@ cache_breaker: 1
 
 # Official site
 
--   <http://tmux.sourceforge.net/>
+- <http://tmux.sourceforge.net/>

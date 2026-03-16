@@ -124,8 +124,8 @@ ie. you have a single repository that contains both proprietary and open source 
 
 The safest way to do this seems to be to have two separate remotes:
 
--   the main "origin" remote is your original proprietary repo
--   a new "public" remote is created pointing at an entirely different repo, and with a default push refspec configured to only ever publish the `opensource` branch
+- the main "origin" remote is your original proprietary repo
+- a new "public" remote is created pointing at an entirely different repo, and with a default push refspec configured to only ever publish the `opensource` branch
 
 ```shell
 $ git remote add public git.example.com:/path/to/public/repo.git

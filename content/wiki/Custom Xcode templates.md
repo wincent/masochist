@@ -17,8 +17,8 @@ For example, I have a customized version of the Cocoa Objective-C class template
 
 Example:
 
--   `/Developer/Library/Xcode/Project Templates/Framework & Library/Bundle/Cocoa Bundle`
+- `/Developer/Library/Xcode/Project Templates/Framework & Library/Bundle/Cocoa Bundle`
 
 Becomes:
 
--   `~/Library/Application Support/Developer/Shared/Xcode/Project Templates/Framework & Library/Bundle/Cocoa Bundle`
+- `~/Library/Application Support/Developer/Shared/Xcode/Project Templates/Framework & Library/Bundle/Cocoa Bundle`

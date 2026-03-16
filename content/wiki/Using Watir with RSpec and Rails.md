@@ -6,9 +6,9 @@ tags: rspec rails watir wiki
 
 See:
 
--   [Installing SafariWatir on Mac OS X Tiger](/wiki/Installing_SafariWatir_on_Mac_OS_X_Tiger)
--   [Installing Spec::UI 0.2.0 on Mac OS X Tiger](/wiki/Installing_Spec%3a%3aUI_0.2.0_on_Mac_OS_X_Tiger); or
--   [Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger)
+- [Installing SafariWatir on Mac OS X Tiger](/wiki/Installing_SafariWatir_on_Mac_OS_X_Tiger)
+- [Installing Spec::UI 0.2.0 on Mac OS X Tiger](/wiki/Installing_Spec%3a%3aUI_0.2.0_on_Mac_OS_X_Tiger); or
+- [Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger)
 
 For the latest installation or upgrade notes, see the [\#rspec](/tags/rspec) tag.
 
@@ -57,5 +57,5 @@ All [specs](/wiki/specs) will require some special set-up and tear-down:
 
 # See also
 
--   An excellent article on using [Watir](/wiki/Watir), [RSpec](/wiki/RSpec) and [Rails](/wiki/Rails): <http://www.practicalguile.com/articles/ruby/rspec-your-functional-tests/>
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
+- An excellent article on using [Watir](/wiki/Watir), [RSpec](/wiki/RSpec) and [Rails](/wiki/Rails): <http://www.practicalguile.com/articles/ruby/rspec-your-functional-tests/>
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)

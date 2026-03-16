@@ -98,14 +98,14 @@ DROP       tcp  --  anywhere             anywhere            tcp dpt:pop3 state 
 
 Basically:
 
--   Create a custom "bansshee" chain which can easily be added or removed from default INPUT chain
--   Record the IP addresses making any new POP connections in a list named "pop3connect"
--   If any IP address makes more than 10 such new connections in any 60 second period, drop the packets on the floor
--   Insert the "bansshee" chain in the default INPUT chain
+- Create a custom "bansshee" chain which can easily be added or removed from default INPUT chain
+- Record the IP addresses making any new POP connections in a list named "pop3connect"
+- If any IP address makes more than 10 such new connections in any 60 second period, drop the packets on the floor
+- Insert the "bansshee" chain in the default INPUT chain
 
 ### Source
 
--   <http://pbxinaflash.com/forum/showthread.php?t=5018>
+- <http://pbxinaflash.com/forum/showthread.php?t=5018>
 
 ## Making the configuration permanent
 

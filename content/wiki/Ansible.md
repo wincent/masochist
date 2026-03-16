@@ -5,8 +5,8 @@ cache_breaker: 1
 
 # Official site
 
--   <http://www.ansible.com/>
+- <http://www.ansible.com/>
 
 # See also
 
--   Ansible (company) info on CrunchBase: <http://www.crunchbase.com/organization/ansible>
+- Ansible (company) info on CrunchBase: <http://www.crunchbase.com/organization/ansible>

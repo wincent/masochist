@@ -15,8 +15,8 @@ Anonymous access is mediated by the `svnserve` daemon running as the `svn` user 
 
 # Set-up
 
--   [This article](http://www.nabble.com/svnserve-and-launchd-in-OS-X-t2314532.html) offers an excellent guide to setting up access.
--   Subversion itself comes with an "[SSH tricks](http://svn.collab.net/repos/svn/trunk/notes/ssh-tricks)" document.
+- [This article](http://www.nabble.com/svnserve-and-launchd-in-OS-X-t2314532.html) offers an excellent guide to setting up access.
+- Subversion itself comes with an "[SSH tricks](http://svn.collab.net/repos/svn/trunk/notes/ssh-tricks)" document.
 
 ## Key pair generation
 
@@ -88,8 +88,8 @@ If your private key is protected by a passphrase (and it probably should be) the
 
 There are two ways to avoid these repeated prompts:
 
-1.  Do not protect your private key with a passphrase: with appropriate filesystem permissions, this is probably about as secure as the standard Subversion method of storing your passwords as plaintext in your `~/.subversion/` directory (although as of Subversion 1.4.0 passwords are stored securely in the keychain; see "[Keychain-based storage of Subversion passwords](/wiki/Keychain-based_storage_of_Subversion_passwords)").
-2.  Use `ssh-agent` and `ssh-add`: this is the more secure option, detailed below.
+1. Do not protect your private key with a passphrase: with appropriate filesystem permissions, this is probably about as secure as the standard Subversion method of storing your passwords as plaintext in your `~/.subversion/` directory (although as of Subversion 1.4.0 passwords are stored securely in the keychain; see "[Keychain-based storage of Subversion passwords](/wiki/Keychain-based_storage_of_Subversion_passwords)").
+2. Use `ssh-agent` and `ssh-add`: this is the more secure option, detailed below.
 
 You can launch `ssh-agent` from a Terminal window and it will set the required environment variables, `SSH_AUTH_SOCK` and `SSH_AGENT_PID`. The problem with this approach is that such environment variables won't be available to window-based programs like [Xcode](/wiki/Xcode). Modifying the `~/.MacOSX/environment.plist` file doesn't necessarily help either; for one thing, the value of `SSH_AUTH_SOCK` will randomly vary (incorporating both a random string component as well as the process ID number of the `ssh-agent` process; for example, `/tmp/ssh-A4yghslTsh/agent.10578`) and the file is read only once at login (that is, if you make changes _after_ login they will only be read upon the _next_ login by which time the information will be out of date).
 
@@ -102,9 +102,9 @@ You could put such settings in place with the following commands:
 
 Once that set-up is in place all that's required is to actually run the `ssh-agent` process at login and kill it off at logout. There are three possible ways of doing this:
 
-1.  Launch it manually from the terminal once and once only per session.
-2.  Launch it using [launchd](/wiki/launchd) (see [example](http://www.opendarwin.org/~landonf/misc/launchd-sshagent/); this example shows how to patch `ssh-agent` for use with `launchd` but it is not suitable for use here because the `SSH_AUTH_SOCK` environment variable can't be known prior to login time).
-3.  Write a wrapper script or program to launch it, and add the wrapper to your login items.
+1. Launch it manually from the terminal once and once only per session.
+2. Launch it using [launchd](/wiki/launchd) (see [example](http://www.opendarwin.org/~landonf/misc/launchd-sshagent/); this example shows how to patch `ssh-agent` for use with `launchd` but it is not suitable for use here because the `SSH_AUTH_SOCK` environment variable can't be known prior to login time).
+3. Write a wrapper script or program to launch it, and add the wrapper to your login items.
 
 I have not tested whether this `ssh-agent` set-up works with Xcode's integrated Subversion support (I do all my interaction with Subversion from the command line or from within SmartSVN).
 
@@ -114,12 +114,12 @@ The above methods can be made truly passwordless (that is, even the initial pass
 
 I am currently working on an application that provides the following functionality:
 
--   Launches `ssh-agent` at login
--   Automatically adds identities with `ssh-add`
--   Provides a GUI for entering passphrases (for use from within GUI apps)
--   Optionally stores passphrases in the login keychain
--   Provides a GUI for adding/removing and enabling/disabling identities
--   Checks environment variables at launch and offers to correct any problems detected
+- Launches `ssh-agent` at login
+- Automatically adds identities with `ssh-add`
+- Provides a GUI for entering passphrases (for use from within GUI apps)
+- Optionally stores passphrases in the login keychain
+- Provides a GUI for adding/removing and enabling/disabling identities
+- Checks environment variables at launch and offers to correct any problems detected
 
 The above functionality is already implemented and working. If people express and interest I may release the software publicly and potentially add more features.
 
@@ -130,4 +130,4 @@ The above functionality is already implemented and working. If people express an
 
 ## See also
 
--   [Setting up additional machines to access Subversion via SSH](/wiki/Setting_up_additional_machines_to_access_Subversion_via_SSH)
+- [Setting up additional machines to access Subversion via SSH](/wiki/Setting_up_additional_machines_to_access_Subversion_via_SSH)

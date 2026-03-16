@@ -34,5 +34,5 @@ I then tried uninstalling and reinstalling some gems with native extensions; thi
 
 If it turns out that things break again in the future, a simple symlink as suggested in these Stack Overflow posts is probably sufficient:
 
--   <http://stackoverflow.com/questions/9027772>
--   <http://stackoverflow.com/questions/12256616>
+- <http://stackoverflow.com/questions/9027772>
+- <http://stackoverflow.com/questions/12256616>

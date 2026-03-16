@@ -11,11 +11,11 @@ I did the usual Disk First Aid drill on my other (production volume). Won't both
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** Look, I'm Zippy Longstocking
--   **Kernel panics:** 6
--   **Hard resets:** 10
--   **Total failures:** 16
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 491 days
--   **Average time between failures:** 31 days
--   **Uptime at moment of failure(s):** about 30 minutes
+- **Operating system version:** Look, I'm Zippy Longstocking
+- **Kernel panics:** 6
+- **Hard resets:** 10
+- **Total failures:** 16
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 491 days
+- **Average time between failures:** 31 days
+- **Uptime at moment of failure(s):** about 30 minutes

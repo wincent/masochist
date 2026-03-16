@@ -21,9 +21,9 @@ The next thing I want to do is show Growl notifications when test runs finish, u
 
 My next step will then be to set up truly continuous automated testing for better [continuous integration](https://wincent.dev/wiki/continuous%20integration). The idea is to perform the following in the background in an endless loop:
 
--   Checkout an up-to-the-second copy of the project source code.
--   Perform a full build at a lower priority (using `nice`).
--   If any errors occur or unit tests fail, notify using `growlnotify`.
+- Checkout an up-to-the-second copy of the project source code.
+- Perform a full build at a lower priority (using `nice`).
+- If any errors occur or unit tests fail, notify using `growlnotify`.
 
 The idea is that instead of thinking about doing a change-build-test cycle you just think about changes: change, change, change, change, continuously advancing and letting the background tests notify you if one of your changes needs revision.
 
@@ -47,8 +47,8 @@ Those are exactly the kinds of tests that would be easiest to write in Ruby. In 
 
 Ruby is great for writing tests for two reasons:
 
-1.  Everything is an object: this means that you can specify expectations on literally anything at all, even `Fixnum` instances like `1` and `3`, and special values like `nil`, `true` and `false`.
-2.  The amazing [RSpec](https://wincent.dev/wiki/RSpec) [BDD](https://wincent.dev/wiki/BDD) framework which leverages the everything-is-an-object design of [Ruby](https://wincent.dev/wiki/Ruby) to improve the readability of your specs:
+1. Everything is an object: this means that you can specify expectations on literally anything at all, even `Fixnum` instances like `1` and `3`, and special values like `nil`, `true` and `false`.
+2. The amazing [RSpec](https://wincent.dev/wiki/RSpec) [BDD](https://wincent.dev/wiki/BDD) framework which leverages the everything-is-an-object design of [Ruby](https://wincent.dev/wiki/Ruby) to improve the readability of your specs:
 
 <!-- -->
 

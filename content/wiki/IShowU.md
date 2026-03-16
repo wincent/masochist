@@ -7,4 +7,4 @@ title: IShowU
 
 # See also
 
--   Official site: <http://shinywhitebox.com/home/home.html>
+- Official site: <http://shinywhitebox.com/home/home.html>

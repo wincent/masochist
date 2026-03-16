@@ -46,12 +46,12 @@ So I foolishly took the "exceeding \[sic\] complex" path. When the Intel machine
 
 It then later goes on to state:
 
-      The only remotely reliable way to detect a signal stack frame is to
-      look at the return address to see whether it points within the
-      _sigtramp routine.  I can find the address of this routine via
-      the dynamic linker, but I don't have an easy way to determine it's
-      length.  So I just guess!  And here's the number I chose.  See
-      MoreBTPPCFindSigTrampAddress for more details on this.
+    The only remotely reliable way to detect a signal stack frame is to
+    look at the return address to see whether it points within the
+    _sigtramp routine.  I can find the address of this routine via
+    the dynamic linker, but I don't have an easy way to determine it's
+    length.  So I just guess!  And here's the number I chose.  See
+    MoreBTPPCFindSigTrampAddress for more details on this.
 
 So as you can see, the business of writing stack trace generation code is a nasty one (and we haven't even touched on address-to-symbol conversion yet nor C++ mangling). I tried, but I admit defeat. Given the choice between writing a mass of hideously complex and fragile code, installing a hack, or implementing something mildly kludgey, I'll choose the latter. The least kludgey way I can think of doing this is to check at launch the modification date on the crash reporter log file, and if it looks like the program did not cleanly exit fire up the crash reporter application. I say "least kludgey" because at least it doesn't require me to do any polling; but it does still require me to read in a chunk of a log file and send it off.
 

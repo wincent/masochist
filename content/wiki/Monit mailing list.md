@@ -2,4 +2,4 @@
 tags: monit wiki
 ---
 
--   <http://lists.nongnu.org/mailman/listinfo/monit-announce>
+- <http://lists.nongnu.org/mailman/listinfo/monit-announce>

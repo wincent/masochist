@@ -138,11 +138,11 @@ Instead of forking, start with `git init`, an empty slate. That means an empty d
 
 Once you've got this empty directory, and started populating it with configuration files, there are a number of tools that you can use to actually put these files in the right places and keep them up to-date. I've listed a few here.
 
--   A common choice is [GNU Stow](https://www.gnu.org/software/stow/), which describes itself as a "symlink farm manager". In practice what that actually means is that you can keep your dotfiles neatly organized in a Git repo, and then make them appear appropriately elsewhere on the filesystem (such as in your home directory) via symlinking.
--   One that I used for a while was [Ansible](https://docs.ansible.com/ansible/latest/index.html) which is a full-blown system configuration tool. This can be used to do much more than just symlink dotfiles, such as installing packages, scheduling cron jobs, applying tweaks to shared system files, and so on. But it is complicated, and the tool isn't really optimized for this use case; it's really intended to do large-scale infrastructure management, such as deploying and maintaining fleets of machines across the network. Using it for dotfile management is kind of like driving in a nail with a 10,000-pound hammer.
--   At the opposite end of the spectrum, you could use a simple script written in Ruby, Python, Bash, or any other scripting language. There are many examples of such scripts online ([here is one that I used in the past](https://github.com/wincent/wincent/blob/94fb4d5024/bootstrap.rb)).
--   There are also tools and frameworks especially built just for dotfile management (one example made by a former colleague of mine is called [Dot](https://github.com/sds/dot)).
--   Finally, I'll mention [Fig](https://github.com/wincent/wincent/tree/master/fig) which is what I am using nowadays. I basically took the idea of Ansible, the 10,000-pound hammer, ignored most of the 3,400 modules that come with it, and wrote from scratch a tiny little tool that does nothing more than I need to set up a machine and keep it up to date.
+- A common choice is [GNU Stow](https://www.gnu.org/software/stow/), which describes itself as a "symlink farm manager". In practice what that actually means is that you can keep your dotfiles neatly organized in a Git repo, and then make them appear appropriately elsewhere on the filesystem (such as in your home directory) via symlinking.
+- One that I used for a while was [Ansible](https://docs.ansible.com/ansible/latest/index.html) which is a full-blown system configuration tool. This can be used to do much more than just symlink dotfiles, such as installing packages, scheduling cron jobs, applying tweaks to shared system files, and so on. But it is complicated, and the tool isn't really optimized for this use case; it's really intended to do large-scale infrastructure management, such as deploying and maintaining fleets of machines across the network. Using it for dotfile management is kind of like driving in a nail with a 10,000-pound hammer.
+- At the opposite end of the spectrum, you could use a simple script written in Ruby, Python, Bash, or any other scripting language. There are many examples of such scripts online ([here is one that I used in the past](https://github.com/wincent/wincent/blob/94fb4d5024/bootstrap.rb)).
+- There are also tools and frameworks especially built just for dotfile management (one example made by a former colleague of mine is called [Dot](https://github.com/sds/dot)).
+- Finally, I'll mention [Fig](https://github.com/wincent/wincent/tree/master/fig) which is what I am using nowadays. I basically took the idea of Ansible, the 10,000-pound hammer, ignored most of the 3,400 modules that come with it, and wrote from scratch a tiny little tool that does nothing more than I need to set up a machine and keep it up to date.
 
 # 16
 
@@ -298,10 +298,10 @@ So, this starts as a few lines in my `.vimrc` because I'm not entirely happy wit
 
 I could use a mapping like the one shown here — to `*Ncgn` — which allows you to jump from word to word replacing each one.
 
--   `*` jumps to the next occurrence of the word under the cursor; this effectively puts it in the search register.
--   (Shift) `N` puts us back where we started.
--   `c` starts a change; and:
--   `gn` indicates the motion over which we wish to make the change, which in this case means the next match.
+- `*` jumps to the next occurrence of the word under the cursor; this effectively puts it in the search register.
+- (Shift) `N` puts us back where we started.
+- `c` starts a change; and:
+- `gn` indicates the motion over which we wish to make the change, which in this case means the next match.
 
 The overall effect is to change the current word, and if I hit `.` after leaving insert mode the change will be made to the next match, and the next as I continue to hit `.`.
 
@@ -309,11 +309,11 @@ This mapping works, but I don't like the way it's blind. I can't see where the c
 
 So, I end up using the `:substitute` command instead.
 
--   `%` defines a range, and says we want to operate over the entire buffer.
--   `s` is short for substitute.
--   I specify a pattern and a replacement.
--   `g` says to do the substitution globally, which means for all matches on any given line instead of just the first; finally:
--   `c` tells Vim to prompt me for confirmation before making each change.
+- `%` defines a range, and says we want to operate over the entire buffer.
+- `s` is short for substitute.
+- I specify a pattern and a replacement.
+- `g` says to do the substitution globally, which means for all matches on any given line instead of just the first; finally:
+- `c` tells Vim to prompt me for confirmation before making each change.
 
 This command doesn't suffer from the problems of the mapping, but it is annoying in other ways. For example, if I am in the middle of the file it's going to jump all the way to top and then work down to the bottom. I'd much rather start from the middle, work down from there, and then loop around to the top and continue back down to the middle, ending where I started.
 
@@ -357,17 +357,17 @@ From then on it's a case of relentlessly improving the snippet until there is no
 
 What we're looking at here is the entire commit history for the Scalpel project over the course of four years. Most of the commits are just chores, but I've highlighted the actual substantive improvements and fixes using arrows. They're just small things, like:
 
--   Fixing a Vimscript edge case.
--   Adding configuration options.
--   Adding ability to work VISUAL mode.
--   Following best practices for autocmds.
--   Suppressing unwanted messages.
--   Adding support for pattern delimiters other than slashes.
--   Fixing a bug with replacement sequences.
--   Fixing compatibility with old Vim versions.
--   Respecting the `'gdefault'` setting.
--   Hardening the code to guard against nested `:redir` commands.
--   Adding some missing escaping.
+- Fixing a Vimscript edge case.
+- Adding configuration options.
+- Adding ability to work VISUAL mode.
+- Following best practices for autocmds.
+- Suppressing unwanted messages.
+- Adding support for pattern delimiters other than slashes.
+- Fixing a bug with replacement sequences.
+- Fixing compatibility with old Vim versions.
+- Respecting the `'gdefault'` setting.
+- Hardening the code to guard against nested `:redir` commands.
+- Adding some missing escaping.
 
 That's all of them. Some are little things that I noticed from using the plugin. Others came in from user reports for bugs that I never would have run into on my own. And there are one or two things that result from pressure from users to support new use cases; nothing that takes us into the territory of "bloat", just little things. But without a doubt the code is better for having been exposed to community usage, and it taught me something along the way. For example, that `'gdefault'` setting, which I'd never heard of until a user brought it up.
 

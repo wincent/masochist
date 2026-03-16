@@ -7,18 +7,18 @@ Historically, building [tmux](/wiki/tmux) on [CentOS](/wiki/CentOS) has been a p
 
 This article shows steps that currently work, at least for me, to perform a clean install of:
 
--   tmux 1.9a
--   Vim 7.4 (including patches 1-192)
--   Ruby 2.1.1
--   Python 3.3.4
--   Command-T (current HEAD of the next branch)
+- tmux 1.9a
+- Vim 7.4 (including patches 1-192)
+- Ruby 2.1.1
+- Python 3.3.4
+- Command-T (current HEAD of the next branch)
 
 on CentOS 6.3. These are the latest versions of each of the packages.
 
 I have a couple of requirements:
 
-1.  These all get installed in one's `$HOME` directory, which means that you won't clobber the system-installed versions of these things, and we don't need root privileges to install (other than a couple of prerequisites). Doing this requires statically-linking [tmux](/wiki/tmux) with ncurses and libevent, which makes things a little trickier.
-2.  Vim needs both Ruby and Python in order to work with some key plug-ins that I use ([Command-T](/wiki/Command-T) needs [Ruby](/wiki/Ruby), for example, and UltiSnips and Gundo need Python)
+1. These all get installed in one's `$HOME` directory, which means that you won't clobber the system-installed versions of these things, and we don't need root privileges to install (other than a couple of prerequisites). Doing this requires statically-linking [tmux](/wiki/tmux) with ncurses and libevent, which makes things a little trickier.
+2. Vim needs both Ruby and Python in order to work with some key plug-ins that I use ([Command-T](/wiki/Command-T) needs [Ruby](/wiki/Ruby), for example, and UltiSnips and Gundo need Python)
 
 The following notes assumed you've downloaded and unpacked the corresponding software package source into directories under `~/build` (and in the case of [Vim](/wiki/Vim), we use a clone of its upstream Mercurial repo, because Bram doesn't do point release between major versions; in the case of [Command-T](/wiki/Command-T), I'm using a [Pathogen](/wiki/Pathogen)-managed submodule at `~/.vim/bundle/command-t`).
 

@@ -6,4 +6,4 @@ An [Immediately Invoked Function Expression](/wiki/Immediately_Invoked_Function_
 
 # See also
 
--   <http://benalman.com/news/2010/11/immediately-invoked-function-expression/>
+- <http://benalman.com/news/2010/11/immediately-invoked-function-expression/>

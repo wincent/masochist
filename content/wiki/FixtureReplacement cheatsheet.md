@@ -24,15 +24,15 @@ Given a model class, `Foo`:
 
 # Methods available
 
--   `String.random`: generates a random string as shown above.
--   `new_foo`: equivalent to `Foo.new(foo_attributes)`.
--   `create_foo`: equivalent to `Foo.create!(foo_attributes)`.
--   `default_foo`: for use inside `_attributes` definitions; this basically returns a `Proc` object which allows the actual creation of the object to be deferred until it is actually needed: in this way unnecessary object creation is avoided until it is known for sure that that particular attribute is not going to be overridden.
+- `String.random`: generates a random string as shown above.
+- `new_foo`: equivalent to `Foo.new(foo_attributes)`.
+- `create_foo`: equivalent to `Foo.create!(foo_attributes)`.
+- `default_foo`: for use inside `_attributes` definitions; this basically returns a `Proc` object which allows the actual creation of the object to be deferred until it is actually needed: in this way unnecessary object creation is avoided until it is known for sure that that particular attribute is not going to be overridden.
 
 # Overriding the default attributes
 
--   `new_foo(:thing => "overridden")`
--   `create_post(:thing => "overridden")`
+- `new_foo(:thing => "overridden")`
+- `create_post(:thing => "overridden")`
 
 # `script/console` use
 

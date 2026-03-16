@@ -25,19 +25,19 @@ Quit TextMate and re-check your manual bindings again; the should be empty:
 
 Now fire up TextMate and go to the "Bundles" menu, "Bundle Editor" submenu, "Edit Languages" item, and make this change in the Rails language definition:
 
-       fileTypes = ( 'rxml' );
+    fileTypes = ( 'rxml' );
 
 Should become:
 
-       fileTypes = ( 'rxml', 'rb' );
+    fileTypes = ( 'rxml', 'rb' );
 
 And in the Ruby language definition:
 
-       fileTypes = ( 'rb', 'rbx', 'rjs', 'Rakefile', 'rake', 'cgi', 'fcgi', 'gemspec' );
+    fileTypes = ( 'rb', 'rbx', 'rjs', 'Rakefile', 'rake', 'cgi', 'fcgi', 'gemspec' );
 
 Should become:
 
-       fileTypes = ( 'rbx', 'rjs', 'Rakefile', 'rake', 'cgi', 'fcgi', 'gemspec' );
+    fileTypes = ( 'rbx', 'rjs', 'Rakefile', 'rake', 'cgi', 'fcgi', 'gemspec' );
 
 Now when you open `.rb` files they should default to Rails as their "language", and `_spec.rb` files should default to RSpec.
 

@@ -7,8 +7,8 @@ cache_breaker: 1
 
 # Official site
 
--   <http://www.amazon.com/>
+- <http://www.amazon.com/>
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Amazon](/wiki/Amazon): <http://en.wikipedia.org/wiki/Amazon.com>
+- [Wikipedia](/wiki/Wikipedia) article on [Amazon](/wiki/Amazon): <http://en.wikipedia.org/wiki/Amazon.com>

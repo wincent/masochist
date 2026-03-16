@@ -6,5 +6,5 @@ tags: rubyforge wiki
 
 # See also
 
--   Official release announcement: <http://blog.zenspider.com/archives/2007/05/rubyforge_version_042_has_been_released.html>
--   [Upgrading the rubyforge gem to version 0.4.2](/wiki/Upgrading_the_rubyforge_gem_to_version_0.4.2)
+- Official release announcement: <http://blog.zenspider.com/archives/2007/05/rubyforge_version_042_has_been_released.html>
+- [Upgrading the rubyforge gem to version 0.4.2](/wiki/Upgrading_the_rubyforge_gem_to_version_0.4.2)

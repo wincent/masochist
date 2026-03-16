@@ -36,4 +36,4 @@ Another example:
 
 # See also
 
--   [Zapping resource forks from the commandline](/wiki/Zapping_resource_forks_from_the_commandline)
+- [Zapping resource forks from the commandline](/wiki/Zapping_resource_forks_from_the_commandline)

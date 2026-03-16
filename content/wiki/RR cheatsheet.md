@@ -198,9 +198,9 @@ Whatever the cause, the lesson is clear: make sure your specs fail _first_, othe
 
 # Related
 
--   [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
--   [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
--   [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
--   [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
--   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
--   [Steak cheatsheet](/wiki/Steak_cheatsheet)
+- [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
+- [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
+- [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
+- [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
+- [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
+- [Steak cheatsheet](/wiki/Steak_cheatsheet)

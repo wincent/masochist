@@ -23,4 +23,4 @@ Two tests fail identically (and harmlessly) as they did for [Ruby 1.8.4](/wiki/R
 
 # See also
 
--   [Building and installing Ruby 1.8.6 on Mac OS X Tiger](/wiki/Building_and_installing_Ruby_1.8.6_on_Mac_OS_X_Tiger)
+- [Building and installing Ruby 1.8.6 on Mac OS X Tiger](/wiki/Building_and_installing_Ruby_1.8.6_on_Mac_OS_X_Tiger)

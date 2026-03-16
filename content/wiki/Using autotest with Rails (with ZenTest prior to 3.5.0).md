@@ -6,9 +6,9 @@ These are an older version of the notes at "[Using autotest with Rails](/wiki/Us
 
 # Prerequisites
 
--   [ZenTest](/wiki/ZenTest) (see "[Setting up autotest](/wiki/Setting_up_autotest)")
--   [diff-lcs](/wiki/diff-lcs) (already installed in my case)
--   [RSpec](/wiki/RSpec) (again, already installed in my case)
+- [ZenTest](/wiki/ZenTest) (see "[Setting up autotest](/wiki/Setting_up_autotest)")
+- [diff-lcs](/wiki/diff-lcs) (already installed in my case)
+- [RSpec](/wiki/RSpec) (again, already installed in my case)
 
 # Installing the [RSpec](/wiki/RSpec) [Rails](/wiki/Rails) plugin
 
@@ -22,12 +22,12 @@ After installing you must "bootstrap" [RSpec](/wiki/RSpec) as follows:
 
 Output:
 
-          create  spec
-          create  spec/spec_helper.rb
-          create  spec/spec.opts
-          create  previous_spec_failures.txt
-          create  script/spec_server
-          create  script/spec
+    create  spec
+    create  spec/spec_helper.rb
+    create  spec/spec.opts
+    create  previous_spec_failures.txt
+    create  script/spec_server
+    create  script/spec
 
 For more information see <http://rspec.rubyforge.org/documentation/rails/install.html>
 
@@ -79,8 +79,8 @@ This prevents the tests from failing continuously when an example fails; [autote
 
 # See also
 
--   [Using autotest with Rails](/wiki/Using_autotest_with_Rails)
--   [Setting up autotest](/wiki/Setting_up_autotest)
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
--   Official plug-in announcement: <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
--   "Developing a Rails model using BDD and RSpec": <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1>
+- [Using autotest with Rails](/wiki/Using_autotest_with_Rails)
+- [Setting up autotest](/wiki/Setting_up_autotest)
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
+- Official plug-in announcement: <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
+- "Developing a Rails model using BDD and RSpec": <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1>

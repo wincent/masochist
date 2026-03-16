@@ -5,12 +5,12 @@ tags: rails blog
 
 There's been a huge storm in a tea-cup lately over Matt Aimonetti's "[CouchDB: Perform like a pr0n star](http://www.slideshare.net/mattetti/couchdb-perform-like-a-pr0n-star)" presentation. It's been unexpectedly polemical. The responses have been exceptionally strong and polarized:
 
--   people who view the presentation as inappropriate or unprofessional and are extremely upset, offended or threatened
--   people who approve of Matt's presentation and vehemently defend his right to be as "edgy" as he pleases
+- people who view the presentation as inappropriate or unprofessional and are extremely upset, offended or threatened
+- people who approve of Matt's presentation and vehemently defend his right to be as "edgy" as he pleases
 
 But let's not forget the third category:
 
--   people in the "middle of the road" — who perhaps approve, disapprove, or don't care — but who regardless of their perspective don't get all vocal about it
+- people in the "middle of the road" — who perhaps approve, disapprove, or don't care — but who regardless of their perspective don't get all vocal about it
 
 I'm firmly in the third camp. I think the people who have invested their energies in writing 2,000 word essays on the subject really could have spent their time a lot more wisely.
 

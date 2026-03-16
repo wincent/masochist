@@ -6,4 +6,4 @@ tags: aws glacier wiki
 
 # Official site
 
--   <http://aws.amazon.com/glacier/>
+- <http://aws.amazon.com/glacier/>

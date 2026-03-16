@@ -162,4 +162,4 @@ Notes from the official announcement post to the [Git](/wiki/Git) mailing list b
 
 ## See also
 
--   [Testing Git 1.6.2-rc0](/wiki/Testing_Git_1.6.2-rc0)
+- [Testing Git 1.6.2-rc0](/wiki/Testing_Git_1.6.2-rc0)

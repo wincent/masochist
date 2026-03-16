@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Usenet](/wiki/Usenet): <http://en.wikipedia.org/wiki/Usenet>
+- [Wikipedia](/wiki/Wikipedia) article on [Usenet](/wiki/Usenet): <http://en.wikipedia.org/wiki/Usenet>

@@ -5,4 +5,4 @@ cache_breaker: 1
 
 # See also
 
--   Official site: <http://www.iterm2.com/>
+- Official site: <http://www.iterm2.com/>

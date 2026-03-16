@@ -4,8 +4,8 @@ tags: git wiki
 
 There are two types of branching that you might want to do with [Git](/wiki/Git):
 
--   local-only branches (often short-lived "[topic branches](/wiki/topic_branches)")
--   long-lived remote branches visible on a central repository
+- local-only branches (often short-lived "[topic branches](/wiki/topic_branches)")
+- long-lived remote branches visible on a central repository
 
 # Local branches
 
@@ -61,4 +61,4 @@ This creates tracking refs not quite the same as the manually created ones above
 
 # See also
 
--   [Branching](/wiki/Branching)
+- [Branching](/wiki/Branching)

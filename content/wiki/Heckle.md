@@ -6,4 +6,4 @@ tags: heckle wiki
 
 # See also
 
--   Official project page: <http://rubyforge.org/projects/seattlerb/>
+- Official project page: <http://rubyforge.org/projects/seattlerb/>

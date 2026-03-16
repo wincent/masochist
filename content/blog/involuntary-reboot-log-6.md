@@ -7,14 +7,14 @@ This time it was my fault, kind of. Trying to do some low-level Mach stuff to wo
 
 #### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.8
--   **Kernel panics:** 6
--   **Hard resets:** 0
--   **Total failures:** 6
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 156 days
--   **Average time between failures:** 26 days
--   **Uptime at moment of failure(s):** Several days
+- **Operating system version:** 10.4.8
+- **Kernel panics:** 6
+- **Hard resets:** 0
+- **Total failures:** 6
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 156 days
+- **Average time between failures:** 26 days
+- **Uptime at moment of failure(s):** Several days
 
 As per usual I used the interactive Ruby interpreter, `irb`, to do the date calculations for me:
 

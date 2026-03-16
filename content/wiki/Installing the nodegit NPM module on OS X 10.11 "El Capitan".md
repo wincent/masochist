@@ -12,4 +12,4 @@ After that, a simple `npm install --save nodegit` worked.
 
 # See also
 
--   [nodegit \#728](https://github.com/nodegit/nodegit/issues/728): "Error configuring libssh2 - cannot find OpenSSL or Libgcrypt".
+- [nodegit \#728](https://github.com/nodegit/nodegit/issues/728): "Error configuring libssh2 - cannot find OpenSSL or Libgcrypt".

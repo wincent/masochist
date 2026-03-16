@@ -27,4 +27,4 @@ $ make && make install
 
 # See also
 
--   [Building tmux 1.7 on OS X 10.8 Mountain Lion](/wiki/Building_tmux_1.7_on_OS_X_10.8_Mountain_Lion)
+- [Building tmux 1.7 on OS X 10.8 Mountain Lion](/wiki/Building_tmux_1.7_on_OS_X_10.8_Mountain_Lion)

@@ -55,10 +55,10 @@ tags: ruby.debug wiki
 
 # Changelog
 
--   From irb session Ctrl-C or 'cont' command continues execution without showing the debugger prompt.
--   Added Debugger.settings method to programatically modify command settings.
--   Bugfixes.
+- From irb session Ctrl-C or 'cont' command continues execution without showing the debugger prompt.
+- Added Debugger.settings method to programatically modify command settings.
+- Bugfixes.
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11354>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11354>

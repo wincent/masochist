@@ -45,4 +45,4 @@ You can start the pattern with `\v` to activate "very magic" behavior, meaning t
 
 # See also
 
--   [Delete lines matching a pattern in Vim](/wiki/Delete_lines_matching_a_pattern_in_Vim)
+- [Delete lines matching a pattern in Vim](/wiki/Delete_lines_matching_a_pattern_in_Vim)

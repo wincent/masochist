@@ -10,8 +10,8 @@ I've just released version 1.0.1 of the [Command-T](/wiki/Command-T) plug-in for
 
 This is a bug-fix release which:
 
--   [fixes](/repos/command-t/commits/dfc4e191604) breakage that occurred when trying to set up a custom mapping `:CommandTFlush`
--   teaches Command-T to handle "unexpected" exits from its search buffer (for example, via `<C-W q>`); see commits [80277295f4](/repos/command-t/commits/80277295f4), [0976b17796](/repos/command-t/commits/0976b17796) and [3a8ad5b46c](/repos/command-t/commits/3a8ad5b46c)
+- [fixes](/repos/command-t/commits/dfc4e191604) breakage that occurred when trying to set up a custom mapping `:CommandTFlush`
+- teaches Command-T to handle "unexpected" exits from its search buffer (for example, via `<C-W q>`); see commits [80277295f4](/repos/command-t/commits/80277295f4), [0976b17796](/repos/command-t/commits/0976b17796) and [3a8ad5b46c](/repos/command-t/commits/3a8ad5b46c)
 
 As always, a full change-log appears under HISTORY in the documentation, and you can explore the commits in the release [here](/repos/command-t/tags/1.0.1). (Note: the integrated repository browser that I'm linking to here is still relatively new and doesn't have a full feature set yet.)
 
@@ -40,9 +40,9 @@ See the docs for more info on installing (and updating) Command-T via Pathogen.
 
 ## Everybody else
 
--   Download the vimball from [the Command-T product page](/products/command-t) (or [www.vim.org](http://www.vim.org/scripts/script.php?script_id=3025), if you prefer)
--   Open the vimball archive in vim, and do `:so %` to unpack it
--   `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
+- Download the vimball from [the Command-T product page](/products/command-t) (or [www.vim.org](http://www.vim.org/scripts/script.php?script_id=3025), if you prefer)
+- Open the vimball archive in vim, and do `:so %` to unpack it
+- `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
 
 # Screencasts, donations and source code
 

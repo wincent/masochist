@@ -12,9 +12,9 @@ sudo ktrace trace -p 8484 -S -f C2,C3,C4
 - `-p 8484`: Show events for process ID `8484`.
 - `-S`: Print arguments as strings for trace points known to include strings.
 - `-f`: Filter to show only:
-    - `C2`: [`DBG_NETWORK`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L103)
-    - `C3`: [`DBG_FSYSTEM`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L104)
-    - `C4`: [`DBG_BSD`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L105)
+  - `C2`: [`DBG_NETWORK`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L103)
+  - `C3`: [`DBG_FSYSTEM`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L104)
+  - `C4`: [`DBG_BSD`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L105)
 
 **Note:** In order to determine which tag to link to for `C1`, `C2`, `C3` (etc) above, I looked up which xnu version corresponds to the current macOS release at: https://opensource.apple.com/releases/
 
@@ -46,9 +46,9 @@ Here's what `man ktrace` says about `FILTER DESCRIPTIONS`:
 
 > ## FILTER DESCRIPTIONS
 >
-> A filter description is a comma-separated list of class and subclass specifiers that indicate which events should be traced.  A class specifier starts with ‘C’ and contains a single byte, specified in either decimal or hex.  A subclass specifier starts with ‘S’ and takes two bytes.  The high byte is the class and the low byte is the subclass of that class.
+> A filter description is a comma-separated list of class and subclass specifiers that indicate which events should be traced. A class specifier starts with ‘C’ and contains a single byte, specified in either decimal or hex. A subclass specifier starts with ‘S’ and takes two bytes. The high byte is the class and the low byte is the subclass of that class.
 >
-> For example, this filter description would enable classes 1 and 37 and the subclasses 33 and 35 of class 5: ‘C1,C0x25,S0x0521,S0x0523’.  The ‘ALL’ filter description enables events from all classes.
+> For example, this filter description would enable classes 1 and 37 and the subclasses 33 and 35 of class 5: ‘C1,C0x25,S0x0521,S0x0523’. The ‘ALL’ filter description enables events from all classes.
 
 From [`kdebug.h`](https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h), here are some of the interesting sections.
 

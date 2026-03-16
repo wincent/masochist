@@ -12,10 +12,10 @@ Executing the compiled templates, otherwise known as "filling" them, produces th
 
 # Examples of object-oriented templating systems
 
--   [Cheetah](/wiki/Cheetah) is an [object-oriented templating](/wiki/object-oriented_templating) engine written in [Python](/wiki/Python)
--   [Walrus](/wiki/Walrus) is my own [object-oriented templating](/wiki/object-oriented_templating) system written in [Ruby](/wiki/Ruby)
+- [Cheetah](/wiki/Cheetah) is an [object-oriented templating](/wiki/object-oriented_templating) engine written in [Python](/wiki/Python)
+- [Walrus](/wiki/Walrus) is my own [object-oriented templating](/wiki/object-oriented_templating) system written in [Ruby](/wiki/Ruby)
 
 # Related posts
 
--   <https://wincent.dev/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
--   <https://wincent.dev/a/about/wincent/weblog/archives/2007/04/payoff_time.php>
+- <https://wincent.dev/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
+- <https://wincent.dev/a/about/wincent/weblog/archives/2007/04/payoff_time.php>

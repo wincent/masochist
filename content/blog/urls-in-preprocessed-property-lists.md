@@ -38,13 +38,13 @@ The solution in the end was to pass the `-ansi` switch to the preprocessor. This
 
 But my problems did not end there. The `-ansi` has the effect of turning on GCC's trigraph support, that means that any property list containing the string "????" like this:
 
-        <key>CFBundleSignature</key>
-        <string>????</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
 
 Will end up producing invalid XML like this:
 
-        <key>CFBundleSignature</key>
-        <string>??{/string>
+    <key>CFBundleSignature</key>
+    <string>??{/string>
 
 Specifically, the problem is that the sequence "??&lt;" is considered to be a trigraph sequence and is converted to "{" (see the GCC man page for more info on trigraphs).
 
@@ -52,17 +52,17 @@ Unfortunately there is no way of turning off trigraph support. GCC has a `-trigr
 
 In the end I changed my property list to look like this:
 
-      <key>CFBundleSignature</key>
-      <string>WO_DEFAULT_SIGNATURE</string>
+    <key>CFBundleSignature</key>
+    <string>WO_DEFAULT_SIGNATURE</string>
 
 And made yet another modification to my build configuration file:
 
-     INFOPLIST_PREPROCESSOR_DEFINITIONS = WO_DEFAULT_SIGNATURE=????
+    INFOPLIST_PREPROCESSOR_DEFINITIONS = WO_DEFAULT_SIGNATURE=????
 
 Xcode then produces something very close to what I'm looking for:
 
-      <key>CFBundleSignature</key>
-      <string> ????</string>
+    <key>CFBundleSignature</key>
+    <string> ????</string>
 
 Notice the extra space inserted by the preprocessor? If you redefine `WO_DEFAULT_SIGNATURE` as an alphanumeric word (like "test", for example) then no space is inserted. If you try to enclose it in quote marks they are stripped by Xcode before being passed to the preprocessor. If you try to escape the quote marks — `\"????\"` — then you get literal quote marks in your property list.
 

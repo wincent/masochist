@@ -187,13 +187,13 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 
 # Changelog for 0.9.2
 
--   Added some website love
--   Fixed \#10542 reverse predicate matcher syntax
--   Added a spec:translate Rake task to make 0.9 translation easier with Spec:Rails
--   Better translation of should_redirect_to
--   Fixed --colour support for Windows. This is a regression that was introduced in 0.9.1
+- Added some website love
+- Fixed \#10542 reverse predicate matcher syntax
+- Added a spec:translate Rake task to make 0.9 translation easier with Spec:Rails
+- Better translation of should_redirect_to
+- Fixed --colour support for Windows. This is a regression that was introduced in 0.9.1
 
 # See also
 
--   Release notes for 0.9.2: <http://rubyforge.org/frs/shownotes.php?release_id=11471>
--   Release notes for 0.9.1 (skipped): <http://rubyforge.org/frs/shownotes.php?release_id=11423>
+- Release notes for 0.9.2: <http://rubyforge.org/frs/shownotes.php?release_id=11471>
+- Release notes for 0.9.1 (skipped): <http://rubyforge.org/frs/shownotes.php?release_id=11423>

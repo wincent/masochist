@@ -6,4 +6,4 @@ To [Mac](/wiki/Mac) users, [Sun Microsystems](/wiki/Sun_Microsystems) or [Sun](/
 
 # Official website
 
--   <http://sun.com/>
+- <http://sun.com/>

@@ -47,16 +47,16 @@ Here's the first version of my first [MovableType](/wiki/MovableType) plugin:
 
 # Installation
 
-1.  Install into `plugins`
-2.  Activate in the [MovableType](/wiki/MovableType) control panel
+1. Install into `plugins`
+2. Activate in the [MovableType](/wiki/MovableType) control panel
 
 # Usage
 
-1.  Select "WikiText" from the Text Formatting pop-up menu while composing your entry.
-2.  Publish.
+1. Select "WikiText" from the Text Formatting pop-up menu while composing your entry.
+2. Publish.
 
 # See also
 
--   [MovableType](/wiki/MovableType) API documentation: <http://www.sixapart.com/movabletype/docs/mtapi_mt.html>
--   "How to Write a Plugin": <http://www.sixapart.com/movabletype/docs/plugin-tut>
--   Accompanying article on weblog: <https://wincent.dev/a/about/wincent/weblog/archives/2007/03/using_mediawiki.php>
+- [MovableType](/wiki/MovableType) API documentation: <http://www.sixapart.com/movabletype/docs/mtapi_mt.html>
+- "How to Write a Plugin": <http://www.sixapart.com/movabletype/docs/plugin-tut>
+- Accompanying article on weblog: <https://wincent.dev/a/about/wincent/weblog/archives/2007/03/using_mediawiki.php>

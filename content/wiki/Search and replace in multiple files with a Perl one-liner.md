@@ -43,10 +43,10 @@ ie:
 
 I recently needed to change all the occurrences of a string in a number of files. The following [perl one-liner](/wiki/perl_one-liner):
 
--   Makes backups of all of the files specified by the pattern, `files*`
--   Names the backups with a `.bak` extension
--   Searches for the string `find`
--   Replaces each match with the string `replace`
+- Makes backups of all of the files specified by the pattern, `files*`
+- Names the backups with a `.bak` extension
+- Searches for the string `find`
+- Replaces each match with the string `replace`
 
 <!-- -->
 

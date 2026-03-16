@@ -6,13 +6,13 @@ tags: rails wiki
 
 ## Official
 
--   <http://weblog.rubyonrails.com/>
+- <http://weblog.rubyonrails.com/>
 
 ## Others
 
--   Josh Susser: <http://blog.hasmanythrough.com/>
--   <http://blog.railsconsulting.com/>
+- Josh Susser: <http://blog.hasmanythrough.com/>
+- <http://blog.railsconsulting.com/>
 
 # Screencasts
 
--   <http://www.railscasts.com/> (free)
+- <http://www.railscasts.com/> (free)

@@ -6,4 +6,4 @@ A [Frequently Asked Question](/wiki/Frequently_Asked_Question) or [FAQ](/wiki/FA
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [FAQs](/wiki/FAQs): <http://en.wikipedia.org/wiki/FAQ>
+- [Wikipedia](/wiki/Wikipedia) article on [FAQs](/wiki/FAQs): <http://en.wikipedia.org/wiki/FAQ>

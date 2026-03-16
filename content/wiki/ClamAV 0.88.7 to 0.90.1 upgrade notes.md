@@ -8,11 +8,11 @@ I wanted to hold off on the [ClamAV](/wiki/ClamAV) upgrade for a while because i
 
 # Resources
 
--   [ClamAV](/wiki/ClamAV) source download page: <http://www.clamav.net/download/sources>
--   [ClamAV](/wiki/ClamAV) uninstallation notes: <http://wiki.clamav.net/Main/UninstallClamAV>
--   [ClamAV](/wiki/ClamAV) 0.90 upgrade notes: <http://wiki.clamav.net/Main/UpgradeNotes090>
--   [ClamAV](/wiki/ClamAV) 0.90.1 upgrade notes: <http://wiki.clamav.net/Main/UpgradeNotes0901>
--   [ClamAV](/wiki/ClamAV) configuration updater: <http://wiki.clamav.net/twiki/pub/Main/UpgradeNotes090/updateclamconf>
+- [ClamAV](/wiki/ClamAV) source download page: <http://www.clamav.net/download/sources>
+- [ClamAV](/wiki/ClamAV) uninstallation notes: <http://wiki.clamav.net/Main/UninstallClamAV>
+- [ClamAV](/wiki/ClamAV) 0.90 upgrade notes: <http://wiki.clamav.net/Main/UpgradeNotes090>
+- [ClamAV](/wiki/ClamAV) 0.90.1 upgrade notes: <http://wiki.clamav.net/Main/UpgradeNotes0901>
+- [ClamAV](/wiki/ClamAV) configuration updater: <http://wiki.clamav.net/twiki/pub/Main/UpgradeNotes090/updateclamconf>
 
 # Procedure
 
@@ -145,4 +145,4 @@ And restart the service to confirm that it works:
 
 # See also
 
--   Upgrade notes for last upgrade: "[ClamAV 0.88.6 to 0.88.7 upgrade notes](/wiki/ClamAV_0.88.6_to_0.88.7_upgrade_notes)"
+- Upgrade notes for last upgrade: "[ClamAV 0.88.6 to 0.88.7 upgrade notes](/wiki/ClamAV_0.88.6_to_0.88.7_upgrade_notes)"

@@ -7,9 +7,9 @@ In light of my [last hard reset](https://wincent.dev/a/about/wincent/weblog/arch
 
 Now that [Leopard](https://wincent.dev/wiki/Leopard) is out I've got a free partition (the one I previously used to install prerelease seeds). So after a bit of juggling around with the help of [SuperDuper!](https://wincent.dev/wiki/SuperDuper!), I've now got:
 
--   a minimal [Tiger](https://wincent.dev/wiki/Tiger) install on the small (20 GB) partition that I previously used for backups (I'll keep this around because at the moment Leopard doesn't properly support my Pioneer DVR-K06 burner)
--   a full daily backup of my Leopard startup volume to another partition, courtesy of SuperDuper!
--   the old seed partition, 60 GB, for other backups
+- a minimal [Tiger](https://wincent.dev/wiki/Tiger) install on the small (20 GB) partition that I previously used for backups (I'll keep this around because at the moment Leopard doesn't properly support my Pioneer DVR-K06 burner)
+- a full daily backup of my Leopard startup volume to another partition, courtesy of SuperDuper!
+- the old seed partition, 60 GB, for other backups
 
 In the past I was doing compressed, automated backups of my home directory 4 times a day (every 6 hours), to the partition onto which I've just installed Tiger. Now I've got 3 times as much space, so I'm going to do the backups 12 times a day (every 2 hours) instead. This is approaching the hard limit for the number of backups I could theoretically do in a day, given that each backup run currently takes about 1 hour 20 minutes.
 

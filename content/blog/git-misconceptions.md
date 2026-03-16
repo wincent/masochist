@@ -16,8 +16,8 @@ Both of these statements are incorrect, although Robey is evidently not alone in
 
 So let me try to briefly explain. `git rebase` is mostly intended for two very specific specific workflows:
 
--   Re-ordering or editing commits in your local repository prior to publishing them.
--   Making your commits apply cleanly on top of an upstream `HEAD`.
+- Re-ordering or editing commits in your local repository prior to publishing them.
+- Making your commits apply cleanly on top of an upstream `HEAD`.
 
 This first point is _not_ about "rewriting history" (gasp!) but more about refining and perfecting an existing work in progress. Think of the way you edit text in your text editor. Do you start from beginning to end, character by character, and keep going until you've finished without making any mistakes?
 

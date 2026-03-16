@@ -4,4 +4,4 @@ tags: transmit wiki
 
 # Official site
 
--   <https://panic.com/transmit/>
+- <https://panic.com/transmit/>

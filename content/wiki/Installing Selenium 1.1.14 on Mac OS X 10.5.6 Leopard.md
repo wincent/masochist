@@ -39,4 +39,4 @@ As [noted here](http://www.spacevatican.org/2008/9/27/selenium-and-firefox-3), t
 
 # See also
 
--   The reason why I'm installing this in the first place: [ticket \#1131](/issues/1131)
+- The reason why I'm installing this in the first place: [ticket \#1131](/issues/1131)

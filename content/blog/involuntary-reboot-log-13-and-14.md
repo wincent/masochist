@@ -29,11 +29,11 @@ On an up note, the tracking info for my order suggests that my Pioneer DVR-K06 h
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.10
--   **Kernel panics:** 6
--   **Hard resets:** 8
--   **Total failures:** 14
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 454 days
--   **Average time between failures:** 32 days
--   **Uptime at moment of failure(s):** several days, then less than 2 minutes
+- **Operating system version:** 10.4.10
+- **Kernel panics:** 6
+- **Hard resets:** 8
+- **Total failures:** 14
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 454 days
+- **Average time between failures:** 32 days
+- **Uptime at moment of failure(s):** several days, then less than 2 minutes

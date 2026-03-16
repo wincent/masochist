@@ -6,4 +6,4 @@ tags: wiki
 
 # Links
 
--   [Wikipedia](/wiki/Wikipedia) page on [boilerplate code](/wiki/boilerplate_code): <http://en.wikipedia.org/wiki/Boilerplate_(text>)
+- [Wikipedia](/wiki/Wikipedia) page on [boilerplate code](/wiki/boilerplate_code): <http://en.wikipedia.org/wiki/Boilerplate_(text>)

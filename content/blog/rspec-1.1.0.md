@@ -5,9 +5,9 @@ tags: blog
 
 The [release notes](http://rubyforge.org/frs/shownotes.php?release_id=17107) belie the scope of the changes in this [RSpec](https://wincent.dev/wiki/RSpec) release. It's been a long time, and this is a _huge_ release with, for me, three big things:
 
--   the "Story Runner"
--   nested example groups
--   total and seamless interoperability with Test::Unit
+- the "Story Runner"
+- nested example groups
+- total and seamless interoperability with Test::Unit
 
 David Chelimsky's [announcement posted to the mailing list](http://rubyforge.org/pipermail/rspec-users/2007-December/005009.html) gives a much clearer idea of the scope of the changes.
 

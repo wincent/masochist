@@ -141,4 +141,4 @@ As you can see, there were no significant changes to the file, so I revert it to
 
 # See also
 
--   [Upgrading to Spec::UI 0.2.3 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.3_on_Mac_OS_X_Tiger)
+- [Upgrading to Spec::UI 0.2.3 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.3_on_Mac_OS_X_Tiger)

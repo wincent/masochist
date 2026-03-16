@@ -8,4 +8,4 @@ tags: rhel centos wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) page on [CentOS](/wiki/CentOS): <http://en.wikipedia.org/wiki/CentOS>
+- [Wikipedia](/wiki/Wikipedia) page on [CentOS](/wiki/CentOS): <http://en.wikipedia.org/wiki/CentOS>

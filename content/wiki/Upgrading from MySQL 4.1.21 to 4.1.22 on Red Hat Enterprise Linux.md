@@ -5,7 +5,7 @@ title: Upgrading from MySQL 4.1.21 to 4.1.22 on Red Hat Enterprise Linux
 
 # The upgrade
 
--   Download: <http://dev.mysql.com/downloads/mysql/4.1.html>
+- Download: <http://dev.mysql.com/downloads/mysql/4.1.html>
 
 <!-- -->
 
@@ -19,20 +19,20 @@ title: Upgrading from MySQL 4.1.21 to 4.1.22 on Red Hat Enterprise Linux
       http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-devel-standard-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
       http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-standard-debuginfo-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/
 
--   Check [MD5](/wiki/MD5) checksums:
+- Check [MD5](/wiki/MD5) checksums:
 
 <!-- -->
 
     openssl md5 *
 
--   The standard shared libraries won't be installed, so stick them elsewhere:
+- The standard shared libraries won't be installed, so stick them elsewhere:
 
 <!-- -->
 
     mkdir not-installed
     mv MySQL-shared-standard-4.1.22-0.rhel3.i386.rpm not-installed/
 
--   Bearing in mind the missing shared compatibility libraries in the [last upgrade](/wiki/Upgrading_from_MySQL_4.1.20_to_4.1.21_on_Red_Hat_Enterprise_Linux), double-check the contents of the [RPM](/wiki/RPM):
+- Bearing in mind the missing shared compatibility libraries in the [last upgrade](/wiki/Upgrading_from_MySQL_4.1.20_to_4.1.21_on_Red_Hat_Enterprise_Linux), double-check the contents of the [RPM](/wiki/RPM):
 
 <!-- -->
 
@@ -57,7 +57,7 @@ Yields:
 
 So it appears that they are all there.
 
--   Perform a test run:
+- Perform a test run:
 
 <!-- -->
 
@@ -76,7 +76,7 @@ No problems:
     warning: MySQL-standard-debuginfo-4.1.22-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
     Preparing...                ########################################### [100%]
 
--   Perform the actual upgrade:
+- Perform the actual upgrade:
 
 <!-- -->
 
@@ -89,27 +89,27 @@ Downtime was less than 60 seconds.
 
 # Post-upgrade checks
 
--   Confirm that Apache and MySQL are running:
+- Confirm that Apache and MySQL are running:
 
 <!-- -->
 
     sudo service --status-all | grep httpd
     ps auxww | grep -i mysql
 
--   Try connecting to MySQL from the command line
--   Check that website works:
-    -   PHP + MySQL still works?
-    -   Perl + MySQL still works?
-    -   Python + Apache still works?
-    -   Regular HTTP still works?
-    -   HTTPS still works?
--   Check to see versions of installed RPMs:
+- Try connecting to MySQL from the command line
+- Check that website works:
+  - PHP + MySQL still works?
+  - Perl + MySQL still works?
+  - Python + Apache still works?
+  - Regular HTTP still works?
+  - HTTPS still works?
+- Check to see versions of installed RPMs:
 
 <!-- -->
 
     rpm -qa | grep -i mysql
 
--   Check that MySQL is still configured to start automatically at boot:
+- Check that MySQL is still configured to start automatically at boot:
 
 <!-- -->
 
@@ -117,4 +117,4 @@ Downtime was less than 60 seconds.
 
 # See also
 
--   [Upgrading MySQL on Red Hat Enterprise Linux](/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux)
+- [Upgrading MySQL on Red Hat Enterprise Linux](/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux)

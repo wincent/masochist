@@ -25,4 +25,4 @@ In other words, it is correctly offering up the compressed file give the right `
 
 # Source
 
--   <http://dev.nuclearrooster.com/2009/11/08/checking-gzipdeflate-server-responses-with-curl>
+- <http://dev.nuclearrooster.com/2009/11/08/checking-gzipdeflate-server-responses-with-curl>

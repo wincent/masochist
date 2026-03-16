@@ -19,6 +19,6 @@ tags: ragel wiki
 
 ## See also
 
--   Full changelog: <http://www.cs.queensu.ca/~thurston/ragel/ChangeLog>
--   Release notes: <http://www.cs.queensu.ca/~thurston/ragel/RELEASE_NOTES_V6>
--   [Upgrading to Ragel 6.1 on Mac OS X 10.5.2 Leopard](/wiki/Upgrading_to_Ragel_6.1_on_Mac_OS_X_10.5.2_Leopard)
+- Full changelog: <http://www.cs.queensu.ca/~thurston/ragel/ChangeLog>
+- Release notes: <http://www.cs.queensu.ca/~thurston/ragel/RELEASE_NOTES_V6>
+- [Upgrading to Ragel 6.1 on Mac OS X 10.5.2 Leopard](/wiki/Upgrading_to_Ragel_6.1_on_Mac_OS_X_10.5.2_Leopard)

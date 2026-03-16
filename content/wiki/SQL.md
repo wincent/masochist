@@ -6,4 +6,4 @@ tags: mysql development wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [SQL](/wiki/SQL): <http://en.wikipedia.org/wiki/SQL>
+- [Wikipedia](/wiki/Wikipedia) article on [SQL](/wiki/SQL): <http://en.wikipedia.org/wiki/SQL>

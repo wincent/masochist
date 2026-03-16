@@ -6,4 +6,4 @@ tags: zentest wiki
 
 # See also
 
--   [Upgrading to ZenTest 3.5.2 using RubyGems](/wiki/Upgrading_to_ZenTest_3.5.2_using_RubyGems)
+- [Upgrading to ZenTest 3.5.2 using RubyGems](/wiki/Upgrading_to_ZenTest_3.5.2_using_RubyGems)

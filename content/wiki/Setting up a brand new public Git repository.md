@@ -52,8 +52,8 @@ After setting up the empty mirror repos on [GitHub](/wiki/GitHub) and [Gitorious
 
 For the full low-down see:
 
--   [Setting up backup (mirror) repositories on GitHub](/wiki/Setting_up_backup_%28mirror%29_repositories_on_GitHub)
--   [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)
+- [Setting up backup (mirror) repositories on GitHub](/wiki/Setting_up_backup_%28mirror%29_repositories_on_GitHub)
+- [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)
 
 ## Rails application mirror
 
@@ -141,5 +141,5 @@ As another example, consider how I fixed a botched `git remote add origin` invoc
 
 # See also
 
--   [Going public with previously proprietary code](/wiki/Going_public_with_previously_proprietary_code)
--   [Setting up gitweb](/wiki/Setting_up_gitweb)
+- [Going public with previously proprietary code](/wiki/Going_public_with_previously_proprietary_code)
+- [Setting up gitweb](/wiki/Setting_up_gitweb)

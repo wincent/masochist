@@ -4,15 +4,15 @@ tags: red.hat perl wiki
 
 These notes were made while installing [Date::Calc 5.4](/wiki/Date%3a%3aCalc_5.4) on [RHEL 5.1](/wiki/RHEL_5.1). It has a fairly complex dependency hierarchy:
 
--   Date::Calc
-    -   Bit::Vector
-        -   Carp::Clan
-            -   Test::Exception
-                -   Sub::Uplevel
-                -   Test::Simple
-                -   Test::More (installed with Test::Simple)
-                -   Test::Builder (installed with Test::Simple)
-                -   Test::Builder::Tester (installed with Test::Simple)
+- Date::Calc
+  - Bit::Vector
+    - Carp::Clan
+      - Test::Exception
+        - Sub::Uplevel
+        - Test::Simple
+        - Test::More (installed with Test::Simple)
+        - Test::Builder (installed with Test::Simple)
+        - Test::Builder::Tester (installed with Test::Simple)
 
 So these have to be installed in reverse order.
 

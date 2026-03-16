@@ -5,8 +5,8 @@ tags: blog
 
 The other day I [wrote](https://wincent.dev/a/about/wincent/weblog/archives/2007/10/mail_as_a_time.php) about how much time I waste each month on dealing with spam messages; specifically with training [SpamAssassin](https://wincent.dev/wiki/SpamAssassin) to learn from its mistakes. [Scott Guelich](http://guelich.net/) wrote in with a couple of suggestions to trim some time off the process:
 
--   Take your wrapper script (the one that invokes `sa-learn`) and set it up in a cron job so that you don't have to manually run it when you want to train bad messages.
--   Have the wrapper delete messages once processed.
+- Take your wrapper script (the one that invokes `sa-learn`) and set it up in a cron job so that you don't have to manually run it when you want to train bad messages.
+- Have the wrapper delete messages once processed.
 
 So in my case this means setting up a couple of new crontab entries that look something like this:
 

@@ -57,4 +57,4 @@ These notes were made while upgrading to [rubyforge 0.4.2](/wiki/rubyforge_0.4.2
 
 # See also
 
--   Official release announcement: <http://blog.zenspider.com/archives/2007/05/rubyforge_version_042_has_been_released.html>
+- Official release announcement: <http://blog.zenspider.com/archives/2007/05/rubyforge_version_042_has_been_released.html>

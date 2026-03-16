@@ -4,4 +4,4 @@ tags: testing javascript wiki
 
 # Official site
 
--   <http://visionmedia.github.com/jspec/>
+- <http://visionmedia.github.com/jspec/>

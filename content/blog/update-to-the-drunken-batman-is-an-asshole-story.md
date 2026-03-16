@@ -100,9 +100,9 @@ We'll he's wrong about that too. I am not the delusional retard that he implies.
 
 "Mr Batman" helpfully provides a PDF of my original article "in case it goes away", but I don't have anything to hide; in light of this new information I've made the following edits to my original article:
 
--   Changed "_the guy whose ugly mug you can see pictured on the right_" to "_pictured on the right_"; I only added that in after I received the attack emails, but given that they apparently were not from him I'll tone it down (no need to impugn his looks).
--   Added a note and a link to back to this update.
--   Inserted "or someone purporting to be him" in the description of the attack emails.
+- Changed "_the guy whose ugly mug you can see pictured on the right_" to "_pictured on the right_"; I only added that in after I received the attack emails, but given that they apparently were not from him I'll tone it down (no need to impugn his looks).
+- Added a note and a link to back to this update.
+- Inserted "or someone purporting to be him" in the description of the attack emails.
 
 #### Changes that won't be made to the original article
 

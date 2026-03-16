@@ -46,16 +46,16 @@ This is the method that I've come up with to implement this pattern:
 
 Observations:
 
--   It's provided in a category on `NSThread` for ease of use.
--   The pattern should be familiar to anyone who has used Cocoa's `detachNewThreadSelector:toTarget:withObject:`.
--   I use `NSInvocation` as it allows me to neatly encapsulate the target, selector, arguments and return value.
--   If `interval` is zero the calling thread won't wait/block at all.
--   If `target` is zero then no callback will take place.
--   Returns YES if the thread returned before the time limit was reached (in which case the caller knows there's no need to expect a callback).
--   Returns NO if the thread did not return before the time limit (in which case the caller knows whether to expect a callback).
--   The callback method should accept a single argument of type `NSInvocation`; it will be passed the original invocation.
--   The method can be called from any thread, not just the main thread.
--   No ugly kludges or inefficient techniques required (polling, spinlocks).
+- It's provided in a category on `NSThread` for ease of use.
+- The pattern should be familiar to anyone who has used Cocoa's `detachNewThreadSelector:toTarget:withObject:`.
+- I use `NSInvocation` as it allows me to neatly encapsulate the target, selector, arguments and return value.
+- If `interval` is zero the calling thread won't wait/block at all.
+- If `target` is zero then no callback will take place.
+- Returns YES if the thread returned before the time limit was reached (in which case the caller knows there's no need to expect a callback).
+- Returns NO if the thread did not return before the time limit (in which case the caller knows whether to expect a callback).
+- The callback method should accept a single argument of type `NSInvocation`; it will be passed the original invocation.
+- The method can be called from any thread, not just the main thread.
+- No ugly kludges or inefficient techniques required (polling, spinlocks).
 
 All in all I am fairly happy with the design and I think it will help me to make some very nice code. Basically, this is ideal for Apple Event communication between Synergy Advance and iTunes; most of the time iTunes responds to Apple Events almost immediately, but at other times (for example, when you have the preferences window open) it will delay for extremely long periods. This method allows me to use a simple communications model most of the time but fall back to the more complicated (multi-threaded/callback) model when required.
 

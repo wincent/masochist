@@ -7,8 +7,8 @@ cache_breaker: 1
 
 # Official site
 
--   <http://replacefixtures.rubyforge.org/>
+- <http://replacefixtures.rubyforge.org/>
 
 # See also
 
--   [FixtureReplacement cheatsheet](/wiki/FixtureReplacement_cheatsheet)
+- [FixtureReplacement cheatsheet](/wiki/FixtureReplacement_cheatsheet)

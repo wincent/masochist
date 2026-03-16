@@ -5,13 +5,13 @@ title: GPG key rotation notes
 
 # Executive summary
 
--   **Have one primary key per "identity".** That generally means one tied to your personal email address and one tied to your work address. (We want the work one separate so it can be revoked if you leave your job.)
--   **Keep an expiry date on your primary key(s).** This is a "dead-person switch"; you can change the expiry date at will — there is no need to generate a new key.
--   **Keep the primary key(s) "offline".** As in, keep them in 1Password, and keep only the subkeys on your system(s).
--   **It's ok to have your subkeys on multiple machines.** If you must revoke a key, do it. You will need to put a new subkey on all machines. That's ok. Don't try to use a separate identity for each machine; use your personal identity on all personal machines and your work identity on all work machines.
--   **Use the default encryption subkey.** GPG will make an encryption subkey by default when you create your primary key; just use that. When the subkey expires, then you will create a new encryption subkey.
--   **Create a signing subkey if you need to.** A primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.[^work]
--   **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys (not just for GPG keys, but also for [SSH key rotations](/wiki/SSH_key_rotation_notes) as well) so that you can refresh them all at the same time. That generally means updating the expiry on your personal and work primary keys, and generating new encryption (and possibly signing) subkeys. Anywhere between 1 and 5 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update), depending on how good your notes are. I initially rotated every year, then switched to 2-year expiry dates, and eventually decided to move to 5-year expiry dates.
+- **Have one primary key per "identity".** That generally means one tied to your personal email address and one tied to your work address. (We want the work one separate so it can be revoked if you leave your job.)
+- **Keep an expiry date on your primary key(s).** This is a "dead-person switch"; you can change the expiry date at will — there is no need to generate a new key.
+- **Keep the primary key(s) "offline".** As in, keep them in 1Password, and keep only the subkeys on your system(s).
+- **It's ok to have your subkeys on multiple machines.** If you must revoke a key, do it. You will need to put a new subkey on all machines. That's ok. Don't try to use a separate identity for each machine; use your personal identity on all personal machines and your work identity on all work machines.
+- **Use the default encryption subkey.** GPG will make an encryption subkey by default when you create your primary key; just use that. When the subkey expires, then you will create a new encryption subkey.
+- **Create a signing subkey if you need to.** A primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.[^work]
+- **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys (not just for GPG keys, but also for [SSH key rotations](/wiki/SSH_key_rotation_notes) as well) so that you can refresh them all at the same time. That generally means updating the expiry on your personal and work primary keys, and generating new encryption (and possibly signing) subkeys. Anywhere between 1 and 5 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update), depending on how good your notes are. I initially rotated every year, then switched to 2-year expiry dates, and eventually decided to move to 5-year expiry dates.
 
 [^work]: ~~On my work machine, I don't use a signing key and I don't sign Git commits (I don't even _have_ a signing subkey). This is because most of my work is done on Codespaces, and getting GPG keys working there is a speed bump I'd rather avoid at this time (writing this in June 2022). For my personal machines, I do have a signing key.~~ This is no longer true; I have signing keys on both work and personal machines (but I still don't sign commits on Codespaces; in fact, since leaving GitHub at the end of May 2024, I don't use Codespaces at all).
 
@@ -208,11 +208,11 @@ $ bin/git-cipher init --force
 
 Update keys at SCM hosts; in all cases, have to delete the old keys first or the sites will complain about duplicates (2025 is the first time this has been true for _all_):
 
--   [GitHub GPG settings](https://github.com/settings/gpg/new)
--   [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys)
--   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys) (but note that Atlassian won't let me upload my work key as I haven't associated my work email address with my Atlassian account, and it won't let me associate it because it claims the address is already in use by "another user")
--   [Source Hut key settings](https://meta.sr.ht/keys)
--   [Codeberg key settings](https://codeberg.org/user/settings/keys) (note that at Codeberg, you can additionally "verify" your key by signing a challenge with it)
+- [GitHub GPG settings](https://github.com/settings/gpg/new)
+- [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys)
+- [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys) (but note that Atlassian won't let me upload my work key as I haven't associated my work email address with my Atlassian account, and it won't let me associate it because it claims the address is already in use by "another user")
+- [Source Hut key settings](https://meta.sr.ht/keys)
+- [Codeberg key settings](https://codeberg.org/user/settings/keys) (note that at Codeberg, you can additionally "verify" your key by signing a challenge with it)
 
 Next, on personal machine, grab new version of work key and confirm it worked:
 
@@ -377,11 +377,11 @@ gpg --export-secret-keys --armor --output 0xF962DC1A1941CCC4.asc 0xF962DC1A1941C
 
 We update the key in these places:
 
--   [GitHub GPG settings](https://github.com/settings/gpg/new) (delete old version of keys first)
--   [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys) (delete old version of keys first)
--   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys) (delete old version of key first; also note that Atlassian won't let me add my work key because that email is not associated with my account, and it won't let me associate it with my account, because it is already in use by "another user")
--   [Source Hut key settings](https://meta.sr.ht/keys) (delete old version of keys first)
--   [Codeberg key settings](https://codeberg.org/user/settings/keys) (delete old version of keys first; additionally, at Codeberg we can "verify" the keys by using them to sign a challenge)
+- [GitHub GPG settings](https://github.com/settings/gpg/new) (delete old version of keys first)
+- [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys) (delete old version of keys first)
+- [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys) (delete old version of key first; also note that Atlassian won't let me add my work key because that email is not associated with my account, and it won't let me associate it with my account, because it is already in use by "another user")
+- [Source Hut key settings](https://meta.sr.ht/keys) (delete old version of keys first)
+- [Codeberg key settings](https://codeberg.org/user/settings/keys) (delete old version of keys first; additionally, at Codeberg we can "verify" the keys by using them to sign a challenge)
 
 We try to update my dotfiles secrets, but that fails at first with:
 
@@ -462,9 +462,9 @@ ssb  rsa4096/424385B611E36E91
 [expired] (1). Greg Hurrell <wincent@github.com>
 ```
 
--   Normally, when you create a key you get a `sec` (secret) primary key which is also a signing key (usage `SC`: `S` for signing and `C` for primary). By default a `ssb` (subkey) key is also generated, with usage `E` (encryption).
--   Here we see no `sec`, only a `pub` (public) key, which is the public part of the primary key; usage `SC` means signing/primary key; the private part of this key is offline in 1Password.
--   `ssb` is the standard sub-key, usage `E` means encryption.
+- Normally, when you create a key you get a `sec` (secret) primary key which is also a signing key (usage `SC`: `S` for signing and `C` for primary). By default a `ssb` (subkey) key is also generated, with usage `E` (encryption).
+- Here we see no `sec`, only a `pub` (public) key, which is the public part of the primary key; usage `SC` means signing/primary key; the private part of this key is offline in 1Password.
+- `ssb` is the standard sub-key, usage `E` means encryption.
 
 So, our goal then is to:
 
@@ -577,7 +577,7 @@ gpg> save
 Repeat the `addkey` command to create a new signing subkey as well. This time, you'll choose:
 
 ```
-   (4) RSA (sign only)
+(4) RSA (sign only)
 ```
 
 Now, publish:
@@ -624,11 +624,11 @@ Jew5lkkOc3gMW6I0e6ELMHERV6Yfy+HvA2O5/ThU19aOzMnGFkKDFFdQh48bdw==
 
 Which we paste into:
 
--   [GitHub GPG settings](https://github.com/settings/gpg/new)
--   [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys)
--   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys)
--   [Source Hut key settings](https://meta.sr.ht/keys)
--   [Codeberg key settings](https://codeberg.org/user/settings/keys) (additionally, Codeberg offers you the ability to "verify" the key by using it to sign a token).
+- [GitHub GPG settings](https://github.com/settings/gpg/new)
+- [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys)
+- [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys)
+- [Source Hut key settings](https://meta.sr.ht/keys)
+- [Codeberg key settings](https://codeberg.org/user/settings/keys) (additionally, Codeberg offers you the ability to "verify" the key by using it to sign a token).
 
 **Note:** You have to delete the old version of the key from the UI _first_ before adding the new version in GitHub, GitLab, and Codeberg, otherwise they declare it is a duplicate. Source Hut is the odd one out here, letting you add the new version of the key without deleting the old one.
 
@@ -699,8 +699,8 @@ ssb  rsa4096/568F2553F25CB8CF
 [ultimate] (1). Greg Hurrell <wincent@github.com>
 ```
 
--   We see `pub` (public) instead of `sec` (secret), indicating that our primary secret key is now offline.
--   We see our expired and unexpired `E` (encryption) subkeys, as well as our expired and unexpired `S` (signing) subkeys.
+- We see `pub` (public) instead of `sec` (secret), indicating that our primary secret key is now offline.
+- We see our expired and unexpired `E` (encryption) subkeys, as well as our expired and unexpired `S` (signing) subkeys.
 
 The main reason I even have this key is so that I can encrypt and decrypt sensitive dotfiles in public repos, so let's test that out.
 
@@ -1017,9 +1017,9 @@ ssb   rsa4096/F3B7FB88B7466831 2022-06-11 [E] [expires: 2023-06-11]
 
 You can either:
 
--   Make the commit with an explicit ID; eg. `git commit -S4282ED4A05CC894D53A541C3F962DC1A1941CCC4` (note the explicit use of the primary key ID, even though it is offline — Git/GPG know to select the last-created signing subkey ID instead, which would be ID `70516DBB88E4F779`).
--   In my testing, `git commit -S` with no argument works too; GPG guesses the right default secret key.
--   Skip the `-S` entirely because we have `git config --global commit.gpgSign true` set.
+- Make the commit with an explicit ID; eg. `git commit -S4282ED4A05CC894D53A541C3F962DC1A1941CCC4` (note the explicit use of the primary key ID, even though it is offline — Git/GPG know to select the last-created signing subkey ID instead, which would be ID `70516DBB88E4F779`).
+- In my testing, `git commit -S` with no argument works too; GPG guesses the right default secret key.
+- Skip the `-S` entirely because we have `git config --global commit.gpgSign true` set.
 
 This test shows that the right (primary) key is automatically chosen:
 
@@ -1100,14 +1100,14 @@ Actually, I'm persuaded by [this argument](https://riseup.net/en/security/messag
 
 So what I am going to do is:
 
--   (Preliminary: clean out old private primary keys)
--   Leave the expiry date on my current primary key.
--   Generate a revocation certificate and store it somewhere pretty safe (eg. 1Password).
--   Optionally, create a new subkey for encryption (note: [primary key is a signing key, and an encryption subkey is automatically generated](https://wiki.debian.org/Subkeys), so can actually just use that).
--   Create a revocation certificate for that too, for good measure (again, in 1Password).
--   Store my primary key offline (again, in somewhere like 1Password).
--   Update primary key expiry date before it expires.
--   When expiry date on encryption subkey expires, rotate that (don't need to extend that one; can just rotate).
+- (Preliminary: clean out old private primary keys)
+- Leave the expiry date on my current primary key.
+- Generate a revocation certificate and store it somewhere pretty safe (eg. 1Password).
+- Optionally, create a new subkey for encryption (note: [primary key is a signing key, and an encryption subkey is automatically generated](https://wiki.debian.org/Subkeys), so can actually just use that).
+- Create a revocation certificate for that too, for good measure (again, in 1Password).
+- Store my primary key offline (again, in somewhere like 1Password).
+- Update primary key expiry date before it expires.
+- When expiry date on encryption subkey expires, rotate that (don't need to extend that one; can just rotate).
 
 I also would like to have separate keys per machine, but in order to do that, I can't really use subkeys in a convenient way (GnuPG will default to using the newest one). What I could do, is have a _separate primary key_ (different email address) for my work machine, and sign that with the primary key. Or I could just make subkeys with a short expiration date and put them on both machines (that might be easier).
 
@@ -1369,8 +1369,8 @@ gpg --edit-key 0xF962DC1A1941CCC4
 
 ## See also
 
--   [My Twitter thread discussing this](https://twitter.com/wincent/status/1049976519978864640)
--   [Why expiry dates on master keys don't improve security](https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security/79386#79386) (answer on Stack Exchange from [Jens Erat](https://superuser.com/users/102155/jens-erat)).
--   [Notes on key transitions in general](https://superuser.com/questions/613859/how-to-migrate-my-old-pgp-key-to-a-more-secure-algorithm/613926#613926) (again from Jens Erat).
--   [Examples of key transition statements](https://github.com/thenaterhood/gpg-key-transition-statements)
--   [Passphrase rotation notes](/wiki/Passphrase_rotation_notes)
+- [My Twitter thread discussing this](https://twitter.com/wincent/status/1049976519978864640)
+- [Why expiry dates on master keys don't improve security](https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security/79386#79386) (answer on Stack Exchange from [Jens Erat](https://superuser.com/users/102155/jens-erat)).
+- [Notes on key transitions in general](https://superuser.com/questions/613859/how-to-migrate-my-old-pgp-key-to-a-more-secure-algorithm/613926#613926) (again from Jens Erat).
+- [Examples of key transition statements](https://github.com/thenaterhood/gpg-key-transition-statements)
+- [Passphrase rotation notes](/wiki/Passphrase_rotation_notes)

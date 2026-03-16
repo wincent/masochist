@@ -11,10 +11,10 @@ This page contains some brief notes on a number of the specific techniques that 
 
 In picking a "trusted" deployment solution you want to evaluate your options using common-sense criteria like:
 
--   reputation
--   level of testedness
--   history (previous security issues, response times, handling of vulnerabilities)
--   widespread deployment (popularity and a wider installed base _may_ also bring with it more extensive testing and a more active developer community)
+- reputation
+- level of testedness
+- history (previous security issues, response times, handling of vulnerabilities)
+- widespread deployment (popularity and a wider installed base _may_ also bring with it more extensive testing and a more active developer community)
 
 At the moment, by these criteria the most "trusted" and reliable tools are probably [nginx](/wiki/nginx) (front-end HTTP web server, load balancer and proxy), [Mongrel](/wiki/Mongrel) (application server) and [monit](/wiki/monit) (process monitoring). There _are_ upcoming contenders out there (especially in the application server arena) but if you're serious about stability you'll wait for these things to pan out and for the time-being will stick with the most tried-and-tested tools. These things _do_ occasionally change; [nginx](/wiki/nginx), for example, has only recently displaced [Apache](/wiki/Apache) as the front-end preferred by people "in the know".
 
@@ -129,9 +129,9 @@ If the input is coming from a form, passing in `really_delete_all_records` is tr
 
 There are many, many techniques that can be applied, so I'll update this page with those in the future. Some of the things I'd like to cover include:
 
--   Input sanitization
-    -   SQL injection
--   Output sanitization (in views)
--   Using the [Rails](/wiki/Rails) provided countermeasures, like `protect_from_forgery`
--   Don't trust _any_ user input, even in [cookies](/wiki/cookies)
--   Don't put sensitive stuff in the session if you're using [cookie](/wiki/cookie)-based sessions
+- Input sanitization
+  - SQL injection
+- Output sanitization (in views)
+- Using the [Rails](/wiki/Rails) provided countermeasures, like `protect_from_forgery`
+- Don't trust _any_ user input, even in [cookies](/wiki/cookies)
+- Don't put sensitive stuff in the session if you're using [cookie](/wiki/cookie)-based sessions

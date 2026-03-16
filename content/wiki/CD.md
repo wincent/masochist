@@ -6,4 +6,4 @@ The [CD](/wiki/CD) or [Compact Disc](/wiki/Compact_Disc) is a common data and au
 
 ## See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [CDs](/wiki/CDs): <http://en.wikipedia.org/wiki/CD>
+- [Wikipedia](/wiki/Wikipedia) article on [CDs](/wiki/CDs): <http://en.wikipedia.org/wiki/CD>

@@ -81,17 +81,17 @@ Looking a little deeper, the reason why things were broken is found [here](http:
 
 Now let's look at the remaining warnings. The message for the first one isn't very helpful, seeing as line 25 corresponds to this part of the configuration file, where there are no obvious defects:
 
-        16   gzip on;
-        17   gzip_types text/plain
-        18              text/html
-        19              text/javascript
-        20              text/css
-        21              text/xml
-        22              application/x-javascript
-        23              application/xml
-        24              application/xml+atom
-        25              application/xml+rss;
-        26   gzip_proxied any; # default is "off" (no compression on proxied requests)
+    16   gzip on;
+    17   gzip_types text/plain
+    18              text/html
+    19              text/javascript
+    20              text/css
+    21              text/xml
+    22              application/x-javascript
+    23              application/xml
+    24              application/xml+atom
+    25              application/xml+rss;
+    26   gzip_proxied any; # default is "off" (no compression on proxied requests)
 
 So start by fixing the first one and retrying:
 
@@ -103,9 +103,9 @@ nginx not running: starting
 
 As for the second one, commenting out the `text/html` in the `gzip_types` directive makes it go away. Looks like this is expected:
 
--   <http://forum.slicehost.com/comments.php?DiscussionID=3763>
--   <http://www.ruby-forum.com/topic/163928>
+- <http://forum.slicehost.com/comments.php?DiscussionID=3763>
+- <http://www.ruby-forum.com/topic/163928>
 
 # See also
 
--   [Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_nginx_0.7.61_on_Red_Hat_Enterprise_Linux_5.3)
+- [Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_nginx_0.7.61_on_Red_Hat_Enterprise_Linux_5.3)

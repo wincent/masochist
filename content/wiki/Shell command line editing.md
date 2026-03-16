@@ -7,22 +7,22 @@ This is a list of useful editing commands available in the [Bash](/wiki/Bash) sh
 
 # Movement
 
--   `<C-a>`: move to start of line
--   `<C-e>`: move to end of line
+- `<C-a>`: move to start of line
+- `<C-e>`: move to end of line
 
 # Cutting and pasting
 
--   `<C-k>`: kill (cut) from cursor to end of line
--   `<C-w>`: kill (cut) from cursor to previous whitespace
--   `<C-y>`: yank (paste) previously killed text at cursor
+- `<C-k>`: kill (cut) from cursor to end of line
+- `<C-w>`: kill (cut) from cursor to previous whitespace
+- `<C-y>`: yank (paste) previously killed text at cursor
 
 # Other
 
--   `<C-l>`: clear screen, reprinting current line at top
--   `<C-u>`: undo last edit
+- `<C-l>`: clear screen, reprinting current line at top
+- `<C-u>`: undo last edit
 
 # Redundant commands
 
--   `<C-b>`: move back one character (equivalent to left cursor)
--   `<C-f>`: move forward one character (equivalent to right cursor)
--   `<C-d>`: delete character under cursor (equivalent to delete)
+- `<C-b>`: move back one character (equivalent to left cursor)
+- `<C-f>`: move forward one character (equivalent to right cursor)
+- `<C-d>`: delete character under cursor (equivalent to delete)

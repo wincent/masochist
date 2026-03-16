@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [MD5](/wiki/MD5): <http://en.wikipedia.org/wiki/MD5>
+- [Wikipedia](/wiki/Wikipedia) article on [MD5](/wiki/MD5): <http://en.wikipedia.org/wiki/MD5>

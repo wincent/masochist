@@ -47,11 +47,11 @@ A minimal test script showed that the problem wasn't in [Git](/wiki/Git):
 
 After much [Googling](/wiki/Googling) I finally found [this diamond](http://www.cpanforum.com/threads/3706) among the many posts complaining about `Net::SMTP::SSL` not working and offering advice of differing levels of usefulness:
 
--   "[run with warnings](http://robertmaldon.blogspot.com/2006/10/sending-email-through-google-smtp-from.html)" (`perl -w script_name`)
--   "run under the debugger" (`perl -w script_name`)
--   "Same here. Exact same error message. My research has led me nowhere to debug that.", "No freaking idea": <http://www.perlmonks.org/?node_id=573827>
--   "Net::SMTP::SSL would always return a null object (still haven't figured this out)": ([Google cache link](http://209.85.129.104/search?q=cache:nrEum8313okJ:www.theantibox.com/2007/02/smtp-and-google.html+smtp.gmail.com+net::smtp::ssl&hl=es&ct=clnk&cd=5&client=safari))
--   "[smtp.gmail.com requires all these authentication things to work](http://ubuntuforums.org/archive/index.php/t-336496.html)"
+- "[run with warnings](http://robertmaldon.blogspot.com/2006/10/sending-email-through-google-smtp-from.html)" (`perl -w script_name`)
+- "run under the debugger" (`perl -w script_name`)
+- "Same here. Exact same error message. My research has led me nowhere to debug that.", "No freaking idea": <http://www.perlmonks.org/?node_id=573827>
+- "Net::SMTP::SSL would always return a null object (still haven't figured this out)": ([Google cache link](http://209.85.129.104/search?q=cache:nrEum8313okJ:www.theantibox.com/2007/02/smtp-and-google.html+smtp.gmail.com+net::smtp::ssl&hl=es&ct=clnk&cd=5&client=safari))
+- "[smtp.gmail.com requires all these authentication things to work](http://ubuntuforums.org/archive/index.php/t-336496.html)"
 
 The meat of the problem is here:
 
@@ -222,6 +222,6 @@ And everything works fine.
 
 # See also
 
--   [Git quickstart](/wiki/Git_quickstart)
--   [Git recipes](/wiki/Git_recipes)
--   [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
+- [Git quickstart](/wiki/Git_quickstart)
+- [Git recipes](/wiki/Git_recipes)
+- [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)

@@ -15,5 +15,7 @@ Height limits:
 - Lower height limit: 65cm[^lower]
 
 [^parked]: High enough to shove the chair under the desk, when I'm not using the desk.
+
 [^higher]: Desk could go higher, but cables plugged into the back of the computer aren't long enough.
+
 [^lower]: Desk could go lower, but computer under the desk is in the way.

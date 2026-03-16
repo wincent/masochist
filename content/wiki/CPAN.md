@@ -24,7 +24,7 @@ Or alternatively:
 
 # See also
 
--   Official [CPAN](/wiki/CPAN) site: <http://www.cpan.org/>
--   [Wikipedia](/wiki/Wikipedia) article on the [CPAN](/wiki/CPAN): <http://en.wikipedia.org/wiki/CPAN>
--   "Life with CPAN": <http://sial.org/howto/perl/life-with-cpan/>
--   [Finding out which CPAN modules are installed](/wiki/Finding_out_which_CPAN_modules_are_installed)
+- Official [CPAN](/wiki/CPAN) site: <http://www.cpan.org/>
+- [Wikipedia](/wiki/Wikipedia) article on the [CPAN](/wiki/CPAN): <http://en.wikipedia.org/wiki/CPAN>
+- "Life with CPAN": <http://sial.org/howto/perl/life-with-cpan/>
+- [Finding out which CPAN modules are installed](/wiki/Finding_out_which_CPAN_modules_are_installed)

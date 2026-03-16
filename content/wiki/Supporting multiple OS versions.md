@@ -8,13 +8,13 @@ In this strategy you just drop support for older versions and start building for
 
 ## Pros
 
--   Easiest of the migration strategies
--   A single version works for all users
+- Easiest of the migration strategies
+- A single version works for all users
 
 ## Cons
 
--   Effectively abandons users running older OS versions
--   Reduces the market segment of potential buyers
+- Effectively abandons users running older OS versions
+- Reduces the market segment of potential buyers
 
 # Lowest common denominator approach
 
@@ -22,12 +22,12 @@ In this approach you build for all versions of the OS but limit yourself to feat
 
 ## Pros
 
--   Relatively easy from a technical standpoint
--   A single version works for all users
+- Relatively easy from a technical standpoint
+- A single version works for all users
 
 ## Cons
 
--   Limits what you software can do
+- Limits what you software can do
 
 # Weak-linking
 
@@ -35,14 +35,14 @@ In this approach your app will build and run on multiple OS versions, but before
 
 ## Pros
 
--   Flexible
--   A single version works for all users
+- Flexible
+- A single version works for all users
 
 ## Cons
 
--   Requires extra work checking for symbol availability
--   Your nibs still have to operate in "lowest common denominator" mode, because weak-linking only applies to symbols
--   If used to provide a different feature set depending on the OS, may cause user confusion and additional support queries; at the very least requires you to maintain documentation about the differences when running on different versions
+- Requires extra work checking for symbol availability
+- Your nibs still have to operate in "lowest common denominator" mode, because weak-linking only applies to symbols
+- If used to provide a different feature set depending on the OS, may cause user confusion and additional support queries; at the very least requires you to maintain documentation about the differences when running on different versions
 
 # Bundle-loading tricks
 
@@ -50,13 +50,13 @@ In this technique you restrict version-specific functionality to separate bundle
 
 ## Pros
 
--   Gets around the symbol-only limitations of weak-linking
--   A single version shipped to all users
+- Gets around the symbol-only limitations of weak-linking
+- A single version shipped to all users
 
 ## Cons
 
--   Increases the complexity of your project
--   As per weak-linking, if you feature set varies according to OS, may cause user confusion and additional support queries; at the very least requires you to maintain documentation about the differences when running on different versions
+- Increases the complexity of your project
+- As per weak-linking, if you feature set varies according to OS, may cause user confusion and additional support queries; at the very least requires you to maintain documentation about the differences when running on different versions
 
 # Run-time checks
 
@@ -64,11 +64,11 @@ Really just a more general statement of the "Bundle-loading tricks" and "Weak-li
 
 ## Pros
 
--   A single version shipped to all users
+- A single version shipped to all users
 
 ## Cons
 
--   Same as for weak-linking and bundle-loading tricks
+- Same as for weak-linking and bundle-loading tricks
 
 # Multiple targets
 
@@ -76,13 +76,13 @@ In this approach you define multiple targets in your project, one for each OS ve
 
 ## Pros
 
--   Almost like having multiple branches (see below) without the overhead of actually having them
+- Almost like having multiple branches (see below) without the overhead of actually having them
 
 ## Cons
 
--   Can make source files longer and harder to read because of more alternative code paths
--   Some administrative overhead in setting up the targets
--   No longer shipping a single version to all users, so must maintain separate download links as well as information about the different versions
+- Can make source files longer and harder to read because of more alternative code paths
+- Some administrative overhead in setting up the targets
+- No longer shipping a single version to all users, so must maintain separate download links as well as information about the different versions
 
 # Multiple branches
 
@@ -90,13 +90,13 @@ In this technique you maintain two (or more) separate codebases for each version
 
 ## Pros
 
--   Precisely matches your code against the operating system it runs on
--   Trades complexity outside your project (managing multiple branches in your repository and multiple working copies on your hard drive) for simplicity within the project (each branch can have simpler code in it because most if not all runtime checks can be eliminated)
+- Precisely matches your code against the operating system it runs on
+- Trades complexity outside your project (managing multiple branches in your repository and multiple working copies on your hard drive) for simplicity within the project (each branch can have simpler code in it because most if not all runtime checks can be eliminated)
 
 ## Cons
 
--   Extra work required to maintain older branches; in the real-world older branches usually just get put in maintenance mode (bug fixes only) and all real feature work goes on in the main trunk.
--   As with the "multiple targets" method, you are no longer shipping a single version to all users so must maintain separate download links as well as information about the different versions
+- Extra work required to maintain older branches; in the real-world older branches usually just get put in maintenance mode (bug fixes only) and all real feature work goes on in the main trunk.
+- As with the "multiple targets" method, you are no longer shipping a single version to all users so must maintain separate download links as well as information about the different versions
 
 # Concluding comments
 
@@ -104,4 +104,4 @@ Each approach has its pros and cons, and the importance of each will vary accord
 
 # See also
 
--   [Frameworks: pros and cons](/wiki/Frameworks%3a_pros_and_cons)
+- [Frameworks: pros and cons](/wiki/Frameworks%3a_pros_and_cons)

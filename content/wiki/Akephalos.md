@@ -9,4 +9,4 @@ Unfortunately, Akephalos now looks to be abandonware. Luckily, even nicer things
 
 # Official site
 
--   <http://github.com/bernerdschaefer/akephalos>
+- <http://github.com/bernerdschaefer/akephalos>

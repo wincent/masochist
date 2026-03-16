@@ -6,4 +6,4 @@ tags: dns nettica wiki
 
 # See also
 
--   Official site: <http://nettica.com/>
+- Official site: <http://nettica.com/>

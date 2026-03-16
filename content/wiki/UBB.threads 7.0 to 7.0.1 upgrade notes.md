@@ -2,10 +2,10 @@
 tags: ubb.threads wiki
 ---
 
--   In control panel, close the forums
--   Backup database
--   Backup installed files
--   Upload all files/folders except for the `includes`, `styles` and `cache_builders/custom` directories.
+- In control panel, close the forums
+- Backup database
+- Backup installed files
+- Upload all files/folders except for the `includes`, `styles` and `cache_builders/custom` directories.
 
 In reality, this step wasn't so easy as I was prevented performing the upload due to permissions errors. I then tried manually deleting the old files but was again thwarted by permissions errors. Finally, I had to [SSH](/wiki/SSH) into the server and remove the directories using root privileges.
 
@@ -35,16 +35,16 @@ So after uploading it is necessary to re-establish the ownership and permissions
     sudo chmod 666 styles/*.php styles/*.css
     sudo chown -R apache_user:apache_group *
 
--   Run the upgrade script `install/upgrade.php` from within the browser
--   Remove the `install` directory from the server
+- Run the upgrade script `install/upgrade.php` from within the browser
+- Remove the `install` directory from the server
 
 <!-- -->
 
     sudo rm -rf install
 
--   Open the forums again
+- Open the forums again
 
 # See also
 
--   Upgrade notes for 7.0 series: <http://www.ubbcentral.com/doc_upgrade7.php>
--   Permissions notes: <http://www.ubbcentral.com/doc_install.php>
+- Upgrade notes for 7.0 series: <http://www.ubbcentral.com/doc_upgrade7.php>
+- Permissions notes: <http://www.ubbcentral.com/doc_install.php>

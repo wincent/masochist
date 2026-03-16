@@ -12,11 +12,11 @@ Most of these a code-level changes with little impact at the user-interface leve
 
 Some noteworthy changes for public visitors are:
 
--   You can now open tickets with only a summary (no description). The intention here is to make the [issue tracker](/issues) much easier to use as a super-easy-and-convenient "TODO" list; I'm hoping that users won't abuse the feature and file bug reports or feature requests without the necessary details.
--   I've [jettisoned](/blog/goodbye-prototype-scriptaculous) [Prototype](/wiki/Prototype) and [Scriptaculous](/wiki/Scriptaculous) in favour of [jQuery](/wiki/jQuery), which means a lot less [JavaScript](/wiki/JavaScript) has to be downloaded on the first page-view and should result in much better load times.
--   A couple of bugs related to "authenticity tokens" being inappropriately included in the search form were fixed:
-    -   The search form on static error pages like the [404 (not found)](/404.html) and [500 (internal server error)](/500.html) pages now works.
-    -   "Authenticity tokens" are no longer leaked onto page-cached pages, effectively fixing likely breakage of the search form on all such pages.
+- You can now open tickets with only a summary (no description). The intention here is to make the [issue tracker](/issues) much easier to use as a super-easy-and-convenient "TODO" list; I'm hoping that users won't abuse the feature and file bug reports or feature requests without the necessary details.
+- I've [jettisoned](/blog/goodbye-prototype-scriptaculous) [Prototype](/wiki/Prototype) and [Scriptaculous](/wiki/Scriptaculous) in favour of [jQuery](/wiki/jQuery), which means a lot less [JavaScript](/wiki/JavaScript) has to be downloaded on the first page-view and should result in much better load times.
+- A couple of bugs related to "authenticity tokens" being inappropriately included in the search form were fixed:
+  - The search form on static error pages like the [404 (not found)](/404.html) and [500 (internal server error)](/500.html) pages now works.
+  - "Authenticity tokens" are no longer leaked onto page-cached pages, effectively fixing likely breakage of the search form on all such pages.
 
 Here is the full list of commits made to the repository since the previous deployment:
 

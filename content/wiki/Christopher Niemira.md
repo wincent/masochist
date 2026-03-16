@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   <http://siege.org/resume/>
+- <http://siege.org/resume/>

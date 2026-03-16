@@ -13,11 +13,11 @@ On a tangential note: I received an email in response to my [last post](https://
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5.1
--   **Kernel panics:** 7
--   **Hard resets:** 18
--   **Total failures:** 25
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 617 days
--   **Average time between failures:** 24.68 days
--   **Uptime at moment of failure(s):** a day or so
+- **Operating system version:** 10.5.1
+- **Kernel panics:** 7
+- **Hard resets:** 18
+- **Total failures:** 25
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 617 days
+- **Average time between failures:** 24.68 days
+- **Uptime at moment of failure(s):** a day or so

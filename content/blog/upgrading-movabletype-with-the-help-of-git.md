@@ -19,7 +19,7 @@ But Git is a distributed version control system so it offers the possibility of 
 
 I haven't tried this out yet, it is untested, but I think that you might be able to use the following workflow:
 
--   Grab the Movable Type source, extract the archive, and use it to initialize a brand new Git repository.
+- Grab the Movable Type source, extract the archive, and use it to initialize a brand new Git repository.
 
 <!-- -->
 
@@ -30,7 +30,7 @@ I haven't tried this out yet, it is untested, but I think that you might be able
     git add .
     git commit
 
--   Perform your customizations on a separate branch in a separate, cloned repository:
+- Perform your customizations on a separate branch in a separate, cloned repository:
 
 <!-- -->
 
@@ -39,7 +39,7 @@ I haven't tried this out yet, it is untested, but I think that you might be able
     cd mt_mine
     git co -b my_custom_install --track
 
--   Whenever a new release comes out update the repository by extracting the archive, overwriting all the old files (but leaving the `.git` directory intact) and performing a `git commit -a`.
+- Whenever a new release comes out update the repository by extracting the archive, overwriting all the old files (but leaving the `.git` directory intact) and performing a `git commit -a`.
 
 <!-- -->
 
@@ -58,7 +58,7 @@ I haven't tried this out yet, it is untested, but I think that you might be able
     # commit changes
     git commit -a
 
--   Now merge the changes into your customized install
+- Now merge the changes into your customized install
 
 <!-- -->
 

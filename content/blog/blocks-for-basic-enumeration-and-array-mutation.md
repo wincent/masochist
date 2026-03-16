@@ -18,12 +18,12 @@ filenames.map { |filename| "#{dir}/#{filename}" }
 
 Advantages:
 
--   concise, elegant and idiomatic
--   `map` method comes for free with the language
+- concise, elegant and idiomatic
+- `map` method comes for free with the language
 
 Disadvantages:
 
--   like all [Ruby](/wiki/Ruby), it is relatively slow
+- like all [Ruby](/wiki/Ruby), it is relatively slow
 
 # Objective-C 2.0 (blockless)
 
@@ -38,12 +38,12 @@ return [paths copy]; // return immutable
 
 Advantages:
 
--   simple and fast
--   self-contained (fast enumeration and other methods come with the runtime and system libraries)
+- simple and fast
+- self-contained (fast enumeration and other methods come with the runtime and system libraries)
 
 Disadvantages:
 
--   relatively verbose compared to [Ruby](/wiki/Ruby)
+- relatively verbose compared to [Ruby](/wiki/Ruby)
 
 # Objective-C 2.0 (with block-based "map" method)
 
@@ -57,12 +57,12 @@ return [fileNames map:^(id fileName) {
 
 Advantages:
 
--   captures some of the elegance of the Ruby version
+- captures some of the elegance of the Ruby version
 
 Disadvantages:
 
--   hampered by noisy syntax
--   requires external support method (`map:`), although said method is reusable
+- hampered by noisy syntax
+- requires external support method (`map:`), although said method is reusable
 
 # Objective-C 1.0 `for` loop (C99)
 
@@ -77,12 +77,12 @@ for (unsigned i = 0, max = [fileNames count]; i < max; i++)
 
 Advantages:
 
--   simple and fast
--   self-contained
+- simple and fast
+- self-contained
 
 Disadvantages:
 
--   even more verbose than the Objective-C 2.0 version
+- even more verbose than the Objective-C 2.0 version
 
 # Objective-C 1.0 `for` loop (pre-C99)
 
@@ -98,12 +98,12 @@ for (i = 0, max = [fileNames count]; i < max; i++)
 
 Advantages:
 
--   simple and fast
--   self-contained
+- simple and fast
+- self-contained
 
 Disadvantages:
 
--   the most verbose version so far
+- the most verbose version so far
 
 # Objective-C with extracted method
 
@@ -132,14 +132,14 @@ return [mutablePaths copy] # return immutable;
 
 Advantages:
 
--   ?
+- ?
 
 Disadvantages:
 
--   Requires pre-processing phase ensuring that all array elements are mutable
--   Requires cluttering up `NSString` class with additional utility method
--   Although the returned array is immutable, the contained objects are not, and if we want them to be so we would have to perform yet another iteration
--   Inefficient (2 to 3 separate iterations)
+- Requires pre-processing phase ensuring that all array elements are mutable
+- Requires cluttering up `NSString` class with additional utility method
+- Although the returned array is immutable, the contained objects are not, and if we want them to be so we would have to perform yet another iteration
+- Inefficient (2 to 3 separate iterations)
 
 There are other candidates we could have chosen here for our "extracted" method but they all suffer from similar disadvantages.
 

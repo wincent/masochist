@@ -25,9 +25,9 @@ So what am I supposed to do? Use the Directory Utility application to turn on th
 
 ### Update
 
--   Luckily, thanks to somebody who didn't know that Leopard was under an [NDA](https://wincent.dev/wiki/NDA), found [this article](http://www.michaelnygard.com/blog/2007/04/moving_your_home_directory_on.html) published back in April describing the `dscl` tool, a command line interface for Directory Services.
--   <http://docs.info.apple.com/article.html?artnum=306494>
--   <http://www.royhooper.ca/blog/articles/2007/10/27/creating-os-only-users-on-leopard>
+- Luckily, thanks to somebody who didn't know that Leopard was under an [NDA](https://wincent.dev/wiki/NDA), found [this article](http://www.michaelnygard.com/blog/2007/04/moving_your_home_directory_on.html) published back in April describing the `dscl` tool, a command line interface for Directory Services.
+- <http://docs.info.apple.com/article.html?artnum=306494>
+- <http://www.royhooper.ca/blog/articles/2007/10/27/creating-os-only-users-on-leopard>
 
 So it looks like something like this _would_ probably work:
 

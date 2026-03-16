@@ -15,21 +15,21 @@ Synergy uses [online help documentation](https://wincent.dev/a/products/synergy-
 
 When Synergy first came out I actually used embedded help documentation that could be viewed using Apple's Help Viewer. Back in version 1.2 (August 2004) I decided to stop doing that and instead keep all the help online. I was motivated by:
 
--   Bandwidth concerns (the documentation added about 25% to the application size).
--   Spending too much time keeping the website and the application documentation in sync.
--   Chasing two moving targets, and targets that were moving in different directions, by trying to keep both the in-application help and the website close to the then-current Apple aesthetic.
--   Frustration at Apple's use of proprietary extensions for in-application help, and at the lack of documentation for the same.
--   Frustration at the rendering capabilities of Apple's pre-WebKit Help Viewer; back in those days you couldn't even use CSS in your help books.
+- Bandwidth concerns (the documentation added about 25% to the application size).
+- Spending too much time keeping the website and the application documentation in sync.
+- Chasing two moving targets, and targets that were moving in different directions, by trying to keep both the in-application help and the website close to the then-current Apple aesthetic.
+- Frustration at Apple's use of proprietary extensions for in-application help, and at the lack of documentation for the same.
+- Frustration at the rendering capabilities of Apple's pre-WebKit Help Viewer; back in those days you couldn't even use CSS in your help books.
 
 ### The new
 
 Things have changed a lot since 2004.
 
--   Bandwidth is cheap, and people have faster connections.
--   Apple's Help Viewer is now WebKit-based and can correctly render anything that Safari can render, which is pretty much anything if you adhere to the standards.
--   CSS support means that you don't have to worry about chasing moving targets: you can separate your content from your presentation and update the latter on demand without having to trawl through your content and modify it.
--   Using helper methods in Walrus allows me to single-source my documentation and write my links the same way for the two targets (in-application help and web-based help); it also adds a layer of abstraction that insulates me from any changes that Apple might make to their proprietary and/or undocumented APIs in the future.
--   Writing the documentation is a whole lot more pleasant because I can write it in [Textile](https://wincent.dev/wiki/Textile) and let Walrus handle the rest.
+- Bandwidth is cheap, and people have faster connections.
+- Apple's Help Viewer is now WebKit-based and can correctly render anything that Safari can render, which is pretty much anything if you adhere to the standards.
+- CSS support means that you don't have to worry about chasing moving targets: you can separate your content from your presentation and update the latter on demand without having to trawl through your content and modify it.
+- Using helper methods in Walrus allows me to single-source my documentation and write my links the same way for the two targets (in-application help and web-based help); it also adds a layer of abstraction that insulates me from any changes that Apple might make to their proprietary and/or undocumented APIs in the future.
+- Writing the documentation is a whole lot more pleasant because I can write it in [Textile](https://wincent.dev/wiki/Textile) and let Walrus handle the rest.
 
 So Hextrapolate provides the best of both worlds for both user and developer. Users win because they get easy-to-use, task-based documentation in a familiar format (styled after the Apple application help that they're used to and delivered via the Help Viewer application that they all know).
 

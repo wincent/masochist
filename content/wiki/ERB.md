@@ -6,4 +6,4 @@ tags: ruby wiki
 
 # See also
 
--   Official documentation: <http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/>
+- Official documentation: <http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/>

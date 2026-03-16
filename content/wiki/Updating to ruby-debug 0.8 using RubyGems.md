@@ -71,4 +71,4 @@ Should produce output similar to:
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=10392>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=10392>

@@ -6,8 +6,8 @@ tags: rails wiki
 
 # Official site
 
--   <http://37signals.com/>
+- <http://37signals.com/>
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [37signals](/wiki/37signals): <http://en.wikipedia.org/wiki/37signals>
+- [Wikipedia](/wiki/Wikipedia) article on [37signals](/wiki/37signals): <http://en.wikipedia.org/wiki/37signals>

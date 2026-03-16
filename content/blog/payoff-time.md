@@ -57,14 +57,14 @@ I want the documentation to look beautiful to the user, so the style sheets are 
 
 Below you can see the Walrus source used to produce the document. Things to note about it:
 
--   Use of `##` to introduce comments.
--   The `#extends` directive which indicates an inheritance relationship with a parent template (more on the object-oriented nature of the system later).
--   The `#def` directive for defining blocks of material.
--   The `#set` directive for assigning values to placeholders.
--   Incorporating the value of a placeholder using the `$placeholder` syntax; note that placeholders can optionally accept parameters and be nested inside other placeholders.
--   The ability to use [Textile](https://wincent.dev/wiki/Textile)-like markup in the documentation.
-    -   This is not part of the Walrus core itself but is easily layered on top.
-    -   I'm using backticks (`` ` ``) instead of hash/pound (`#`) to indicate numbered lists; this is because hash/pound has special meaning in both Walrus and Textile markup so it is much more comfortable to simply use a different character rather than trying to escape it.
+- Use of `##` to introduce comments.
+- The `#extends` directive which indicates an inheritance relationship with a parent template (more on the object-oriented nature of the system later).
+- The `#def` directive for defining blocks of material.
+- The `#set` directive for assigning values to placeholders.
+- Incorporating the value of a placeholder using the `$placeholder` syntax; note that placeholders can optionally accept parameters and be nested inside other placeholders.
+- The ability to use [Textile](https://wincent.dev/wiki/Textile)-like markup in the documentation.
+  - This is not part of the Walrus core itself but is easily layered on top.
+  - I'm using backticks (`` ` ``) instead of hash/pound (`#`) to indicate numbered lists; this is because hash/pound has special meaning in both Walrus and Textile markup so it is much more comfortable to simply use a different character rather than trying to escape it.
 
 <!-- -->
 
@@ -261,8 +261,8 @@ If you are a [Ruby](https://wincent.dev/wiki/Ruby) or [Objective-C](https://winc
 
 This idea is equally applicable to documents, not just to programming. The conundrum faced by the PHP developer in the previous section would be addressed using object-oriented templating using a class hierarchy like the following:
 
--   Master template: defines the overall layout of pages on the site, including the default header, footer and sidebar
-    -   Special category template: overrides the master to add a second sidebar
+- Master template: defines the overall layout of pages on the site, including the default header, footer and sidebar
+  - Special category template: overrides the master to add a second sidebar
 
 Then each page on the site inherits from either the master or the special category template, overriding only the content block. Any changes made to the master affect all other pages on the site; changes made to the special category template affect only pages which inherit from it. Sweeping changes can be made by refactoring at any time: inserting a new template above or below the master, creating templates for other categories, adding subcategories. All of these changes are made in only one place and the effects automatically trickle down to where we want them.
 

@@ -10,5 +10,5 @@ The developer definitely seems to have the right idea: he "stole" the design for
 
 # Links
 
--   Official site: <https://www.arqbackup.com>
--   [Open source](/wiki/Open_source) restore tool: <http://sreitshamer.github.com/arq_restore/>
+- Official site: <https://www.arqbackup.com>
+- [Open source](/wiki/Open_source) restore tool: <http://sreitshamer.github.com/arq_restore/>

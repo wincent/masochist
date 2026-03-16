@@ -5,15 +5,15 @@ tags: blog
 
 For fun with Xcode, follow these steps:
 
-1.  Read a bug report
-2.  Fix the bug
-3.  Build
-4.  Test
-5.  Notice that bug is still present
-6.  Spend 30 to 60 minutes in the debugger trying to work out why the bug is still present
-7.  Discover through low-level debugger chicanery that Xcode is running the old code, not the fixed code
-8.  Inspect the build log and confirm that Xcode _did_ compile the modified file containing the bug fix
-9.  Scratch head, baffled
+1. Read a bug report
+2. Fix the bug
+3. Build
+4. Test
+5. Notice that bug is still present
+6. Spend 30 to 60 minutes in the debugger trying to work out why the bug is still present
+7. Discover through low-level debugger chicanery that Xcode is running the old code, not the fixed code
+8. Inspect the build log and confirm that Xcode _did_ compile the modified file containing the bug fix
+9. Scratch head, baffled
 10. Clean
 11. Build
 12. Test

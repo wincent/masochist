@@ -14,4 +14,4 @@ In March/April 2008 I replaced my own [UBB.threads](/wiki/UBB.threads) installs 
 
 # Official site
 
--   <http://ubbcentral.com/>
+- <http://ubbcentral.com/>

@@ -66,20 +66,20 @@ The `/etc/rsyncd.conf` file should have the following content added:
 
 Options to be passed to `rsync`:
 
--   `-a`: archive, equivalent to `-rlptgoD`
--   `-r`: recursive
--   `-l`: copy symlinks as symlinks
--   `-p`: preserve permissions
--   `-t`: preserve times
--   `-g`: preserve group
--   `-o`: preserve owner
--   `-D`: preserve devices
--   `-v`: verbose
--   `-z`: compress
--   `-x`: don't cross filesystem boundaries
--   `--numeric-ids`: don't map uid/gid values by user/group name
--   `--delete`: delete files that don't exist on the sending side
--   `--progress`: show progress during transfer
+- `-a`: archive, equivalent to `-rlptgoD`
+- `-r`: recursive
+- `-l`: copy symlinks as symlinks
+- `-p`: preserve permissions
+- `-t`: preserve times
+- `-g`: preserve group
+- `-o`: preserve owner
+- `-D`: preserve devices
+- `-v`: verbose
+- `-z`: compress
+- `-x`: don't cross filesystem boundaries
+- `--numeric-ids`: don't map uid/gid values by user/group name
+- `--delete`: delete files that don't exist on the sending side
+- `--progress`: show progress during transfer
 
 <!-- -->
 
@@ -89,7 +89,7 @@ Options to be passed to `rsync`:
 
 In addition, during testing the following additional switch can be applied:
 
--   `-n`: dry run mode
+- `-n`: dry run mode
 
 My first test produced this error message:
 
@@ -111,10 +111,10 @@ And the local machine:
 
 Given that the protocol versions are different, that leaves me with three options:
 
-1.  Build a custom version of `rsync` on the server that uses the newer protocol
-2.  Build a custom version on the local machine that uses the older protocol
-3.  A combination of both, build new versions on the server and the local machine that use the latest protocol
-4.  And another option, discovered too late, the `--protocol=NUM` command line switch
+1. Build a custom version of `rsync` on the server that uses the newer protocol
+2. Build a custom version on the local machine that uses the older protocol
+3. A combination of both, build new versions on the server and the local machine that use the latest protocol
+4. And another option, discovered too late, the `--protocol=NUM` command line switch
 
 # Building `rsync`
 
@@ -147,16 +147,16 @@ Unfortunately, even using identical versions of `rsync` on both machines I still
 
 I've tried the following troubleshooting methods:
 
--   Perform the `out.dat` test both with and without redirection of `stderr` to `/dev/null`
--   Perform the test with the command (`echo -n`) with and without a corresponding `command` directive in the `authorized_keys` file
+- Perform the `out.dat` test both with and without redirection of `stderr` to `/dev/null`
+- Perform the test with the command (`echo -n`) with and without a corresponding `command` directive in the `authorized_keys` file
 
 All tests produce zero bytes of output, as required.
 
 I also tried running the backup with the following variations:
 
--   Omit the `no-port-forwarding` specification in the `authorized_keys` file
--   Omit the `no-pty` specification
--   Omit all specifications
+- Omit the `no-port-forwarding` specification in the `authorized_keys` file
+- Omit the `no-pty` specification
+- Omit all specifications
 
 So looks like I am going to have to reduce this to a simpler test case and then try ramping the complexity up from there.
 
@@ -201,10 +201,10 @@ This revealed that the actual command being sent by `rsync` was:
 
 There are several problems with this:
 
--   The passed command as stated in the `rsync` man page is incorrect
--   There is no trailing period as stated in the man page; the trailing entry is `/`
--   The `--sender` option is not documented in the man page or anywhere that I can find, not even by `/usr/local/bin/rsync --help` (update: [the current CVS version of the man page](http://rsync.samba.org/ftp/rsync/nightly/rsync.html) mentions the switch)
--   The full path to the custom build of `rsync` is not being passed through
+- The passed command as stated in the `rsync` man page is incorrect
+- There is no trailing period as stated in the man page; the trailing entry is `/`
+- The `--sender` option is not documented in the man page or anywhere that I can find, not even by `/usr/local/bin/rsync --help` (update: [the current CVS version of the man page](http://rsync.samba.org/ftp/rsync/nightly/rsync.html) mentions the switch)
+- The full path to the custom build of `rsync` is not being passed through
 
 After updating my `command` definition to reflect the actually-passed parameters, things seem to work (in "dry run" mode).
 
@@ -236,8 +236,8 @@ Note that 524288 is exactly 0x80000.
 
 I tried pulling down the latest source from CVS but got the same problem. Will try downgrading to previously installed versions using the `--protocol` switch:
 
--   Change `command` specification to refer to `/usr/bin/rsync`
--   Invoke local copy of `/usr/bin/rsync` with the `--protocol=26` switch
+- Change `command` specification to refer to `/usr/bin/rsync`
+- Invoke local copy of `/usr/bin/rsync` with the `--protocol=26` switch
 
 No longer see "Invalid file index" errors, but the backup appears to stall after a number of files have been copied (no error message) and then crashes:
 

@@ -10,40 +10,40 @@ Because the hard drive was half the size, I did a by-hand migration, bringing ac
 
 # Base
 
--   Create admin account
--   Encrypt filesystem
+- Create admin account
+- Encrypt filesystem
 
 # Software
 
 Install essential software (see [Mac OS X "must haves"](/wiki/Mac_OS_X_%22must_haves%22)):
 
--   Chrome
--   Chrome Canary
--   iTerm 2 + Solarized color scheme
--   Adium
--   f.lux
--   iStat Menus
--   Isolator
--   Mouse Locator + graphics pack
--   Notational Velocity
--   Skype
--   Skitch
--   VLC
--   OmniDiskSweeper
--   Arq
--   Net Monitor
--   Propane
--   SuperDuper!
--   Slate
--   Spotify
--   Xcode (was going to install only the command line tools to save space, but Homebrew )
--   xScope
+- Chrome
+- Chrome Canary
+- iTerm 2 + Solarized color scheme
+- Adium
+- f.lux
+- iStat Menus
+- Isolator
+- Mouse Locator + graphics pack
+- Notational Velocity
+- Skype
+- Skitch
+- VLC
+- OmniDiskSweeper
+- Arq
+- Net Monitor
+- Propane
+- SuperDuper!
+- Slate
+- Spotify
+- Xcode (was going to install only the command line tools to save space, but Homebrew )
+- xScope
 
 # Other
 
--   [Clipper](/wiki/Clipper) (binary install, not bothering with [Go](/wiki/Go) yet)
--   [Consolas](/wiki/Consolas)
--   `curl https://raw.github.com/timkay/aws/master/aws -o ~/bin/aws`
+- [Clipper](/wiki/Clipper) (binary install, not bothering with [Go](/wiki/Go) yet)
+- [Consolas](/wiki/Consolas)
+- `curl https://raw.github.com/timkay/aws/master/aws -o ~/bin/aws`
 
 # Homebrew
 
@@ -82,29 +82,29 @@ $ rbenv install 2.0.0-p0
 
 # Preferences and settings
 
--   perform keychain merge
--   copy:
-    -   `~/.ssh` \[and enclosed files\]
-    -   `~/Library/Application Support/Adium 2.0`
-    -   `~/Library/Preferences/com.adiumX.adiumX.plist`
-    -   `~/Library/Application Support/Propane`
-    -   `~/Library/Preferences/com.protocool.propane.plist`
-    -   `~/Library/Preferences/net.notational.velocity.plist`
-    -   `~/Documents/Notes` \[notational velocity\]
-    -   `~/.awssecret` ( a symlink to either of…)
-    -   `~/.awssecret-causes`
-    -   `~/.awssecret-wincent`
-    -   `~/.gem/credentials`
-    -   `~/.chef` (and enclosed files)
-    -   `~/.gnupg` (and enclosed files)
-    -   `~/.flowrc`
-    -   `~/.heroku` (and enclosed files)
-    -   `~/.vim_org.yml`
-    -   `~/.netrc`
+- perform keychain merge
+- copy:
+  - `~/.ssh` \[and enclosed files\]
+  - `~/Library/Application Support/Adium 2.0`
+  - `~/Library/Preferences/com.adiumX.adiumX.plist`
+  - `~/Library/Application Support/Propane`
+  - `~/Library/Preferences/com.protocool.propane.plist`
+  - `~/Library/Preferences/net.notational.velocity.plist`
+  - `~/Documents/Notes` \[notational velocity\]
+  - `~/.awssecret` ( a symlink to either of…)
+  - `~/.awssecret-causes`
+  - `~/.awssecret-wincent`
+  - `~/.gem/credentials`
+  - `~/.chef` (and enclosed files)
+  - `~/.gnupg` (and enclosed files)
+  - `~/.flowrc`
+  - `~/.heroku` (and enclosed files)
+  - `~/.vim_org.yml`
+  - `~/.netrc`
 
 Also:
 
--   `defaults -currentHost write -g AppleFontSmoothing -int 1`
+- `defaults -currentHost write -g AppleFontSmoothing -int 1`
 
 # Dot-files
 
@@ -118,6 +118,6 @@ $ ./bootstrap.rb
 
 # Misc settings
 
--   iTerm:
-    -   bind `Option-Left` to send the `\033B` escape sequence (move back one word)
-    -   bind `Option-Right` to send the `\033f` escape sequence (move forward one word)
+- iTerm:
+  - bind `Option-Left` to send the `\033B` escape sequence (move back one word)
+  - bind `Option-Right` to send the `\033f` escape sequence (move forward one word)

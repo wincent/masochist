@@ -53,4 +53,4 @@ While this example is relatively simplistic it gets the job done. It is possible
 
 # See also
 
--   `man ipfw`
+- `man ipfw`

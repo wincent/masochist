@@ -4,8 +4,8 @@ tags: git updates wiki
 
 These notes were made while doing the upgrade to [Git 1.5.5.2](/wiki/Git_1.5.5.2) on two machines:
 
--   on a local machine running [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2, built inside a local clone of the official [Git](/wiki/Git) repository
--   on a remote machine running [RHEL 5](/wiki/RHEL_5), built from downloaded source tarballs
+- on a local machine running [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2, built inside a local clone of the official [Git](/wiki/Git) repository
+- on a remote machine running [RHEL 5](/wiki/RHEL_5), built from downloaded source tarballs
 
 ## Local upgrade
 

@@ -17,4 +17,4 @@ $ unzip doxygen_manual-1.6.1.pdf.zip
 
 # See also
 
--   <http://www.stack.nl/~dimitri/doxygen/changelog.html>
+- <http://www.stack.nl/~dimitri/doxygen/changelog.html>

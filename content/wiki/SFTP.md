@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [SFTP](/wiki/SFTP): <http://en.wikipedia.org/wiki/SSH_file_transfer_protocol>
+- [Wikipedia](/wiki/Wikipedia) article on [SFTP](/wiki/SFTP): <http://en.wikipedia.org/wiki/SSH_file_transfer_protocol>

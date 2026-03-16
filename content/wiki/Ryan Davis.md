@@ -6,4 +6,4 @@ tags: ruby wiki
 
 # See also
 
--   [Ryan Davis](/wiki/Ryan_Davis)' [weblog](/wiki/weblog): <http://zenspider.com/>
+- [Ryan Davis](/wiki/Ryan_Davis)' [weblog](/wiki/weblog): <http://zenspider.com/>

@@ -16,9 +16,9 @@ Then you _will still get case-insensitive comparisons_. Note that `case_sensitiv
 
 I discovered this because the [BDD](/wiki/BDD) development model gets you to work in a cycle:
 
-1.  Write a [spec](/wiki/spec) describing the behaviour you want: it should fail because you haven't written the code to make it pass yet
-2.  Write the code to make the [spec](/wiki/spec) pass
-3.  Repeat
+1. Write a [spec](/wiki/spec) describing the behaviour you want: it should fail because you haven't written the code to make it pass yet
+2. Write the code to make the [spec](/wiki/spec) pass
+3. Repeat
 
 The order of the steps is important: you want the [spec](/wiki/spec) to fail first before you make it pass because that confirms that your [spec](/wiki/spec) tests the thing you actually think it tests.
 

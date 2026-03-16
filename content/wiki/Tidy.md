@@ -8,4 +8,4 @@ The `tidy` [command line](/wiki/command_line) tool is shipped as part of the sta
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Tidy](/wiki/Tidy): <http://en.wikipedia.org/wiki/Tidy>
+- [Wikipedia](/wiki/Wikipedia) article on [Tidy](/wiki/Tidy): <http://en.wikipedia.org/wiki/Tidy>

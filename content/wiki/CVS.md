@@ -9,4 +9,4 @@ Those looking for a free, centralized (client/server) [version control system](/
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [CVS](/wiki/CVS): <http://en.wikipedia.org/wiki/Concurrent_Versions_System>
+- [Wikipedia](/wiki/Wikipedia) article on [CVS](/wiki/CVS): <http://en.wikipedia.org/wiki/Concurrent_Versions_System>

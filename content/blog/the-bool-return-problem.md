@@ -241,9 +241,9 @@ And no matter how you try to formulate things you will always come up with a con
 
 That is, the pattern is:
 
-1.  Get the proxy, keeping a reference to it
-2.  Send the message to the proxy (and let the proxy do its work)
-3.  Query the proxy for the results
+1. Get the proxy, keeping a reference to it
+2. Send the message to the proxy (and let the proxy do its work)
+3. Query the proxy for the results
 
 So the simple:
 

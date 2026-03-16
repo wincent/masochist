@@ -71,5 +71,5 @@ Now repeat all the same steps, this time for rails.wincent.dev:
 
 ## See also
 
--   [Generating self-signed SSL certificates for use with nginx](/wiki/Generating_self-signed_SSL_certificates_for_use_with_nginx)
--   [SSL certificate renewal notes 2010](/wiki/SSL_certificate_renewal_notes_2010) (see [SSL certificate renewal notes](/wiki/SSL_certificate_renewal_notes) for potentially more up-to-date resources)
+- [Generating self-signed SSL certificates for use with nginx](/wiki/Generating_self-signed_SSL_certificates_for_use_with_nginx)
+- [SSL certificate renewal notes 2010](/wiki/SSL_certificate_renewal_notes_2010) (see [SSL certificate renewal notes](/wiki/SSL_certificate_renewal_notes) for potentially more up-to-date resources)

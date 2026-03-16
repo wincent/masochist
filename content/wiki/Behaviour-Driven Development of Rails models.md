@@ -6,5 +6,5 @@ Unlike [controllers](/wiki/controllers), [models](/wiki/models) are fairly easy 
 
 # See also
 
--   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
--   [Model-View-Controller](/wiki/Model-View-Controller)
+- [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
+- [Model-View-Controller](/wiki/Model-View-Controller)

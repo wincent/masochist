@@ -9,11 +9,11 @@ As always I did a Disk First Aid run after the crash. This time there was a bunc
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5.1
--   **Kernel panics:** 7
--   **Hard resets:** 17
--   **Total failures:** 24
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 606 days
--   **Average time between failures:** 25.25 days
--   **Uptime at moment of failure(s):** a day or so
+- **Operating system version:** 10.5.1
+- **Kernel panics:** 7
+- **Hard resets:** 17
+- **Total failures:** 24
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 606 days
+- **Average time between failures:** 25.25 days
+- **Uptime at moment of failure(s):** a day or so

@@ -10,21 +10,21 @@ It appears that they gave me a dud router, as it very quickly fell to pieces: fi
 
 The most exasperating thing is the phone call farse I had to play out in order to get any help:
 
--   First call: the only number that came with the router and its paperwork; it was just a recorded message with configuration information and no way of speaking to an agent.
--   Second call: to the "faults" hotline listed on their website (luckily I could access it with that borrowed laptop and borrowed WiFi network I mentioned in my last post); they tell me I've called the wrong number and must call another.
--   Third call: They tell me I need to speak to the sales department and do a "desistimiento de equipo" seeing as it is a brand new router.
--   Fourth call: Said department tells me I need to call a different number.
--   Fifth call: Puts me through to another department, where they finally tell me that seeing as this is a new line they can't do anything to help me and I have to wait 24 for their databases to catch up so that they can catch up with the new installations.
+- First call: the only number that came with the router and its paperwork; it was just a recorded message with configuration information and no way of speaking to an agent.
+- Second call: to the "faults" hotline listed on their website (luckily I could access it with that borrowed laptop and borrowed WiFi network I mentioned in my last post); they tell me I've called the wrong number and must call another.
+- Third call: They tell me I need to speak to the sales department and do a "desistimiento de equipo" seeing as it is a brand new router.
+- Fourth call: Said department tells me I need to call a different number.
+- Fifth call: Puts me through to another department, where they finally tell me that seeing as this is a new line they can't do anything to help me and I have to wait 24 for their databases to catch up so that they can catch up with the new installations.
 
 Those five calls took about 50 minutes seeing as each one involved:
 
--   Hold music.
--   Entering the number which I'm calling about.
--   Telling them my name and surname; and spelling it for them too because they have trouble with foreign names.
--   Explaining the problem (again).
--   Giving them my mobile phone number.
--   Listening to them while they try to sell me some TV service I am utterly uninterested in.
--   Rating their performance (automated questionnaire after each call).
+- Hold music.
+- Entering the number which I'm calling about.
+- Telling them my name and surname; and spelling it for them too because they have trouble with foreign names.
+- Explaining the problem (again).
+- Giving them my mobile phone number.
+- Listening to them while they try to sell me some TV service I am utterly uninterested in.
+- Rating their performance (automated questionnaire after each call).
 
 These companies never cease to surprise me.
 

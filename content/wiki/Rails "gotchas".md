@@ -27,10 +27,10 @@ I'm writing about this "gotcha" because it's something I ran into in January 200
 
 > `[C]ookies` isn't a `Hash`, although the `cookies` method does return a `CookieJar` object, which extends `Hash`. `CookieJar` mangles the expected `Hash` methods of `[]` and `[]=` with these gotchas:
 >
-> -   The `CookieJar` object does not represent one set of cookies, it represents 2 sets: the incoming cookies from the browser, and the outgoing cookies that will be sent back to the client
-> -   `cookies[:key]` gets you the incoming cookies from the client
-> -   `cookies[:key]=` value sets outgoing cookies that will be sent back to the client
-> -   ... all of which mean that `cookies[:its] = "1999"` will not allow you to retrieve that value with `cookies[:its]`.
+> - The `CookieJar` object does not represent one set of cookies, it represents 2 sets: the incoming cookies from the browser, and the outgoing cookies that will be sent back to the client
+> - `cookies[:key]` gets you the incoming cookies from the client
+> - `cookies[:key]=` value sets outgoing cookies that will be sent back to the client
+> - ... all of which mean that `cookies[:its] = "1999"` will not allow you to retrieve that value with `cookies[:its]`.
 
 Source: "Rails Cookies Mangles the Hash Interface", <http://www.40withegg.com/2007/1/5/rails-cookies-mangles-the-hash-interface/>
 

@@ -17,7 +17,7 @@ $ sudo xcrun cc
 
 ## Source
 
--   <http://blog.tomhennigan.co.uk/post/62238548037/agreeing-to-the-xcode-license-from-the-command-line>
+- <http://blog.tomhennigan.co.uk/post/62238548037/agreeing-to-the-xcode-license-from-the-command-line>
 
 # Solution 2
 
@@ -29,4 +29,4 @@ $ sudo xcodebuild -license
 
 ## Source
 
--   <https://intellij-support.jetbrains.com/entries/62745413-Mac-OSX-can-t-start-Git-after-updating-Mac-OS-XCode>
+- <https://intellij-support.jetbrains.com/entries/62745413-Mac-OSX-can-t-start-Git-after-updating-Mac-OS-XCode>

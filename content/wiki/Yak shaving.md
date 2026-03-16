@@ -12,4 +12,4 @@ Alternatively [phrased thusly](http://www.catb.org/jargon/html/Y/yak-shaving.htm
 
 # See also
 
--   <http://en.wiktionary.org/wiki/yak_shaving>
+- <http://en.wiktionary.org/wiki/yak_shaving>

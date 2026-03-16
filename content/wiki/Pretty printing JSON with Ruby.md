@@ -10,4 +10,4 @@ JSON.pretty_generate(JSON[input])
 
 # Source
 
--   <http://stackoverflow.com/questions/86653/how-can-i-pretty-format-my-json-output-in-ruby-on-rails>
+- <http://stackoverflow.com/questions/86653/how-can-i-pretty-format-my-json-output-in-ruby-on-rails>

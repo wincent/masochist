@@ -6,4 +6,4 @@ tags: shoulda wiki
 
 # See also
 
--   Official site: <http://thoughtbot.com/projects/shoulda/>
+- Official site: <http://thoughtbot.com/projects/shoulda/>

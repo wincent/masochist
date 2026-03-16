@@ -34,7 +34,7 @@ See the last upgrade notes for a more detailed procedure ("[Upgrading from WordP
 
 # See also
 
--   Release announcement: <http://wordpress.org/development/2007/01/wordpress-207/>
--   2.0.7 tag in [Subversion](/wiki/Subversion) repository: <http://svn.automattic.com/wordpress/tags/2.0.7/>
--   [Zend Engine](/wiki/Zend_Engine) hashtable bug: <http://www.hardened-php.net/hphp/zend_hash_del_key_or_index_vulnerability.html>
--   [WordPress](/wiki/WordPress) workaround for [Zend](/wiki/Zend) bug: <http://trac.wordpress.org/changeset/4717>
+- Release announcement: <http://wordpress.org/development/2007/01/wordpress-207/>
+- 2.0.7 tag in [Subversion](/wiki/Subversion) repository: <http://svn.automattic.com/wordpress/tags/2.0.7/>
+- [Zend Engine](/wiki/Zend_Engine) hashtable bug: <http://www.hardened-php.net/hphp/zend_hash_del_key_or_index_vulnerability.html>
+- [WordPress](/wiki/WordPress) workaround for [Zend](/wiki/Zend) bug: <http://trac.wordpress.org/changeset/4717>

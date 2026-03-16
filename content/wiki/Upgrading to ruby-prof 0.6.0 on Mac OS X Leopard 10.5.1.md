@@ -35,4 +35,4 @@ cache_breaker: 1
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=18809>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=18809>

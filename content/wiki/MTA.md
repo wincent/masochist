@@ -6,4 +6,4 @@ A [MTA](/wiki/MTA) or [Mail Transfer Agent](/wiki/Mail_Transfer_Agent) (sometime
 
 ## See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [MTAs](/wiki/MTAs): <http://en.wikipedia.org/wiki/Mail_transfer_agent>
+- [Wikipedia](/wiki/Wikipedia) article on [MTAs](/wiki/MTAs): <http://en.wikipedia.org/wiki/Mail_transfer_agent>

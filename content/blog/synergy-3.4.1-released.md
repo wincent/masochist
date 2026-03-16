@@ -11,7 +11,7 @@ If you are a 3.4 user and aren't using [Snow Leopard](/wiki/Snow_Leopard) yet th
 
 See also:
 
--   [FAQs on upgrading to Synergy 4.0](/blog/synergy-4.0-upgrades)
--   [FAQs for MacHeist users](/blog/frequently-asked-questions-about-synergy-and-macheist)
--   [An explanation of the differences between the 3.4 and 4.0 series](/blog/clearing-up-confusion-about-synergy-version-numbers)
--   [Changelog](/products/synergy/history)
+- [FAQs on upgrading to Synergy 4.0](/blog/synergy-4.0-upgrades)
+- [FAQs for MacHeist users](/blog/frequently-asked-questions-about-synergy-and-macheist)
+- [An explanation of the differences between the 3.4 and 4.0 series](/blog/clearing-up-confusion-about-synergy-version-numbers)
+- [Changelog](/products/synergy/history)

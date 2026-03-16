@@ -17,6 +17,6 @@ It's my scripting language of choice for anything that goes beyond trivial shell
 
 # Documentation
 
--   <http://www.ruby-doc.org/>
--   <http://www.ruby-doc.org/core>
--   <http://www.ruby-doc.org/stdlib/>
+- <http://www.ruby-doc.org/>
+- <http://www.ruby-doc.org/core>
+- <http://www.ruby-doc.org/stdlib/>

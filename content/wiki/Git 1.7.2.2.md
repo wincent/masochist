@@ -48,4 +48,4 @@ From the official announcement to the [Git mailing list](/wiki/Git_mailing_list)
 
 # See also
 
--   [Updating to Git 1.7.2.2](/wiki/Updating_to_Git_1.7.2.2)
+- [Updating to Git 1.7.2.2](/wiki/Updating_to_Git_1.7.2.2)

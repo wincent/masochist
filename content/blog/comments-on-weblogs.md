@@ -35,26 +35,26 @@ If I wanted an example of why I'm don't have comments on my weblog then I couldn
 
 ### Insults
 
--   "he crazy"
--   "that Vincent guy is a bit of a moron"
--   "He sounds like an idiot with an axe to grind"
--   "stupid post"
--   "inflamatory nonsense"
--   "What a loser. Sounds like he’s got an axe to grind"
--   "immature bashing"
+- "he crazy"
+- "that Vincent guy is a bit of a moron"
+- "He sounds like an idiot with an axe to grind"
+- "stupid post"
+- "inflamatory nonsense"
+- "What a loser. Sounds like he’s got an axe to grind"
+- "immature bashing"
 
 ### Religious/emotional reactions
 
 Although many comments stopped short of insulting me, there where lots which responded in emotional terms rather than with fact-based arguments:
 
--   "Pure blasphemy if you ask me"
--   "nevertheless I love wordpress"
--   "I loved Wordpress before this blog post and now I also have the upmost respect and admiration for the developers behind it"
--   "HAHA… check and mate. I LOVE WORDPRESS! RAH RAH RAH!"
--   "I still love WordPress."
--   "loyal wordpress user"
--   "I love the WP Community"
--   "I love WP"
+- "Pure blasphemy if you ask me"
+- "nevertheless I love wordpress"
+- "I loved Wordpress before this blog post and now I also have the upmost respect and admiration for the developers behind it"
+- "HAHA… check and mate. I LOVE WORDPRESS! RAH RAH RAH!"
+- "I still love WordPress."
+- "loyal wordpress user"
+- "I love the WP Community"
+- "I love WP"
 
 I think that concepts such as "loyalty" are misplaced when it comes to choosing software upon which you depend. You should be deciding on technical merits, not warm and fuzzy feelings. Generally, arguments which contain the word "love" will be more convincing if you replace the emotional reference with a factual description of a characteristic of the software.
 
@@ -62,21 +62,21 @@ I think that concepts such as "loyalty" are misplaced when it comes to choosing 
 
 I have to take the blame for many of the misunderstandings evinced in many of the comments. I think that if people misread my argument in a subtle way then it's an indication that I could have expressed myself more clearly:
 
--   "I can see why it was necessary for him to link to his own KB, instead of just linking directly to wordpress.org"
+- "I can see why it was necessary for him to link to his own KB, instead of just linking directly to wordpress.org"
 
 I often link to articles in the Knowledge Base rather than linking directly to an external site because it allows me to provide annotated links rather than plain ones, although in the case of the [WordPress](https://wincent.dev/wiki/WordPress) there is nothing much to see (other than the [category link](https://wincent.dev/wiki/Category:WordPress) which itself reveals quite a few WordPress-related articles).
 
--   "Did the WP team steal his first born or something?"
+- "Did the WP team steal his first born or something?"
 
 Lots of people got the impression that I was angry, "harsh" or "whining" and I didn't mean to convey either of those emotions. That's one of the problems of cold, dry text on the Internet without any accompanying extra-verbal clues such as tone of voice. I guess I should have been a little more careful with my tone.
 
 Another thing that people may not realize is that I was a [WP](https://wincent.dev/wiki/WP) user for quite some time (from back around the 1.5 days up to but not including 2.1.3) and I did enjoy using it; it was just that the security thing started to exasperate me to the point where I decide to let it go. I actually switched to WP initially, like many others, because of the commercialization of [MT](https://wincent.dev/wiki/MT). But when I set up the weblog for wincent.dev I decided to use MT because it seemed technically superior for mission-critical applications whereas WP still seemed the best for personal or hobbyist use (and I continued to use it on personal projects).
 
--   "He's also ignored the way you guys handle crises like security issues. You're generally open, honest and totally trustworthy."
+- "He's also ignored the way you guys handle crises like security issues. You're generally open, honest and totally trustworthy."
 
 This misses the entire point of my post, which is _all about_ the handling of security issues. I've now explained this multiple times ([here](https://wincent.dev/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php), [here](https://wincent.dev/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php) and [here](https://wincent.dev/a/about/wincent/weblog/archives/2007/06/wordpress_follo.php)).
 
--   "I have tried MT and blogger before, but I simply find Wordpress easier to control and maintain."
+- "I have tried MT and blogger before, but I simply find Wordpress easier to control and maintain."
 
 Yes, no arguments there. The WP upgrade process is much easier, especially when using [Subversion](https://wincent.dev/wiki/Subversion) ([info](https://wincent.dev/wiki/Upgrading_WordPress_using_Subversion)). The MT upgrade process is considerably more painful ([example](https://wincent.dev/wiki/Upgrading_from_Movable_Type_version_3.34_to_3.35)). But MT's technical advantages (the ability to produce a totally static weblog) in my specific usage context make it the choice for me, despite its other problems.
 
@@ -84,27 +84,27 @@ Yes, no arguments there. The WP upgrade process is much easier, especially when 
 
 Related to the category of "misunderstandings" is the category of "totally mistaken". These are comments by people who didn't misread my argument but instead inferred something completely unrelated, mistaken and in no way connected with the content of my post.
 
--   "Uh-oh, I smell a publicity whore..."
--   "there's always going to be a few people that take an unpopular position to get a little attention"
--   "he obviously thinks far higher of his reputation and himself than he ought"
--   "People like that will take potshots at WP, and you all out of some desperate hope to gain some traction."
--   "Who wants to bet Wincent still uses IE6?"
+- "Uh-oh, I smell a publicity whore..."
+- "there's always going to be a few people that take an unpopular position to get a little attention"
+- "he obviously thinks far higher of his reputation and himself than he ought"
+- "People like that will take potshots at WP, and you all out of some desperate hope to gain some traction."
+- "Who wants to bet Wincent still uses IE6?"
 
 Well, I'm a [Mac OS X](https://wincent.dev/wiki/Mac%20OS%20X) user, so no, I'm not "still using IE6", although my personal browser selection has little to do with the unrelated topic of web application security.
 
 Many of these comments speculate about me trying to get attention through my post but that certainly wasn't my goal. I had no idea that Michael Tsai would pick up my article, and that from there it would reach Daring Fireball, and from there elicit a response from Matt. This was just me posting my opinions to my humble little weblog with its small readership. If I was still a WordPress user I would've had different goals and would've chosen different channels in an effort to get the WP team to tighten up their processes; but I am not a WP user and I merely wanted to spend five minutes penning a quick expression of my disappointment ("look, I decided to drop WordPress a while back and looks like things are continuing as they were before").
 
--   "It's unfortunate that their ill researched and poorly written post has had the attention it has"
+- "It's unfortunate that their ill researched and poorly written post has had the attention it has"
 
 I don't know if an opinion can be "ill researched". All of the information about WordPress security track record is out in the open and I provide links to it where appropriate. I draw my own conclusions from that track record. I don't think this qualifies as "ill research". And "poorly written"? I think the only reason my post got the attention it did, given that I am a total "nobody" in the WP-o-sphere, is that it was evidently well-written. You may not agree with my opinions, but the argument is reasonably well expressed.
 
 ### About comments being disabled
 
--   "The fact that they hide behind an excuse like disabling comments 'for security' underscores the fact that they are not only cowards"
--   "what's the point of a blogging system that's only secure if you disable comments?"
--   "who'd need stupid things like comments on a blog?"
--   "And blog with disabled comments?"
--   "It’s also interesting to note that a similar WP-hating blogger linked from Wincent’s (<http://fukamachi.org/wp/2007/06/21/yet-another-wordpress-exploit/>) has seen fit to disable comments on that particular point after a couple of comments dismantling his post. I can understand disliking WP, but squashing any opposing opinions? Very mature."
+- "The fact that they hide behind an excuse like disabling comments 'for security' underscores the fact that they are not only cowards"
+- "what's the point of a blogging system that's only secure if you disable comments?"
+- "who'd need stupid things like comments on a blog?"
+- "And blog with disabled comments?"
+- "It’s also interesting to note that a similar WP-hating blogger linked from Wincent’s (<http://fukamachi.org/wp/2007/06/21/yet-another-wordpress-exploit/>) has seen fit to disable comments on that particular point after a couple of comments dismantling his post. I can understand disliking WP, but squashing any opposing opinions? Very mature."
 
 It's worth clarifying here that comments were not specifically disabled for my post; comments have never been enabled on my weblog. Likewise, comments were not disabled "in order to make MT more secure"; rather, I chose to not enable comments for the reasons already mentioned at the start of this post and the added security is just a secondary benefit.
 
@@ -122,14 +122,14 @@ Looking back in [the archives](http://web.archive.org/web/*/http://wincent.org) 
 
 Unfortunately there were far too few of these. Matt's own response was one of them. Here's another example from the visitor comments:
 
--   "Frankly I see both sides of this story. I thought that Wincent’s points were actually quite valid, though his conclusion seemed harsh. And as a new user of Wordpress, I found them of concern. Your response also had merit."
+- "Frankly I see both sides of this story. I thought that Wincent’s points were actually quite valid, though his conclusion seemed harsh. And as a new user of Wordpress, I found them of concern. Your response also had merit."
 
 ### On table based layout
 
--   "His table-layout blog isn't too notable" (Matt)
--   "was the jab about his table-based design really necessary?"
--   "I loved the barely concealed 'table-layout blog' at the start of your post."
--   "I can't take anything seriously from someone who still uses tables as their primary layout method."
+- "His table-layout blog isn't too notable" (Matt)
+- "was the jab about his table-based design really necessary?"
+- "I loved the barely concealed 'table-layout blog' at the start of your post."
+- "I can't take anything seriously from someone who still uses tables as their primary layout method."
 
 When people try to undermine my credibility because of my old-school layout, I think they only make their own argument look weaker. Why spend time looking at my HTML source trying to find extraneous details which can be used to disparage me? Why not just address my textual arguments, seeing as they're the only thing that matters?
 
@@ -139,7 +139,7 @@ Things change, newer browsers gain market share, CSS support improves, and of co
 
 ### Parting words
 
--   "With MT4 poised for release, you can prolly expect more of this kind of mudslinging."
+- "With MT4 poised for release, you can prolly expect more of this kind of mudslinging."
 
 This again quite misses the point: I'm no [MT fanboy](https://wincent.dev/wiki/MT%20fanboy), rather I am someone who has used both [MT](https://wincent.dev/wiki/MT) and [WP](https://wincent.dev/wiki/WP) and is disappointed with the approach to security taken by the [WP](https://wincent.dev/wiki/WP) team. I recommend [MT](https://wincent.dev/wiki/MT) for those for whom security is important, and I specifically abstain from recommending [WP](https://wincent.dev/wiki/WP) to non-technical users who are unlikely to have the expertise to upgrade or realize the importance of doing so.
 

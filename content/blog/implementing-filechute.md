@@ -35,10 +35,10 @@ Now, Git's data structures are optimized for certain operations (eg. returning t
 
 Let's assume that you can tag files with arbitrary tags. The key operations that follow are:
 
--   Finding items with a specific tag.
--   Finding items with a specific combination of tags; which we can break down further into two subcategories that correspond to different meanings of "combination":
-    -   Logical "AND" (in set theory terms, intersection).
-    -   Logical "OR" (in set theory terms, union).
+- Finding items with a specific tag.
+- Finding items with a specific combination of tags; which we can break down further into two subcategories that correspond to different meanings of "combination":
+  - Logical "AND" (in set theory terms, intersection).
+  - Logical "OR" (in set theory terms, union).
 
 In practical terms, the "AND" form is more powerful because it allows one to prune the search space in ways that make locating items even within an immense initial set easy to do. The "OR" form may prove useful on occasion too, particularly when you aren't exactly sure of the attributes that might be attached to the thing or things that you're looking for. But by default, the "AND" form is so useful that it suggests a UI paradigm in which one finds things by "drilling down" through the tag space, narrowing the result set by applying increasingly selective combinations of tags, until the desired item is found. The UI can guide the user in their search by not only providing a means of specifying additional tags, but also showing a UI that shows candidate tags at each level that can be used to narrow the search further.
 
@@ -100,23 +100,23 @@ So, at this point, we have a notion for how we might add objects to a store, how
 
 Let's go into a little bit more detail about the exact semantics of what it means to organize information in this way. Based on what we've talked about so far, we can make the following statements:
 
--   Files are addressed by their content and not by their names.
--   We locate files of interest by using tags attached to those files.
--   A file may have any number of tags.
--   Tags may be applied to any number of files.
--   We can search for files using an "AND" relationship (ie. "drilling down" rightwards through the column browser).
--   We can search for files using an "OR" relationship (ie. by using multiple selection in the columns browser).
--   Our text-based search could assume "AND" semantics initially, but easily be extended to support explicit syntax for making combinations of "AND" and "OR", additionally using parentheses to establish precedence.
--   Although files are addressed by content, there is nothing stopping us from recording additional metadata about them, including their original name, file extension, embedded metadata, or a user-provided description, to assist in locating them.
--   File names, if recorded as metadata, need not be unique, because they are never used to address (identify) specific files.
+- Files are addressed by their content and not by their names.
+- We locate files of interest by using tags attached to those files.
+- A file may have any number of tags.
+- Tags may be applied to any number of files.
+- We can search for files using an "AND" relationship (ie. "drilling down" rightwards through the column browser).
+- We can search for files using an "OR" relationship (ie. by using multiple selection in the columns browser).
+- Our text-based search could assume "AND" semantics initially, but easily be extended to support explicit syntax for making combinations of "AND" and "OR", additionally using parentheses to establish precedence.
+- Although files are addressed by content, there is nothing stopping us from recording additional metadata about them, including their original name, file extension, embedded metadata, or a user-provided description, to assist in locating them.
+- File names, if recorded as metadata, need not be unique, because they are never used to address (identify) specific files.
 
 ## Where do we store file metadata?
 
 As mentioned previously, we can store tag information in a SQLite database or a bespoke data structure, but this is only one specific instance of metadata that we might wish to associate with a given file. Here again, we can leverage a generic database or a custom data structure of our own design, but in the abstract, we can think of it as a key-value store[^kv]. Some examples of things we might want to record include:
 
--   Original filename of the item when added.
--   File type information, as encoded by the file extension or otherwise discernible from the file contents.
--   Timestamp information about when the item was added.
+- Original filename of the item when added.
+- File type information, as encoded by the file extension or otherwise discernible from the file contents.
+- Timestamp information about when the item was added.
 
 ## What happens when you add the same file twice?
 
@@ -198,12 +198,12 @@ If we step outside of the relational model, instead of having `objects`, `tags`,
 
 Operations we need to support:
 
--   List all items in name order.
-    -   Sort all items arbitrarily by any other metadata property.
--   Given a tag, list items with that tag.
--   Given multiple tags, list items with all of those tags.
-    -   Sort these items arbitrarily by any other metadata property.
--   Given an item, report which tags apply to it.
+- List all items in name order.
+  - Sort all items arbitrarily by any other metadata property.
+- Given a tag, list items with that tag.
+- Given multiple tags, list items with all of those tags.
+  - Sort these items arbitrarily by any other metadata property.
+- Given an item, report which tags apply to it.
 
 We could have a tag index for looking up by tag:
 
@@ -268,12 +268,21 @@ Another subject is implementation languages for a prototype. I immediately thoug
 Nevertheless, I'm going to leave a proper exploration of those matters for another day and another post. Maybe next time I'll be able to tackle my original goal of providing a somewhat concise technical summary of how all this is going to look like.
 
 [^skein]: I'm inclined to use Skein because the implementation is relatively simple and I've used it happily elsewhere, but in reality I'd be fine with using _any_ reasonable hash function that has a well-vetted implementation written by actual, practical cryptography experts in the programming environment that I'm working in.
+
 [^support]: Apple's quaint(?) decision to encourage the usage of a space-containing path ("Application Support") for use by applications is probably a blessing in disguise; the presence of the space has probably caused countless latent bugs to manifest themselves over the years, but it's good to have a forcing function that obliges you to flush out the possibly invalid assumptions you're making about the context in which your code is going to run.
+
 [^scaling]: If we ever need to deal with greater scales, we have the option of further fanning out the object storage by adding an extra intermediate layer of partitioning (eg. `a7/90/65aca746c25342a83183d5e9a56262d1d826`), or borrowing [the "packfile" concept](https://git-scm.com/book/en/v2/Git-Internals-Packfiles) from Git, wherein "loose objects" get stored together in aggregate bundles (and additionally leverage a technique called delta compression which stores only the differences between objects instead of the full contents of objects themselves). In the spirit of [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it), the initial proposal here doesn't include a suggestion to do anything beyond simple storage as loose objects.
+
 [^executable]: The only "metadata" that Git tracks about files beyond their contents, other than their names, is whether they have their executable bit set. It's also capable of capturing whether a file is a symbolic link (and if so, where it points to) as opposed to a regular file.
+
 [^ancient]: [Thirteen years ago](https://github.com/wincent/wincent-on-rails/commit/d74696c575e49a32de2674a7d86391fd246605fd), apparently... The link in the commit message now 404s, but the issue it's citing can still be seen at [wincent.dev/issues/1209](https://wincent.dev/issues/1209), and it provides some additional interesting context.
+
 [^spotify]: I'm a Spotify user.
+
 [^music]: My only disclaimer here would be that I am not a real Apple Music user, and I'm mostly speaking about the golden days early on in iTunes' history. I'm reasonably sure that if I had to use this application in anger, I'd find a lot of little annoying ways in which Apple has added friction and unwanted "encouragement" to return to the Store view, among others things.
+
 [^counts]: Other options include color-based indication, or a small bar whose width would represent the count.
+
 [^kv]: It may be tempting to treat both key-value metadata and tags as two instances of the same thing (specifically, tags being a special case key-value pair where the value is null), but I suspect this is probably a mistake. Giving primacy to tags obliges us to put them front and center in the design, and while I can't predict where this emphasis will lead, I think it's important to explore it — we can always change our minds later.
+
 [^modes]: See also [the Wikipedia article on block cipher modes](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation).

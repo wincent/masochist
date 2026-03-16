@@ -31,8 +31,8 @@ The thing is, however, Ruby is such a good language that not only can you probab
 
 To get an idea of how quick it can be to whip up a parser in Ruby, check out what I turned up with my very first Google search:
 
--   [A customizable recursive-descent parser in 250 lines of Ruby](http://www.rubyinside.com/recursive-descent-parser-for-ruby-300.html).
--   A [Packrat parser](http://pdos.csail.mit.edu/~baford/packrat/) in [211 lines of Ruby](http://meta-meta.blogspot.com/2006/04/packrat-parsers.html).
+- [A customizable recursive-descent parser in 250 lines of Ruby](http://www.rubyinside.com/recursive-descent-parser-for-ruby-300.html).
+- A [Packrat parser](http://pdos.csail.mit.edu/~baford/packrat/) in [211 lines of Ruby](http://meta-meta.blogspot.com/2006/04/packrat-parsers.html).
 
 My searches lead me to the [Syngress](http://www.syngress.com/) [Ruby Developer's Guide](http://www.syngress.com/book_catalog/183_ruby/) by Feldt, Johnson and Neumann wherein is described an amazing "parsing library of your dreams" which turns out to be Rockit, by one of the authors. Unfortunately, although Rockit looks absolutely wonderful it remains vaporware for the time being. The book itself talks about "version 0.4" of Rockit but as far as I can tell, this was never released into the wild, and existed only on the author's computer.
 
@@ -193,13 +193,13 @@ Although this tree structure mirrors the actual semantic structure of the input 
 
 Abstract Syntax Trees allow us to produce a much more usable representation of the parsed document. Each component in the hierarchy has a specific type (class) and each type has its own attributes. The example above might be represented using the following AST:
 
--   Assignment Expression:
-    -   lvalue (the assignment target, "foo")
-    -   Assignment operator ("="); in reality this element can be omitted from the syntax tree because it's not required to convey meaning.
-    -   Addition expression
-        -   lvalue ("bar")
-        -   Addition operator ("+"); again this element can be omitted from the syntax tree
-        -   Numeric literal ("1")
+- Assignment Expression:
+  - lvalue (the assignment target, "foo")
+  - Assignment operator ("="); in reality this element can be omitted from the syntax tree because it's not required to convey meaning.
+  - Addition expression
+    - lvalue ("bar")
+    - Addition operator ("+"); again this element can be omitted from the syntax tree
+    - Numeric literal ("1")
 
 In a subsequent article I will talk about how to specify "productions" which can be added to rules in the grammar so that they know what elements to "produce" in the final AST output. All productions are element subclasses of `Node` and each may have subnodes or other properties. Here object-oriented design again helps us because once these `Node` subclasses can be easily extended to implement the actual behaviour we want to undertake according to what is fed into the parser; that is, the `AdditionExpression` subclass could easily be extended with logic to perform addition.
 
@@ -213,11 +213,11 @@ Normally I view writing code, writing code-level documentation, and writing unit
 
 My pattern this time, however, has been different. Ruby is an interpreted language, not a compiled one, so it makes it much more feasible to adopt a true "test-driven" style. There are no waits for compilation so it is very, very easy to operate in a cycle:
 
-1.  Decide on the next piece of functionality that must be implemented; if the piece of functionality is large then decide on the first step that must be taken towards implementing it.
-2.  Write a test that checks that the functionality works as intended.
-3.  Run the test; it should fail. If it doesn't then you know your test is incorrect.
-4.  Write the code needed to pass the test.
-5.  Run the test again; it should pass.
+1. Decide on the next piece of functionality that must be implemented; if the piece of functionality is large then decide on the first step that must be taken towards implementing it.
+2. Write a test that checks that the functionality works as intended.
+3. Run the test; it should fail. If it doesn't then you know your test is incorrect.
+4. Write the code needed to pass the test.
+5. Run the test again; it should pass.
 
 Making sure that the test fails first is important for the following reason: just as it is easy to write broken code, so it is to write broken tests; the extra step provides some assurance that you don't accidentally wind up with broken code and broken tests that pass because the flaws of one complement the other.
 
@@ -229,9 +229,9 @@ So I started off using [Test::Unit](http://www.ruby-doc.org/stdlib/libdoc/test/u
 
 There are three levels on which you can write tests:
 
-1.  According to the expected functioning of the code under testing: that is, if you have code that adds two numbers, you should plug in values and check that the result of their addition is the one you expect. I often try multiple different values seeking the boundary or edge cases as well as cases that are qualitatively (not quantitatively) different. So if I was working with an array I would most likely test with zero elements, one element, and more than one element because these are all qualitatively different ("plural" is fundamentally different from "singular" and both are different from zero because they don't possess any "zeroness").
-2.  According to the documentation for the code under testing: that is, if the API documentation that you write states "raises an exception if passed nil" then you should test that the code actually does what the documentation says it does. You may also chose to test the reverse case (that it doesn't raise when passed a non-nil value).
-3.  According to the internal implementation details of the code: that is, if you know the internal workings of a method then you can tailor specific tests that check that these internal bits and pieces are in order.
+1. According to the expected functioning of the code under testing: that is, if you have code that adds two numbers, you should plug in values and check that the result of their addition is the one you expect. I often try multiple different values seeking the boundary or edge cases as well as cases that are qualitatively (not quantitatively) different. So if I was working with an array I would most likely test with zero elements, one element, and more than one element because these are all qualitatively different ("plural" is fundamentally different from "singular" and both are different from zero because they don't possess any "zeroness").
+2. According to the documentation for the code under testing: that is, if the API documentation that you write states "raises an exception if passed nil" then you should test that the code actually does what the documentation says it does. You may also chose to test the reverse case (that it doesn't raise when passed a non-nil value).
+3. According to the internal implementation details of the code: that is, if you know the internal workings of a method then you can tailor specific tests that check that these internal bits and pieces are in order.
 
 This last level of testing is actually a bit of an anti-pattern. Just as users of an API shouldn't have to have knowledge of its private implementation details in order to use it, I don't think your tests should be based on or written for "private" knowledge. Your tests should really be about behaviour.
 

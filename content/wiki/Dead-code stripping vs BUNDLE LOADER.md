@@ -7,7 +7,7 @@ The Xcode User Guide states that:
 
 > When dead-code stripping is enabled, the static linker searches for code that is unreachable from an initial set of live symbols and blocks. The initial list of live symbols and blocks may include ... Objective-C runtime data
 
-Nevertheless, in my own projects, I was seeing critical Objective-C runtime data get stripped away that prevented me from using the BUNDLE*LOADER build setting effectively. Ironically, I was faced with a choice of keeping symbol visibility as low as possible and benefiting from the performance enhancements of dead-code stripping (due to the lower memory footprint) \_or* being able to easily unit test my code, but not both.
+Nevertheless, in my own projects, I was seeing critical Objective-C runtime data get stripped away that prevented me from using the BUNDLE_LOADER build setting effectively. Ironically, I was faced with a choice of keeping symbol visibility as low as possible and benefiting from the performance enhancements of dead-code stripping (due to the lower memory footprint) \_or_ being able to easily unit test my code, but not both.
 
 To find out what symbols are being stripped, the guide says:
 
@@ -39,16 +39,16 @@ But the non-dead-code-stripped version looks like this:
 
 This is true for all subsections in the `__OBJC` section; all have the `.section_all` suffix:
 
--   `__class`
--   `__meta_class`
--   `__cls_meth`
--   `__inst_meth`
--   `__protocol`
--   `__category`
--   `__class_vars`
--   `__instance_vars`
--   `__module_info`
--   `__symbols`
+- `__class`
+- `__meta_class`
+- `__cls_meth`
+- `__inst_meth`
+- `__protocol`
+- `__category`
+- `__class_vars`
+- `__instance_vars`
+- `__module_info`
+- `__symbols`
 
 Looking at the assembly language generated for an Objective-C class I see this interesting section:
 
@@ -135,12 +135,12 @@ This solution is unworkable because it means that even symbols marked with an `E
 
 What would be the ideal solution, the GCC `_attribute__((used))` attribute, can't be applied to class names, as far as I know. You may choose from a number of unattractive options:
 
-1.  Use a basic exported symbols file including only the class names you wish to test and ignore the warnings. In doing so lose the functionality of your `EXPORT` macro.
-2.  Manually maintain additional entries (dozens of them) in the exported symbols file to avoid the warnings. In doing so lose the functionality of your `EXPORT` macro.
-3.  Perform two builds of your application: one without dead code stripping (which you use when building the bundle), then another one which you build afterwards with dead code stripping.
-4.  Define a linker flag when building the bundle to work around the linker error (or example, `-undefined dynamic_lookup`); the downside of specifying such a flag is that it affects _all_ undefined symbols, not just the one that the linker stripped during dead code stripping.
-5.  You can't use `-Wl,-U,.objc_class_name_WOClassName` to get around this problem when two-level namespaces are in effect, and you probably wouldn't want to do this anyway if the number of symbols was very large.
-6.  Two off two-level name spaces for the test bundle and use the `-Wl,-U` switch to pass test class names to the linker.
+1. Use a basic exported symbols file including only the class names you wish to test and ignore the warnings. In doing so lose the functionality of your `EXPORT` macro.
+2. Manually maintain additional entries (dozens of them) in the exported symbols file to avoid the warnings. In doing so lose the functionality of your `EXPORT` macro.
+3. Perform two builds of your application: one without dead code stripping (which you use when building the bundle), then another one which you build afterwards with dead code stripping.
+4. Define a linker flag when building the bundle to work around the linker error (or example, `-undefined dynamic_lookup`); the downside of specifying such a flag is that it affects _all_ undefined symbols, not just the one that the linker stripped during dead code stripping.
+5. You can't use `-Wl,-U,.objc_class_name_WOClassName` to get around this problem when two-level namespaces are in effect, and you probably wouldn't want to do this anyway if the number of symbols was very large.
+6. Two off two-level name spaces for the test bundle and use the `-Wl,-U` switch to pass test class names to the linker.
 
 # Mailing list threads
 

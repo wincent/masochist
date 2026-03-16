@@ -6,4 +6,4 @@ tags: rails vim tim.pope wiki
 
 # Official site
 
--   <https://github.com/tpope/vim-rails>
+- <https://github.com/tpope/vim-rails>

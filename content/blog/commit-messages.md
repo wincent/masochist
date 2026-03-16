@@ -13,59 +13,59 @@ I just had occasion to import the [WinSwitch](/wiki/WinSwitch) repository from [
 
 So there are a bunch of descriptive but uninspiring commit messages of this sort:
 
--   Update copyright year
--   3.2.1 release
--   3.2 release
--   "Log out..." alternate menu item
+- Update copyright year
+- 3.2.1 release
+- 3.2 release
+- "Log out..." alternate menu item
 
 # The bad
 
--   rewrapping to 132 columns, bumping version number, moving to xcconfig files from buildtools
+- rewrapping to 132 columns, bumping version number, moving to xcconfig files from buildtools
 
 Conflating multiple changes in a single commit; bad boy!
 
--   Cleanup
+- Cleanup
 
 Er, _what_ kind of cleanup?
 
 # The ugly
 
--   Back in Madrid
+- Back in Madrid
 
 That's nice to know. Glad you made it safely back.
 
--   Attempt at using Carbon menus (and WebKit) to achieve resizable menu images (failure).
+- Attempt at using Carbon menus (and WebKit) to achieve resizable menu images (failure).
 
 Committing broken changes?
 
--   Christmas Day debug build
+- Christmas Day debug build
 
 Merry Christmas!
 
--   Commit so that I can do some bughunting diffs
+- Commit so that I can do some bughunting diffs
 
 Committing more half-baked work-in-progress stuff. Lack of discipline, or simply the fact that Subversion fails to offer a rich set of tools for managing, viewing and manipulating in-progress material? How keenly one feels the absence of `git stash`, `git rebase` (and `git rebase --interactive`), `git commit --amend` (which I have aliased to just `git amend` because I find myself editing my last commit message fairly often), and the utility of the cheap and easy topic branches and merging, the index (the staging area) and colorized and paginated `diff` output etc...
 
--   More or less working code
+- More or less working code
 
 Um, ok. So it works "more or less". Doesn't sound too comforting.
 
--   Freeze repository prior to move to other machine
+- Freeze repository prior to move to other machine
 
 This is what happens in a non-distributed version control system. The number of options you have for moving changes (and works in progress) between machines is truly limited. Basically commit to the central server and update from the other machine, or manually use `diff` and `patch` to shuffle and apply patch files back and forth between machines.
 
 Finally, there a bunch of repeated log messages like this:
 
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
--   1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
+- 1.4.1 release
 
 I have no idea why I made these commits, most of them involving repeated changes to multiple files. Why didn't I bundle them all into a single commit?
 

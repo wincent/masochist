@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [NNTP](/wiki/NNTP): <http://en.wikipedia.org/wiki/Network_News_Transfer_Protocol>
+- [Wikipedia](/wiki/Wikipedia) article on [NNTP](/wiki/NNTP): <http://en.wikipedia.org/wiki/Network_News_Transfer_Protocol>

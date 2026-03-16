@@ -6,4 +6,4 @@ tags: svk wiki
 
 # See also
 
--   [svk-devel](/wiki/svk-devel) mailing list announcement: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000774.html>
+- [svk-devel](/wiki/svk-devel) mailing list announcement: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000774.html>

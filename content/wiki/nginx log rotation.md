@@ -7,8 +7,8 @@ cache_breaker: 1
 
 So what do you need to know to handle log rotation for [nginx](/wiki/nginx)? The official answer from [Igor Sysoev](/wiki/Igor_Sysoev) (the nginx lead developer) can be found [here](http://www.ruby-forum.com/topic/134115). In short, the sequence you must follow is:
 
-1.  Move (or otherwise process) the old log file
-2.  Send the [nginx](/wiki/nginx) master process a [USR1](/wiki/USR1) signal
+1. Move (or otherwise process) the old log file
+2. Send the [nginx](/wiki/nginx) master process a [USR1](/wiki/USR1) signal
 
 # [logrotate](/wiki/logrotate) setup
 
@@ -71,9 +71,9 @@ In my initial testing this log rotation did _not_ work as expected; the verbose 
 
 In other words:
 
-1.  Rename `access_log` to `access_log.1` (correct)
-2.  Run the `postrotate` script (correct)
-3.  Remove oldest log file, `access_log.1` (incorrect!)
+1. Rename `access_log` to `access_log.1` (correct)
+2. Run the `postrotate` script (correct)
+3. Remove oldest log file, `access_log.1` (incorrect!)
 
 That last action is the unexpected one, because in my `/etc/logrotate.conf` file (where global settings are stored) I have:
 
@@ -82,8 +82,8 @@ That last action is the unexpected one, because in my `/etc/logrotate.conf` file
 
 Troubleshooting permutations attempted:
 
--   Remove `nocreate` line from `/etc/logrotate.d/nginx` (no visible effect)
--   Add explicit `rotate 4` to `/etc/logrotate.d/nginx` (works)
+- Remove `nocreate` line from `/etc/logrotate.d/nginx` (no visible effect)
+- Add explicit `rotate 4` to `/etc/logrotate.d/nginx` (works)
 
 For each permutation is is necessary to hit the website (to make sure the log is non-empty) and also pass the `-f` (force) flag to `logrotate`, otherwise it will most likely refuse to rotate the log file because of its size. I finally realized that my initial runs did not behave as expected because I wasn't passing in `/etc/logwatch.conf` as the first parameter (it is not pulled in automatically); in other words, to test out a custom file in `/etc/logwatch.d` as it would really be executed in normal use you must precede it with `/etc/logwatch.conf` on the command line. Once I realized this I removed the explicit `rotate 4` from the `/etc/logwatch.d/nginx` configuration file.
 
@@ -93,5 +93,5 @@ The [nginx](/wiki/nginx) log files are only part of the situation. When you run 
 
 See:
 
--   [Rotating mongrel_cluster log files](/wiki/Rotating_mongrel_cluster_log_files)
--   [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)
+- [Rotating mongrel_cluster log files](/wiki/Rotating_mongrel_cluster_log_files)
+- [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)

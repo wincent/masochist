@@ -9,37 +9,37 @@ Eventually I plan to make the code for the site [open source](/wiki/open_source)
 
 # 0.3: 24 April 2009
 
--   Covered [here](/blog/site-updates).
+- Covered [here](/blog/site-updates).
 
 # April 2009
 
 I've started tagging deployments in the [Git](/wiki/Git) repo. Basically, after a deploy has been up and running for a few days and is known to be "good" I go back and tag the corresponding revision. So far there are two tags:
 
--   0.2: deployed 1 April 2009
--   0.1: deployed 26 March 2009
+- 0.2: deployed 1 April 2009
+- 0.1: deployed 26 March 2009
 
 From here on instead of manually recording changes I'll just be posting Git commit logs showing what changes between tags.
 
 # March 2009
 
--   [Ticket \#1237](/issues/1237): 'Auto-adjust "heading level" according to context'
--   Update to Rails 2.3.2
--   Flashes are now [JavaScript-backed](/blog/javascript-backed-flash), which means I can start turning on page-caching in more places and users will see faster page load times
--   Ported fix for [XSS and CSRF vulnerabilities](http://weblog.rubyonrails.org/2009/2/28/xss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin)
--   [Ticket \#1137](/issues/1137): 'Add "tweet" model for blog sidebar'
--   [Ticket \#1235](/issues/1235): "Viewing a forum topic, "updated at" shows last reply date"
--   [Ticket \#1213](/issues/1213): "Update backend to Rails 2.3.0 RC1"
--   [Ticket \#1210](/issues/1210): "Write JavaScript for dynamic "relativization" of displayed dates"
--   [Ticket \#1209](/issues/1209): "Scope refinement while navigating the tag cloud"
+- [Ticket \#1237](/issues/1237): 'Auto-adjust "heading level" according to context'
+- Update to Rails 2.3.2
+- Flashes are now [JavaScript-backed](/blog/javascript-backed-flash), which means I can start turning on page-caching in more places and users will see faster page load times
+- Ported fix for [XSS and CSRF vulnerabilities](http://weblog.rubyonrails.org/2009/2/28/xss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin)
+- [Ticket \#1137](/issues/1137): 'Add "tweet" model for blog sidebar'
+- [Ticket \#1235](/issues/1235): "Viewing a forum topic, "updated at" shows last reply date"
+- [Ticket \#1213](/issues/1213): "Update backend to Rails 2.3.0 RC1"
+- [Ticket \#1210](/issues/1210): "Write JavaScript for dynamic "relativization" of displayed dates"
+- [Ticket \#1209](/issues/1209): "Scope refinement while navigating the tag cloud"
 
 # February 2009
 
 I've been a bit slack about updating this page. Some notable changes that have made it onto the production server:
 
--   [Ticket \#1199](/issues/1199): 'Private items' influence visible on "tags\#show" page'
--   [Ticket \#1198](/issues/1198): "Automatically record issue metadata changes in comments"
--   [Ticket \#1190](/issues/1190): "Very long form content gets truncated during post"
--   [Ticket \#1136](/issues/1136): "Add tag support to issue tracker"
+- [Ticket \#1199](/issues/1199): 'Private items' influence visible on "tags\#show" page'
+- [Ticket \#1198](/issues/1198): "Automatically record issue metadata changes in comments"
+- [Ticket \#1190](/issues/1190): "Very long form content gets truncated during post"
+- [Ticket \#1136](/issues/1136): "Add tag support to issue tracker"
 
 Here is a list of the commits made between 27 April 2008 and 1 February 2009:
 
@@ -276,29 +276,29 @@ Here is a list of the commits made between 27 April 2008 and 1 February 2009:
 
 # 27 April 2008
 
--   Roll out basic prototype of full-text search: at the moment, weblog posts, wiki articles, issue tracker tickets and forum topics are all indexed, but comments attached to them are not.
+- Roll out basic prototype of full-text search: at the moment, weblog posts, wiki articles, issue tracker tickets and forum topics are all indexed, but comments attached to them are not.
 
 # 23 April 2008
 
--   Fix destructive indenting by [Haml](/wiki/Haml) when re-editing in the "new issue" form (visible as unwanted indenting when redisplaying the form, as will happen when you supply invalid input and the validation fails)
+- Fix destructive indenting by [Haml](/wiki/Haml) when re-editing in the "new issue" form (visible as unwanted indenting when redisplaying the form, as will happen when you supply invalid input and the validation fails)
 
 # 21 April 2008
 
--   Fix "last post" information on topics with an anonymous last commenter (see [bug \#671](/issues/671))
--   Lots of [CSS](/wiki/CSS) tweaks and improvements
+- Fix "last post" information on topics with an anonymous last commenter (see [bug \#671](/issues/671))
+- Lots of [CSS](/wiki/CSS) tweaks and improvements
 
 # 17 April 2008
 
--   [CSS](/wiki/CSS):
-    -   changed to add a grey border around the main content of the area for the page, give the pages a less crowded appearance
-    -   Added underlining to headings in several places to improve visual separation between different page sections
--   Easy-to-use and flexible search added to the [issue tracker](/wiki/issue_tracker)
--   The [Atom](/wiki/Atom) feed for the blog is now page-cached (not really a user-visible change, but it means that you can hit the feed more often without running into performance issues)
--   Improve navigation between pages in the issue tracker and support index by adding more links and making them more prominent
--   Add breadcrumbs to the [forum](/wiki/forum) index (the topic index and individual topic pages already had this)
--   Add breadcrumbs to individual weblog post pages
+- [CSS](/wiki/CSS):
+  - changed to add a grey border around the main content of the area for the page, give the pages a less crowded appearance
+  - Added underlining to headings in several places to improve visual separation between different page sections
+- Easy-to-use and flexible search added to the [issue tracker](/wiki/issue_tracker)
+- The [Atom](/wiki/Atom) feed for the blog is now page-cached (not really a user-visible change, but it means that you can hit the feed more often without running into performance issues)
+- Improve navigation between pages in the issue tracker and support index by adding more links and making them more prominent
+- Add breadcrumbs to the [forum](/wiki/forum) index (the topic index and individual topic pages already had this)
+- Add breadcrumbs to individual weblog post pages
 
 # 16 April 2008
 
--   Use "fuzzy matching" for forum comment dates; this eliminates repetitious labels like "Posted 2 days ago, edited 2 days ago" (this would be reduced to just "Posted 2 days ago", or just "2 days ago" when combined with the other changes to make dates more concise)
--   Use more concise date formats; cuts down on repeated "noise" words on the page
+- Use "fuzzy matching" for forum comment dates; this eliminates repetitious labels like "Posted 2 days ago, edited 2 days ago" (this would be reduced to just "Posted 2 days ago", or just "2 days ago" when combined with the other changes to make dates more concise)
+- Use more concise date formats; cuts down on repeated "noise" words on the page

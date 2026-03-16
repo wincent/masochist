@@ -45,30 +45,30 @@ Here instead of treating the method as a "black box", we actively look inside th
 
 ## Consequences of using the "black box" approach
 
--   We have to populate our database with real model instances so that the black box has something to work with; this will slow down the execution of our tests (which may or may not be a problem, depending on the size of your test suite), and it will certainly slow down our _coding_ (writing) of the tests unless we have some kind of nice-to-use factory for creating the needed records (here we're talking about a fixture replacement; the one I use is called, funnily enough, FixtureReplacement).
--   We'll want to confirm that the `@paginator` instance variable was set.
-    -   Relatedly, we'll want to confirm that it is "correctly" configured; while this might look like we're starting to think about the "internals" of the method, there's really no other place that we can check this out. In the view layer, for example, our testing will involve a paginator (or a paginator mock) but it won't help us to know whether our controller set up the paginator correctly. It's basically here or nowhere...
--   Likewise, we'll want to confirm that the `@tweets` instance variable was set, and furthermore that it contains what we expect.
-    -   This is where we handle some "edgy" cases like, what happens when there are no tweets at all in the database? 1? Enough for 1 page? Enough for 2 pages?
--   In doing all this we are most definitely not just testing the method; we're also testing the implementations of `RestfulPaginator` and `Tweet.find_recent` as well. Whether this is a bad thing depends on your perspective, I guess: if you hate coupling with a passion then you'll view this as inappropriate duplication (testing the same thing multiple times) and coupling (not testing things in isolation); on the other hand you might consider this as harmless and no impediment to finding the real cause of a bug when code that's exercised in multiple specs ends up causing multiple specs to fail.
--   This is basically "state-based" testing: we start from a known state, trigger an action, and then check to see that the final state is as expected.
+- We have to populate our database with real model instances so that the black box has something to work with; this will slow down the execution of our tests (which may or may not be a problem, depending on the size of your test suite), and it will certainly slow down our _coding_ (writing) of the tests unless we have some kind of nice-to-use factory for creating the needed records (here we're talking about a fixture replacement; the one I use is called, funnily enough, FixtureReplacement).
+- We'll want to confirm that the `@paginator` instance variable was set.
+  - Relatedly, we'll want to confirm that it is "correctly" configured; while this might look like we're starting to think about the "internals" of the method, there's really no other place that we can check this out. In the view layer, for example, our testing will involve a paginator (or a paginator mock) but it won't help us to know whether our controller set up the paginator correctly. It's basically here or nowhere...
+- Likewise, we'll want to confirm that the `@tweets` instance variable was set, and furthermore that it contains what we expect.
+  - This is where we handle some "edgy" cases like, what happens when there are no tweets at all in the database? 1? Enough for 1 page? Enough for 2 pages?
+- In doing all this we are most definitely not just testing the method; we're also testing the implementations of `RestfulPaginator` and `Tweet.find_recent` as well. Whether this is a bad thing depends on your perspective, I guess: if you hate coupling with a passion then you'll view this as inappropriate duplication (testing the same thing multiple times) and coupling (not testing things in isolation); on the other hand you might consider this as harmless and no impediment to finding the real cause of a bug when code that's exercised in multiple specs ends up causing multiple specs to fail.
+- This is basically "state-based" testing: we start from a known state, trigger an action, and then check to see that the final state is as expected.
 
 ## Consequences of using the "internals" approach
 
--   We're going to go through the method line by line mocking and stubbing method calls.
--   If the `RestfulPaginator` or `Tweet.find_recent` APIs ever change, then there is a risk that our specs might continue to pass because they could shield us from those API changes, even if the controller is broken in reality.
--   We need not necessarily create real model instances, so the specs could potentially run quite a bit faster; on the other hand, the manual set-up of mocks, stubs and message expectations might be a quite time-consuming (when it comes to _writing_ the specs).
--   On a positive note, we won't be re-testing `RestfulPaginator` and `Tweet.find_recent`.
--   On a negative note, the specs look awfully like the original method, just reworded into "test-speak"; there's a definite "smell" of duplication, high-maintenance and brittleness here.
--   There's not really much sense in testing "edgy" cases here (such as 0 records, 1 record, enough records for 1 page, enough for 2 pages) because we'd only be testing our ability to tell our mocks and stubs what messages to return, not testing the actual code. In other words, for each "edgy" case we'd tell the mocks/stubs to expect a different set of parameters, and we'd also instruct them to return different results, so this would really just be a test of our test-writing ability, not of the actual code that we want to test.
--   This is basically "interaction-based" testing: we say what interactions between classes we expect to see, trigger an action, and then check to see if the expected interactions took place.
+- We're going to go through the method line by line mocking and stubbing method calls.
+- If the `RestfulPaginator` or `Tweet.find_recent` APIs ever change, then there is a risk that our specs might continue to pass because they could shield us from those API changes, even if the controller is broken in reality.
+- We need not necessarily create real model instances, so the specs could potentially run quite a bit faster; on the other hand, the manual set-up of mocks, stubs and message expectations might be a quite time-consuming (when it comes to _writing_ the specs).
+- On a positive note, we won't be re-testing `RestfulPaginator` and `Tweet.find_recent`.
+- On a negative note, the specs look awfully like the original method, just reworded into "test-speak"; there's a definite "smell" of duplication, high-maintenance and brittleness here.
+- There's not really much sense in testing "edgy" cases here (such as 0 records, 1 record, enough records for 1 page, enough for 2 pages) because we'd only be testing our ability to tell our mocks and stubs what messages to return, not testing the actual code. In other words, for each "edgy" case we'd tell the mocks/stubs to expect a different set of parameters, and we'd also instruct them to return different results, so this would really just be a test of our test-writing ability, not of the actual code that we want to test.
+- This is basically "interaction-based" testing: we say what interactions between classes we expect to see, trigger an action, and then check to see if the expected interactions took place.
 
 ## Common concerns
 
 Regardless of the perspective we choose, there are a couple of common requirements that we'll want to test regardless. Both of these fall under the "externally visible behaviour" category, and there's no way in which we could or would want to use knowledge of internal implementation details to inform how we write the specs:
 
--   We want to confirm that we rendered the expected template, `index`
--   We want to confrim that the response was successful (HTTP 200)
+- We want to confirm that we rendered the expected template, `index`
+- We want to confrim that the response was successful (HTTP 200)
 
 ## Show me the code
 
@@ -247,8 +247,8 @@ We know that the paginator is doing its job at least in part, because our other 
 
 Here we have two options.
 
--   Swap or "black box" hat for our "internals" one, just for one spec and use a mock and a `should_receive` expectation to confirm that the right parameters are being passed into the paginator.
--   Alternatively, we can stay in "state-based" mode and inspect our paginator instance variable to make sure that it's in the expected state.
+- Swap or "black box" hat for our "internals" one, just for one spec and use a mock and a `should_receive` expectation to confirm that the right parameters are being passed into the paginator.
+- Alternatively, we can stay in "state-based" mode and inspect our paginator instance variable to make sure that it's in the expected state.
 
 That might look something like this:
 
@@ -361,8 +361,8 @@ Let's compare that with the state-based approach...
 
 I don't find the state-based approach so appealing in this case for a couple of reasons:
 
--   It required us to implement an `old_tweet` helper function in order to reduce repetitive set-up; helper functions can have bugs and they make it harder to understand the specs because they have to be parsed before you can understand what the specs do.
--   In order to test the offset and limit behaviours we end up setting up paginator objects in an artificial way with parameters very unlike those that we'd see when they are used in practice (from controllers).
--   Those artificial parameters are easy to get wrong, and hard to parse for somebody not familiar with the parameter order of the `RestfulPaginator.new` method.
+- It required us to implement an `old_tweet` helper function in order to reduce repetitive set-up; helper functions can have bugs and they make it harder to understand the specs because they have to be parsed before you can understand what the specs do.
+- In order to test the offset and limit behaviours we end up setting up paginator objects in an artificial way with parameters very unlike those that we'd see when they are used in practice (from controllers).
+- Those artificial parameters are easy to get wrong, and hard to parse for somebody not familiar with the parameter order of the `RestfulPaginator.new` method.
 
 So, while I generally like the "black box", state-based approach, I think there are cases where using mocks and stubs is the better choice (not to mention those situations where mocks and stubs are literally the _only_ way you can test something). The really important thing is to always judge things on a case-by-case basis. It would be an error to say "mocks are evil" and never use them. Likewise, it would be a mistake to say "coupling is the enemy, we should always isolate". In the end, readability, writability and maintainability, are sometimes best obtained through mocks, and sometimes best obtained through state-based patterns.

@@ -6,5 +6,5 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [HTTPS](/wiki/HTTPS): <http://en.wikipedia.org/wiki/HTTPS>
--   Related protocol: [HTTP](/wiki/HTTP)
+- [Wikipedia](/wiki/Wikipedia) article on [HTTPS](/wiki/HTTPS): <http://en.wikipedia.org/wiki/HTTPS>
+- Related protocol: [HTTP](/wiki/HTTP)

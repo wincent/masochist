@@ -6,10 +6,10 @@ cache_breaker: 1
 
 As [promised](/blog/0-minutes-with-vim), here's an update with some first impressions of [Vim](/wiki/Vim):
 
--   Incremental search is a must: turn it on with `:set incsearch` (or `set incsearch` in your `~/.vimrc`); this gives you the "find as you type" functionality that you get in Firefox and Safari, and which Emacs gives you with `C-s`.
--   Search highlighting rocks: to incremental search add `:set hlsearch` and you'll find _all_ instances of the search string highlighted in the editor view (like Firefox and Safari); very helpful.
--   Tabs have a very nice "look and feel" but will take some getting used to because they are _not_ like tabs in Safari or TextMate. In the latter, each tab represents a document, and switching between tabs is equivalent to switching between documents. In [MacVim](/wiki/MacVim), a tab is merely a way of grouping together in a single window what would otherwise be a collection of separate windows. There is no concept of "identity" in each tab; a tab doesn't correspond to a particular document, it merely shows the buffer that you tell it to show (you can, for example, be looking at a document and then start looking at another in the same tab, and then switch back and forth between them). This is because Vim shares Emacs' notions of "buffers"; you can have any number of buffers, any number of windows, and there is no one-to-one correspondence between the two entities. Basically, a window is just a viewport into a document. You can use one viewport to look into many documents, and you can also use multiple viewports to look into a single document. Not sure if I explained that very well, but it all means that the semantic notion of what we are consider to be a "tab" might need some adaptation in this context where `tab != document`.
--   A bunch of color schemes are included (no need to download them as you have to with Emacs), but I'll need to find one with my preferred "legal pad yellow" background.
+- Incremental search is a must: turn it on with `:set incsearch` (or `set incsearch` in your `~/.vimrc`); this gives you the "find as you type" functionality that you get in Firefox and Safari, and which Emacs gives you with `C-s`.
+- Search highlighting rocks: to incremental search add `:set hlsearch` and you'll find _all_ instances of the search string highlighted in the editor view (like Firefox and Safari); very helpful.
+- Tabs have a very nice "look and feel" but will take some getting used to because they are _not_ like tabs in Safari or TextMate. In the latter, each tab represents a document, and switching between tabs is equivalent to switching between documents. In [MacVim](/wiki/MacVim), a tab is merely a way of grouping together in a single window what would otherwise be a collection of separate windows. There is no concept of "identity" in each tab; a tab doesn't correspond to a particular document, it merely shows the buffer that you tell it to show (you can, for example, be looking at a document and then start looking at another in the same tab, and then switch back and forth between them). This is because Vim shares Emacs' notions of "buffers"; you can have any number of buffers, any number of windows, and there is no one-to-one correspondence between the two entities. Basically, a window is just a viewport into a document. You can use one viewport to look into many documents, and you can also use multiple viewports to look into a single document. Not sure if I explained that very well, but it all means that the semantic notion of what we are consider to be a "tab" might need some adaptation in this context where `tab != document`.
+- A bunch of color schemes are included (no need to download them as you have to with Emacs), but I'll need to find one with my preferred "legal pad yellow" background.
 
 This, of course, isn't my first experience with the [Vim](/wiki/Vim) world.
 
@@ -49,8 +49,8 @@ Just say you have a line like this in your code:
 
 Let's imagine the cursor is on the `f` and you want to replace `fooBar` with `source`. There are many ways you might achieve this. For example, you might do:
 
-1.  Delete the text from the cursor up to, but not including, the `T`
-2.  Insert `source`
+1. Delete the text from the cursor up to, but not including, the `T`
+2. Insert `source`
 
 The command for deleting up to but not including the `T` in Vim is `dtT`, or "delete til T". The "d" isn't really a "namespace" at all in the way that `C-x` is in Emacs; its literally just the verb that you'd like to perform: "delete". And logically, we follow our verb "delete" with a specification of _what_ we want to delete ("til the T"). So basically the mnemonic reads just like spoken English. It's not like `C-x` where the "x" really has nothing to do with the verb that you're really interested in performing.
 

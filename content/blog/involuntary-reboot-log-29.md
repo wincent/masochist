@@ -11,9 +11,9 @@ But the story doesn't end there; the machine was dead like a slab of rock for se
 
 ## Stats to date
 
--   Kernel panics: 9
--   Hard resets: 20
--   Total failures: 29
--   Start of recording keeping: 21 May 2006
--   Total days to date: 677 days
--   Average time between failures: 23.34 days
+- Kernel panics: 9
+- Hard resets: 20
+- Total failures: 29
+- Start of recording keeping: 21 May 2006
+- Total days to date: 677 days
+- Average time between failures: 23.34 days

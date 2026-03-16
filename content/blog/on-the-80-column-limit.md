@@ -49,44 +49,44 @@ So of late I've found myself bouncing back and forth between the 80 and 132-colu
 
 But it's still not a simple case of "80 columns for C and Ruby, 132 for Objective-C". I still run into situations from time to time, even in C, where I find that making things fit in less than 80 columns actually harms readability. For example, what's more readable? This (97 columns):
 
-            if (rb_funcall(options, rb_intern("has_key?"), 1, ID2SYM(rb_intern("minimum"))) == Qtrue)
-                min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
+    if (rb_funcall(options, rb_intern("has_key?"), 1, ID2SYM(rb_intern("minimum"))) == Qtrue)
+        min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
 Or this (70 columns):
 
-            if (rb_funcall(options, rb_intern("has_key?"), 1,
-                ID2SYM(rb_intern("minimum"))) == Qtrue)
-                min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
+    if (rb_funcall(options, rb_intern("has_key?"), 1,
+        ID2SYM(rb_intern("minimum"))) == Qtrue)
+        min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
 Evidently the first one is easier for a human to parse because it has a line-break in the logical place (_after_ the `if` condition) rather than in the awkward place (inside a list of function arguments inside the `if`).
 
 To avoid that awkward line-break we could introduce a temporary variable:
 
-            VALUE has_key = rb_funcall(options, rb_intern("has_key?"), 1, ID2SYM(rb_intern("minimum")));
-            if (has_key == Qtrue)
-                min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
+    VALUE has_key = rb_funcall(options, rb_intern("has_key?"), 1, ID2SYM(rb_intern("minimum")));
+    if (has_key == Qtrue)
+        min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
 But that still doesn't get us under the line-length limit. We either have to introduce another awkward line-break:
 
-            VALUE has_key = rb_funcall(options, rb_intern("has_key?"), 1,
-                ID2SYM(rb_intern("minimum")));
-            if (has_key == Qtrue)
-                min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
+    VALUE has_key = rb_funcall(options, rb_intern("has_key?"), 1,
+        ID2SYM(rb_intern("minimum")));
+    if (has_key == Qtrue)
+        min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
 Or perhaps, depending on your style preferences:
 
-            VALUE has_key = rb_funcall(options, rb_intern("has_key?"), 1,
-                                       ID2SYM(rb_intern("minimum")));
-            if (has_key == Qtrue)
-                min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
+    VALUE has_key = rb_funcall(options, rb_intern("has_key?"), 1,
+                               ID2SYM(rb_intern("minimum")));
+    if (has_key == Qtrue)
+        min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
 If we don't want any of those less-than-ideal line-breaks we could introduce even more temporary variables:
 
-            ID method = rb_intern("has_key?");
-            VALUE key = ID2SYM(rb_intern("minimum"));
-            VALUE has_key = rb_funcall(options, method, 1, key);
-            if (has_key == Qtrue)
-                min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
+    ID method = rb_intern("has_key?");
+    VALUE key = ID2SYM(rb_intern("minimum"));
+    VALUE has_key = rb_funcall(options, method, 1, key);
+    if (has_key == Qtrue)
+        min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
 Now we're under the length limit, but we've cluttered things up with three temporary variables and it's now necessary to read 5 lines instead of 2 in order to figure out what's happening.
 

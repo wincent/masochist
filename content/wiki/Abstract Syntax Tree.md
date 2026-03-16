@@ -7,4 +7,4 @@ An [Abstract Syntax Tree](/wiki/Abstract_Syntax_Tree) or [AST](/wiki/AST) is an 
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Abstract Syntax Trees](/wiki/Abstract_Syntax_Trees): <http://en.wikipedia.org/wiki/Abstract_syntax_tree>
+- [Wikipedia](/wiki/Wikipedia) article on [Abstract Syntax Trees](/wiki/Abstract_Syntax_Trees): <http://en.wikipedia.org/wiki/Abstract_syntax_tree>

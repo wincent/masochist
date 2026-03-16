@@ -132,29 +132,29 @@ To prevent this from becoming too onerous, or letting my perfectionism get the b
 
 Topics I'd like to cover, in no particular order.
 
--   Getting links and files to open in iTerm, tmux, and Vim
--   Statusline
--   Dealing with temporary files (DONE)
--   Italics in the terminal, true color in the terminal etc
--   Plug-ins I've written:
-    -   Command-T
-    -   Ferret
-    -   Terminus
--   Spelling
--   Settings (DONE)
--   CTRL-Z fg + bg trick
--   Sorting multi-line blocks
+- Getting links and files to open in iTerm, tmux, and Vim
+- Statusline
+- Dealing with temporary files (DONE)
+- Italics in the terminal, true color in the terminal etc
+- Plug-ins I've written:
+  - Command-T
+  - Ferret
+  - Terminus
+- Spelling
+- Settings (DONE)
+- CTRL-Z fg + bg trick
+- Sorting multi-line blocks
 
 # Recording checklist
 
--   Quit all other apps.
--   Switch to high-contrast colorscheme (`dark tomorrow`, probably).
--   Turn on "Do Not Disturb" mode in notifications center (two-finger swipe from right edge of trackpad).
--   Mute sound.
--   Close all but one iTerm tab.
--   Make sure you hide Screenflow.
--   Use [my hacked-up Keycastr fork](https://github.com/wincent/keycastr/tree/wincent), because it works on [Colemak](/wiki/Colemak).
--   Place Keycastr at the bottom/center of the screen.
--   Leave a gap between the terminal window and the bottom edge (room for Keycastr window).
--   For showing web pages, enable guest browsing; note that going "incognito" is not enough.
--   Audit recorded video for privacy.
+- Quit all other apps.
+- Switch to high-contrast colorscheme (`dark tomorrow`, probably).
+- Turn on "Do Not Disturb" mode in notifications center (two-finger swipe from right edge of trackpad).
+- Mute sound.
+- Close all but one iTerm tab.
+- Make sure you hide Screenflow.
+- Use [my hacked-up Keycastr fork](https://github.com/wincent/keycastr/tree/wincent), because it works on [Colemak](/wiki/Colemak).
+- Place Keycastr at the bottom/center of the screen.
+- Leave a gap between the terminal window and the bottom edge (room for Keycastr window).
+- For showing web pages, enable guest browsing; note that going "incognito" is not enough.
+- Audit recorded video for privacy.

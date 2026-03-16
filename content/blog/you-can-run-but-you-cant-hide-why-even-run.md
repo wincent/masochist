@@ -7,17 +7,17 @@ Spammers.
 
 The scourge of the Internet. We have so much to thank them for:
 
--   The waves of junk mail pouring into our inboxes.
--   The painful challenge-response systems that stop us from sending legitimate email.
--   The DNS blacklists that make sending mail from a dynamic IP unfeasible.
--   The throw-away email addresses that we register to protect our real address.
--   The forced migrations from one spam-inundated account to an inevitably to-be-inundanted other.
--   The greylists that slow down our legitimate outgoing messages.
--   The moderation that dampens discussion lists.
--   The virtual ruination of NNTP, in my view largely spared only by [Google](https://wincent.dev/wiki/Google) and their [groups gateway](http://groups.google.com/).
--   The endless confirmation emails that we must work through in order to register at new sites.
--   Email addresses that you can't click on, but that you have to "translate" from based on what you see in an image or some kind of code.
--   Companies that you can't email even though you're a paying customer.
+- The waves of junk mail pouring into our inboxes.
+- The painful challenge-response systems that stop us from sending legitimate email.
+- The DNS blacklists that make sending mail from a dynamic IP unfeasible.
+- The throw-away email addresses that we register to protect our real address.
+- The forced migrations from one spam-inundated account to an inevitably to-be-inundanted other.
+- The greylists that slow down our legitimate outgoing messages.
+- The moderation that dampens discussion lists.
+- The virtual ruination of NNTP, in my view largely spared only by [Google](https://wincent.dev/wiki/Google) and their [groups gateway](http://groups.google.com/).
+- The endless confirmation emails that we must work through in order to register at new sites.
+- Email addresses that you can't click on, but that you have to "translate" from based on what you see in an image or some kind of code.
+- Companies that you can't email even though you're a paying customer.
 
 I could go on but by now you're getting the idea. And that's only in the realm of email; spammers have also done and are doing their very best to ruin forums, weblogs and every other online space.
 

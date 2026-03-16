@@ -41,6 +41,6 @@ In general, languages like [C](/wiki/C) and [Ruby](/wiki/Ruby) are easier to kee
 
 The guidelines in this article are general principles which should apply to all programming languages. For language-specific standards, please see one of the following:
 
--   [C coding standards](/wiki/C_coding_standards)
--   [Objective-C coding standards](/wiki/Objective-C_coding_standards)
--   [Ruby coding standards](/wiki/Ruby_coding_standards)
+- [C coding standards](/wiki/C_coding_standards)
+- [Objective-C coding standards](/wiki/Objective-C_coding_standards)
+- [Ruby coding standards](/wiki/Ruby_coding_standards)

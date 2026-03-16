@@ -362,12 +362,12 @@ There are [plenty of posts](http://www.google.com/search?q=%22uninitialized+cons
 
 Some of the other links I trawled through:
 
--   <http://bpdp.wordpress.com/2007/11/28/rubygems-095-and-rails-126-uninitialized-constant-gemgemrunner/>
--   <http://jhernandez.gpltarragona.org/blog/?p=621>
--   <http://www.ruby-forum.com/topic/133792>
--   <http://www.ruby-forum.com/topic/136010>
--   <http://blog.ra66i.org/archives/informatics/2007/12/23/a-quick-gem-101-faq-gemrunner-name-error/>
--   <http://groups.google.com/group/rubyonrails-core/browse_thread/thread/d3e96496eca8735c>
+- <http://bpdp.wordpress.com/2007/11/28/rubygems-095-and-rails-126-uninitialized-constant-gemgemrunner/>
+- <http://jhernandez.gpltarragona.org/blog/?p=621>
+- <http://www.ruby-forum.com/topic/133792>
+- <http://www.ruby-forum.com/topic/136010>
+- <http://blog.ra66i.org/archives/informatics/2007/12/23/a-quick-gem-101-faq-gemrunner-name-error/>
+- <http://groups.google.com/group/rubyonrails-core/browse_thread/thread/d3e96496eca8735c>
 
 One of the suggested techniques was to "unfreeze" [Rails](/wiki/Rails) (ie. remove it) from the `vendor` directory to force use of the newly installed 2.0.2 instead. This didn't work out too well:
 

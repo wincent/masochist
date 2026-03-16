@@ -5,8 +5,8 @@ tags: site blog
 
 The changes [mentioned yesterday](/blog/upcoming-site-changes) are now in place. The main points of interest are:
 
--   new product pages for [Synergy](/wiki/Synergy): these are much more navigable and attractive than the old pages
--   a host backend updates (170 commits)
+- new product pages for [Synergy](/wiki/Synergy): these are much more navigable and attractive than the old pages
+- a host backend updates (170 commits)
 
 A full listing of code-level changes appears below. As always, if you spot any glitches please let me know (via email to <example@example.com>, or opening a [ticket](/wiki/ticket) in the [issue tracker](/wiki/issue_tracker).
 

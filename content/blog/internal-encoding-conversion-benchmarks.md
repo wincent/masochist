@@ -61,7 +61,7 @@ I was pleasantly surprised at the speed-up. As far as I know, the Ruby Iconv mod
 
 Observations:
 
--   For short strings the internal implementation is about 4 to 5 times faster
--   For longer strings the gap widens to as much as 7 times faster
--   Unsuprisingly, for both implementations processing input in the ASCII range is faster
--   Slightly more interestingly, for the internal implementation converting _to_ UCS-2 is faster than converting _from_ it; the fluctuations in the case of the iconv implemenation aren't as clear
+- For short strings the internal implementation is about 4 to 5 times faster
+- For longer strings the gap widens to as much as 7 times faster
+- Unsuprisingly, for both implementations processing input in the ASCII range is faster
+- Slightly more interestingly, for the internal implementation converting _to_ UCS-2 is faster than converting _from_ it; the fluctuations in the case of the iconv implemenation aren't as clear

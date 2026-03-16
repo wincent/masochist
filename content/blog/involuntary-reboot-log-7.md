@@ -15,14 +15,14 @@ As per standard procedure, booted off the Mac OS X DVD to run Disk First Aid; no
 
 #### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.8
--   **Kernel panics:** 6
--   **Hard resets:** 1
--   **Total failures:** 7
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 222 days
--   **Average time between failures:** 31 days
--   **Uptime at moment of failure(s):** Several days
+- **Operating system version:** 10.4.8
+- **Kernel panics:** 6
+- **Hard resets:** 1
+- **Total failures:** 7
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 222 days
+- **Average time between failures:** 31 days
+- **Uptime at moment of failure(s):** Several days
 
 As per usual I used the interactive Ruby interpreter, `irb`, to do the date calculations for me:
 

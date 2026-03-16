@@ -82,7 +82,7 @@ If you find breakage and can fix it, see "[Creating and submitting a patch via e
 
 When tracking a branch rather than installing official releases you have two options for up-to-date documentation:
 
--   Read the AsciiDoc source of the documentation (in the `Documentation` directory of the source repository)
--   Build the man pages from the AsciiDoc source and install them
+- Read the AsciiDoc source of the documentation (in the `Documentation` directory of the source repository)
+- Build the man pages from the AsciiDoc source and install them
 
 While the second option is somewhat more pleasant (allows you to just type `man git-fetch` or `git fetch --help`, for example), it is also more painful and time-consuming. See "[Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)" for more information.

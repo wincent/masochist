@@ -39,11 +39,11 @@ Also waiting in the wings: WOTest (which I am thinking of renaming to WOSpec aft
 
 Some of the latest notable activity (most recent activity first):
 
--   Movable Type 3.31 upgrade.
--   Purchased a license for [SuperDuper!](http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html).
--   [MySQL upgrade from 4.1.20 to 4.1.21](/wiki/Upgrading_from_MySQL_4.1.20_to_4.1.21_on_Red_Hat_Enterprise_Linux) (first attempt failed due to MySQL packaging flaw; second attempt with corrected package succeeded)
--   Wrote tool for PHP-to-HTML conversion and preparation of Apple Help Indices.
--   Bug fixes to Wincent Strings Utility.
--   `WORegularExpression`, a ([PCRE](http://www.pcre.org/)) wrapper class.
--   Learnt the API for adding a contextual menu plug-in to the Finder.
--   A huge amount of work on [anti-spam measures](https://wincent.dev/wiki/Combating_spam), requiring me to do a lot of learning about [Sendmail](https://wincent.dev/a/kb/index.php?title=Special:Search&ns0=1&redirs=0&searchx=1&search=Sendmail&limit=500&offset=0)
+- Movable Type 3.31 upgrade.
+- Purchased a license for [SuperDuper!](http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html).
+- [MySQL upgrade from 4.1.20 to 4.1.21](/wiki/Upgrading_from_MySQL_4.1.20_to_4.1.21_on_Red_Hat_Enterprise_Linux) (first attempt failed due to MySQL packaging flaw; second attempt with corrected package succeeded)
+- Wrote tool for PHP-to-HTML conversion and preparation of Apple Help Indices.
+- Bug fixes to Wincent Strings Utility.
+- `WORegularExpression`, a ([PCRE](http://www.pcre.org/)) wrapper class.
+- Learnt the API for adding a contextual menu plug-in to the Finder.
+- A huge amount of work on [anti-spam measures](https://wincent.dev/wiki/Combating_spam), requiring me to do a lot of learning about [Sendmail](https://wincent.dev/a/kb/index.php?title=Special:Search&ns0=1&redirs=0&searchx=1&search=Sendmail&limit=500&offset=0)

@@ -12,13 +12,13 @@ The average time between failures drops again with the incident, and this machin
 
 # Statistics so far
 
--   Kernel panics: 2
--   Hard resets: 5
--   Total failures: 7
--   Start of recording keeping: 17 March 2010
--   Total days to date: 101 days
--   Average time between failures: 12.625 days
+- Kernel panics: 2
+- Hard resets: 5
+- Total failures: 7
+- Start of recording keeping: 17 March 2010
+- Total days to date: 101 days
+- Average time between failures: 12.625 days
 
 # Footnotes
 
--   \*: "Safari beachball force-quit kernel panic"
+- \*: "Safari beachball force-quit kernel panic"

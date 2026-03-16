@@ -7,9 +7,9 @@ It is often recommended that you use [mock objects](/wiki/mock_objects) and [stu
 
 By using [mocks](/wiki/mocks) and [stubs](/wiki/stubs) you can:
 
--   Reduce the interdependence of your [models](/wiki/models), [views](/wiki/views) and [controllers](/wiki/controllers) during testing.
--   Eliminate the impact of errors in your [models](/wiki/models) from affecting your [controllers](/wiki/controllers) and [views](/wiki/views); that is, failures will occur in one site (the [model](/wiki/model)) rather than in multiple sites, and so will be much easier to track down. The same is true in the other senses as well: errors in the [controller](/wiki/controller) will not affect the [view](/wiki/view) or [model](/wiki/model) [specs](/wiki/specs) and so on.
--   Start developing your [views](/wiki/views) before your [models](/wiki/models) or [controllers](/wiki/controllers) are even down (or vice versa; you can start with [controllers](/wiki/controllers) or [models](/wiki/models); there is no need to have a full stack in place in order to start testing).
+- Reduce the interdependence of your [models](/wiki/models), [views](/wiki/views) and [controllers](/wiki/controllers) during testing.
+- Eliminate the impact of errors in your [models](/wiki/models) from affecting your [controllers](/wiki/controllers) and [views](/wiki/views); that is, failures will occur in one site (the [model](/wiki/model)) rather than in multiple sites, and so will be much easier to track down. The same is true in the other senses as well: errors in the [controller](/wiki/controller) will not affect the [view](/wiki/view) or [model](/wiki/model) [specs](/wiki/specs) and so on.
+- Start developing your [views](/wiki/views) before your [models](/wiki/models) or [controllers](/wiki/controllers) are even down (or vice versa; you can start with [controllers](/wiki/controllers) or [models](/wiki/models); there is no need to have a full stack in place in order to start testing).
 
 I became convinced of the usefulness of doing this while doing [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails). I was able to start by developing and testing isolated [models](/wiki/models), [views](/wiki/views) and [controllers](/wiki/controllers), starting wherever seemed most appropriate rather than having to get the entire [MVC](/wiki/MVC) graph in place before I could start testing.
 
@@ -19,6 +19,6 @@ But one further caveat: although [mocks](/wiki/mocks) _can_ in theory deliver al
 
 # See also
 
--   [Behaviour-Driven Development of Rails models](/wiki/Behaviour-Driven_Development_of_Rails_models)
--   [Behaviour-Driven Development of Rails views](/wiki/Behaviour-Driven_Development_of_Rails_views)
--   [Behaviour-Driven Development of Rails controllers](/wiki/Behaviour-Driven_Development_of_Rails_controllers)
+- [Behaviour-Driven Development of Rails models](/wiki/Behaviour-Driven_Development_of_Rails_models)
+- [Behaviour-Driven Development of Rails views](/wiki/Behaviour-Driven_Development_of_Rails_views)
+- [Behaviour-Driven Development of Rails controllers](/wiki/Behaviour-Driven_Development_of_Rails_controllers)

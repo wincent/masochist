@@ -6,13 +6,13 @@ tags: safari wiki
 
 A quick [Google](/wiki/Google) search on the topic reveals a large number of links on how to get back the superior behaviour:
 
--   <http://www.theronge.com/2006/02/02/how-to-remove-adobe-pdf-view-from-safari/>
--   <http://www.mcld.co.uk/blog/blog.php?110>
--   <http://forums.macosxhints.com/archive/index.php/t-56848.html>
+- <http://www.theronge.com/2006/02/02/how-to-remove-adobe-pdf-view-from-safari/>
+- <http://www.mcld.co.uk/blog/blog.php?110>
+- <http://forums.macosxhints.com/archive/index.php/t-56848.html>
 
 The best information appears to be in this article:
 
--   <http://www.macfixit.com/article.php?story=20070404013904547>
+- <http://www.macfixit.com/article.php?story=20070404013904547>
 
 # Problems
 

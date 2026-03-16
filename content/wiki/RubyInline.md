@@ -8,4 +8,4 @@ From the [RubyInline](/wiki/RubyInline) project page:
 
 # See also
 
--   Official project page: <http://rubyforge.org/projects/rubyinline/>
+- Official project page: <http://rubyforge.org/projects/rubyinline/>

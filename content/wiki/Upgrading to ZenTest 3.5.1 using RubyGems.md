@@ -13,4 +13,4 @@ Update [FastRI](/wiki/FastRI) index:
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11173>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11173>

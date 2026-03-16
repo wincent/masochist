@@ -16,9 +16,9 @@ Since I wrote that comment (back in October 2007) I've continued to hear to Cucu
 
 If you doubt this, just start with these pages on the Cucumber wiki and explore around for a little while:
 
--   [Feature-Coupled Steps (Antipattern)](http://wiki.github.com/aslakhellesoy/cucumber/feature-coupled-steps-antipattern)
--   [Conjunction Steps (Antipattern)](http://wiki.github.com/aslakhellesoy/cucumber/conjunction-steps-antipattern)
--   [Step Organisation](http://wiki.github.com/aslakhellesoy/cucumber/step-organisation)
+- [Feature-Coupled Steps (Antipattern)](http://wiki.github.com/aslakhellesoy/cucumber/feature-coupled-steps-antipattern)
+- [Conjunction Steps (Antipattern)](http://wiki.github.com/aslakhellesoy/cucumber/conjunction-steps-antipattern)
+- [Step Organisation](http://wiki.github.com/aslakhellesoy/cucumber/step-organisation)
 
 Writing stories/features, even the plain-text portion, is a non-trivial task. Non-programmers can certainly do it, but to actually produce _good_ features is another matter entirely: to do so you need to understand the entire stack from top to bottom (the plain-text features, the underlying [Ruby](/wiki/Ruby) steps, and the mechanics of the application under test as well).
 

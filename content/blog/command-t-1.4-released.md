@@ -9,9 +9,9 @@ I just released version 1.4 of [Command-T](/wiki/Command-T), the powerful, [open
 
 It's been over 6 months since I last cut a release, so this one is the accumulation of a number of new features and bug fixes. Of special note are these new features:
 
--   highlighting of matching characters in the match listing (patch from Steven Moazami)
--   ability to flush the cache when the file listing is open with `<C-f>`
--   new `:CommandTTag` finder, analogous to the existing file, buffer and jump list finders, but for tags (patch from Noon Silk)
+- highlighting of matching characters in the match listing (patch from Steven Moazami)
+- ability to flush the cache when the file listing is open with `<C-f>`
+- new `:CommandTTag` finder, analogous to the existing file, buffer and jump list finders, but for tags (patch from Noon Silk)
 
 As always, a full change-log appears under HISTORY in the documentation, and you can explore the commits in the release [here](/repos/command-t/tags/1.4). (Note: the integrated repository browser that I'm linking to here is still relatively new and doesn't have a full feature set yet.)
 
@@ -40,9 +40,9 @@ See the docs for more info on installing (and updating) Command-T via Pathogen.
 
 ## Everybody else
 
--   Download the vimball from [the Command-T product page](/products/command-t) (or [www.vim.org](http://www.vim.org/scripts/script.php?script_id=3025), if you prefer)
--   Open the vimball archive in vim, and do `:so %` to unpack it
--   `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
+- Download the vimball from [the Command-T product page](/products/command-t) (or [www.vim.org](http://www.vim.org/scripts/script.php?script_id=3025), if you prefer)
+- Open the vimball archive in vim, and do `:so %` to unpack it
+- `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
 
 # Screencasts, donations and source code
 

@@ -5,7 +5,7 @@ cache_breaker: 1
 
 # Official page
 
--   <http://www.vim.org/scripts/script.php?script_id=1984>
+- <http://www.vim.org/scripts/script.php?script_id=1984>
 
 # Updates
 
@@ -50,4 +50,4 @@ Or from the [command line](/wiki/command_line):
 
 # See also
 
--   [Vim plugins](/wiki/Vim_plugins)
+- [Vim plugins](/wiki/Vim_plugins)

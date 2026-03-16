@@ -8,14 +8,14 @@ title: Open source
 
 Examples of [Wincent products](/wiki/Wincent_products) that have been released as [open source](/wiki/open_source) include:
 
--   [Wikitext](/wiki/Wikitext) ([C](/wiki/C) extension for [Ruby](/wiki/Ruby))
--   [WinSwitch](/wiki/WinSwitch) (desktop application)
--   [Walrat](/wiki/Walrat) ([packrat](/wiki/packrat) parser generator)
--   [Walrus](/wiki/Walrus) ([command line](/wiki/command_line) tool)
--   [WOBezel](/wiki/WOBezel) (framework)
--   [WOHotKey](/wiki/WOHotKey) (framework)
--   [askpass](/wiki/askpass) ([command line](/wiki/command_line) tool)
--   [Clipper](/wiki/Clipper) ([command line](/wiki/command_line) tool)
--   and various others which can be viewed at <https://github.com/wincent>
+- [Wikitext](/wiki/Wikitext) ([C](/wiki/C) extension for [Ruby](/wiki/Ruby))
+- [WinSwitch](/wiki/WinSwitch) (desktop application)
+- [Walrat](/wiki/Walrat) ([packrat](/wiki/packrat) parser generator)
+- [Walrus](/wiki/Walrus) ([command line](/wiki/command_line) tool)
+- [WOBezel](/wiki/WOBezel) (framework)
+- [WOHotKey](/wiki/WOHotKey) (framework)
+- [askpass](/wiki/askpass) ([command line](/wiki/command_line) tool)
+- [Clipper](/wiki/Clipper) ([command line](/wiki/command_line) tool)
+- and various others which can be viewed at <https://github.com/wincent>
 
 I've written about my motivations for supporting [open source](/wiki/open_source) in the article, "[Embracing open source](/blog/embracing-open-source)".

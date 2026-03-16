@@ -8,5 +8,5 @@ From the [ruby-debug](/wiki/ruby-debug) \[<http://rubyforge.org/viewvc/trunk/REA
 
 # Links
 
--   [ruby-debug](/wiki/ruby-debug) project page: <http://rubyforge.org/projects/ruby-debug/>
--   "Post-mortem debugging" with [ruby-debug](/wiki/ruby-debug): <http://www.datanoise.com/articles/2006/12/20/post-mortem-debugging>
+- [ruby-debug](/wiki/ruby-debug) project page: <http://rubyforge.org/projects/ruby-debug/>
+- "Post-mortem debugging" with [ruby-debug](/wiki/ruby-debug): <http://www.datanoise.com/articles/2006/12/20/post-mortem-debugging>

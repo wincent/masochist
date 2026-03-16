@@ -49,5 +49,5 @@ cache_breaker: 1
     * 2398 classes/modules
     Needed 2.564428 seconds
 
--   Direct download: <http://rubyforge.org/frs/download.php/19557/zentest-3.5.0.gem>
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11043>
+- Direct download: <http://rubyforge.org/frs/download.php/19557/zentest-3.5.0.gem>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11043>

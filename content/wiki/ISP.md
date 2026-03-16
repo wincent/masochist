@@ -6,4 +6,4 @@ An [ISP](/wiki/ISP) or [Internet Service Provider](/wiki/Internet_Service_Provid
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [ISPs](/wiki/ISPs): <http://en.wikipedia.org/wiki/ISP>
+- [Wikipedia](/wiki/Wikipedia) article on [ISPs](/wiki/ISPs): <http://en.wikipedia.org/wiki/ISP>

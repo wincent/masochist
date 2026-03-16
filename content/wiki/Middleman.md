@@ -6,4 +6,4 @@ tags: middleman wiki
 
 # Official site
 
--   <http://middlemanapp.com/>
+- <http://middlemanapp.com/>

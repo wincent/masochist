@@ -7,4 +7,4 @@ cache_breaker: 1
 
 ## See also
 
--   <http://wikipedia.org/>
+- <http://wikipedia.org/>

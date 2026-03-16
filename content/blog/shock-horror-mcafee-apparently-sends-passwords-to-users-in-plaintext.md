@@ -9,8 +9,8 @@ Just saw [this story](http://blog.dreid.org/2009/04/mcafee-apparently-sends-pass
 >
 > Here is your complete login information:
 >
-> -   Email address: <foo@example.com>
-> -   McAfee Password: secret
+> - Email address: <foo@example.com>
+> - McAfee Password: secret
 
 I know it's a [stupid waste of time](http://xkcd.com/386/) to argue on the Internet, but I can't resist making a few comments on this issue.
 
@@ -38,8 +38,8 @@ My general impression as a user of a number of different web apps is that while 
 
 I know of two more layers that can be fairly easily added to the "defense in depth" strategy used to turn the "forgot password" functionality from something only very weakly secure (basically a form of "[security through obscurity](/wiki/security_through_obscurity)"; hoping that nobody will happen to snoop on your email traffic, and if they do that they won't care enough about your insignificant account to actually do anything about it) into something somewhat more secure.
 
--   One is to make your "reset password" links time-sensitive, expiring them after a short interval to minimize the window of opportunity for an attack (either a directed attack where your adversary intercepts your email message, or brute-force approach where the attacker tries to search the "key space" of the "reset links" until they find one which works).
--   Another is to require that the user enter their email address when they get to the "reset password" form; this will protect against brute-force attacks where the email is unknown to the attacker, but it doesn't help in the case of intercepted messages.
+- One is to make your "reset password" links time-sensitive, expiring them after a short interval to minimize the window of opportunity for an attack (either a directed attack where your adversary intercepts your email message, or brute-force approach where the attacker tries to search the "key space" of the "reset links" until they find one which works).
+- Another is to require that the user enter their email address when they get to the "reset password" form; this will protect against brute-force attacks where the email is unknown to the attacker, but it doesn't help in the case of intercepted messages.
 
 Despite the ease with which these measures can be implemented, it appears that basically nobody is taking these steps.
 

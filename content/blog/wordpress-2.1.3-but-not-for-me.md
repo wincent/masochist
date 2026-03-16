@@ -15,10 +15,10 @@ _Translation:_ upgrade immediately or get owned.
 
 The [WordPress](https://wincent.dev/wiki/WordPress) team needs to change the way they work with respect to security. This is a very popular, public-facing web application. Instead of springing these forced security updates ("upgrade now or else") on the masses they should do three or four things:
 
-1.  Adopt a regular, public update schedule for security updates so that people can plan and be ready for security updates. Something simple like "first Tuesday of every month".
-2.  Have a core-team-only security branch which is merged into the publicly-viewable branches only just before release. More on this point below.
-3.  Implement a mandatory review process in which every single check-in must pass a security review by another team member; this security-specific review should be in addition to any existing review procedures they might have (emphasis on the _might_).
-4.  Appoint a security officer whose responsibilities include a coordinating regular, pro-active audits of the code base.
+1. Adopt a regular, public update schedule for security updates so that people can plan and be ready for security updates. Something simple like "first Tuesday of every month".
+2. Have a core-team-only security branch which is merged into the publicly-viewable branches only just before release. More on this point below.
+3. Implement a mandatory review process in which every single check-in must pass a security review by another team member; this security-specific review should be in addition to any existing review procedures they might have (emphasis on the _might_).
+4. Appoint a security officer whose responsibilities include a coordinating regular, pro-active audits of the code base.
 
 Now to address the second point above; I love the open source development model and I think it's great to develop stuff out in the open. But when it comes to security fixes for vulnerabilities need to be kept secret until they are released. With [WordPress](https://wincent.dev/wiki/WordPress) we currently have the worst of both worlds: throughout the entire development cycle attackers can monitor the [WordPress trac](http://trac.wordpress.org/) for vulnerability reports and the corresponding fixes and start working on exploits; meanwhile, users are exposed to risk and then on release day told to upgrade as quickly as possible or face the consequences.
 

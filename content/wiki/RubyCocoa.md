@@ -6,10 +6,10 @@ tags: rubycocoa wiki
 
 # Official resources
 
--   Official [RubyCocoa](/wiki/RubyCocoa) website: <http://rubycocoa.sourceforge.net/>
--   [SourceForge](/wiki/SourceForge) project page: <http://sourceforge.net/projects/rubycocoa>
+- Official [RubyCocoa](/wiki/RubyCocoa) website: <http://rubycocoa.sourceforge.net/>
+- [SourceForge](/wiki/SourceForge) project page: <http://sourceforge.net/projects/rubycocoa>
 
 # Other sites
 
--   [Laurent Sansonetti](/wiki/Laurent_Sansonetti)'s ([Apple](/wiki/Apple) employee and [RubyCocoa](/wiki/RubyCocoa) maintainer) [weblog](/wiki/weblog): <http://chopine.be/lrz/diary>
--   <http://www.rubycocoa.com/>
+- [Laurent Sansonetti](/wiki/Laurent_Sansonetti)'s ([Apple](/wiki/Apple) employee and [RubyCocoa](/wiki/RubyCocoa) maintainer) [weblog](/wiki/weblog): <http://chopine.be/lrz/diary>
+- <http://www.rubycocoa.com/>

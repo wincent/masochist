@@ -42,4 +42,4 @@ git show --stat -- ':(exclude)*unit*'
 
 # See also
 
--   <http://jonas.nitro.dk/git/quick-reference.html>
+- <http://jonas.nitro.dk/git/quick-reference.html>

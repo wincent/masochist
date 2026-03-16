@@ -26,18 +26,18 @@ Why am I writing about this now? I think it's because I've felt more and more re
 
 Yet, I've come to the conclusion that all this searching for something better is a [fool's errand](https://en.wikipedia.org/wiki/Fool%27s_errand). You don't make something better by combining the best bits of other languages. The most you can do is to take an opinionated stance about something that you consider to be really important, focus on getting that one thing really right, and then get on with the business of building useful things with it. Note that it doesn't suffice to be _just_ opinionated; you _also_ have to be focused. Here are some examples of opinionated, focused stances:
 
--   Haskell:
-    -   Core thesis: Fully unlock the power of abstraction with a purely functional, lazily evaluated core.
-    -   Advantage: You get an expressive, sophisticated type system that allows you to succinctly materialize ideas with a high degree of machine-assisted verification.
-    -   Trade-off: Some things, like modifying deeply nested immutable data structures, are hard.
--   Go:
-    -   Core thesis: Simplicity is paramount.
-    -   Advantage: Out of simple primitives you can build robust, highly-performant concurrent solutions.
-    -   Trade-off: Code is "boring", "verbose", "pedestrian".
--   C:
-    -   Core thesis: Abstraction is overrated.
-    -   Advantage: Speak to the [Von Neumann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture) in its native tongue (almost) to build fast things, without needing to learn processor-specific assembly language.
-    -   Trade-off: When you build stuff out of gun powder, wire, and spark-plugs, you just may singe off your eyebrows.
+- Haskell:
+  - Core thesis: Fully unlock the power of abstraction with a purely functional, lazily evaluated core.
+  - Advantage: You get an expressive, sophisticated type system that allows you to succinctly materialize ideas with a high degree of machine-assisted verification.
+  - Trade-off: Some things, like modifying deeply nested immutable data structures, are hard.
+- Go:
+  - Core thesis: Simplicity is paramount.
+  - Advantage: Out of simple primitives you can build robust, highly-performant concurrent solutions.
+  - Trade-off: Code is "boring", "verbose", "pedestrian".
+- C:
+  - Core thesis: Abstraction is overrated.
+  - Advantage: Speak to the [Von Neumann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture) in its native tongue (almost) to build fast things, without needing to learn processor-specific assembly language.
+  - Trade-off: When you build stuff out of gun powder, wire, and spark-plugs, you just may singe off your eyebrows.
 
 If you try to make these languages better by blending together their best elements you wind up with behemoths like JavaScript and C++. These are not bad languages; they've been extremely successful, and many great things get built using them. And yet, people can't resist somehow trying to "fix" them, either by augmentation or outright replacement. Something is rotten in the state of programming languages.
 

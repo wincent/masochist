@@ -6,5 +6,5 @@ tags: wiki
 
 # See also
 
--   Official site: <http://ibm.com/>
--   [Wikipedia](/wiki/Wikipedia) article on [IBM](/wiki/IBM): <http://en.wikipedia.org/wiki/IBM>
+- Official site: <http://ibm.com/>
+- [Wikipedia](/wiki/Wikipedia) article on [IBM](/wiki/IBM): <http://en.wikipedia.org/wiki/IBM>

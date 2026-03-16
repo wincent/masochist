@@ -1,5 +1,5 @@
 ---
-description: 
+description:
 tags: blog desk
 title: Rate my setup
 ---
@@ -39,6 +39,7 @@ One pandemic later, working from home — at the kitchen table, no less — in a
 Still working from home, but now from the living room, and another employer. We're still afflicted with a cursed Touch Bar, but we have awesome Apple Silicon now. Note that the "upgrade"[^upgrade] from the kitchen table to a dedicated but non-adjustable standing desk requires an ingenious new laptop stand[^judge] while I send my intermittently faulty monitor away for warranty repair or replacement.
 
 [^upgrade]: "Upgrade" in quotes because it was a horrible, low quality thing made out of the cheapest, warped wood. I got it because it was the just pleasing enough, aesthetically speaking, that I could hope to put in the living room without becoming the most unpopular member of the household. In the end, I think I _did_ become the most unpopular member anyway, but that's all water under the bridge now.
+
 [^judge]: Don't judge me for my taste in books. My then-employer gave me a learning budget every year, and I ended up buying a _ton_ of books. The ones in the photo were just the ones that happened to be the right height for my needs.
 
 ![](/images/desks/2021.jpeg)

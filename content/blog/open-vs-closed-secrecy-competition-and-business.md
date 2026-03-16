@@ -23,9 +23,9 @@ This straight away sharpens the dichotomy between open source and closed source.
 
 So why does choosing "paid" force you to choose "closed" as well? Three main reasons spring to mind:
 
--   Most license code schemes rely on at least some degree of "security through obscurity", forcing you to close your source.
--   The competition at the heart of capitalism tends to penalize those who share their secrets. To clarify, _you_ might be an ethical capitalist who believes in competition through innovation, developing original ideas, and hard work; but there will always be others who believe only in profit and will have no qualms about taking your source code and selling it as their own.
--   Even in an ideal world where competition was only ever respectful and ethical, open sourcing almost invariably means using a free software license, and that means that along with the source code you grant the right to produce free derivatives; that freedom effectively guarantees the emergence of a free version of you product, thus eliminating any motivation that customers might have had to purchase it.
+- Most license code schemes rely on at least some degree of "security through obscurity", forcing you to close your source.
+- The competition at the heart of capitalism tends to penalize those who share their secrets. To clarify, _you_ might be an ethical capitalist who believes in competition through innovation, developing original ideas, and hard work; but there will always be others who believe only in profit and will have no qualms about taking your source code and selling it as their own.
+- Even in an ideal world where competition was only ever respectful and ethical, open sourcing almost invariably means using a free software license, and that means that along with the source code you grant the right to produce free derivatives; that freedom effectively guarantees the emergence of a free version of you product, thus eliminating any motivation that customers might have had to purchase it.
 
 #### Openness versus secrecy
 

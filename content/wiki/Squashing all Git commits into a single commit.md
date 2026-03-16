@@ -20,11 +20,11 @@ You may not have the resources to audit the entire history of the project and en
 
 You can either:
 
--   manually copy the worktree over into a new (empty) repository; or:
--   you can do a local `git clone` and squash the entire history as shown above
+- manually copy the worktree over into a new (empty) repository; or:
+- you can do a local `git clone` and squash the entire history as shown above
 
 In both cases you'll need to set up your new remote (you don't want to push to the old remote, after all). Which of these is easier is up for debate.
 
 # Alernatives
 
--   See "[Going public with previously proprietary code](/wiki/Going_public_with_previously_proprietary_code)"
+- See "[Going public with previously proprietary code](/wiki/Going_public_with_previously_proprietary_code)"

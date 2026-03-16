@@ -24,8 +24,8 @@ These notes apply to the upgrade of the local (Mac OS X) install.
 
 The changelog for APR 0.9.7 (`apr/CHANGES`) appears to suggest that the [`ac_cv_func_poll` workaround](http://subversion.tigris.org/faq.html#tiger-apr-0.9.6) is no longer necessary on Tiger:
 
-      *) Fix issue with poll() followed by net I/O yielding EAGAIN on
-         Mac OS 10.4 (Darwin 8). [Wilfredo Sanchez]
+    *) Fix issue with poll() followed by net I/O yielding EAGAIN on
+       Mac OS 10.4 (Darwin 8). [Wilfredo Sanchez]
 
 So we'll skip that, unlike [in previous upgrades](https://wincent.dev/a/knowledge-base/archives/2006/04/subversion_131.php):
 
@@ -227,10 +227,10 @@ Will try again, this time pulling in Apache via Subversion:
 
 The output from `configure` indicates that Subversion will use the `apr` and `apr-util` libraries from within the source tree, but these correspond to 0.9.12, not the 0.9.13 version I just checked out and built with Apache:
 
-      setting APRUTIL_EXPORT_LIBS to "/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib/libexpat.la"
-      setting APRUTIL_INCLUDES to "-I/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib"
-      setting APRUTIL_LDFLAGS to "-L/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib"
-      setting APRUTIL_LIBS to "/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib/libexpat.la"
+    setting APRUTIL_EXPORT_LIBS to "/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib/libexpat.la"
+    setting APRUTIL_INCLUDES to "-I/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib"
+    setting APRUTIL_LDFLAGS to "-L/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib"
+    setting APRUTIL_LIBS to "/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib/libexpat.la"
 
 So I am going to try again removing the subdirectories and explicitly setting the paths to those libraries:
 
@@ -418,5 +418,5 @@ Re-open for business:
 
 Given that I've been working on a post-commit hook script written in [Ruby](/wiki/Ruby) I think that the next time I upgrade [Subversion](/wiki/Subversion) I will also build [SWIG](/wiki/SWIG) and the Ruby bindings. For more information see:
 
--   <http://www.pjhyett.com/articles/2005/10/25/installing-ruby-svn-bindings>
--   <http://svn.collab.net/repos/svn/trunk/subversion/bindings/swig/INSTALL>
+- <http://www.pjhyett.com/articles/2005/10/25/installing-ruby-svn-bindings>
+- <http://svn.collab.net/repos/svn/trunk/subversion/bindings/swig/INSTALL>

@@ -70,9 +70,9 @@ This is very simple, but its drawback is that it clutters up the grammar with ac
 
 An alternative approach is to override the `nextToken()` implementation so that it does the following:
 
-1.  Call the _original_ nextToken implementation, which returns the token.
-2.  Store the token for use by the `LAST_TOKEN` macro.
-3.  Return the token to the caller.
+1. Call the _original_ nextToken implementation, which returns the token.
+2. Store the token for use by the `LAST_TOKEN` macro.
+3. Return the token to the caller.
 
 As an example, here is how I declare storage for the function pointer to the original `nextToken()` implementation:
 

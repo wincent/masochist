@@ -15,4 +15,4 @@ If you don't have the bindings installed then you will need to build them. In my
 
 # See also
 
--   Alternate installation instructions: <http://www.bieberlabs.com/wordpress/archives/2004/11/30/using-svk>
+- Alternate installation instructions: <http://www.bieberlabs.com/wordpress/archives/2004/11/30/using-svk>

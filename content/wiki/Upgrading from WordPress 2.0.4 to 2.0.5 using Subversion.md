@@ -4,13 +4,13 @@ tags: wordpress subversion wiki
 
 # Prerequisites
 
--   See: [Preparing WordPress for Subversion-based upgrades](/wiki/Preparing_WordPress_for_Subversion-based_upgrades)
+- See: [Preparing WordPress for Subversion-based upgrades](/wiki/Preparing_WordPress_for_Subversion-based_upgrades)
 
 # The procedure
 
 Check that the new release has actually been tagged in the [Subversion](/wiki/Subversion) repository:
 
--   <http://svn.automattic.com/wordpress/tags/2.0.5/>
+- <http://svn.automattic.com/wordpress/tags/2.0.5/>
 
 In this case I chose not to make a database backup, unlike [last time](/wiki/Upgrading_from_WordPress_2.0.3_to_2.0.4_using_Subversion), because I haven't made any posts lately and the automated daily backup of the database ensures that I already have a fresh backup copy.
 
@@ -90,7 +90,7 @@ Re-enable plug-ins one by one.
 
 # See also
 
--   Release announcement: <http://wordpress.org/development/2006/10/205-ronan/>
--   Detailed change log: <http://trac.wordpress.org/query?status=closed&resolution=fixed&milestone=2.0.5>
--   Change overview: <http://markjaquith.wordpress.com/2006/10/17/changes-in-wordpress-205/>
--   Previous upgrade: [Upgrading from WordPress 2.0.3 to 2.0.4 using Subversion](/wiki/Upgrading_from_WordPress_2.0.3_to_2.0.4_using_Subversion)
+- Release announcement: <http://wordpress.org/development/2006/10/205-ronan/>
+- Detailed change log: <http://trac.wordpress.org/query?status=closed&resolution=fixed&milestone=2.0.5>
+- Change overview: <http://markjaquith.wordpress.com/2006/10/17/changes-in-wordpress-205/>
+- Previous upgrade: [Upgrading from WordPress 2.0.3 to 2.0.4 using Subversion](/wiki/Upgrading_from_WordPress_2.0.3_to_2.0.4_using_Subversion)

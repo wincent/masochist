@@ -12,7 +12,7 @@ See my installation notes at "[Installing Git 1.5.2.3 on Mac OS X Tiger](/wiki/I
 
 See:
 
--   "[Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP)"
+- "[Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP)"
 
 # Initial configuration
 
@@ -167,7 +167,7 @@ A superior alternative to `gitk` is [QGit](/wiki/QGit), although it requires com
 
 # See also
 
--   [Git cheatsheet](/wiki/Git_cheatsheet)
--   [Git cookbook](/wiki/Git_cookbook)
--   [Git recipes](/wiki/Git_recipes)
--   [Creating and submitting a patch via email with Git](/wiki/Creating_and_submitting_a_patch_via_email_with_Git)
+- [Git cheatsheet](/wiki/Git_cheatsheet)
+- [Git cookbook](/wiki/Git_cookbook)
+- [Git recipes](/wiki/Git_recipes)
+- [Creating and submitting a patch via email with Git](/wiki/Creating_and_submitting_a_patch_via_email_with_Git)

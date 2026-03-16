@@ -9,10 +9,10 @@ So the other day I wrote `WOQueue`, a thread-safe, multi-processor-aware FIFO (f
 
 There are number of possible consumer/producer models in single and multi-threaded programming:
 
-1.  **Single-threaded:** the only thread is both a producer (adding items to the queue) and a consumer (removing items from the queue).
-2.  **Mutli-threaded, single producer/multiple consumers:** a single thread adds items to the queue (perhaps driven by the user interface or read from the disk or the network) and multiple worker threads are spawned as consumers (removing items from the queue).
-3.  **Multi-threaded, single producer/single consumer:** a single thread (such as the main thread) is responsible for adding items to the queue and there is a single worker thread in the background acting as a consumer (removing items from the queue).
-4.  **Multi-threaded, multiple producers/single consumer:** multiple threads add items to the queue (producers) but only one thread acts a consumer (removing items from the queue).
+1. **Single-threaded:** the only thread is both a producer (adding items to the queue) and a consumer (removing items from the queue).
+2. **Mutli-threaded, single producer/multiple consumers:** a single thread adds items to the queue (perhaps driven by the user interface or read from the disk or the network) and multiple worker threads are spawned as consumers (removing items from the queue).
+3. **Multi-threaded, single producer/single consumer:** a single thread (such as the main thread) is responsible for adding items to the queue and there is a single worker thread in the background acting as a consumer (removing items from the queue).
+4. **Multi-threaded, multiple producers/single consumer:** multiple threads add items to the queue (producers) but only one thread acts a consumer (removing items from the queue).
 
 Yesterday I [wrote about my threading work](https://wincent.dev/a/about/wincent/weblog/archives/2006/03/threading_nicet.php) on Synergy Advance and commented:
 

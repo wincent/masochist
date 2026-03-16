@@ -15,5 +15,5 @@ As such, [OpenID](/wiki/OpenID) "identities" should always be taken with a grain
 
 # See also
 
--   Official site: <http://openid.net/>
--   [Wikipedia](/wiki/Wikipedia) article on [OpenID](/wiki/OpenID): <http://en.wikipedia.org/wiki/OpenID>
+- Official site: <http://openid.net/>
+- [Wikipedia](/wiki/Wikipedia) article on [OpenID](/wiki/OpenID): <http://en.wikipedia.org/wiki/OpenID>

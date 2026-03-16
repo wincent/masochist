@@ -5,8 +5,8 @@ cache_breaker: 1
 
 I first heard the word [proxy](/wiki/proxy) in the context of [test doubles](/wiki/test_doubles) in [this weblog post](http://pivotallabs.com/users/brian/blog/articles/352-introducing-rr). In it, Brian Takita describes a "proxy" as a test double which does two things:
 
-1.  Like a mock, it verifies that an expected message was received
-2.  It then passes the message through to the real object
+1. Like a mock, it verifies that an expected message was received
+2. It then passes the message through to the real object
 
 The first part of the behaviour is the "interesting" bit (because it's what allows us to actually verify that things are working), and the second part is the "convenient" bit (because it frees us from having to worry about what the mock should return).
 

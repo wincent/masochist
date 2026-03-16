@@ -22,4 +22,4 @@ Note that in order to search the built-in classes you must explicitly install th
 
 # See also
 
--   Official [FastRI](/wiki/FastRI) page: <http://eigenclass.org/hiki.rb?fastri>
+- Official [FastRI](/wiki/FastRI) page: <http://eigenclass.org/hiki.rb?fastri>

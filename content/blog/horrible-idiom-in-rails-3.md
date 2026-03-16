@@ -20,8 +20,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Evidently the motivation is that:
 
-1.  It's shorter to type by a few characters
-2.  It's one message send instead of two
+1. It's shorter to type by a few characters
+2. It's one message send instead of two
 
 Saving a message send leaves the realms of "micro-optimization" far behind, blazing on into the unexplored regions of nano-, pico-, and even femto-optimization. The difference is literally unmeasurable because these lines typically get executed once in the lifetime of the application.
 

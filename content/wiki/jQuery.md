@@ -7,4 +7,4 @@ cache_breaker: 1
 
 # Links
 
--   Official site: <http://jquery.com/>
+- Official site: <http://jquery.com/>

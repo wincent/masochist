@@ -6,4 +6,4 @@ This [Knowledge Base](/wiki/Knowledge_Base) is an example of a [wiki](/wiki/wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [wikis](/wiki/wikis): <http://en.wikipedia.org/wiki/Wiki>
+- [Wikipedia](/wiki/Wikipedia) article on [wikis](/wiki/wikis): <http://en.wikipedia.org/wiki/Wiki>

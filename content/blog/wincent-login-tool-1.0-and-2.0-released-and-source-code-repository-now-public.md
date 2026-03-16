@@ -30,8 +30,8 @@ I've also made the [Git](/wiki/Git) source code repository open, and the code is
 
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorous](/wiki/Gitorous):
 
--   <http://github.com/wincent/login-tool/>
--   <http://gitorious.org/login-tool>
+- <http://github.com/wincent/login-tool/>
+- <http://gitorious.org/login-tool>
 
 # Binary downloads
 

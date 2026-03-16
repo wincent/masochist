@@ -17,4 +17,4 @@ To test the default discovered config run:
 
 # See also
 
--   [Applying new nginx configuration without restarting](/wiki/Applying_new_nginx_configuration_without_restarting)
+- [Applying new nginx configuration without restarting](/wiki/Applying_new_nginx_configuration_without_restarting)

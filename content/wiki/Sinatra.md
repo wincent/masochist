@@ -6,4 +6,4 @@ tags: ruby sinatra wiki
 
 # Links
 
--   Official [Sinatra](/wiki/Sinatra) site: <http://www.sinatrarb.com/>
+- Official [Sinatra](/wiki/Sinatra) site: <http://www.sinatrarb.com/>

@@ -7,4 +7,4 @@ cache_breaker: 1
 
 # See also
 
--   Official site: <http://www.authsmtp.com/>
+- Official site: <http://www.authsmtp.com/>

@@ -7,9 +7,9 @@ Making changes to [iptables](/wiki/iptables) rules can be dangerous. If you make
 
 The basic idea is to do the following:
 
-1.  Use `at` to schedule a reboot for a few minutes into the future
-2.  Manipulate the firewall
-3.  If everything works, cancel the reboot; otherwise, wait for the reboot to take place and reset the firewall to its former state
+1. Use `at` to schedule a reboot for a few minutes into the future
+2. Manipulate the firewall
+3. If everything works, cancel the reboot; otherwise, wait for the reboot to take place and reset the firewall to its former state
 
 For this to work you need to make sure your firewall rules don't get automatically saved to disk on shutdown; in other words, your `/etc/sysconfig/iptables-config` should include something like:
 
@@ -62,4 +62,4 @@ Confirm that the queue is empty:
 
 # See also
 
--   [iptables](/wiki/iptables)
+- [iptables](/wiki/iptables)

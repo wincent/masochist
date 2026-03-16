@@ -6,9 +6,9 @@ tags: movable.type wiki
 
 These tips describe the basic procedure for performing the merge. Here we assume that the old version was installed in `mt`. Version 3.34 is used in this example:
 
--   On the local host, rename the old `mt` folder to `mt-3.34`
--   Move the newly extracted files into position, naming the folder `mt`
--   Use `diff` to examine the differences between the trees:
+- On the local host, rename the old `mt` folder to `mt-3.34`
+- Move the newly extracted files into position, naming the folder `mt`
+- Use `diff` to examine the differences between the trees:
 
 <!-- -->
 

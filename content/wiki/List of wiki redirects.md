@@ -14,16 +14,16 @@ This page exists to serve as a reminder of which wiki article titles are current
 
 ## Redirects within this application
 
--   [support ticket](/wiki/support_ticket) (for opening a new support ticket)
--   [ticket](/wiki/ticket) (for opening a new ticket)
--   [forum](/wiki/forum) and [forums](/wiki/forums)
--   [issue tracker](/wiki/issue_tracker)
--   [login](/wiki/login)
--   [Synergy](/wiki/Synergy): redirects to <https://wincent.dev/products/synergy>
+- [support ticket](/wiki/support_ticket) (for opening a new support ticket)
+- [ticket](/wiki/ticket) (for opening a new ticket)
+- [forum](/wiki/forum) and [forums](/wiki/forums)
+- [issue tracker](/wiki/issue_tracker)
+- [login](/wiki/login)
+- [Synergy](/wiki/Synergy): redirects to <https://wincent.dev/products/synergy>
 
 ## Redirects to parts of the old site
 
--   [Synergy Advance](/wiki/Synergy_Advance): redirects to <https://wincent.dev/a/products/synergy-advance/>
+- [Synergy Advance](/wiki/Synergy_Advance): redirects to <https://wincent.dev/a/products/synergy-advance/>
 
 ## Redirects to external sites
 

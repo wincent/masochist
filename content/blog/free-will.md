@@ -19,6 +19,7 @@ Endless flows of ink have been spilled debating the nature of free will, and giv
 - **Compatibilism:** A series of gymnastic somersaults that philosophers perform to make the claim that true, non-illusory free will totally can exist within a deterministic universe. I won't bother describing it further because it all strikes me as definitional sleight of hand and not much more than smug cleverness for cleverness' sake.
 
 [^phd]: Quite possibly the most useless non-qualification of all.
+
 [^wikipedia]: [The Wikipedia page on Free will](https://en.wikipedia.org/wiki/Free_will) makes a good start though.
 
 In practice, if you're religious, you probably subscribe to libertarian free will. Without this kind of free will, all this business about choosing to believe doesn't really make sense (and the idea of burning in hell for not believing in God seems a wee bit unfair, if you don't have any choice in the matter). Other beliefs adjacent to or overlapping with religion — things that might be labelled spiritual, or mystical, or supernatural — are also likely to lead you to choose this version of free will; if you believe in something like a soul with an existence that is independent of the physical substrate of our bodies, if you believe in reincarnation or out-of-body experiences, for example. Even if none of the above apply, it's still possible that you might have a view of selfhood rooted in your subjective experience which leads you to feel like there is something inside you that is actually making decisions.
@@ -104,4 +105,3 @@ The first order explanation is that I find those states subjectively pleasant, b
 There are contradictions and ambiguities to unknot here — like why I would spend so much time analyzing my own operation, why I would feel so "motivated" to do so even when I quite clearly don't believe in free will to do anything at all — but the nice thing about a belief in determinism is that I don't have to feel bad about shrugging my shoulders and ending abruptly. After all, it couldn't have been any other way...
 
 [^reliability]: I'm not talking here about confabulation or hallucination or anything like that, but simply a kind of gradual amnesia that slowly sets in over time, leaving larger and larger lakes of darkness.
-

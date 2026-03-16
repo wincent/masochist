@@ -10,10 +10,10 @@ First up we look at our running instances:
 
 We'll need this information in order to create an exact clone of the instance:
 
--   zone (eg `us-east-1d`)
--   AMI (eg `ami-84db39ed`)
--   kernel (eg `aki-94c527fd`)
--   ramdisk (eg `ari-96c527ff`)
+- zone (eg `us-east-1d`)
+- AMI (eg `ami-84db39ed`)
+- kernel (eg `aki-94c527fd`)
+- ramdisk (eg `ari-96c527ff`)
 
 Now we look at our snapshots and pick a recent one (sorting by date, filtering by host "mondatta"); we pick the two latest snapshots because there are actually two EBS volumes attached to this instance:
 

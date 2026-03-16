@@ -25,14 +25,14 @@ Ah well, one thing is for sure, LMH is raising a lot of awareness. I wonder how 
 
 #### Facts and beliefs
 
--   _Fact_: All software has vulnerabilities.
--   _Fact_: Mac OS X is no exception.
--   _Fact_: Mac OS X has fewer known vulnerabilities than Windows.
--   _Fact_: Mac OS X has fewer known exploits/viruses/worms in the wild than Windows.
--   _Belief_: Mac OS X is more secure than Windows.
--   _Belief_: This may be partly because there are fewer vulnerabilties to exploit.
--   _Fact_: It is also because there are fewer users and Windows is therefore a more attractive target.
--   _Fact_: Mac OS X users haven't had to worry about viruses.
--   _Belief_: At some point in the future, Mac OS X users _will_ have to start worrying about viruses.
--   _Belief_: Sad but true; it was inevitable that it would happen sooner or later. Given that there is no such thing as perfect software, the only thing which can "save" Mac OS X will be to avoid gaining too much market share.
--   _Belief_: Publicity stunts like the "Month of Apple Bugs" do little to increase security but they do at least raise awareness.
+- _Fact_: All software has vulnerabilities.
+- _Fact_: Mac OS X is no exception.
+- _Fact_: Mac OS X has fewer known vulnerabilities than Windows.
+- _Fact_: Mac OS X has fewer known exploits/viruses/worms in the wild than Windows.
+- _Belief_: Mac OS X is more secure than Windows.
+- _Belief_: This may be partly because there are fewer vulnerabilties to exploit.
+- _Fact_: It is also because there are fewer users and Windows is therefore a more attractive target.
+- _Fact_: Mac OS X users haven't had to worry about viruses.
+- _Belief_: At some point in the future, Mac OS X users _will_ have to start worrying about viruses.
+- _Belief_: Sad but true; it was inevitable that it would happen sooner or later. Given that there is no such thing as perfect software, the only thing which can "save" Mac OS X will be to avoid gaining too much market share.
+- _Belief_: Publicity stunts like the "Month of Apple Bugs" do little to increase security but they do at least raise awareness.

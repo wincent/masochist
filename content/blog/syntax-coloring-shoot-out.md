@@ -54,8 +54,8 @@ And here we are a year later.
 
 Not much has changed. The only real tweaks of interest are:
 
--   [use of more subtle coloring for end-of-line markers](/blog/making-vim-highlight-suspicious-characters)
--   [addition of (intentionally) jarring coloring for long and overlong lines](/blog/highlighting-overlength-lines-in-vim)
+- [use of more subtle coloring for end-of-line markers](/blog/making-vim-highlight-suspicious-characters)
+- [addition of (intentionally) jarring coloring for long and overlong lines](/blog/highlighting-overlength-lines-in-vim)
 
 ### Update: 5 February 2012
 
@@ -65,12 +65,12 @@ Two years later:
 
 Differences:
 
--   I'm now using [Vim](/wiki/Vim) in the [terminal](/wiki/terminal), generally inside a [tmux](/wiki/tmux) session
--   Now using the incredibly soothing and attractive [Solarized](/wiki/Solarized) color scheme
--   Using folding
--   Hand-rolled long-line highlighting replaced by Vim's `'colorcolumn'` feature (new in 7.3)
--   Current line highlighted (with `'cursorline'`)
--   After a stint with Consolas and a larger font size, I've settled on to Monaco, 12 pt, anti-aliased
+- I'm now using [Vim](/wiki/Vim) in the [terminal](/wiki/terminal), generally inside a [tmux](/wiki/tmux) session
+- Now using the incredibly soothing and attractive [Solarized](/wiki/Solarized) color scheme
+- Using folding
+- Hand-rolled long-line highlighting replaced by Vim's `'colorcolumn'` feature (new in 7.3)
+- Current line highlighted (with `'cursorline'`)
+- After a stint with Consolas and a larger font size, I've settled on to Monaco, 12 pt, anti-aliased
 
 ### Update: 21 July 2015
 
@@ -80,11 +80,11 @@ Some three years or so later:
 
 Differences:
 
--   After years of Solarized usage, I switched to the dark "ocean" theme from Base16
--   More attractive long line highlighting
--   Italic support (even in the terminal)
--   Back to Consolas, now 13pt most of the time (and 15pt or more if I'm working with glasses, or on a bus with a bumpy ride etc); once I get a machine with a Retina display I think I'll take this down a notch
--   Still using folding, but less of it
+- After years of Solarized usage, I switched to the dark "ocean" theme from Base16
+- More attractive long line highlighting
+- Italic support (even in the terminal)
+- Back to Consolas, now 13pt most of the time (and 15pt or more if I'm working with glasses, or on a bus with a bumpy ride etc); once I get a machine with a Retina display I think I'll take this down a notch
+- Still using folding, but less of it
 
 ### Update: 24 July 2022
 
@@ -94,11 +94,11 @@ Differences:
 
 Differences:
 
--   I got feedback on [my screencasts](https://www.youtube.com/c/GregHurrell) that a higher-contrast scheme would be better, so I switched to ["bright" from Base16](https://github.com/wincent/wincent/tree/media/colorschemes#bright).
--   This on a Retina display, so text is sharper. I use [Kitty](https://sw.kovidgoyal.net/kitty/index.html) in some places and [iTerm2](https://iterm2.com/) in others[^why], and the text rendering differs ever so slightly between those; this particular screenshot is taken on Kitty.
--   Font is 12pt [Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro).
--   This is Neovim rather than Vim.
--   Overall, settings are tuned for subtlety; for example, I no longer include an `eol` character in `'listchars'`.
--   I'm using [the indent-blankline.nvim plug-in](https://github.com/lukas-reineke/indent-blankline.nvim) to show indent markers.
+- I got feedback on [my screencasts](https://www.youtube.com/c/GregHurrell) that a higher-contrast scheme would be better, so I switched to ["bright" from Base16](https://github.com/wincent/wincent/tree/media/colorschemes#bright).
+- This on a Retina display, so text is sharper. I use [Kitty](https://sw.kovidgoyal.net/kitty/index.html) in some places and [iTerm2](https://iterm2.com/) in others[^why], and the text rendering differs ever so slightly between those; this particular screenshot is taken on Kitty.
+- Font is 12pt [Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro).
+- This is Neovim rather than Vim.
+- Overall, settings are tuned for subtlety; for example, I no longer include an `eol` character in `'listchars'`.
+- I'm using [the indent-blankline.nvim plug-in](https://github.com/lukas-reineke/indent-blankline.nvim) to show indent markers.
 
 [^why]: Why use two terminal emulators? When I got [a Linux machine](https://wincent.dev/blog/building-a-pc), I needed a terminal emulator for that and went with Kitty. I would have used it everywhere but I ran into some issues on my work laptop (a macOS machine), although I found them livable on my personal laptop (also a macOS machine, but with a slightly different workload, so the problems weren't deal-breakers). Specifically, I [can't use `gh cs ssh` to get into a Codespace when using Kitty](https://github.com/wincent/wincent/blob/fdae884e343acfe025751c5bd78546aa630771e8/aspects/dotfiles/files/.zsh/github/lib/gg/helpers/codespace), and at GitHub, [Codespaces _is_ our blessed development platform](https://github.blog/2021-08-11-githubs-engineering-team-moved-codespaces/). So, as much as I'd like to use the same tool everywhere, I figure it's useful to keep my set-up working relatively well on both emulators, so that I have a fallback option in the future.

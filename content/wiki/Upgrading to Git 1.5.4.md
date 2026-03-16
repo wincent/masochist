@@ -92,12 +92,12 @@ In other words, incoming connections work because I specified an absolute path (
 
 To fix this I had to add a line like this to my `/etc/xinetd.d/git` file:
 
-            env = PATH=/bin:/usr/bin:/usr/local/bin
+    env = PATH=/bin:/usr/bin:/usr/local/bin
 
 Another alternative would be to pass the `--exec-path` option to `git` as follows:
 
-            server = /usr/local/bin/git
-            server_args = --exec-path=/usr/local/bin daemon --inetd --base-path=/blah -- /blah
+    server = /usr/local/bin/git
+    server_args = --exec-path=/usr/local/bin daemon --inetd --base-path=/blah -- /blah
 
 The alternative workaround would be to install [Git](/wiki/Git) under `/usr` rather than `/usr/local`. I am not sure if this qualifies as breakage or not — it is not unreasonable to expect people to have a correctly configured `PATH`; it is just a little surprising when you specify an absolute path to the `git-daemon` executable and it doesn't work — so I am not sure if this will be fixed in upstream Git.
 

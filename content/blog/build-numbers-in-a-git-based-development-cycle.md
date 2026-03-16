@@ -13,9 +13,9 @@ One thing they _do_ do is uniquely identify the exact version of the code used t
 
 So what should the "build number" be in a Git-based development cycle? At the moment I see three possible options:
 
--   Use the abbreviated SHA-1 identifier for the commit
--   Use a concise representation of the build date (for example, the output from `date "+%y-%j"`, which would yield build numbers like `07-211`)
--   Use a combination of the two
+- Use the abbreviated SHA-1 identifier for the commit
+- Use a concise representation of the build date (for example, the output from `date "+%y-%j"`, which would yield build numbers like `07-211`)
+- Use a combination of the two
 
 I'm still not decided on the best way to proceed. Using a SHA-1 identifier gives us an explicit handle on the exact revision used to make a build but it is meaningless to the human eye; it only makes sense with access to the Git repository (not possible for closed-source projects) and the help of `git show` or `git log`.
 

@@ -40,10 +40,10 @@ Note that in the latter case it doesn't merely fail to exclude the trailing peri
 
 To understand why this is so we must look at the generated code. Looking at the generated `mURI` function we see that ANTLR's approach is the following:
 
-1.  Based on lookahead of `h`, `f` or `s`, predict `HTTP`, `FTP` or `SVN` subrules.
-2.  Match `URI_CHARS`
-3.  Look ahead for `SPECIAL_URI_CHARS`
-4.  On seeing `SPECIAL_URI_CHARS`, predict `SPECIAL_URI_CHARS` followed by `URI_CHARS`
+1. Based on lookahead of `h`, `f` or `s`, predict `HTTP`, `FTP` or `SVN` subrules.
+2. Match `URI_CHARS`
+3. Look ahead for `SPECIAL_URI_CHARS`
+4. On seeing `SPECIAL_URI_CHARS`, predict `SPECIAL_URI_CHARS` followed by `URI_CHARS`
 
 So you can see how any time we see `SPECIAL_URI_CHARS` ANTLR will expect to find `URI_CHARS` afterwards, and upon failure will jump out of the `mURI` function using `return` (here I am using the [C target](/wiki/C_target)), failing to match anything at all.
 

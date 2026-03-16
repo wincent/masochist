@@ -6,5 +6,5 @@ tags: git wiki
 
 # See also
 
--   Release announcement ([Git](/wiki/Git) mailing list): <http://marc.info/?l=git&m=119542770905189&w=2>
--   Tag for 1.5.3.6: <http://repo.or.cz/w/git.git?a=commit;h=005e2dfdf299a7d869fa9ec819171fba574f42eb>
+- Release announcement ([Git](/wiki/Git) mailing list): <http://marc.info/?l=git&m=119542770905189&w=2>
+- Tag for 1.5.3.6: <http://repo.or.cz/w/git.git?a=commit;h=005e2dfdf299a7d869fa9ec819171fba574f42eb>

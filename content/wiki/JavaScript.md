@@ -9,13 +9,13 @@ Furthermore, in recent years people have been using JavaScript for server-side c
 
 # Moving beyond JavaScript
 
--   [CoffeeScript](/wiki/CoffeeScript) is an attempt to provide a concise, whitespace-sensitive language that compiles down to relatively readable JavaScript; it seeks to eliminate some tedious aspects of JS, as well as a common class of errors that tend to crop up, while borrowing some syntactic elements from Ruby, and features (eg. list comprehensions) from Python
--   Google's [Closure Compiler](/wiki/Closure_Compiler) adds a layer of compile-time static type checking to JavaScript (via code comment annotations) and dead code removal
+- [CoffeeScript](/wiki/CoffeeScript) is an attempt to provide a concise, whitespace-sensitive language that compiles down to relatively readable JavaScript; it seeks to eliminate some tedious aspects of JS, as well as a common class of errors that tend to crop up, while borrowing some syntactic elements from Ruby, and features (eg. list comprehensions) from Python
+- Google's [Closure Compiler](/wiki/Closure_Compiler) adds a layer of compile-time static type checking to JavaScript (via code comment annotations) and dead code removal
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [JavaScript](/wiki/JavaScript): <http://en.wikipedia.org/wiki/JavaScript>
--   "Ten Oddities And Secrets About JavaScript": <http://www.smashingmagazine.com/2011/05/30/10-oddities-and-secrets-about-javascript/>
--   The (accurately titled), "JavaScript Semicolon Insertion: Everything you need to know": <http://inimino.org/~inimino/blog/javascript_semicolons>
--   JavaScript Garden, "a growing collection of documentation about the most quirky parts of the JavaScript programming language": <http://bonsaiden.github.com/JavaScript-Garden/>
--   How to load scripts: <http://www.html5rocks.com/en/tutorials/speed/script-loading/>
+- [Wikipedia](/wiki/Wikipedia) article on [JavaScript](/wiki/JavaScript): <http://en.wikipedia.org/wiki/JavaScript>
+- "Ten Oddities And Secrets About JavaScript": <http://www.smashingmagazine.com/2011/05/30/10-oddities-and-secrets-about-javascript/>
+- The (accurately titled), "JavaScript Semicolon Insertion: Everything you need to know": <http://inimino.org/~inimino/blog/javascript_semicolons>
+- JavaScript Garden, "a growing collection of documentation about the most quirky parts of the JavaScript programming language": <http://bonsaiden.github.com/JavaScript-Garden/>
+- How to load scripts: <http://www.html5rocks.com/en/tutorials/speed/script-loading/>

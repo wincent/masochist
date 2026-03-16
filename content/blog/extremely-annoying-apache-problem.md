@@ -10,8 +10,8 @@ This was the last place I expected to find problems, seeing as the site isn't ev
 
 The problem is as follows:
 
-1.  Apache is binding to the the SSL port, 443, on all IP addresses
-2.  There is no way to stop Apache from doing this without completely breaking it
+1. Apache is binding to the the SSL port, 443, on all IP addresses
+2. There is no way to stop Apache from doing this without completely breaking it
 
 My config has two `Listen` directives in it; first:
 

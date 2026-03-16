@@ -41,12 +41,12 @@ The process begins by looking at each alternative and asking, "What lookahead sy
 
 So, we consider an additional symbol of lookahead and ask the same question. This time the first alternative includes a recursive reference back to the same rule, so [ANTLR] must now consider a tree of possible lookaheads:
 
--   At lookahead(1), to match alternative 1 must see an **L**
-    -   At lookahead(2), to match alternative 1 must match rule **a**
-        -   To match alternative 1 of rule **a**, still at lookahead(2), must see an **L**
-        -   To match alternative 2 of rule **a**, still at lookahead(2), must see an **L**
--   At lookahead(1), to match alternative 2 must see an **L**
-    -   At lookahead (2), to match alternative 2 must see an **L**
+- At lookahead(1), to match alternative 1 must see an **L**
+  - At lookahead(2), to match alternative 1 must match rule **a**
+    - To match alternative 1 of rule **a**, still at lookahead(2), must see an **L**
+    - To match alternative 2 of rule **a**, still at lookahead(2), must see an **L**
+- At lookahead(1), to match alternative 2 must see an **L**
+  - At lookahead (2), to match alternative 2 must see an **L**
 
 Notice how the number of "paths" through the possible matches fans out due to the recursion. The partial [DFA] so far constructed will now look like:
 
@@ -59,30 +59,30 @@ Note that this is still not useful because there is still nothing that distingui
 
 Now we consider what might be seen with yet another symbol of additional lookahead:
 
--   At lookahead(1), to match alternative 1 must see an **L**
-    -   At lookahead(2), to match alternative 1 must match rule **a**
-        -   To match alternative 1 of rule **a**, still at lookahead(2), must see an **L**
-            -   At lookahead (3), to match alternative 1 of rule **a** must match rule **a** again
-                -   Now in rule **a** again, still at lookahead(3), to match alternative 1 must see an **L**
-                -   Now in rule **a** again, still at lookahead(3), to match alternative 2 must see an **L**
-        -   To match alternative 2 of rule **a**, still at lookahead(2), must see an **L**
-            -   At lookahead (3), to match alternative 2 of rule **a** must seen an **L**
--   At lookahead(1), to match alternative 2 must see an **L**
-    -   At lookahead (2), to match alternative 2 must see an **L**
-        -   At lookahead (3), to match alternative 2 must see an **X**
+- At lookahead(1), to match alternative 1 must see an **L**
+  - At lookahead(2), to match alternative 1 must match rule **a**
+    - To match alternative 1 of rule **a**, still at lookahead(2), must see an **L**
+      - At lookahead (3), to match alternative 1 of rule **a** must match rule **a** again
+        - Now in rule **a** again, still at lookahead(3), to match alternative 1 must see an **L**
+        - Now in rule **a** again, still at lookahead(3), to match alternative 2 must see an **L**
+    - To match alternative 2 of rule **a**, still at lookahead(2), must see an **L**
+      - At lookahead (3), to match alternative 2 of rule **a** must seen an **L**
+- At lookahead(1), to match alternative 2 must see an **L**
+  - At lookahead (2), to match alternative 2 must see an **L**
+    - At lookahead (3), to match alternative 2 must see an **X**
 
 Notice that:
 
--   Finally we have a path that doesn't require seeing **L** (the last path, where we expect to see an **X**)
--   Having seen that **X**, we can predict alternative 2 on seeing **L L X**
--   If we don't see **X** and instead see **L** then we are still on one of the other alternative paths
--   Even though we don't know _which_ alternative path we are on in the case of seeing **L L L** , we can still predict that alternative 1 will match because _all_ of the possible paths that span out from alternative one share that common beginning
--   The recursive nature of alternative 1 means that our prediction can never "finish"; it will always be possible for another layer of recursion to be nested inside
--   The non-terminating nature of alternative 1 doesn't prevent analysis from completing; after only three iterations we see enough input to distinguish the two alternatives
--   As we "re-enter" rule **a** during analysis the number of possible paths grows exponentially
--   Despite the fact that the number of paths grows exponentially, we're still only interested in the very first choice in our path tree: that is, when looking at the very first symbol of lookahead, that's the point where we want to make our prediction: whatever happens later on the many possible paths can be handled by other rule invocations
--   If we were to see some other input like **L L Z** then neither alternative would be predicted
--   Although the number of possible paths grows exponentially, the prediction [DFA] ends up being very simple
+- Finally we have a path that doesn't require seeing **L** (the last path, where we expect to see an **X**)
+- Having seen that **X**, we can predict alternative 2 on seeing **L L X**
+- If we don't see **X** and instead see **L** then we are still on one of the other alternative paths
+- Even though we don't know _which_ alternative path we are on in the case of seeing **L L L** , we can still predict that alternative 1 will match because _all_ of the possible paths that span out from alternative one share that common beginning
+- The recursive nature of alternative 1 means that our prediction can never "finish"; it will always be possible for another layer of recursion to be nested inside
+- The non-terminating nature of alternative 1 doesn't prevent analysis from completing; after only three iterations we see enough input to distinguish the two alternatives
+- As we "re-enter" rule **a** during analysis the number of possible paths grows exponentially
+- Despite the fact that the number of paths grows exponentially, we're still only interested in the very first choice in our path tree: that is, when looking at the very first symbol of lookahead, that's the point where we want to make our prediction: whatever happens later on the many possible paths can be handled by other rule invocations
+- If we were to see some other input like **L L Z** then neither alternative would be predicted
+- Although the number of possible paths grows exponentially, the prediction [DFA] ends up being very simple
 
 [dfa]: /wiki/DFA
 [antlr book]: /wiki/ANTLR_book

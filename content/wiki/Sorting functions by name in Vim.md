@@ -5,9 +5,9 @@ cache_breaker: 1
 
 This can be tricky. The basic idea is:
 
-1.  Collapse each function onto one line (note that you can only do this if you have a non-ambiguous way of identifying the beginning and end of each function)
-2.  Sort the one-liners
-3.  Expand the one-liners back into multi-line form
+1. Collapse each function onto one line (note that you can only do this if you have a non-ambiguous way of identifying the beginning and end of each function)
+2. Sort the one-liners
+3. Expand the one-liners back into multi-line form
 
 The trick here is to use a unique marker to represent newlines (eg. `@@@`) so that they can be correctly restored.
 
@@ -51,8 +51,8 @@ So, with that in mind:
 
 ## See also
 
--   [Sorting .gitmodules entries with Vim](/wiki/Sorting_.gitmodules_entries_with_Vim)
+- [Sorting .gitmodules entries with Vim](/wiki/Sorting_.gitmodules_entries_with_Vim)
 
 ## Source
 
--   <http://stackoverflow.com/a/5618692/2103996>
+- <http://stackoverflow.com/a/5618692/2103996>

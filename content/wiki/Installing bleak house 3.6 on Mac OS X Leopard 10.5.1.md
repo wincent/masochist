@@ -29,13 +29,13 @@ My initial attempt failed:
 
 I see there are a few open tickets for this already:
 
--   <http://rubyforge.org/forum/forum.php?thread_id=20479&forum_id=13983>
--   <http://rubyforge.org/forum/forum.php?thread_id=20989&forum_id=13983>
--   <http://rubyforge.org/forum/forum.php?thread_id=21090&forum_id=13983> (this one labelled as applying to [Tiger](/wiki/Tiger) but the error message is similar)
+- <http://rubyforge.org/forum/forum.php?thread_id=20479&forum_id=13983>
+- <http://rubyforge.org/forum/forum.php?thread_id=20989&forum_id=13983>
+- <http://rubyforge.org/forum/forum.php?thread_id=21090&forum_id=13983> (this one labelled as applying to [Tiger](/wiki/Tiger) but the error message is similar)
 
 Before going any further, I turned to [Google](/wiki/Google) but found only this:
 
--   <http://twitter.com/shaper/statuses/563697382>
+- <http://twitter.com/shaper/statuses/563697382>
 
 So I investigated further:
 
@@ -209,10 +209,10 @@ Output:
 
 So we really have a few problems here:
 
--   Stock `ruby` on [Leopard](/wiki/Leopard) is a different version
--   Stock `ruby` on [Leopard](/wiki/Leopard) is a [Universal Binary](/wiki/Universal_Binary), but the [bleak_house](/wiki/bleak_house) version is not
--   This mismatch could be an obstacle to testing compiled extensions
--   Stock `ruby` looks in completely different places to find things
+- Stock `ruby` on [Leopard](/wiki/Leopard) is a different version
+- Stock `ruby` on [Leopard](/wiki/Leopard) is a [Universal Binary](/wiki/Universal_Binary), but the [bleak_house](/wiki/bleak_house) version is not
+- This mismatch could be an obstacle to testing compiled extensions
+- Stock `ruby` looks in completely different places to find things
 
 All of this means that you can't just use `ruby-bleak-house` as a drop-in replacement for `ruby` on [Leopard](/wiki/Leopard).
 

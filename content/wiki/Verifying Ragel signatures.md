@@ -11,5 +11,5 @@ You can get it and import it into [GPG](/wiki/GPG) as follows:
 
 But don't just take my word for it: go to the official [Ragel](/wiki/Ragel) website and Adrian's homepage and confirm the authenticity of the public key for yourself:
 
--   Official [Ragel](/wiki/Ragel) website: <http://www.cs.queensu.ca/home/thurston/ragel/>
--   [Adrian Thurston](/wiki/Adrian_Thurston)'s homepage: <http://www.cs.queensu.ca/home/thurston/>
+- Official [Ragel](/wiki/Ragel) website: <http://www.cs.queensu.ca/home/thurston/ragel/>
+- [Adrian Thurston](/wiki/Adrian_Thurston)'s homepage: <http://www.cs.queensu.ca/home/thurston/>

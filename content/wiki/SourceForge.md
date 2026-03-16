@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   <http://sourceforge.net/> (also <http://sf.net/>)
+- <http://sourceforge.net/> (also <http://sf.net/>)

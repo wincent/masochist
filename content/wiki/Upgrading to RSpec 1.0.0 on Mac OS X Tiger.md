@@ -107,12 +107,12 @@ See if any other changes are necessary:
 
 ## Output
 
-          exists  spec
-       identical  spec/spec_helper.rb
-       identical  spec/spec.opts
-       identical  previous_failures.txt
-       identical  script/spec_server
-       identical  script/spec
+       exists  spec
+    identical  spec/spec_helper.rb
+    identical  spec/spec.opts
+    identical  previous_failures.txt
+    identical  script/spec_server
+    identical  script/spec
 
 ## [Spec::UI](/wiki/Spec%3a%3aUI)
 
@@ -130,4 +130,4 @@ At this point I decided to see if I could install [Spec::UI](/wiki/Spec%3a%3aUI)
 
 # See also
 
--   [Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger)
+- [Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger)

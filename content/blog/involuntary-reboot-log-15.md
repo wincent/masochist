@@ -17,11 +17,11 @@ So today I resigned myself to just go ahead and do the hard reset, kiss my open 
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.10 (8R2218)
--   **Kernel panics:** 6
--   **Hard resets:** 9
--   **Total failures:** 15
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 482 days
--   **Average time between failures:** 32 days
--   **Uptime at moment of failure(s):** about four hours
+- **Operating system version:** 10.4.10 (8R2218)
+- **Kernel panics:** 6
+- **Hard resets:** 9
+- **Total failures:** 15
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 482 days
+- **Average time between failures:** 32 days
+- **Uptime at moment of failure(s):** about four hours

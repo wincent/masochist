@@ -6,5 +6,5 @@ tags: rspec wiki
 
 # See also
 
--   Official site: <http://rspec.info/> (not yet updated with information about version 2.0)
--   Repositories: <http://github.com/rspec>
+- Official site: <http://rspec.info/> (not yet updated with information about version 2.0)
+- Repositories: <http://github.com/rspec>

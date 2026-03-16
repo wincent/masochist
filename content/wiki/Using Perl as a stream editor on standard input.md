@@ -12,4 +12,4 @@ tags: perl.one.liners wiki
 
 ## Related
 
--   [Using Perl to filter standard input](/wiki/Using_Perl_to_filter_standard_input)
+- [Using Perl to filter standard input](/wiki/Using_Perl_to_filter_standard_input)

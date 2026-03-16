@@ -21,5 +21,5 @@ The solution is to either change your `SuexecUserGroup` directive to another (no
 
 # See also
 
--   <http://httpd.apache.org/docs/2.2/programs/suexec.html>
--   <http://httpd.apache.org/docs/2.2/mod/mod_suexec.html>
+- <http://httpd.apache.org/docs/2.2/programs/suexec.html>
+- <http://httpd.apache.org/docs/2.2/mod/mod_suexec.html>

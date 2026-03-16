@@ -7,17 +7,17 @@ I've escaped from yesterday's [sudden hard disk failure](https://wincent.dev/a/a
 
 I've escaped fairly lightly because of my obsessive backup and data integrity practices:
 
--   Burn a daily backup of your entire home directory to DVD
--   Periodically send one of those backups offsite so that you'll be protected in the event of fire or theft
--   Mirror your entire startup volume to an external [FireWire](https://wincent.dev/wiki/FireWire) disk once per day with [SuperDuper!](https://wincent.dev/wiki/SuperDuper!)
--   Automount the external volume when starting the backup and automatically unmount it once finished so as to keep the disk offline and out of harm's way in the event that an operating system bug should start to wreak havoc with your available filesystems
--   Store your source code in a [version control system](https://wincent.dev/wiki/version%20control%20system), and have at least one remote repository that mirrors or serves as a central check-in point for your local changes
--   Keep your machine as close to a vanilla install as possible
--   Be conservative and patient; if your machine starts to misbehave try to do a preemptive reboot rather than an [involuntary one](https://wincent.dev/a/about/wincent/weblog/archives/involuntary_reboot_log/)
--   If you do have to do a hard reset, always run Disk First Aid to try and catch problems early on
--   Get a good [UPS](https://wincent.dev/wiki/UPS) to protect your machine from power outages
--   Leave your machine running all the time if you can rather than turning it off at night (most hard drive failures occur when drives are being powered up from cold)
--   Use HFS+ with journalling enabled (even though it's probably about as much protection as a film of cheap cling wrap)
+- Burn a daily backup of your entire home directory to DVD
+- Periodically send one of those backups offsite so that you'll be protected in the event of fire or theft
+- Mirror your entire startup volume to an external [FireWire](https://wincent.dev/wiki/FireWire) disk once per day with [SuperDuper!](https://wincent.dev/wiki/SuperDuper!)
+- Automount the external volume when starting the backup and automatically unmount it once finished so as to keep the disk offline and out of harm's way in the event that an operating system bug should start to wreak havoc with your available filesystems
+- Store your source code in a [version control system](https://wincent.dev/wiki/version%20control%20system), and have at least one remote repository that mirrors or serves as a central check-in point for your local changes
+- Keep your machine as close to a vanilla install as possible
+- Be conservative and patient; if your machine starts to misbehave try to do a preemptive reboot rather than an [involuntary one](https://wincent.dev/a/about/wincent/weblog/archives/involuntary_reboot_log/)
+- If you do have to do a hard reset, always run Disk First Aid to try and catch problems early on
+- Get a good [UPS](https://wincent.dev/wiki/UPS) to protect your machine from power outages
+- Leave your machine running all the time if you can rather than turning it off at night (most hard drive failures occur when drives are being powered up from cold)
+- Use HFS+ with journalling enabled (even though it's probably about as much protection as a film of cheap cling wrap)
 
 SuperDuper! really saved the day here, and it only really needs to save your butt _once_ in order to justify its \$27.95 price tag. For some reason [Apple](https://wincent.dev/wiki/Apple)'s Disk Utility couldn't restore from my backup volume when booted from the [Mac OS X](https://wincent.dev/wiki/Mac%20OS%20X) install disc, and when booted from my clone it was still painfully, impossibly slow. SuperDuper!, on the other hand, maintained a perfect bootable clone of my disk and was then able to perform the reverse operation (copying from the clone back to the original) relatively quickly and without any of the degradation that you would expect from what is now a "second generation" copy. My only complaint with SuperDuper! is the! darn! exclamation! point! at! the! end! of it's! name!
 

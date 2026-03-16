@@ -6,7 +6,7 @@ These are notes I made while trying out the [rspec](/wiki/rspec) 0.9 beta 1 pre
 
 # Steps
 
--   Pre-testing
+- Pre-testing
 
 I first double-checked that all [specs](/wiki/specs) were passing for [Walrus](/wiki/Walrus). This is a good test because there are a lot of specifications, many of them containing numerous assertions:
 
@@ -19,7 +19,7 @@ Output:
 
     299 specifications, 0 failures
 
--   Download and installation
+- Download and installation
 
 <!-- -->
 
@@ -32,7 +32,7 @@ Output:
     # update fast doc index
     fastri-server -b
 
--   Run specs again.
+- Run specs again.
 
 <!-- -->
 
@@ -45,13 +45,13 @@ A huge number of errors were raised because deprecated methods like `should_rais
     299 examples, 157 failures
     rake aborted!
 
--   Run the translator \*
+- Run the translator \*
 
 <!-- -->
 
     spec_translator spec spec
 
--   Visually inspect the changes \*
+- Visually inspect the changes \*
 
 Using [SVK](/wiki/SVK):
 
@@ -91,7 +91,7 @@ See [this message](http://rubyforge.org/pipermail/rspec-users/2007-April/001120.
 
 Now the specs were running again but I still had to eliminate some "warning: parenthesize argument(s) for future version" warnings produced because of lack of parentheses around some method parameters.
 
--   Update [TextMate](/wiki/TextMate) bundle
+- Update [TextMate](/wiki/TextMate) bundle
 
 <!-- -->
 
@@ -104,4 +104,4 @@ The bundle is really fantastic. It provides lots of shortcuts for writing specs 
 
 # See also
 
--   Announcement: <http://rubyforge.org/pipermail/rspec-users/2007-April/001108.html>
+- Announcement: <http://rubyforge.org/pipermail/rspec-users/2007-April/001108.html>

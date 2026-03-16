@@ -6,7 +6,7 @@ tags: doxygen wiki
 
 # See
 
--   Download: <http://www.stack.nl/~dimitri/doxygen/download.html>
-    -   [Mac OS X](/wiki/Mac_OS_X) binary: <ftp://ftp.stack.nl/pub/users/dimitri/Doxygen-1.5.2.dmg>
-    -   Documentation: <ftp://ftp.stack.nl/pub/users/dimitri/doxygen_manual-1.5.2.pdf.zip>
--   Changelog: <http://www.stack.nl/~dimitri/doxygen/changelog.html>
+- Download: <http://www.stack.nl/~dimitri/doxygen/download.html>
+  - [Mac OS X](/wiki/Mac_OS_X) binary: <ftp://ftp.stack.nl/pub/users/dimitri/Doxygen-1.5.2.dmg>
+  - Documentation: <ftp://ftp.stack.nl/pub/users/dimitri/doxygen_manual-1.5.2.pdf.zip>
+- Changelog: <http://www.stack.nl/~dimitri/doxygen/changelog.html>

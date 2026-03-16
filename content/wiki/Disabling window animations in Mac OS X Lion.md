@@ -37,6 +37,6 @@ $ defaults write com.apple.Mail DisableReplyAnimations -bool NO
 
 # Source
 
--   originally found here:
-    -   <http://osxdaily.com/2011/07/25/disable-the-new-window-animation-in-mac-os-x-lion/>
-    -   <http://www.cultofmac.com/turn-off-mail-animations-in-os-x-lion-how-to/105991>
+- originally found here:
+  - <http://osxdaily.com/2011/07/25/disable-the-new-window-animation-in-mac-os-x-lion/>
+  - <http://www.cultofmac.com/turn-off-mail-animations-in-os-x-lion-how-to/105991>

@@ -40,4 +40,4 @@ From the official release announcement:
 
 # See also
 
--   [Updating to nginx 1.0.1](/wiki/Updating_to_nginx_1.0.1)
+- [Updating to nginx 1.0.1](/wiki/Updating_to_nginx_1.0.1)

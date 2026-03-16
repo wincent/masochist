@@ -4,8 +4,8 @@ tags: rspec wiki
 
 The official instructions for contributing to [RSpec](/wiki/RSpec) can be found here:
 
--   <http://rspec.rubyforge.org/community/contribute.html>
--   <http://rspec.rubyforge.org/rdoc/files/README.html>
+- <http://rspec.rubyforge.org/community/contribute.html>
+- <http://rspec.rubyforge.org/rdoc/files/README.html>
 
 I already had most of the prerequisites for running [RSpec](/wiki/RSpec)'s pre-commit [specs](/wiki/specs), so I only had to do a small amount of additional set-up:
 
@@ -37,5 +37,5 @@ I already had most of the prerequisites for running [RSpec](/wiki/RSpec)'s pre-c
 
 # See also
 
--   [Passwordless local MySQL access](/wiki/Passwordless_local_MySQL_access)
--   [RSpec patches](/wiki/RSpec_patches)
+- [Passwordless local MySQL access](/wiki/Passwordless_local_MySQL_access)
+- [RSpec patches](/wiki/RSpec_patches)

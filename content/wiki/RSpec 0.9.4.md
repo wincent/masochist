@@ -6,5 +6,5 @@ tags: rspec wiki
 
 # See also
 
--   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11611>
--   My upgrade notes: [Upgrading to RSpec 0.9.4](/wiki/Upgrading_to_RSpec_0.9.4)
+- Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11611>
+- My upgrade notes: [Upgrading to RSpec 0.9.4](/wiki/Upgrading_to_RSpec_0.9.4)

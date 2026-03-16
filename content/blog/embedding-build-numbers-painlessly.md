@@ -13,52 +13,52 @@ Well, after identifying the problem I think I've now come up with a solution.
 
 The problem was easy enough to identify. I like to embed build numbers in my binaries so that you get meaningful, informative output when you run the `what` command-line tool on them. The problem is that embedding these numbers on every build makes Xcode think that the source code has changed, so it will recompile the project even if nothing else has changed. Then every other project that depends on that project will need to be rebuilt (or at the very least re-linked) as well. This becomes a problem when you have a complex hierarchy of projects like I do in Synergy Advance. The tree looks something like this:
 
--   Synergy Advance application
-    -   Synergy Advance framework
-        -   WOBase framework
-            -   WOTest framework
-            -   WODebug framework
-                -   WOTest framework
-        -   WODebug framework
-            -   WOTest framework
-        -   WOTest framework
-    -   WOBase framework
-        -   WOTest framework
-        -   WODebug framework
-            -   WOTest framework
-    -   WOBezel framework
-        -   WOTest framework
-        -   WODebug framework
-            -   WOTest framework
-    -   WOHotKey framework
-        -   WOTest framework
-        -   WODebug framework
-            -   WOTest framework
-    -   Various plug-ins
-        -   Synergy Advance Framework
-            -   WOBase framework
-                -   WOTest framework
-                -   WODebug framework
-                    -   WOTest framework
-            -   WODebug framework
-                -   WOTest framework
-            -   WOTest framework
-    -   Various Preference Panes
-        -   Synergy Advance Framework
-            -   WOBase framework
-                -   WOTest framework
-                -   WODebug framework
-                    -   WOTest framework
-            -   WODebug framework
-                -   WOTest framework
-            -   WOTest framework
-    -   WOTest framework
+- Synergy Advance application
+  - Synergy Advance framework
+    - WOBase framework
+      - WOTest framework
+      - WODebug framework
+        - WOTest framework
+    - WODebug framework
+      - WOTest framework
+    - WOTest framework
+  - WOBase framework
+    - WOTest framework
+    - WODebug framework
+      - WOTest framework
+  - WOBezel framework
+    - WOTest framework
+    - WODebug framework
+      - WOTest framework
+  - WOHotKey framework
+    - WOTest framework
+    - WODebug framework
+      - WOTest framework
+  - Various plug-ins
+    - Synergy Advance Framework
+      - WOBase framework
+        - WOTest framework
+        - WODebug framework
+          - WOTest framework
+      - WODebug framework
+        - WOTest framework
+      - WOTest framework
+  - Various Preference Panes
+    - Synergy Advance Framework
+      - WOBase framework
+        - WOTest framework
+        - WODebug framework
+          - WOTest framework
+      - WODebug framework
+        - WOTest framework
+      - WOTest framework
+  - WOTest framework
 
 And this chart hides some of the complexity because the plug-ins and preference panes are all grouped together under the two "various" headings, and the WODebug framework itself includes an application (Wincent Crash Reporter) which itself depends on the framework; so everywhere you see "WODebug framework" in the list above the actual dependency graph looks like this (references to WOTest omitted for clarity):
 
--   WODebug framework
-    -   Wincent Crash Reporter
-        -   WODebug framework without Wincent Crash Reporter
+- WODebug framework
+  - Wincent Crash Reporter
+    - WODebug framework without Wincent Crash Reporter
 
 All that modularity is a trade-off of one type of complexity for another. The dependency graph starts to look horrible and compile times go up, but it allows me to work on smaller pieces of code at a time and benefit from code re-use and so in theory speeds up development. In practice, however, things are not so pretty. Every time I built the project the and the build numbers were getting bumped on the lower-level dependencies (WODebug, for example) everything that depended on it was getting needlessly re-built and/or re-linked.
 

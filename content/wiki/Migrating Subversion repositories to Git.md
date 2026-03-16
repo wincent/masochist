@@ -128,9 +128,9 @@ If this doesn't work the first thing to check should be the permissions on your 
 
 As [noted here](http://utsl.gen.nz/talks/git-svn/intro.html) there are a number of ways to get an existing [Subversion](/wiki/Subversion) repository into [Git](/wiki/Git). Among them, we have:
 
--   Use `git svn init` to set up a local, two-way mirror of an existing Subversion repository and all its history; this is similar to creating an [SVK](/wiki/SVK) mirror
--   Use `git svnimport` to do a once-off import of an existing Subversion repository and all its history
--   Create a new Git repository and import only the tip of the current trunk from an existing Subversion repository (no history is imported)
+- Use `git svn init` to set up a local, two-way mirror of an existing Subversion repository and all its history; this is similar to creating an [SVK](/wiki/SVK) mirror
+- Use `git svnimport` to do a once-off import of an existing Subversion repository and all its history
+- Create a new Git repository and import only the tip of the current trunk from an existing Subversion repository (no history is imported)
 
 I tried the first method first and the import failed half-way through:
 
@@ -151,8 +151,8 @@ Although this worked on my local ([Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger
 
 So this left me with two options:
 
--   Forget importing the history and seed a clean [Git](/wiki/Git) repository with only the tip of the current head
--   Use `git svnimport` to do the set-up on the [Mac OS X](/wiki/Mac_OS_X) box and then transfer the repository over to the [Red Hat](/wiki/Red_Hat) machine
+- Forget importing the history and seed a clean [Git](/wiki/Git) repository with only the tip of the current head
+- Use `git svnimport` to do the set-up on the [Mac OS X](/wiki/Mac_OS_X) box and then transfer the repository over to the [Red Hat](/wiki/Red_Hat) machine
 
 The former was the easiest so that's the approach I tried first. (I latter tried the other approach too and wrote it up in "[Doing a one-off migration from Subversion to Git](/wiki/Doing_a_one-off_migration_from_Subversion_to_Git)").
 
@@ -239,9 +239,9 @@ I later also tried the approach of creating a repository on my local machine wit
 
 But in the end I decided that instead of keeping the legacy history in the Git repository I preferred to make a clean break and start with a brand new (historyless) repository. I was mostly motivated by:
 
--   The fact that Git encourages certain conventions for formatting commit messages that I hadn't previously followed in the Subversion era; for example some of my commit messages are too wide and so don't display well in [Gitweb](/wiki/Gitweb)
--   The desire for a clean "psychological break" with the old code and a "fresh start"; the history is still available in the Subversion repository my real attention is focussed on the present codebase, not where it came from
--   A desire to adopt a more disciplined approach in the future
+- The fact that Git encourages certain conventions for formatting commit messages that I hadn't previously followed in the Subversion era; for example some of my commit messages are too wide and so don't display well in [Gitweb](/wiki/Gitweb)
+- The desire for a clean "psychological break" with the old code and a "fresh start"; the history is still available in the Subversion repository my real attention is focussed on the present codebase, not where it came from
+- A desire to adopt a more disciplined approach in the future
 
 About 3 years later, though, I decided that it wouldn't hurt to keep the old history in the new Git repo after all, under a different branch. This is because I let the legacy Subversion server go offline when I changed my hosting arrangements from [INetU](/wiki/INetU) to [Amazon Web Services](/wiki/Amazon_Web_Services). With no way convenient way to access the old revisions any more, it seemed appropriated to retrospectively import the old history into the Git repo. This is described in the next section:
 
@@ -299,14 +299,14 @@ $ git fetch --tags /Seguridad/remote/wincent1.inetu.net/var/lib/svn/repositories
 
 ## Articles in this [knowledge base](/wiki/knowledge_base)
 
--   [Setting up gitweb](/wiki/Setting_up_gitweb)
--   [Git repository maintenance](/wiki/Git_repository_maintenance)
--   [Setting up a brand new public Git repository](/wiki/Setting_up_a_brand_new_public_Git_repository)
--   [Setting up a brand new private Git repository](/wiki/Setting_up_a_brand_new_private_Git_repository)
+- [Setting up gitweb](/wiki/Setting_up_gitweb)
+- [Git repository maintenance](/wiki/Git_repository_maintenance)
+- [Setting up a brand new public Git repository](/wiki/Setting_up_a_brand_new_public_Git_repository)
+- [Setting up a brand new private Git repository](/wiki/Setting_up_a_brand_new_private_Git_repository)
 
 ## External links
 
--   <http://blog.madduck.net/vcs/2007.07.11_publishing-git-repositories>
+- <http://blog.madduck.net/vcs/2007.07.11_publishing-git-repositories>
 
 # Additional notes
 

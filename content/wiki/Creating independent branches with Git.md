@@ -12,9 +12,9 @@ title: Creating independent branches with Git
 
 ## Alternative
 
-     git checkout --orphan new-branch-name
-     git rm -rf . # or rm .git/index, as above
-     git commit --allow-empty -m 'Create new-branch-name branch'
+    git checkout --orphan new-branch-name
+    git rm -rf . # or rm .git/index, as above
+    git commit --allow-empty -m 'Create new-branch-name branch'
 
 # The long version
 

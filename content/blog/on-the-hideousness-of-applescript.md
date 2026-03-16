@@ -35,10 +35,10 @@ end if
 
 Note how we are forced to use a painful four step process:
 
-1.  Find starting offset of marker string
-2.  Extract substring from end of marker string through to end of original string
-3.  Search within the extracted string for the offset of a newline
-4.  Extract substring from new string
+1. Find starting offset of marker string
+2. Extract substring from end of marker string through to end of original string
+3. Search within the extracted string for the offset of a newline
+4. Extract substring from new string
 
 Note also how in order to search for a newline we have to express it as `ASCII character 10` unless we want to have a literal newline in our search string; if you try searching for `"\n"` the AppleScript editor with "helpfully" reformat it as a literal newline:
 

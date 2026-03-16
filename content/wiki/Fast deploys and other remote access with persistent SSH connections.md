@@ -14,9 +14,9 @@ A colleague of mine recently shared [an article on speeding-up SSH-based workflo
 
 This works quite well for my workflows:
 
--   `ControlMaster auto`: if a shared connection exists, use it; otherwise create one
--   `ControlPath ...`: store shared connections in per-local-host, per-remote-login, per-remote-host, per-port sockets
--   `ControlPersist 240`: keep shared connections around for an additional 240 seconds after the last `ssh` invocation exits; this permits rapid reuse for things like deploys, without having to worry about connections piling up over time
+- `ControlMaster auto`: if a shared connection exists, use it; otherwise create one
+- `ControlPath ...`: store shared connections in per-local-host, per-remote-login, per-remote-host, per-port sockets
+- `ControlPersist 240`: keep shared connections around for an additional 240 seconds after the last `ssh` invocation exits; this permits rapid reuse for things like deploys, without having to worry about connections piling up over time
 
 The short `ControlPersist` time is not only good for deploys, but it works well enough for other workflows. For example, when I'm starting to work at the beginning of the day, I usually begin by opening up a remote connection. This first one will be slow, but from then on I don't close it. I do, however, open up other connections to the same server as the need arises, and all of those will be fast because they'll use the shared connection.
 
@@ -37,5 +37,5 @@ sys	0m0.009s
 
 # See also
 
--   <http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html>
--   <http://protempore.net/~calvins/howto/ssh-connection-sharing/>
+- <http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html>
+- <http://protempore.net/~calvins/howto/ssh-connection-sharing/>

@@ -6,11 +6,11 @@ tags: antlr wiki
 
 A full list of audio can be found here:
 
--   <http://www.antlr.org/audio>
+- <http://www.antlr.org/audio>
 
 # Specific lectures
 
--   "An Introduction To ANTLR": <http://www.antlr.org/audio/antlr.mp3>
--   "Lecture audio on grammars, languages, derivations, parsing": <http://www.antlr.org/audio/grammars.languages.mp3>
--   "Lecture audio on lookahead computation for LL(k) parsers": <http://www.antlr.org/audio/lookahead.computation.mp3>
--   "Lecture audio on how to describe antlr rules in antlr itself": <http://www.antlr.org/audio/antlr-own-words.mp3>
+- "An Introduction To ANTLR": <http://www.antlr.org/audio/antlr.mp3>
+- "Lecture audio on grammars, languages, derivations, parsing": <http://www.antlr.org/audio/grammars.languages.mp3>
+- "Lecture audio on lookahead computation for LL(k) parsers": <http://www.antlr.org/audio/lookahead.computation.mp3>
+- "Lecture audio on how to describe antlr rules in antlr itself": <http://www.antlr.org/audio/antlr-own-words.mp3>

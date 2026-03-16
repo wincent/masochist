@@ -27,8 +27,8 @@ So we alter the two config files and then restart the servers (in my case, with 
 
 At the same time I noticed two other directories under `/usr/local/nginx` owned by one of the users:
 
--   `fastcgi_temp` (the corresponding directive is `fastcgi_temp_path`, documented [here](http://wiki.codemongers.com/NginxHttpFcgiModule#fastcgi_temp_path))
--   `proxy_temp` (the directive is `proxy_temp_path`, documented [here](http://wiki.codemongers.com/NginxHttpProxyModule#proxy_temp_path))
+- `fastcgi_temp` (the corresponding directive is `fastcgi_temp_path`, documented [here](http://wiki.codemongers.com/NginxHttpFcgiModule#fastcgi_temp_path))
+- `proxy_temp` (the directive is `proxy_temp_path`, documented [here](http://wiki.codemongers.com/NginxHttpProxyModule#proxy_temp_path))
 
 Just in case these also cause problems in the future per-worker-process (per-user) paths should be specified for those as well.
 
@@ -36,6 +36,6 @@ Just in case these also cause problems in the future per-worker-process (per-use
 
 It's worth commenting on my rationale for having two master processes rather than using [virtual hosts](/wiki/virtual_hosts). In short:
 
--   [nginx](/wiki/nginx) processes are extremely lightweight so it is feasible to run separate processes for each user as an analogue to [Apache](/wiki/Apache)'s [suexec](/wiki/suexec) functionality; in my case I have two applications and therefore two users, so this is quite reasonable
--   Having each process run as a different user brings all of the isolation and security benefits that [suexec](/wiki/suexec) brings to Apache
--   In my case the two applications are actually just two instances of the same application, but one is for staging and one is for production; as a result, I only _sometimes_ want to run both applications (ie. when testing a new version of the application in the staging environment) but most of the time only the production environment will be running, so it isn't at all wasteful to occasionally fire up another worker process
+- [nginx](/wiki/nginx) processes are extremely lightweight so it is feasible to run separate processes for each user as an analogue to [Apache](/wiki/Apache)'s [suexec](/wiki/suexec) functionality; in my case I have two applications and therefore two users, so this is quite reasonable
+- Having each process run as a different user brings all of the isolation and security benefits that [suexec](/wiki/suexec) brings to Apache
+- In my case the two applications are actually just two instances of the same application, but one is for staging and one is for production; as a result, I only _sometimes_ want to run both applications (ie. when testing a new version of the application in the staging environment) but most of the time only the production environment will be running, so it isn't at all wasteful to occasionally fire up another worker process

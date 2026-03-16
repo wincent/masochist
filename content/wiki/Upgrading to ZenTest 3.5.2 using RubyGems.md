@@ -50,11 +50,11 @@ cache_breaker: 1
 
 # Changes
 
--   Patch up Rails fixture defaults for Test::Rails::TestCase.
--   Session now properly hooked up to controllers.
--   ruby 1.8.6 has a bug on 'raise Interrupt' with no args. Fixed on both sides.
--   Fixed redgreen to work with new getc/putc-based output. (from Finn Smith)
+- Patch up Rails fixture defaults for Test::Rails::TestCase.
+- Session now properly hooked up to controllers.
+- ruby 1.8.6 has a bug on 'raise Interrupt' with no args. Fixed on both sides.
+- Fixed redgreen to work with new getc/putc-based output. (from Finn Smith)
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11408>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11408>

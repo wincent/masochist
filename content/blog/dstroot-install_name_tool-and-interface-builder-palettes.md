@@ -13,9 +13,9 @@ So it was time to get my WOHotKey Interface Builder palette working again, as we
 
 In general I create all my frameworks as embedded frameworks for the following reasons:
 
--   All-in-one packages are easier to distribute (no need for an installer).
--   There's no possibility of a version mismatch between an application and older, installed frameworks.
--   The diskspace and bandwidth overheads are negligible in this day of cheap, massive hard disks and widespread broadband access.
+- All-in-one packages are easier to distribute (no need for an installer).
+- There's no possibility of a version mismatch between an application and older, installed frameworks.
+- The diskspace and bandwidth overheads are negligible in this day of cheap, massive hard disks and widespread broadband access.
 
 But the trouble with embedded frameworks is that they require you to hardwire their install path to `@executable_path/../Frameworks`. Because of the hard-wiring you can't move those frameworks somewhere else (such as `/Library/Frameworks/`) and expect them to work. There _is_ the new `@loader_path` macro which affords some flexibility but that only works on 10.4 and so it's not suitable for use with my frameworks (which at the time of writing must all run on 10.3 as well).
 
@@ -35,10 +35,10 @@ Now, reading this I said to myself, why not set it per-target? What's the differ
 
 Until I understood this I was setting my installable frameworks to be installed in `/Library/Frameworks/`. This had a number of undesirable side-effects:
 
--   It's not just that the products were being _installed_ there, they were actually being _built_ there; this means that a failed build would cause a previous, working version of the framework to be damaged or overwritten.
--   In many cases doing a "Clean All" would remove installed versions of all your frameworks, which can wreak havoc if you have applications running that depend on those frameworks (Interface Builder, for example).
--   Xcode puts a symbolic link to the installed framework in the `TARGET_BUILD_DIR`, thus making it impossible to have both an embeddable version in your `TARGET_BUILD_DIR` and an installed version in your `/Library/Frameworks/` directory.
--   Xcode had a lot of trouble find private headers for installed frameworks (which I like to store in my `TARGET_BUILD_DIR` rather than in inside the framework itself so that I don't have to worry about stripping them out before shipping the framework to users).
+- It's not just that the products were being _installed_ there, they were actually being _built_ there; this means that a failed build would cause a previous, working version of the framework to be damaged or overwritten.
+- In many cases doing a "Clean All" would remove installed versions of all your frameworks, which can wreak havoc if you have applications running that depend on those frameworks (Interface Builder, for example).
+- Xcode puts a symbolic link to the installed framework in the `TARGET_BUILD_DIR`, thus making it impossible to have both an embeddable version in your `TARGET_BUILD_DIR` and an installed version in your `/Library/Frameworks/` directory.
+- Xcode had a lot of trouble find private headers for installed frameworks (which I like to store in my `TARGET_BUILD_DIR` rather than in inside the framework itself so that I don't have to worry about stripping them out before shipping the framework to users).
 
 So what's the point of using `DSTROOT` if it brings all these problems with it? How is it better than merely copying the framework into place yourself using a shell script build phase? It seemed to me that the only reason you would use it is if you needed "sparse root that can be turned into a package for distribution", and that didn't apply to me.
 

@@ -9,4 +9,4 @@ cache_breaker: 1
 
 # Official site
 
--   <http://last.fm/>
+- <http://last.fm/>

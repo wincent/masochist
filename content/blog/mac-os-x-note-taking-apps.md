@@ -23,36 +23,36 @@ This is literally the realization of the vision for a useful note-taking/organiz
 
 Key characteristics that make Notional Velocity a winner:
 
--   [open source](/wiki/open_source) ([GitHub repo](https://github.com/scrod/nv))
--   can store snippets as plain text
--   can paste text in from other applications without worrying about it polluting the note database with unwanted formatting
--   as snippets are just plain text files on disk, so they are indexable by [Spotlight](/wiki/Spotlight) (just remember to [tell Notational Velocity to put those files somewhere that Spotlight can find them](http://charliepark.tumblr.com/post/321649657/ive-figured-out-a-way-to-get-notational-velocity))
--   pervasive use of auto-complete
--   tagging
--   simple "uni-modal" UI in which searching, opening, and creating are all part of the same workflow
--   unified search covers note titles, note content and tags
--   intuitive keyboard shortcuts for pretty much every conceivable action
--   configurable font, font size, and coloring
--   auto-linkification (ie. pasted URLs are clickable)
--   notes can be created via drag and drop (either whole files, or text selections)
--   configurable external editor ([MacVim](/wiki/MacVim), of course)
--   control over tab key behavior (ie. the ability to use it for indentation, not field selection, and to force it to use soft tabs)
--   ability to turn off the spell checker (useful particularly when working with code, which is what I mostly use notes for)
--   attractive [Mail.app](/wiki/Mail.app)-like [UI](/wiki/UI) with partial preview in the list view
--   lightweight, fast, free of feature-bloat
+- [open source](/wiki/open_source) ([GitHub repo](https://github.com/scrod/nv))
+- can store snippets as plain text
+- can paste text in from other applications without worrying about it polluting the note database with unwanted formatting
+- as snippets are just plain text files on disk, so they are indexable by [Spotlight](/wiki/Spotlight) (just remember to [tell Notational Velocity to put those files somewhere that Spotlight can find them](http://charliepark.tumblr.com/post/321649657/ive-figured-out-a-way-to-get-notational-velocity))
+- pervasive use of auto-complete
+- tagging
+- simple "uni-modal" UI in which searching, opening, and creating are all part of the same workflow
+- unified search covers note titles, note content and tags
+- intuitive keyboard shortcuts for pretty much every conceivable action
+- configurable font, font size, and coloring
+- auto-linkification (ie. pasted URLs are clickable)
+- notes can be created via drag and drop (either whole files, or text selections)
+- configurable external editor ([MacVim](/wiki/MacVim), of course)
+- control over tab key behavior (ie. the ability to use it for indentation, not field selection, and to force it to use soft tabs)
+- ability to turn off the spell checker (useful particularly when working with code, which is what I mostly use notes for)
+- attractive [Mail.app](/wiki/Mail.app)-like [UI](/wiki/UI) with partial preview in the list view
+- lightweight, fast, free of feature-bloat
 
 Among the things which I wouldn't have built, but which I can see myself potentially using, are:
 
--   built-in `[[wikilink]]` syntax
+- built-in `[[wikilink]]` syntax
 
 Stuff which I doubt I'll use, but which might end up emerging as something useful as time goes by:
 
--   bring-to-front hot key
--   bookmarks feature (the ability to assign a specific note that should open when you press a certain key combination)
+- bring-to-front hot key
+- bookmarks feature (the ability to assign a specific note that should open when you press a certain key combination)
 
 Really the only fluff I'm not interested in using is:
 
--   encryption (I believe that's what the Keychain is for, and whole-disk encryption)
+- encryption (I believe that's what the Keychain is for, and whole-disk encryption)
 
 # Conclusion
 

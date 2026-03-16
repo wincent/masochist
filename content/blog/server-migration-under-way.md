@@ -7,6 +7,6 @@ The [server migration](https://wincent.dev/a/about/wincent/weblog/archives/2008/
 
 Just in case there is any interruption during the move, I've just opened [a twitter account](http://twitter.com/wincent) where I'll be posting updates along the way:
 
--   <http://twitter.com/wincent>
+- <http://twitter.com/wincent>
 
 Not really a twitter fan myself — I've always felt that the best place to post that kind of info is on my own weblog — but in a case like this it makes sense to have an offsite feed.

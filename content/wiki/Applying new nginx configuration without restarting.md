@@ -23,4 +23,4 @@ Alternatively, you can instruct nginx to reload it's configuration file using th
 
 # See also
 
--   <http://wiki.nginx.org/NginxCommandLine>
+- <http://wiki.nginx.org/NginxCommandLine>

@@ -7,8 +7,8 @@ Version 0.4 of the [Walrus](/wiki/Walrus) gem has just been released. Walrus is 
 
 This release contains one minor bugfix and one major behavioral change; the default output extension for filled templates is no longer "html", so you will either need to explicitly pass in the extension (eg. `walrus fill -e html ...`) **_or_** rename your templates to include the desired extension:
 
--   if you formerly had `index.tmpl` as your source template, resulting in `index.rb` when compiled and `index.html` when filled
--   you'll now have `index.html.tmpl` as your source template, and it will produce `index.html.rb` when compiled and `index.html` when filled
+- if you formerly had `index.tmpl` as your source template, resulting in `index.rb` when compiled and `index.html` when filled
+- you'll now have `index.html.tmpl` as your source template, and it will produce `index.html.rb` when compiled and `index.html` when filled
 
 This new approach has a few benefits which are fully explained in the commit log message.
 

@@ -4,4 +4,4 @@ tags: wiki
 
 # Official site
 
--   <http://bjango.com/mac/istatmenus/>
+- <http://bjango.com/mac/istatmenus/>

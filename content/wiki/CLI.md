@@ -7,8 +7,8 @@ A [CLI](/wiki/CLI) or [Command Line Interface](/wiki/Command_Line_Interface) is 
 
 Examples of [command line](/wiki/command_line) tools made by Wincent include:
 
--   [Wincent Strings Utility](/wiki/Wincent_Strings_Utility)
+- [Wincent Strings Utility](/wiki/Wincent_Strings_Utility)
 
 # See also
 
--   [GUI](/wiki/GUI)
+- [GUI](/wiki/GUI)

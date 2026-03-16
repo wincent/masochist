@@ -13,4 +13,4 @@ $ chmod 400 id_rsa id_rsa.pub
 
 # Source
 
--   <http://apple.stackexchange.com/questions/106107/cannot-unlock-password-protected-ssh-key-in-os-x-mavericks>
+- <http://apple.stackexchange.com/questions/106107/cannot-unlock-password-protected-ssh-key-in-os-x-mavericks>

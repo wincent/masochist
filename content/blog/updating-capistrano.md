@@ -14,12 +14,12 @@ Security fixes? Capistrano runs on my local desktop machine behind a NAT gateway
 
 There are some "nice frills" that have been added to Capistrano since 2.2.0, but nothing in itself enough to warrant a change. Although [2.3.0](http://weblog.jamisbuck.org/2008/5/2/capistrano-2-3-0) didn't add much that personally interests me, [2.4.0](http://weblog.jamisbuck.org/2008/6/13/capistrano-2-4-0), for example, brings:
 
--   a `-d` switch for single-stepping through your tasks and approving or denying each remote command
--   `deploy:upload` allows you to upload multiple files specified using "glob" patterns
+- a `-d` switch for single-stepping through your tasks and approving or denying each remote command
+- `deploy:upload` allows you to upload multiple files specified using "glob" patterns
 
 [2.5.0](http://capify.org/2008/8/29/capistrano-2-5-0) adds:
 
--   a `-n` "dry-run" mode which goes through running local tasks, but remote commands are only shown, not executed
+- a `-n` "dry-run" mode which goes through running local tasks, but remote commands are only shown, not executed
 
 Neither [2.5.1](http://capify.org/2008/11/7/capistrano-2-5-1), [2.5.2](http://capify.org/2008/11/13/capistrano-2-5-2) nor [2.5.3](http://capify.org/2008/12/7/capistrano-2-5-3) add anything of much interest to me.
 

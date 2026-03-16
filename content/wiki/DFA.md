@@ -8,9 +8,9 @@ A [DFA](/wiki/DFA), also known as a [Deterministic Finite Automata](/wiki/Determ
 
 # Software that uses [DFAs](/wiki/DFAs)
 
--   [ANTLR](/wiki/ANTLR) constructs [DFAs](/wiki/DFAs) for the purposes of predicting alternatives.
--   [Ragel](/wiki/Ragel) is a state machine compiler.
+- [ANTLR](/wiki/ANTLR) constructs [DFAs](/wiki/DFAs) for the purposes of predicting alternatives.
+- [Ragel](/wiki/Ragel) is a state machine compiler.
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [DFAs](/wiki/DFAs): <http://en.wikipedia.org/wiki/Deterministic_finite_state_machine>
+- [Wikipedia](/wiki/Wikipedia) article on [DFAs](/wiki/DFAs): <http://en.wikipedia.org/wiki/Deterministic_finite_state_machine>

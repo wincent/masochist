@@ -6,4 +6,4 @@ tags: macos wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on docks (not just the [Mac OS X](/wiki/Mac_OS_X) [Dock](/wiki/Dock)): <http://en.wikipedia.org/wiki/Dock_%28computing%29>
+- [Wikipedia](/wiki/Wikipedia) article on docks (not just the [Mac OS X](/wiki/Mac_OS_X) [Dock](/wiki/Dock)): <http://en.wikipedia.org/wiki/Dock_%28computing%29>

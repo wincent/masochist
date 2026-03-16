@@ -13,4 +13,4 @@ Turns out that the contrast of black text on yellow background is much sharper a
 
 See also:
 
--   ["Proclamation for the benefit of your light sensing organs"](http://macdevlog.com/yellow-for-your-eyes.html)
+- ["Proclamation for the benefit of your light sensing organs"](http://macdevlog.com/yellow-for-your-eyes.html)

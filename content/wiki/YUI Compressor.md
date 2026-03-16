@@ -144,6 +144,6 @@ From the official site:
 
 # See also
 
--   Official site:
-    -   Current: <http://developer.yahoo.com/yui/compressor/>
-    -   Old: <http://www.julienlecomte.net/yuicompressor/>
+- Official site:
+  - Current: <http://developer.yahoo.com/yui/compressor/>
+  - Old: <http://www.julienlecomte.net/yuicompressor/>

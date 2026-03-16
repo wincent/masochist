@@ -6,23 +6,23 @@ title: Radioactivity
 
 Over the last 5 years, a number of terms which have entered into the public discourse have basically become radioactive. Touch them, and you get contaminated. If you are to handle them at all, you'd best wear a hazard suit, because you're bound to upset somebody on one side of the political aisle or the other. Some of them were crafted as rhetorical weapons to be used against opponents. Sometimes they turn into targets for ridicule from the other side, or the weapons get turned against those who wielded them. A word which is a badge of honor at first (eg. "woke") may morph into an object of ridicule for the other side. Either way, they're all somehow poisoned now, dangerous. Here's a short list of terms sure to get you into trouble on Twitter:
 
--   [SJW](https://en.wikipedia.org/wiki/Social_justice_warrior)
--   [dog whistle](https://en.wikipedia.org/wiki/Dog-whistle_politics)
--   [triggered](https://en.wikipedia.org/wiki/Triggering)
--   [virtue-signalling](https://en.wikipedia.org/wiki/Virtue_signalling)
--   [identity politics](https://en.wikipedia.org/wiki/Identity_politics)
--   [intersectionality](https://en.wikipedia.org/wiki/Intersectionality)
--   ["Intellectual dark Web"](https://en.wikipedia.org/wiki/Intellectual_dark_web)
--   [woke](https://en.wikipedia.org/wiki/Woke)
--   [cancel culture](https://en.wikipedia.org/wiki/Cancel_culture)
--   [gas-lighting](https://en.wikipedia.org/wiki/Gaslighting)
+- [SJW](https://en.wikipedia.org/wiki/Social_justice_warrior)
+- [dog whistle](https://en.wikipedia.org/wiki/Dog-whistle_politics)
+- [triggered](https://en.wikipedia.org/wiki/Triggering)
+- [virtue-signalling](https://en.wikipedia.org/wiki/Virtue_signalling)
+- [identity politics](https://en.wikipedia.org/wiki/Identity_politics)
+- [intersectionality](https://en.wikipedia.org/wiki/Intersectionality)
+- ["Intellectual dark Web"](https://en.wikipedia.org/wiki/Intellectual_dark_web)
+- [woke](https://en.wikipedia.org/wiki/Woke)
+- [cancel culture](https://en.wikipedia.org/wiki/Cancel_culture)
+- [gas-lighting](https://en.wikipedia.org/wiki/Gaslighting)
 
 Then there are words like "fascist" which are now bandied about so liberally as to have lost a large part of their impact. That's a particularly interesting one. It was always [a complex term](https://en.wikipedia.org/wiki/Fascism), traditionally used to refer to far-right, authoritarian, nationalist, dictatorial forms of government. But back when the two poles of US politics lay closer to the center of the political spectrum, it was at least clear that it referred to the likes of Hitler and Mussolini. In modern times, it has — not unreasonably — come to be applied to political opponents at either extreme, where increasingly totalitarian points of view have somehow become legitimate perspectives within a democratic framework. But as the center becomes a political "no man's land", with more radical voices on both sides drowning out the moderate ones (or cowing them into silence), political discourse itself is becoming more extreme, and "fascist" is fast becoming a label applied to _anybody_ who identifies with the opposing political party. A perfectly good word rendered useless through excessive application.
 
 Use any of these words on a place like Twitter, and you will be very rapidly assigned to one of two groups; you'll be either:
 
--   An evil, [alt-right](https://en.wikipedia.org/wiki/Alt-right), [white-supremacist](https://en.wikipedia.org/wiki/White_supremacy), closet-fascist dishonestly hiding your [racist](https://en.wikipedia.org/wiki/Racism), [transphobic](https://en.wikipedia.org/wiki/Transphobia) (etc) ideology behind a veneer of rationality.
--   A deranged, radical, "woke" [Marxist](https://en.wikipedia.org/wiki/Marxism)/[anarchist](https://en.wikipedia.org/wiki/Anarchism) who wants to destroy the fabric of American society.
+- An evil, [alt-right](https://en.wikipedia.org/wiki/Alt-right), [white-supremacist](https://en.wikipedia.org/wiki/White_supremacy), closet-fascist dishonestly hiding your [racist](https://en.wikipedia.org/wiki/Racism), [transphobic](https://en.wikipedia.org/wiki/Transphobia) (etc) ideology behind a veneer of rationality.
+- A deranged, radical, "woke" [Marxist](https://en.wikipedia.org/wiki/Marxism)/[anarchist](https://en.wikipedia.org/wiki/Anarchism) who wants to destroy the fabric of American society.
 
 It's not just words that have turned radioactive, but associations as well. We no longer evaluate information on the basis of its content, but rather on its source. One would have thought that decades (and even centuries) of [Critical Theory](https://en.wikipedia.org/wiki/Critical_theory) and [rationalism](https://en.wikipedia.org/wiki/Rationalism) would have taught us that _both_ are important, but it seems we've thrown the baby out with the bath water. If you cite a valid point from a conservative commentator like [Ben Shapiro](https://en.wikipedia.org/wiki/Ben_Shapiro) or [Douglas Murray](https://en.wikipedia.org/wiki/Douglas_Murray_%40author%41), or from people on the left like [Naomi Klein](https://en.wikipedia.org/wiki/Naomi_Klein) or [Ezra Klein](https://en.wikipedia.org/wiki/Ezra_Klein) (no relation — ha!), you will be immediately classified as guilty by association. The foreseeable consequence of this is that opinions and doctrines become more and more polarized because they are never tempered by exposure to convincing counterarguments. Your self-censorship means that you don't end up contributing these meaningful, nuance-adding viewpoints to the conversation; maybe, with time, you don't even _see_ them any more. And in the end, unless we make a strongly concerted effort to read, watch and listen broadly, we wind up in echo chambers that end up distorting not only our world view, but even our understanding of what constitute the basic facts of reality.
 

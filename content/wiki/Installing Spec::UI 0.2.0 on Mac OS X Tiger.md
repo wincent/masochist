@@ -56,4 +56,4 @@ tags: rspec wiki
 
 # See also
 
--   "[Using Watir with RSpec and Rails](/wiki/Using_Watir_with_RSpec_and_Rails)"
+- "[Using Watir with RSpec and Rails](/wiki/Using_Watir_with_RSpec_and_Rails)"

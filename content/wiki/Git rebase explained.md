@@ -119,4 +119,4 @@ So the moral of the story is:
 
 # See also
 
--   [Using git rebase](/wiki/Using_git_rebase)
+- [Using git rebase](/wiki/Using_git_rebase)

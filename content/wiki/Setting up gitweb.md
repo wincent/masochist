@@ -162,4 +162,4 @@ And the browser displays the file rather than downloading it.
 
 # See also
 
--   [Migrating Subversion repositories to Git](/wiki/Migrating_Subversion_repositories_to_Git)
+- [Migrating Subversion repositories to Git](/wiki/Migrating_Subversion_repositories_to_Git)

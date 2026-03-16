@@ -8,13 +8,13 @@ title: Behaviour-Driven Development with Rails
 
 This article was originally written in 2007. For more up-to-date information, see:
 
--   [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
--   [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
--   [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
--   [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
--   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
--   [RR cheatsheet](/wiki/RR_cheatsheet)
--   [Steak cheatsheet](/wiki/Steak_cheatsheet)
+- [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
+- [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
+- [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
+- [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
+- [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
+- [RR cheatsheet](/wiki/RR_cheatsheet)
+- [Steak cheatsheet](/wiki/Steak_cheatsheet)
 
 # Background
 
@@ -156,8 +156,8 @@ Now running `rake coverage` will run all the [specs](/wiki/specs) and measure th
 
 The first run shows 100%, apart from 10 lines in `config/boot.rb`. We can exclude this file from the coverage analysis for two reasons:
 
-1.  The file is part of [Rails](/wiki/Rails) itself, there is no need to test it ([Rails](/wiki/Rails) has its own tests).
-2.  It is impossible to cover all 100% of this file because it depends on the method in which [Rails](/wiki/Rails) is installed (there are two different code paths depending on whether [Rails](/wiki/Rails) is frozen into `vendor/rails` or loaded via [RubyGems](/wiki/RubyGems).
+1. The file is part of [Rails](/wiki/Rails) itself, there is no need to test it ([Rails](/wiki/Rails) has its own tests).
+2. It is impossible to cover all 100% of this file because it depends on the method in which [Rails](/wiki/Rails) is installed (there are two different code paths depending on whether [Rails](/wiki/Rails) is frozen into `vendor/rails` or loaded via [RubyGems](/wiki/RubyGems).
 
 So we update the `rcov_opts` in the `Rakefile` to:
 
@@ -206,8 +206,8 @@ From here on development takes place iteratively: write a new [spec](/wiki/spec)
 
 For example, let's start with a simple requirement for our `User` model:
 
--   A User without a login name
-    -   should be invalid
+- A User without a login name
+  - should be invalid
 
 We express this with the following [spec](/wiki/spec) in `user_spec.rb`:
 
@@ -281,17 +281,17 @@ And all the specs start passing again. Now we can check our changes into [SVK](/
 
 Development will now continue iteratively:
 
-1.  Decide on a new required behaviour
-2.  Write a spec for it (should fail)
-3.  Write code (or take other actions such as performing database migrations as shown above) to make spec pass
-4.  Check changes into [version control](/wiki/version_control)
-5.  Repeat
+1. Decide on a new required behaviour
+2. Write a spec for it (should fail)
+3. Write code (or take other actions such as performing database migrations as shown above) to make spec pass
+4. Check changes into [version control](/wiki/version_control)
+5. Repeat
 
 Periodically we will also do the following
 
--   Check code coverage using `rake coverage` and/or `rake verify`; you should try to keep coverage at 100%
--   If necessary, refactor [specs](/wiki/specs) to avoid duplicated code; if any of your specs break then you know that your refactoring introduced an error
--   Selectively run [Heckle](/wiki/Heckle) against specific specs, classes, modules and methods to look for holes, flaws or weaknesses in the specs
+- Check code coverage using `rake coverage` and/or `rake verify`; you should try to keep coverage at 100%
+- If necessary, refactor [specs](/wiki/specs) to avoid duplicated code; if any of your specs break then you know that your refactoring introduced an error
+- Selectively run [Heckle](/wiki/Heckle) against specific specs, classes, modules and methods to look for holes, flaws or weaknesses in the specs
 
 I've [posted this screencast](https://wincent.dev/a/about/wincent/weblog/archives/2007/05/behaviourdriven.php) to my personal [weblog](/wiki/weblog) showing one cycle of this iterative development approach in action.
 
@@ -315,6 +315,6 @@ Make sure that you are testing the behaviour of _your_ application and not that 
 
 # See also
 
--   Nice article on doing Behaviour-Driven Development in Ruby on Rails: <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1> (now slightly out of date but still useful)
--   [Behaviour-Driven Development with Rails: Handling upgrades](/wiki/Behaviour-Driven_Development_with_Rails%3a_Handling_upgrades)
--   [Store user session data in the database instead of the filesystem on Rails](/wiki/Store_user_session_data_in_the_database_instead_of_the_filesystem_on_Rails)
+- Nice article on doing Behaviour-Driven Development in Ruby on Rails: <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1> (now slightly out of date but still useful)
+- [Behaviour-Driven Development with Rails: Handling upgrades](/wiki/Behaviour-Driven_Development_with_Rails%3a_Handling_upgrades)
+- [Store user session data in the database instead of the filesystem on Rails](/wiki/Store_user_session_data_in_the_database_instead_of_the_filesystem_on_Rails)

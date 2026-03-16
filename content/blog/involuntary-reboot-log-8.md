@@ -26,14 +26,14 @@ Right now performing my customary boot-from-DVD and repair with Disk First Aid t
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.9
--   **Kernel panics:** 6
--   **Hard resets:** 2
--   **Total failures:** 8
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 303 days
--   **Average time between failures:** 37 days
--   **Uptime at moment of failure(s):** Several days
+- **Operating system version:** 10.4.9
+- **Kernel panics:** 6
+- **Hard resets:** 2
+- **Total failures:** 8
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 303 days
+- **Average time between failures:** 37 days
+- **Uptime at moment of failure(s):** Several days
 
 As per usual I used the interactive Ruby interpreter, `irb`, to do the date calculations for me:
 

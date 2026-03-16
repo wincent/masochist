@@ -17,11 +17,11 @@ Sigh.
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.4.10
--   **Kernel panics:** 6
--   **Hard resets:** 5
--   **Total failures:** 11
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 418 days
--   **Average time between failures:** 38 days
--   **Uptime at moment of failure(s):** several days
+- **Operating system version:** 10.4.10
+- **Kernel panics:** 6
+- **Hard resets:** 5
+- **Total failures:** 11
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 418 days
+- **Average time between failures:** 38 days
+- **Uptime at moment of failure(s):** several days

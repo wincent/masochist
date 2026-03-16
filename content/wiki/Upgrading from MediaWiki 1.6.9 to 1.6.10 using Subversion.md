@@ -162,5 +162,5 @@ Output:
 
 # See also
 
--   1.6.10 release notes: <http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_6_10/phase3/RELEASE-NOTES>
--   Official [MediaWiki](/wiki/MediaWiki) notes on [Subversion](/wiki/Subversion)-based upgrades: <http://www.mediawiki.org/wiki/Download_from_SVN>
+- 1.6.10 release notes: <http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_6_10/phase3/RELEASE-NOTES>
+- Official [MediaWiki](/wiki/MediaWiki) notes on [Subversion](/wiki/Subversion)-based upgrades: <http://www.mediawiki.org/wiki/Download_from_SVN>

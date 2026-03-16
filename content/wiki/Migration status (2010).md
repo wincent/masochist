@@ -8,13 +8,13 @@ This page is a migration checksheet where I am keeping notes on the status of th
 
 ## [DNS](/wiki/DNS)
 
--   all domains and subdomains switched to new servers; **TODO:** inspect with [dig](/wiki/dig) and possibly [dnswalk](/wiki/dnswalk) to confirm that everything is correct
+- all domains and subdomains switched to new servers; **TODO:** inspect with [dig](/wiki/dig) and possibly [dnswalk](/wiki/dnswalk) to confirm that everything is correct
 
 ## [Email](/wiki/Email)
 
--   active accounts and aliases transferred; tests show that incoming and outgoing mail is working on both the general purpose and the [Rails](/wiki/Rails) instance
+- active accounts and aliases transferred; tests show that incoming and outgoing mail is working on both the general purpose and the [Rails](/wiki/Rails) instance
 
 ## Special pages
 
--   Product activation: working
--   Automated license code mailing at purchase time: working
+- Product activation: working
+- Automated license code mailing at purchase time: working

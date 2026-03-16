@@ -6,13 +6,13 @@ tags: zentest growl wiki
 
 This information based on the following three articles:
 
--   <http://blog.labratz.net/articles/2006/09/13/growl-autotest-rails-with-zentest-3-4-0>
--   <http://blog.internautdesign.com/2006/11/12/autotest-growl-goodness>
--   <http://blog.codefront.net/2007/04/01/get-your-testing-results-via-growl-notifications/>
+- <http://blog.labratz.net/articles/2006/09/13/growl-autotest-rails-with-zentest-3-4-0>
+- <http://blog.internautdesign.com/2006/11/12/autotest-growl-goodness>
+- <http://blog.codefront.net/2007/04/01/get-your-testing-results-via-growl-notifications/>
 
 # Get `GrowlNotify`
 
--   Download and install the latest version of the [Growl](/wiki/Growl) disk image from: <http://growl.info/>
+- Download and install the latest version of the [Growl](/wiki/Growl) disk image from: <http://growl.info/>
 
 ## Growl 1.1.2
 
@@ -67,5 +67,5 @@ This information based on the following three articles:
 
 # Configure [Growl](/wiki/Growl)
 
--   Configure notifications from [autotest](/wiki/autotest) to display using the "Smoke" display.
--   Set the "Emergency" color scheme for "Smoke" to show a red background.
+- Configure notifications from [autotest](/wiki/autotest) to display using the "Smoke" display.
+- Set the "Emergency" color scheme for "Smoke" to show a red background.

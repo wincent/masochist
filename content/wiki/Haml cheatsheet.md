@@ -71,4 +71,4 @@ Yields:
 
 # See also
 
--   Official [Haml](/wiki/Haml) documentation: <http://haml.hamptoncatlin.com/docs/haml>
+- Official [Haml](/wiki/Haml) documentation: <http://haml.hamptoncatlin.com/docs/haml>

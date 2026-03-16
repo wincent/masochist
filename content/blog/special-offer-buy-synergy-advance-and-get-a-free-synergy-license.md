@@ -7,27 +7,27 @@ To celebrate the holiday season and get more people on board testing the preview
 
 #### Conditions
 
--   The offer applies to Synergy Advance licenses purchased between 1 and 31 of December 2005.
--   In order to qualify you must purchase a full Synergy Advance license, not a discount one.
--   All sales are final and refunds to not apply; please make sure that you take advantage of the free trial downloads of both products to thoroughly test them before making a purchase.
+- The offer applies to Synergy Advance licenses purchased between 1 and 31 of December 2005.
+- In order to qualify you must purchase a full Synergy Advance license, not a discount one.
+- All sales are final and refunds to not apply; please make sure that you take advantage of the free trial downloads of both products to thoroughly test them before making a purchase.
 
 #### Getting the free license
 
 To get your free Synergy license you fill out [this form](https://wincent.dev/a/store/synergy-offer/) _after_ purchasing Synergy Advance. The form will ask you to enter the following information:
 
--   Your name.
--   Your Synergy Advance registration email address.
--   Your Synergy Advance license code.
--   The address to which you would like me to send your complimentary Synergy license.
--   Indicate whether the complimentary license is a gift for someone else.
+- Your name.
+- Your Synergy Advance registration email address.
+- Your Synergy Advance license code.
+- The address to which you would like me to send your complimentary Synergy license.
+- Indicate whether the complimentary license is a gift for someone else.
 
 Free licenses will be sent within 24 to 48 hours after receiving your submission. If you mark your complimentary license as a gift, the license will be sent to the recipient of the gift along with a note saying that the gift is from "your name" at "your Synergy Advance registration email address".
 
 #### Links
 
--   [Purchase Synergy Advance](https://wincent.dev/a/products/synergy-advance/purchase/)
--   [Request your free Synergy license](https://wincent.dev/a/store/synergy-offer/)
--   [Synergy Advance product information](https://wincent.dev/a/products/synergy-advance/)
--   [Synergy Advance download](https://wincent.dev/a/products/synergy-classic/download/)
--   [Synergy product information](https://wincent.dev/a/products/synergy-classic/)
--   [Synergy download](https://wincent.dev/a/products/synergy-advance/download/)
+- [Purchase Synergy Advance](https://wincent.dev/a/products/synergy-advance/purchase/)
+- [Request your free Synergy license](https://wincent.dev/a/store/synergy-offer/)
+- [Synergy Advance product information](https://wincent.dev/a/products/synergy-advance/)
+- [Synergy Advance download](https://wincent.dev/a/products/synergy-classic/download/)
+- [Synergy product information](https://wincent.dev/a/products/synergy-classic/)
+- [Synergy download](https://wincent.dev/a/products/synergy-advance/download/)

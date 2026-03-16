@@ -16,9 +16,9 @@ Amazingly, downloading was even more painful than ever. Not only did the [tar](/
 
 But this time [six apart](/wiki/six_apart) required me to provide an email address before downloading. It's annoying enough that you have to jump through hoops and sign in via their [TypeKey](/wiki/TypeKey) registration service before downloading; but this time they required an active, deliverable email address in order to proceed with the download. This is actually a multi-step process:
 
-1.  Answer yes, let [six apart](/wiki/six_apart) have my email address.
-2.  Find out that given that your email address on file with [TypeKey](/wiki/TypeKey) is unconfirmed that you must "Activate" it. Of course, in my case, the old address I'd provided, has long since been deactivated due to spam, so I didn't receive the confirmation email.
-3.  Request for the confirmation email to be resent, this time providing a different (throwaway) email address.
+1. Answer yes, let [six apart](/wiki/six_apart) have my email address.
+2. Find out that given that your email address on file with [TypeKey](/wiki/TypeKey) is unconfirmed that you must "Activate" it. Of course, in my case, the old address I'd provided, has long since been deactivated due to spam, so I didn't receive the confirmation email.
+3. Request for the confirmation email to be resent, this time providing a different (throwaway) email address.
 
 I'm actually secretly hoping that I receive spam at the throwaway address as it will fuel my already substantial dislike for [six apart](/wiki/six_apart) and its nauseating business practices. They shouldn't be making it this hard for paying customers to get security updates for their buggy software. They shouldn't need my email address for any reason and they most definitely shouldn't be requiring that I supply it to them before letting me download.
 
@@ -51,10 +51,10 @@ This step is particularly important seeing as we'll be using an automated tool (
 
 # Mirroring
 
-1.  On the localhost rename the old [Movable Type](/wiki/Movable_Type) directory to `mt-old` or `mt-3.33`.
-2.  Move the newly extracted 3.34 files into place (`mt` or the secret name of your choice).
-3.  Copy custom files from the old directory into the new one (see below for more details).
-4.  Use [Interarchy](/wiki/Interarchy) to perform a mirror upload (uploading in-place over the old files should preserve their permissions); "File" menu, "Connect to Server...", Protocol "SFTP", Action "Mirror", fill in the appropriate "Server", "Path" (absolute path to secret install directory, no trailing slash required), "Username" (no need to supply password as will use public key authentication), "Source" (the local folder) and "Mirror Mode" ("Upload"), from the action menu choose "Add to Bookmarks" instead of "Mirror Now", then press the "Bookmark" (Play) button.
+1. On the localhost rename the old [Movable Type](/wiki/Movable_Type) directory to `mt-old` or `mt-3.33`.
+2. Move the newly extracted 3.34 files into place (`mt` or the secret name of your choice).
+3. Copy custom files from the old directory into the new one (see below for more details).
+4. Use [Interarchy](/wiki/Interarchy) to perform a mirror upload (uploading in-place over the old files should preserve their permissions); "File" menu, "Connect to Server...", Protocol "SFTP", Action "Mirror", fill in the appropriate "Server", "Path" (absolute path to secret install directory, no trailing slash required), "Username" (no need to supply password as will use public key authentication), "Source" (the local folder) and "Mirror Mode" ("Upload"), from the action menu choose "Add to Bookmarks" instead of "Mirror Now", then press the "Bookmark" (Play) button.
 
 Finally, in the "Bookmarks" view, chose a reasonable title for the saved bookmark ("Movable Type mirror upgrade") and right-click on the bookmark to choose "Mirror Dry Run". If the dry run looks all right, perform the actual mirror by double-clicking.
 
@@ -222,6 +222,6 @@ I am getting tired of having to keep abreast with security updates for so many w
 
 # See also
 
--   Upgrade notes for other versions: "[Movable Type upgrade notes](/wiki/Movable_Type_upgrade_notes)"
--   Official release notes: <http://www.sixapart.com/movabletype/news/2007/01/mt334_released.html>
--   Security vulnerabilties fixed: <http://www.sixapart.com/movabletype/beta/distros/MT-3.34-beta-Release-Notes.html>
+- Upgrade notes for other versions: "[Movable Type upgrade notes](/wiki/Movable_Type_upgrade_notes)"
+- Official release notes: <http://www.sixapart.com/movabletype/news/2007/01/mt334_released.html>
+- Security vulnerabilties fixed: <http://www.sixapart.com/movabletype/beta/distros/MT-3.34-beta-Release-Notes.html>

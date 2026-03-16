@@ -13,11 +13,11 @@ This makes sense for business reasons (customers get their hands on releases mor
 
 I've been taking small steps towards a more open development model for many months now:
 
--   Making more of my projects open source: WOTest, Bansshee, WinSwitch, [atosym](https://wincent.dev/a/products/atosym/), [Wincent Build Tools](https://wincent.dev/a/products/buildtools/), and Wincent Strings Utility.
--   Moving the code for these open source projects into a publicly accessible [Subversion](https://wincent.dev/wiki/Subversion) repository.
--   Publishing an RSS feed of _all_ commits so that customers can see source code changes even in closed-source products.
--   Putting bug reports and feature requests out in the open in a publicly accessible database.
--   Having open-to-all beta-testing mailing lists.
+- Making more of my projects open source: WOTest, Bansshee, WinSwitch, [atosym](https://wincent.dev/a/products/atosym/), [Wincent Build Tools](https://wincent.dev/a/products/buildtools/), and Wincent Strings Utility.
+- Moving the code for these open source projects into a publicly accessible [Subversion](https://wincent.dev/wiki/Subversion) repository.
+- Publishing an RSS feed of _all_ commits so that customers can see source code changes even in closed-source products.
+- Putting bug reports and feature requests out in the open in a publicly accessible database.
+- Having open-to-all beta-testing mailing lists.
 
 But I can and want to go further. Why only approximate a continuous integration model when you could actually go the whole distance?
 

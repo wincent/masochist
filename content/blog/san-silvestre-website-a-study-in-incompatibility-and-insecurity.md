@@ -15,25 +15,25 @@ In all cases where the payment page didn't work, you would enter your credit car
 
 Compatibility crimes summary:
 
--   San Silvestre site requires ultra-recent version of Flash player.
--   San Silvestre site doesn't fail gracefully if required version is not present; fails silently (blank page).
--   San Silvestre site, in order to jump to the payments page, requires Internet Explorer, running on Windows.
--   San Silvestre site doesn't explicitly mention requirements anywhere.
--   San Silvestre site gets bonus points for allowing user to uselessly invest time filling out forms before failing.
--   San Silvestre site's use of Flash prevents trouble-shooting efforts that would have been possible by inspecting HTML source.
--   iberCaja payment page unnecessarily relies on JavaScript.
--   iberCaja payment page only works in Internet Explorer running on Windows.
--   iberCaja payment page doesn't explicitly state its requirements anywhere.
--   iberCaja payment page doesn't degrade or fail gracefully in other browsers, or if you try with JavaScript turned off.
--   iberCaja payment page also gets bonus points for allowing the user to uselessly invest time filling out forms before failing, and _bonus_ bonus points for overriding the default movement behaviour between text fields (make an error typing in your credit card number and you'll find that you can't shift-tab back in order to correct it).
+- San Silvestre site requires ultra-recent version of Flash player.
+- San Silvestre site doesn't fail gracefully if required version is not present; fails silently (blank page).
+- San Silvestre site, in order to jump to the payments page, requires Internet Explorer, running on Windows.
+- San Silvestre site doesn't explicitly mention requirements anywhere.
+- San Silvestre site gets bonus points for allowing user to uselessly invest time filling out forms before failing.
+- San Silvestre site's use of Flash prevents trouble-shooting efforts that would have been possible by inspecting HTML source.
+- iberCaja payment page unnecessarily relies on JavaScript.
+- iberCaja payment page only works in Internet Explorer running on Windows.
+- iberCaja payment page doesn't explicitly state its requirements anywhere.
+- iberCaja payment page doesn't degrade or fail gracefully in other browsers, or if you try with JavaScript turned off.
+- iberCaja payment page also gets bonus points for allowing the user to uselessly invest time filling out forms before failing, and _bonus_ bonus points for overriding the default movement behaviour between text fields (make an error typing in your credit card number and you'll find that you can't shift-tab back in order to correct it).
 
 #### Security
 
 Security crimes summary:
 
--   The San Silvestre website allows you to obtain the DNI (national identity document) number of anyone participating merely by knowing or guessing their email address (with around 20,000 participants, it shouldn't be too hard to locate a target).
--   If you also know the participant's date of birth you can then find out their address, phone numbers, even their shirt size. You may also be able to find out their running club and whether or not they have their own "chip".
--   Given the DNI, the San Silvestre website allows you to find out the full name, surname(s), date of birth, and sex of the participant.
+- The San Silvestre website allows you to obtain the DNI (national identity document) number of anyone participating merely by knowing or guessing their email address (with around 20,000 participants, it shouldn't be too hard to locate a target).
+- If you also know the participant's date of birth you can then find out their address, phone numbers, even their shirt size. You may also be able to find out their running club and whether or not they have their own "chip".
+- Given the DNI, the San Silvestre website allows you to find out the full name, surname(s), date of birth, and sex of the participant.
 
 This is the most basic security stuff. Disappointing that they can't get it right.
 

@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [RAID-Z](/wiki/RAID-Z): <http://en.wikipedia.org/wiki/RAID-Z>
+- [Wikipedia](/wiki/Wikipedia) article on [RAID-Z](/wiki/RAID-Z): <http://en.wikipedia.org/wiki/RAID-Z>

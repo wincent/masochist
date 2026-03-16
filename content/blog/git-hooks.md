@@ -21,11 +21,11 @@ Git, on the other hand, will run your hook script once for each update to a bran
 
 In the end, the bit of logic that seems to do the job is this one (written in [Ruby](https://wincent.dev/wiki/Ruby)):
 
-              @list = %x{
-                git rev-parse --not --all |
-                grep -v $(git rev-parse #{ref_name}) |
-                git rev-list --reverse --stdin $(git merge-base #{old_rev} #{new_rev})..#{new_rev}
-              }
+    @list = %x{
+      git rev-parse --not --all |
+      grep -v $(git rev-parse #{ref_name}) |
+      git rev-list --reverse --stdin $(git merge-base #{old_rev} #{new_rev})..#{new_rev}
+    }
 
 So this seems to work, but it's not as straight forward as the Subversion way. On the other hand, there's a hell of a lot of scope for doing heavily customized stuff; look at the `post-receive-email` example hook script in the Git `contrib` directory. I guess it's like many things in Git: tricky but powerful.
 

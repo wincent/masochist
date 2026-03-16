@@ -8,4 +8,4 @@ I use it as described in the article, "[Setting up a single-user OpenID server](
 
 # See also
 
--   Official site: <http://siege.org/projects/phpMyID/>
+- Official site: <http://siege.org/projects/phpMyID/>

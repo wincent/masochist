@@ -7,9 +7,9 @@ cache_breaker: 1
 
 # Official site
 
--   <http://www.getchef.com/>
+- <http://www.getchef.com/>
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Chef](/wiki/Chef): <http://en.wikipedia.org/wiki/Chef_(software>)
--   Chef (formerly Opscode) company info on CrunchBase: <http://www.crunchbase.com/organization/opscode>
+- [Wikipedia](/wiki/Wikipedia) article on [Chef](/wiki/Chef): <http://en.wikipedia.org/wiki/Chef_(software>)
+- Chef (formerly Opscode) company info on CrunchBase: <http://www.crunchbase.com/organization/opscode>

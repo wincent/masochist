@@ -6,4 +6,4 @@ tags: ruby wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [MRI](/wiki/MRI): <http://en.wikipedia.org/wiki/Ruby_MRI>
+- [Wikipedia](/wiki/Wikipedia) article on [MRI](/wiki/MRI): <http://en.wikipedia.org/wiki/Ruby_MRI>

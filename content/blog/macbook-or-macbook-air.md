@@ -7,19 +7,19 @@ A totally hypothetical question right now, seeing as I don't have the money to b
 
 Let's start with the department where the Air really and truly shines: size and weight.
 
--   Depth: same (8.94 inches)
--   Width: effectively the same (12.78 inches for the MacBook versus 12.8 for the Air)
--   Height:
-    -   the thickest part of the Air (0.76 inches) is thinner than the entire Macbook (which is 0.95 inches); that's a difference of 4.7mm for those who think in metric
-    -   the thinnest part of the Air is an insane 0.16 inches (0.4 cm)
--   Weight: the Air weighs 3.0 pounds, which is two thirds the weight of the MacBook (a difference of 680 grams)
+- Depth: same (8.94 inches)
+- Width: effectively the same (12.78 inches for the MacBook versus 12.8 for the Air)
+- Height:
+  - the thickest part of the Air (0.76 inches) is thinner than the entire Macbook (which is 0.95 inches); that's a difference of 4.7mm for those who think in metric
+  - the thinnest part of the Air is an insane 0.16 inches (0.4 cm)
+- Weight: the Air weighs 3.0 pounds, which is two thirds the weight of the MacBook (a difference of 680 grams)
 
 So, it's fairly clear that if you have to lug this thing around in your bag then the the 1.5 pound/680 gram difference is going to make itself felt. The thinness advantage of the Air is also nice, although I don't think it's as significant as the weight.
 
 The question is, is this increased portability worth the price difference?
 
--   The cheapest Air is a full \$200 more than the dearest MacBook
--   The upper Air model is a whopping \$900 more than the dearest MacBook
+- The cheapest Air is a full \$200 more than the dearest MacBook
+- The upper Air model is a whopping \$900 more than the dearest MacBook
 
 So perhaps you can justify dropping $200 more if you really, really value portability, but it's hard to see how you could rationalize a massive $900 gap to get the best Air model. Looking at the spec differences, it's also very hard to justify the \$700 premium for the better model: your hard-earned dosh will buy you a 16% faster processor (1.86 GHZ, up from 1.6 GHz), and a solid state hard drive which will give you silent operation and better battery life too, but the memory, graphics, and everything else remain the same.
 

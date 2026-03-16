@@ -15,4 +15,4 @@ The first time I tried to update I got an "already up-to-date" message. It seems
 
 # See also
 
--   Release announcement posted to [svk-devel](/wiki/svk-devel) mailing list: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000774.html>
+- Release announcement posted to [svk-devel](/wiki/svk-devel) mailing list: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000774.html>

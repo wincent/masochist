@@ -6,8 +6,7 @@ title: Moving to wincent.dev
 
 By the time you read this, _if_ you read this, it's because I've transferred the old domain, `wincent.com`, to a new owner[^owner], and moved all of my stuff over to a new domain: `wincent.dev`. (Technically, I actually moved the stuff a month or so before the transfer, and set up redirects so that anybody who visited a page on `wincent.com` got redirected to the equivalent page on `wincent.dev`.) As [I said on Twitter/X](https://twitter.com/wincent/status/1783887370703532251), I'm sorry for any hassle caused by the switch! In this post I'm going to give a bit of background on why I decided to make this change, but before I get into that, here's a summary of what you should do:
 
-[^owner]:
-    Fun fact: I didn't actually know who the new owner was until after the sale, because they acted through an intermediary. My guesses were (not necessarily in order):
+[^owner]: Fun fact: I didn't actually know who the new owner was until after the sale, because they acted through an intermediary. My guesses were (not necessarily in order):
 
     1. [A Swedish drum stick manufacturer](https://www.wincent.se) running their site at https://www.wincent.se/
     2. [A German singer](https://en.wikipedia.org/wiki/Wincent_Weiss) running his site at https://www.wincentweiss.de/

@@ -6,4 +6,4 @@ tags: red.hat wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux): <http://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux>
+- [Wikipedia](/wiki/Wikipedia) article on [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux): <http://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux>

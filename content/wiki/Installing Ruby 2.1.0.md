@@ -15,4 +15,4 @@ $ rbenv install 2.1.0
 
 # On [Fedora](/wiki/Fedora) 8
 
--   See "[Updating to Ruby 2.1.0 on Fedora 8](/wiki/Updating_to_Ruby_2.1.0_on_Fedora_8)"
+- See "[Updating to Ruby 2.1.0 on Fedora 8](/wiki/Updating_to_Ruby_2.1.0_on_Fedora_8)"

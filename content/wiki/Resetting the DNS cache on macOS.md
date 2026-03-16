@@ -37,7 +37,7 @@ Verified to work on [OS X](/wiki/OS_X) 10.11.2 [El Capitan](/wiki/El_Capitan).
 
 ### Source
 
--   <http://apple.stackexchange.com/a/48828/158927>
+- <http://apple.stackexchange.com/a/48828/158927>
 
 ## Via brute force
 
@@ -47,8 +47,8 @@ $ sudo killall -HUP mDNSResponder
 
 ### Source
 
--   <http://support.apple.com/kb/ht5343>
+- <http://support.apple.com/kb/ht5343>
 
 # See also
 
--   [Clearing Chrome's DNS cache](/wiki/Clearing_Chrome%27s_DNS_cache)
+- [Clearing Chrome's DNS cache](/wiki/Clearing_Chrome%27s_DNS_cache)

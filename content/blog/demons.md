@@ -37,14 +37,14 @@ A goal like this is easy to adhere to precisely because it is so explicit, and c
 
 I knew that getting uninterrupted blocks of time was going to be critical to helping me break out of the rut, so I created a bunch of related mini-goals (or resolutions, if you will) that would help me clear the cruft out of my schedule and create spaces in which I could be productive and get that psychological relief that comes with the feeling of momentum. Examples:
 
--   Giving myself permission to say "no" to meetings that I don't consider to be relevant to my core projects. Reject the fear of missing out on some critical piece of information that _might_ surface at one of these meetings, trust that anything truly important will eventually impinge on me via other channels, and recognize that the most valuable way I can invest my time towards completing my project is to roll my sleeves up and directly grapple with implementing it. Resist the fear that I won't be perceived as relevant if I'm not involved in these discussions: trust the process, trust my peers, trust that the things I build as an engineer will speak for themselves.
--   Using headphones more often so as to block out distractions: this means explicitly valuing my need for an interruption-free zone in which to be creative _above_ the primary selling point of the open plan office (spontaneous, serendipitous collaboration).
--   Full-screening apps.
--   Giving myself permission to say "no" to requests to participate in interviews in excess of a per-week threshold that I set.
--   Eliminating context switches by creating access patterns for doing non-coding tasks (such as processing email, or doing code review) in batches at strategically-chosen moments in the day.
--   Declaring periodic email "bankruptcy", in which unread emails get unceremoniously deleted if the pending stack in the inbox gets to the point where I cannot reasonably dig myself out of the hole; trust that anything truly important will bubble up to the surface again in the form of a subsequent message.
--   Aggressively time-boxing specific repeating tasks, and then respecting the time-box zealously. I had some regular chores that I would regularly spend well over an hour on, that I've trimmed down to less than 25% of the time cost, while still preserving a sizeable chunk of the value.
--   When I get an idea for a task that needs to be completed, record it in my task "inbox" (I use [Wunderlist](https://www.wunderlist.com/) for this) and then _forget it_; I can come back later to triage, prioritize and schedule these tasks in the pause between tasks. This is a very light-weight borrowing of techniques from the "[Getting Things Done](https://en.wikipedia.org/wiki/Getting_Things_Done)" method (disclaimer: I haven't actually read the book; it is on my "to do" list...).
+- Giving myself permission to say "no" to meetings that I don't consider to be relevant to my core projects. Reject the fear of missing out on some critical piece of information that _might_ surface at one of these meetings, trust that anything truly important will eventually impinge on me via other channels, and recognize that the most valuable way I can invest my time towards completing my project is to roll my sleeves up and directly grapple with implementing it. Resist the fear that I won't be perceived as relevant if I'm not involved in these discussions: trust the process, trust my peers, trust that the things I build as an engineer will speak for themselves.
+- Using headphones more often so as to block out distractions: this means explicitly valuing my need for an interruption-free zone in which to be creative _above_ the primary selling point of the open plan office (spontaneous, serendipitous collaboration).
+- Full-screening apps.
+- Giving myself permission to say "no" to requests to participate in interviews in excess of a per-week threshold that I set.
+- Eliminating context switches by creating access patterns for doing non-coding tasks (such as processing email, or doing code review) in batches at strategically-chosen moments in the day.
+- Declaring periodic email "bankruptcy", in which unread emails get unceremoniously deleted if the pending stack in the inbox gets to the point where I cannot reasonably dig myself out of the hole; trust that anything truly important will bubble up to the surface again in the form of a subsequent message.
+- Aggressively time-boxing specific repeating tasks, and then respecting the time-box zealously. I had some regular chores that I would regularly spend well over an hour on, that I've trimmed down to less than 25% of the time cost, while still preserving a sizeable chunk of the value.
+- When I get an idea for a task that needs to be completed, record it in my task "inbox" (I use [Wunderlist](https://www.wunderlist.com/) for this) and then _forget it_; I can come back later to triage, prioritize and schedule these tasks in the pause between tasks. This is a very light-weight borrowing of techniques from the "[Getting Things Done](https://en.wikipedia.org/wiki/Getting_Things_Done)" method (disclaimer: I haven't actually read the book; it is on my "to do" list...).
 
 ## Crutches
 
@@ -56,11 +56,11 @@ It's amazing how many barriers fall away when you tell people outright, "I am be
 
 We operate on a continuum of risk and reward. There is obviously a difference in risk profile between making a change on a news feed seen by a billion people and committing to an experimental prototype that is not running in any released product. The point is, you shouldn't just be aware of this continuum: you should actively seek to exploit it. There are many mechanisms which can enable you to reduce costs, and you should milk them for all that they're worth:
 
--   Can you commit your totally not-production-ready work-in-progress on a branch?
--   Can you ship something behind a feature flag (ie. mitigate risk by having a way of turning it off)?
--   Can you ship something but just not document it yet (to give you the "option value" to change it later)?
--   Can you discretionally, occasionally bypass lints, checks and tests (gasp!) that are intended to help teams produce higher quality output and move quicker in the long term, but which sometimes are unstable and unreliable and slow you down in the short-term?
--   Can you do something hacky to cheaply find out if you're on the right track and reduce the cost (maximize the value) of your "failures"?
+- Can you commit your totally not-production-ready work-in-progress on a branch?
+- Can you ship something behind a feature flag (ie. mitigate risk by having a way of turning it off)?
+- Can you ship something but just not document it yet (to give you the "option value" to change it later)?
+- Can you discretionally, occasionally bypass lints, checks and tests (gasp!) that are intended to help teams produce higher quality output and move quicker in the long term, but which sometimes are unstable and unreliable and slow you down in the short-term?
+- Can you do something hacky to cheaply find out if you're on the right track and reduce the cost (maximize the value) of your "failures"?
 
 ## Exposure therapy
 

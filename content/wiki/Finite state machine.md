@@ -6,5 +6,5 @@ A [finite state machine](/wiki/finite_state_machine) or [finite state automaton]
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [finite state machines](/wiki/finite_state_machines): <http://en.wikipedia.org/wiki/Finite_state_machine>
--   [DFA](/wiki/DFA)
+- [Wikipedia](/wiki/Wikipedia) article on [finite state machines](/wiki/finite_state_machines): <http://en.wikipedia.org/wiki/Finite_state_machine>
+- [DFA](/wiki/DFA)

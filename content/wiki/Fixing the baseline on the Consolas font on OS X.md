@@ -13,10 +13,10 @@ Getting things working was suprisingly easy, once [the link to the download page
 
 Steps:
 
-1.  Copy Microsoft Consolas files from `/Library/Fonts/Microsoft/` to a working area
-2.  Repair font files using `ftxdumperfuser` (described below)
-3.  Remove old Consolas files
-4.  Install new (repaired) files by double-clicking
+1. Copy Microsoft Consolas files from `/Library/Fonts/Microsoft/` to a working area
+2. Repair font files using `ftxdumperfuser` (described below)
+3. Remove old Consolas files
+4. Install new (repaired) files by double-clicking
 
 The exact edits to be made with `ftxdumperfuser` are as follows:
 

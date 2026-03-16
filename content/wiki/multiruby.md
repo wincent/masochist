@@ -237,4 +237,4 @@ Nevertheless, a cursory manual test of the extension indicates that it basically
 
 ## Links
 
--   <http://blog.zenspider.com/2007/12/testing-for-ruby-18-and-19-usi.html>
+- <http://blog.zenspider.com/2007/12/testing-for-ruby-18-and-19-usi.html>

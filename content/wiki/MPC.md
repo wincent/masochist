@@ -6,5 +6,5 @@ tags: wiki
 
 # See also
 
--   [mppdec](/wiki/mppdec)
--   [Wikipedia](/wiki/Wikipedia) article on [Musepak](/wiki/Musepak): <http://en.wikipedia.org/wiki/Musepack>
+- [mppdec](/wiki/mppdec)
+- [Wikipedia](/wiki/Wikipedia) article on [Musepak](/wiki/Musepak): <http://en.wikipedia.org/wiki/Musepack>

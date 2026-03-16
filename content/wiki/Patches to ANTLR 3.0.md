@@ -8,7 +8,7 @@ This page contains patches to [ANTLR 3](/wiki/ANTLR_3) that address some issues 
 
 ## Bug in C runtime column handling
 
--   "Bug in C runtime column handling": <http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021949.html>
+- "Bug in C runtime column handling": <http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021949.html>
 
 This patch should be applied to `antlr3inputstream.c`:
 
@@ -19,7 +19,7 @@ This patch should be applied to `antlr3inputstream.c`:
 
 ## Filter mode
 
--   "Patch for filter mode" (<http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html>); patch to `antlr-3.0/src/org/Antlr/codegen/CodeGenerator.java`:
+- "Patch for filter mode" (<http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html>); patch to `antlr-3.0/src/org/Antlr/codegen/CodeGenerator.java`:
 
 <!-- -->
 
@@ -33,7 +33,7 @@ This patch should be applied to `antlr3inputstream.c`:
 
 ## Missing parentheses around predicates
 
--   "Bug in C output (may after other targets as well)": <http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/022025.html>
+- "Bug in C output (may after other targets as well)": <http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/022025.html>
 
 This patch should be applied to the `C.stg` output template:
 
@@ -46,7 +46,7 @@ Not sure when this one was applied but it made it into ANTLR 3.0.1.
 
 ## [GCC](/wiki/GCC) [lexer](/wiki/lexer) warnings [C target](/wiki/C_target)
 
--   "GCC lexer warnings with C target" (<http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021330.html>); patch to `antlr-3.0/src/org/antlr/codegen/templates/C/C.stg`:
+- "GCC lexer warnings with C target" (<http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021330.html>); patch to `antlr-3.0/src/org/antlr/codegen/templates/C/C.stg`:
 
 <!-- -->
 
@@ -55,13 +55,13 @@ Not sure when this one was applied but it made it into ANTLR 3.0.1.
     ---
     > <rules:{r | static <if(!r.ruleDescriptor.isSynPred)>ANTLR3_INLINE<endif> <headerReturnType(ruleDescriptor=r.ruleDescriptor)>  <if(!r.ruleDescriptor.isSynPred)>m<endif><r.ruleDescriptor.name>    (p<name> ctx<if(r.ruleDescriptor.parameterScope)>, <endif><r.ruleDescriptor.parameterScope:parameterScope(scope=it)>);}; separator="\n";>
 
--   Applied in [revision 3831](http://fisheye2.cenqua.com/changelog/antlr/src/org/antlr/codegen/templates/C?cs=3831).
+- Applied in [revision 3831](http://fisheye2.cenqua.com/changelog/antlr/src/org/antlr/codegen/templates/C?cs=3831).
 
 # Rejected patches
 
--   None so far.
+- None so far.
 
 # See also
 
--   [Rebuilding ANTLR](/wiki/Rebuilding_ANTLR)
--   [Patches to ANTLR 3.0.1](/wiki/Patches_to_ANTLR_3.0.1)
+- [Rebuilding ANTLR](/wiki/Rebuilding_ANTLR)
+- [Patches to ANTLR 3.0.1](/wiki/Patches_to_ANTLR_3.0.1)

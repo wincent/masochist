@@ -12,5 +12,3 @@ gifsicle -O3 --colors=256 --lossy=200 -i "that's clever.gif" -o "that's clever -
 ```
 
 For that command I saw a ("N of 1") reduction of 3MB down to 1.4MB. The discussion on StackExchange indicates that `--lossy` may take on values in the range of 30 to 200, but that the results are unpredictable. You may want to try multiple different values.
-
-

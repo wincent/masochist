@@ -9,14 +9,14 @@ cache_breaker: 1
 
 ## Official resources
 
--   [Git repository](/wiki/Git_repository): <http://github.com/btakita/rr/tree/master>
--   Official announcement: <http://pivotallabs.com/users/brian/blog/articles/352-introducing-rr>
-    -   Other posts in the [RR](/wiki/RR) category: <http://pivotallabs.com/users/brian/blog/articles/category/201-rr>
+- [Git repository](/wiki/Git_repository): <http://github.com/btakita/rr/tree/master>
+- Official announcement: <http://pivotallabs.com/users/brian/blog/articles/352-introducing-rr>
+  - Other posts in the [RR](/wiki/RR) category: <http://pivotallabs.com/users/brian/blog/articles/category/201-rr>
 
 ## Resources in this wiki
 
--   [RR cheatsheet](/wiki/RR_cheatsheet)
+- [RR cheatsheet](/wiki/RR_cheatsheet)
 
 ## Third-party resources
 
--   A nice intro to [RR](/wiki/RR): <http://technicalpickles.com/posts/ruby-stubbing-and-mocking-with-rr>
+- A nice intro to [RR](/wiki/RR): <http://technicalpickles.com/posts/ruby-stubbing-and-mocking-with-rr>

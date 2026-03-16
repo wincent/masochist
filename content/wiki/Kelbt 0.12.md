@@ -8,4 +8,4 @@ The full changelog can be found at: <http://www.cs.queensu.ca/~thurston/kelbt/Ch
 
 # See also
 
--   [Installing Kelbt 0.12 on Mac OS X Tiger](/wiki/Installing_Kelbt_0.12_on_Mac_OS_X_Tiger)
+- [Installing Kelbt 0.12 on Mac OS X Tiger](/wiki/Installing_Kelbt_0.12_on_Mac_OS_X_Tiger)

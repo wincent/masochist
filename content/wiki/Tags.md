@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [tags](/wiki/tags): <http://en.wikipedia.org/wiki/Tag_%28metadata%29>
+- [Wikipedia](/wiki/Wikipedia) article on [tags](/wiki/tags): <http://en.wikipedia.org/wiki/Tag_%28metadata%29>

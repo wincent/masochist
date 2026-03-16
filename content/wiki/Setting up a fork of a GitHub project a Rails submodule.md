@@ -8,18 +8,18 @@ For Rails deployments I want to eliminate third-party dependencies on places lik
 
 As a result, if I want to use a third-party library as a submodule, I do the following:
 
--   Add a submodule pointing at the upstream repo
--   Fork the repo on GitHub
--   Create an (initially empty) backup mirror on [Gitorious](/wiki/Gitorious)
--   Create an (initially empty) mirror on git.wincent.dev
--   Create an (initially empty) mirror on the same machine as my Rails app is running
--   In the local submodule, update the submodule to point at the git.wincent.dev mirror
--   Add an "upstream" remote pointing at the original repo, for use with `git fetch`
+- Add a submodule pointing at the upstream repo
+- Fork the repo on GitHub
+- Create an (initially empty) backup mirror on [Gitorious](/wiki/Gitorious)
+- Create an (initially empty) mirror on git.wincent.dev
+- Create an (initially empty) mirror on the same machine as my Rails app is running
+- In the local submodule, update the submodule to point at the git.wincent.dev mirror
+- Add an "upstream" remote pointing at the original repo, for use with `git fetch`
 
 A lot of this is described in detail in "[Setting up a brand new public Git repository](/wiki/Setting_up_a_brand_new_public_Git_repository)". I have a `new-public-repo.sh` script that I can run on git.wincent.dev to do most of the dirty work for me. For example, below is the output from setting up a mirror of the [spin.js](/wiki/spin.js) repo:
 
--   Note the use of a shared "github-mirrors" project on [Gitorious](/wiki/Gitorious) so I don't have to create new projects for each upstream mirror
--   Also note that I had to call the repo "spin-js" there due to limitations imposed by Gitorious
+- Note the use of a shared "github-mirrors" project on [Gitorious](/wiki/Gitorious) so I don't have to create new projects for each upstream mirror
+- Also note that I had to call the repo "spin-js" there due to limitations imposed by Gitorious
 
 ```shell
 # ./new-public-repo.sh spin.js

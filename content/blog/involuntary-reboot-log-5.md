@@ -9,14 +9,14 @@ Disk Utility reported one error on the volume containing the fresh install, "Inc
 
 #### Involuntary reboot stats to date
 
--   **Operating system version:** no comment
--   **Kernel panics:** 5
--   **Hard resets:** 0
--   **Total failures:** 5
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 147 days
--   **Average time between failures:** 29 days
--   **Uptime at moment of failure(s):** Less than one minute
+- **Operating system version:** no comment
+- **Kernel panics:** 5
+- **Hard resets:** 0
+- **Total failures:** 5
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 147 days
+- **Average time between failures:** 29 days
+- **Uptime at moment of failure(s):** Less than one minute
 
 #### Notes about day calculations
 

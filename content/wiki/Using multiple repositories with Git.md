@@ -17,8 +17,8 @@ If you are the only person with access to the remote repo then all your merges s
 
 In this case the "upstream" project is actually controlled by someone else. You can `git clone` the repo but you don't have privileges to `git push` to it. Structurally things are pretty much the same — bare remote repository and local repo with working tree — but there are two differences:
 
--   One, you get your changes into the central repo by other means — submitting patches to mailing lists for example — and you depend on the integrator of the remote repository to accept and incorporate your submissions.
--   Two, the upstream project is presumably moving along independently, so you occasionally have to pull down its changes using `git pull`, `git fetch`, `git rebase` or some other variation.
+- One, you get your changes into the central repo by other means — submitting patches to mailing lists for example — and you depend on the integrator of the remote repository to accept and incorporate your submissions.
+- Two, the upstream project is presumably moving along independently, so you occasionally have to pull down its changes using `git pull`, `git fetch`, `git rebase` or some other variation.
 
 ## One repo on your desktop, another on your laptop
 

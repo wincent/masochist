@@ -6,4 +6,4 @@ tags: git vim wiki
 
 # Links
 
--   Official repo: <http://github.com/tpope/vim-fugitive>
+- Official repo: <http://github.com/tpope/vim-fugitive>

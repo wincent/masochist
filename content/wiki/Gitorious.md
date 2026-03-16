@@ -12,4 +12,4 @@ In March 2015 [it was announced](https://about.gitlab.com/2015/03/03/gitlab-acqu
 
 # Official site
 
--   <http://gitorious.org/>
+- <http://gitorious.org/>

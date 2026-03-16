@@ -31,9 +31,9 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 
 # Inline styles
 
--   _Italics_
--   **Bold**
--   ~~Strikethrough~~
+- _Italics_
+- **Bold**
+- ~~Strikethrough~~
 
 # Blocks
 
@@ -41,17 +41,17 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 
 # Unordered lists
 
--   Bullet point
--   Bullet point
-    -   Nested point
-    -   Nested point
+- Bullet point
+- Bullet point
+  - Nested point
+  - Nested point
 
 # Ordered lists
 
-1.  First
-2.  Second
-    1.  Nested
-    2.  Nested
+1. First
+2. Second
+   1. Nested
+   2. Nested
 
 # Code
 

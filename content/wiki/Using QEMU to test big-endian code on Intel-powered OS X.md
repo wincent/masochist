@@ -9,9 +9,9 @@ Here are the scattered notes that I made along the way.
 
 # Resources
 
--   <https://gmplib.org/~tege/qemu.html>
--   <https://help.ubuntu.com/community/Installation/QemuEmulator>
--   <http://www.makestuff.eu/wordpress/running-debian-for-arm-powerpc-on-qemu/>
+- <https://gmplib.org/~tege/qemu.html>
+- <https://help.ubuntu.com/community/Installation/QemuEmulator>
+- <http://www.makestuff.eu/wordpress/running-debian-for-arm-powerpc-on-qemu/>
 
 # Installing qemu
 
@@ -58,8 +58,8 @@ Alas, this doesn't work:
 
 So, time to create a Linux VM and mount the image on that. Relevant resources:
 
--   <http://www.ubuntu.com/download/desktop/thank-you?country=US&version=14.04.1&architecture=amd64>
--   <http://www.wikihow.com/Install-Ubuntu-on-VirtualBox>
+- <http://www.ubuntu.com/download/desktop/thank-you?country=US&version=14.04.1&architecture=amd64>
+- <http://www.wikihow.com/Install-Ubuntu-on-VirtualBox>
 
 Set up a shared folder, make sure you set up to automount or it probably won't be writable. "diskimages" is the name chosen in the VirtualBox shared folder settings dialog:
 
@@ -72,9 +72,9 @@ $ ls # observe we can see the disk QEMU image
 
 # Mounting the raw image
 
--   <http://major.io/2010/12/14/mounting-a-raw-partition-file-made-with-dd-or-dd_rescue-in-linux/>
--   <http://xathrya.web.id/blog/2013/08/01/mounting-qemu-hard-disk-image-on-various-operating-system/>
--   <https://wiki.debian.org/QEMU>
+- <http://major.io/2010/12/14/mounting-a-raw-partition-file-made-with-dd-or-dd_rescue-in-linux/>
+- <http://xathrya.web.id/blog/2013/08/01/mounting-qemu-hard-disk-image-on-various-operating-system/>
+- <https://wiki.debian.org/QEMU>
 
 I tried converting the image from "qcow2" to "raw" format in order to mount it directly, but that didn't work:
 
@@ -104,8 +104,8 @@ $ sudo usermod -aG vboxsf $(whoami)
 
 For more on permissions issues, see:
 
--   <http://superuser.com/questions/307853/permission-denied-when-accessing-virtualbox-shared-folder-when-member-of-the-vbo>
--   <http://unix.stackexchange.com/questions/52667/file-permission-issues-with-shared-folders-under-virtual-box-ubuntu-guest-wind>
+- <http://superuser.com/questions/307853/permission-denied-when-accessing-virtualbox-shared-folder-when-member-of-the-vbo>
+- <http://unix.stackexchange.com/questions/52667/file-permission-issues-with-shared-folders-under-virtual-box-ubuntu-guest-wind>
 
 After all that, I could try to boot into the new system:
 

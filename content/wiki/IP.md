@@ -6,4 +6,4 @@ tags: wiki
 
 ## See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Internet Protocol](/wiki/Internet_Protocol): <http://en.wikipedia.org/wiki/Internet_Protocol>
+- [Wikipedia](/wiki/Wikipedia) article on [Internet Protocol](/wiki/Internet_Protocol): <http://en.wikipedia.org/wiki/Internet_Protocol>

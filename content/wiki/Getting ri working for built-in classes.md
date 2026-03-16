@@ -38,4 +38,4 @@ So I went back and did this as described in "[Building and installing Ruby 1.8.5
 
 # See also
 
--   [FastRI](/wiki/FastRI).
+- [FastRI](/wiki/FastRI).

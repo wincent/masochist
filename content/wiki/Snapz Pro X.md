@@ -7,4 +7,4 @@ title: Snapz Pro X
 
 # See also
 
--   Official site: <http://www.ambrosiasw.com/utilities/snapzprox/>
+- Official site: <http://www.ambrosiasw.com/utilities/snapzprox/>

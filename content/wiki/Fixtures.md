@@ -28,4 +28,4 @@ But note that the [specs](/wiki/specs) _are_ run inside a database transaction; 
 
 # See also
 
--   [Fixtures considered harmful?](/wiki/Fixtures_considered_harmful%3f)
+- [Fixtures considered harmful?](/wiki/Fixtures_considered_harmful%3f)

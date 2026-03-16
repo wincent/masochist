@@ -13,11 +13,11 @@ Of all the sexy new features in Safari 3.0, the one that makes me want to be abl
 
 The other stuff is really just icing on the cake:
 
--   Reorderable tabs: convenient for those occasional moments when you want to;
--   The ability to drag a tab out into a separate window: again, nice for the one or two times a day that you'll want to do it;
--   Better performance and even better standards compliance: always welcome;
--   More intelligent autocomplete in the location bar (it's not just a simple most-recent-match-wins any more).
--   An unsaved document indicator in the window close gadget for when you have unsaved form data.
--   Warning before closing a window with multiple tabs (how many times have you accidentally blown away a pile of in progress research by mistake); this stuff is really important as the browser becomes the new platform for real application use.
+- Reorderable tabs: convenient for those occasional moments when you want to;
+- The ability to drag a tab out into a separate window: again, nice for the one or two times a day that you'll want to do it;
+- Better performance and even better standards compliance: always welcome;
+- More intelligent autocomplete in the location bar (it's not just a simple most-recent-match-wins any more).
+- An unsaved document indicator in the window close gadget for when you have unsaved form data.
+- Warning before closing a window with multiple tabs (how many times have you accidentally blown away a pile of in progress research by mistake); this stuff is really important as the browser becomes the new platform for real application use.
 
 So I've already encountered a few bugs, but I at least intend to trial this for a day or two. I hope it works out.

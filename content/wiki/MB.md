@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Mb](/wiki/Mb)
+- [Mb](/wiki/Mb)

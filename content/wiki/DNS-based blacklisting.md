@@ -10,10 +10,10 @@ This example shows how to add a [DNS-based blacklist](/wiki/DNS-based_blacklist)
 
 To minimize the damage done in the unlikely event of obtaining a false positive the error message that is returned to the client includes the following elements:
 
--   A 554 error code (as described in [RFC 821](/wiki/RFC_821)/[RFC 2821](/wiki/RFC_2821)).
--   The connecting IP address found in the blacklist.
--   A link to the [Spamhaus](/wiki/Spamhaus) website where the sender can find out what the blacklisting means, why it occurred, and how to be removed from the blacklist.
--   An alternative contact address of the form `postmaster@example.com` that can be used to inform the server administrator, bypassing [DNS-based blacklist](/wiki/DNS-based_blacklist) checks.
+- A 554 error code (as described in [RFC 821](/wiki/RFC_821)/[RFC 2821](/wiki/RFC_2821)).
+- The connecting IP address found in the blacklist.
+- A link to the [Spamhaus](/wiki/Spamhaus) website where the sender can find out what the blacklisting means, why it occurred, and how to be removed from the blacklist.
+- An alternative contact address of the form `postmaster@example.com` that can be used to inform the server administrator, bypassing [DNS-based blacklist](/wiki/DNS-based_blacklist) checks.
 
 This specification depends on a special ruleset that defines the `postmaster_addr` macro (see "[Store postmaster address](/wiki/Store_postmaster_address)"), as well as the modification of the following line in the configuration file:
 
@@ -46,7 +46,7 @@ For other efficacy statistics see [combatting spam](/wiki/combatting_spam).
 
 # See also
 
--   "Crynwr spam blocking resources": <http://www.crynwr.com/spam/>
--   "postmaster.rfc-ignorant.org listing policy": <http://rfc-ignorant.org/policy-postmaster.php>
--   <http://www.spamhaus.org/>
--   List of DNS-based blacklists: <http://spamlinks.net/filter-dnsbl-lists.htm>
+- "Crynwr spam blocking resources": <http://www.crynwr.com/spam/>
+- "postmaster.rfc-ignorant.org listing policy": <http://rfc-ignorant.org/policy-postmaster.php>
+- <http://www.spamhaus.org/>
+- List of DNS-based blacklists: <http://spamlinks.net/filter-dnsbl-lists.htm>

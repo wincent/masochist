@@ -10,17 +10,17 @@ These notes were made during the upgrade of my [Bugzilla](/wiki/Bugzilla) instal
 
 This is an important major upgrade with plenty of scope for things to go wrong, so it is important to carefully revise the release notes and other supporting materials before proceeding:
 
--   Release notes: <http://www.bugzilla.org/releases/3.0/release-notes.html>
--   What's new: <http://www.bugzilla.org/releases/3.0/new-features.html>
--   Full change listing: <http://www.bugzilla.org/status/changes.html>
+- Release notes: <http://www.bugzilla.org/releases/3.0/release-notes.html>
+- What's new: <http://www.bugzilla.org/releases/3.0/new-features.html>
+- Full change listing: <http://www.bugzilla.org/status/changes.html>
 
 Key points for my install:
 
--   [Perl](/wiki/Perl) version 5.8.0 is now required
--   A newer version of the DBI [CPAN](/wiki/CPAN) module is now required (1.41)
--   Two other [CPAN](/wiki/CPAN) modules, Email::Send and Email::MIME::Modifier, are now required for the first time
--   A number of other [CPAN](/wiki/CPAN) modules have been added to the list of "optional" modules
--   Outbound emails are now controlled by templates instead of parameters: this is important for me because my outbound emails are slightly customized
+- [Perl](/wiki/Perl) version 5.8.0 is now required
+- A newer version of the DBI [CPAN](/wiki/CPAN) module is now required (1.41)
+- Two other [CPAN](/wiki/CPAN) modules, Email::Send and Email::MIME::Modifier, are now required for the first time
+- A number of other [CPAN](/wiki/CPAN) modules have been added to the list of "optional" modules
+- Outbound emails are now controlled by templates instead of parameters: this is important for me because my outbound emails are slightly customized
 
 To see which modules are installed see "[Finding out which CPAN modules are installed](/wiki/Finding_out_which_CPAN_modules_are_installed)".
 
@@ -30,20 +30,20 @@ Finally, the release notes state:
 
 # Upgrade procedure
 
--   Run `sanitycheck.cgi` from within the browser.
--   In the "Parameters" section set `shutdownhtml` to a useful value:
+- Run `sanitycheck.cgi` from within the browser.
+- In the "Parameters" section set `shutdownhtml` to a useful value:
 
 <!-- -->
 
     Currently closed for maintenance, please check back again soon.
 
--   Back up the database:
+- Back up the database:
 
 <!-- -->
 
     mysqldump -u database_user -p database_name | bzip2 -c > bugzilla-2.22.2.sql.bz2
 
--   Back up the installed files:
+- Back up the installed files:
 
 <!-- -->
 
@@ -51,7 +51,7 @@ Finally, the release notes state:
     sudo tar -c -v . > ~/bugzilla-2.22.2.tar
     gzip --verbose -9 ~/bugzilla-2.22.2.tar
 
--   Upgrade installed [CPAN](/wiki/CPAN) modules for which newer versions are available:
+- Upgrade installed [CPAN](/wiki/CPAN) modules for which newer versions are available:
 
 This step isn't strictly necessary, but seeing as this is a fairly disruptive upgrade anyway I may as well take the opportunity to get these modules up to date at the same time.
 
@@ -79,14 +79,14 @@ This worked, so I proceded with the other modules:
     # upgrade Template from 2.14 to 2.19
     sudo -H cpan Template
 
--   Install required [CPAN](/wiki/CPAN) modules which are not yet installed on the system:
+- Install required [CPAN](/wiki/CPAN) modules which are not yet installed on the system:
 
 <!-- -->
 
     sudo -H cpan Email::Send
     sudo -H cpan Email::MIME::Modifier
 
--   Install some optional [CPAN](/wiki/CPAN) modules not yet installed on the system:
+- Install some optional [CPAN](/wiki/CPAN) modules not yet installed on the system:
 
 <!-- -->
 
@@ -94,7 +94,7 @@ This worked, so I proceded with the other modules:
     sudo -H cpan Email::Reply
     sudo -H cpan HTML::Scrubber
 
--   Upgrade some optional [CPAN](/wiki/CPAN) modules already installed on the system:
+- Upgrade some optional [CPAN](/wiki/CPAN) modules already installed on the system:
 
 <!-- -->
 
@@ -119,7 +119,7 @@ A [Google](/wiki/Google) search yielded [this message](http://www.issociate.de/b
     make test
     sudo make install
 
--   Perform the actual update using [CVS](/wiki/CVS) ([CVS](/wiki/CVS) password is "anonymous"):
+- Perform the actual update using [CVS](/wiki/CVS) ([CVS](/wiki/CVS) password is "anonymous"):
 
 <!-- -->
 
@@ -729,7 +729,7 @@ Output:
     P template/en/extension/filterexceptions.pl
     cvs update: Updating template/en/extension/hook
 
--   Watch for conflicts during update; in the current case the following conflicts were reported:
+- Watch for conflicts during update; in the current case the following conflicts were reported:
 
 <!-- -->
 
@@ -768,7 +768,7 @@ Output:
     cvs update: conflicts found in template/en/default/list/table.html.tmpl
     C template/en/default/list/table.html.tmpl
 
--   Fix conflicts; in the example case:
+- Fix conflicts; in the example case:
 
 <!-- -->
 
@@ -780,14 +780,14 @@ Output:
     # (shows "Locally modified")
     cd ../../..
 
--   Remove auxiliary files created due to the merge conflict:
+- Remove auxiliary files created due to the merge conflict:
 
 <!-- -->
 
     find . -name "\.#*" -and -type f
     find . -name "\.#*" -and -type f -ok rm "{}" \;
 
--   Run `checksetup.pl` from the command line:
+- Run `checksetup.pl` from the command line:
 
 <!-- -->
 
@@ -1093,8 +1093,8 @@ Partial output:
     Precompiling templates...
     Fixing file permissions...
 
--   Use my custom `repair-bugzilla.sh` to repair the ownership and permissions on the installed files.
--   In the "Parameters" section empty the `shutdownhtml` field; in order to get there you need explicitly navigate to `editparams.cgi` and log in.
+- Use my custom `repair-bugzilla.sh` to repair the ownership and permissions on the installed files.
+- In the "Parameters" section empty the `shutdownhtml` field; in order to get there you need explicitly navigate to `editparams.cgi` and log in.
 
 My first attempt to do this failed yielding messages like this in the [Apache](/wiki/Apache) error log:
 
@@ -1104,9 +1104,9 @@ The `.htaccess` file, however, is world-readable. It turns out that the error me
 
     chmod 755 .
 
--   Run `sanitycheck.cgi` from within the browser.
--   Update parameters.
--   Test the installation.
+- Run `sanitycheck.cgi` from within the browser.
+- Update parameters.
+- Test the installation.
 
 # Future improvements
 

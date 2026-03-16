@@ -16,4 +16,4 @@ On turning off indexing system responsiveness immediately increases.
 
 # See also
 
--   An excellent [Spotlight](/wiki/Spotlight) tips page: <http://www.thexlab.com/faqs/stopspotlightindex.html>
+- An excellent [Spotlight](/wiki/Spotlight) tips page: <http://www.thexlab.com/faqs/stopspotlightindex.html>

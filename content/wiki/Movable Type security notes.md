@@ -7,7 +7,7 @@ title: Movable Type security notes
 
 If you don't need don't need comments then you can set up a very, very secure [Movable Type](/wiki/Movable_Type) installation. There's really no excuse not to turn off search; just set up a [Google](/wiki/Google) search page for your site, like this one:
 
--   <https://wincent.dev/a/site-map/search/>
+- <https://wincent.dev/a/site-map/search/>
 
 Tips on how to do this appear below.
 
@@ -17,10 +17,10 @@ See below for more information on hiding your [Movable Type](/wiki/Movable_Type)
 
 # Don't advertise the location of your [Movable Type](/wiki/Movable_Type) install
 
-1.  Turn off (or delete) the template used to generate any [RSD](/wiki/RSD) archives in each weblog
-2.  Delete any [RSD](/wiki/RSD) files previously written to your server (normally `rsd.xml`); use the `find` command
-3.  Remove any references to the [RSD](/wiki/RSD) files that may exist in your templates; use `grep -R`
-4.  Turn off the [Movable Type](/wiki/Movable_Type) search function; use Google instead (it's better anyway) with a form something like this:
+1. Turn off (or delete) the template used to generate any [RSD](/wiki/RSD) archives in each weblog
+2. Delete any [RSD](/wiki/RSD) files previously written to your server (normally `rsd.xml`); use the `find` command
+3. Remove any references to the [RSD](/wiki/RSD) files that may exist in your templates; use `grep -R`
+4. Turn off the [Movable Type](/wiki/Movable_Type) search function; use Google instead (it's better anyway) with a form something like this:
 
 <!-- -->
 

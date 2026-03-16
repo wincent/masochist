@@ -7,4 +7,4 @@ cache_breaker: 1
 
 # Official site
 
--   <http://script.aculo.us/>
+- <http://script.aculo.us/>

@@ -142,4 +142,4 @@ From: Linus Torvalds <torvalds-AT-linux-foundation.org> To: Dave Airlie <airlied
 
 # Source
 
--   <http://lwn.net/Articles/328438/>
+- <http://lwn.net/Articles/328438/>

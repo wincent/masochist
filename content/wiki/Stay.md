@@ -4,4 +4,4 @@ tags: stay wiki
 
 # Official site
 
--   <http://cordlessdog.com/>
+- <http://cordlessdog.com/>

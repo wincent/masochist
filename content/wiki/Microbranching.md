@@ -55,4 +55,4 @@ And again ensuring that all specs pass:
 
 # See also
 
--   [Branching](/wiki/Branching).
+- [Branching](/wiki/Branching).

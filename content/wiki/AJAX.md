@@ -7,4 +7,4 @@ cache_breaker: 1
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [AJAX](/wiki/AJAX): <http://en.wikipedia.org/wiki/AJAX>
+- [Wikipedia](/wiki/Wikipedia) article on [AJAX](/wiki/AJAX): <http://en.wikipedia.org/wiki/AJAX>

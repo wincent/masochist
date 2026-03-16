@@ -33,5 +33,5 @@ $ fastri-server -b Building index. Indexed: _ 7710 methods _ 1364 classes/module
 
 # See also
 
--   Release announcement: <http://weblog.rubyonrails.com/2007/11/9/rails-2-0-release-candidate-1>
--   Related weblog post: <https://wincent.dev/a/about/wincent/weblog/archives/2007/11/version_control.php>
+- Release announcement: <http://weblog.rubyonrails.com/2007/11/9/rails-2-0-release-candidate-1>
+- Related weblog post: <https://wincent.dev/a/about/wincent/weblog/archives/2007/11/version_control.php>

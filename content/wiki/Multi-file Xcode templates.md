@@ -8,12 +8,12 @@ Normally [Xcode](/wiki/Xcode) file templates only contain two files: a main file
 
 The Web Objects "Component" template is a complex example of what is possible. It contains the following files:
 
--   `wocomponent.woo`
--   `wocomponent.html`
--   `wocomponent.java`
--   `wocomponent.wo` (an empty folder)
--   `wocomponent.api`
--   `wocomponent.wod`
+- `wocomponent.woo`
+- `wocomponent.html`
+- `wocomponent.java`
+- `wocomponent.wo` (an empty folder)
+- `wocomponent.api`
+- `wocomponent.wod`
 
 And the following `TemplateInfo.plist`:
 

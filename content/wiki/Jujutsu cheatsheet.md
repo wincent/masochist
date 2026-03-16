@@ -115,7 +115,6 @@ Hint: This operation would rewrite 1 immutable commits.
 $ jj squash -i -r @ --ignore-immutable
 ```
 
-
 # Bibliography
 
 - https://zerowidth.com/2025/jj-tips-and-tricks/

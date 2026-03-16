@@ -74,8 +74,8 @@ I was quite surprised when updating to 2.3.0 RC1 that all the specs continued to
 
 The three unresolved issues that are currently robbing me of time that I would rather be spending on something else are:
 
-1.  My cache sweepers stopped getting auto-loaded in 2.3.0: <http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/323ff7ec2d95ee32/ab33ad8c16b300e5>
-2.  Haml started complaining (not sure whether this is a bug in Haml, or provoked by a change in Rails): <http://groups.google.com/group/haml/browse_thread/thread/d4902a4d4d5de5aa>
-3.  Atom feeds rendered using Builder templates are busted (they're being rendered inside the application HTML template): <http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/d2d150c8219e5814>
+1. My cache sweepers stopped getting auto-loaded in 2.3.0: <http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/323ff7ec2d95ee32/ab33ad8c16b300e5>
+2. Haml started complaining (not sure whether this is a bug in Haml, or provoked by a change in Rails): <http://groups.google.com/group/haml/browse_thread/thread/d4902a4d4d5de5aa>
+3. Atom feeds rendered using Builder templates are busted (they're being rendered inside the application HTML template): <http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/d2d150c8219e5814>
 
 Now, none of these issues are show-stoppers. They're either harmless or have known workarounds. But that doesn't make them any less annoying. They're time wasters. And every kludgey little fix that you use to wallpaper over the cracks is another layer of crud that accumulates in your app. Another blemish in the code base, brittle and fragile, waiting to be re-broken in a future update.

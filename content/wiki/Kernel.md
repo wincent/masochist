@@ -6,4 +6,4 @@ The [kernel](/wiki/kernel) is the lowest-level or core of an [operating system](
 
 [Kernels](/wiki/Kernels) are described in considerable depth in the [Wikipedia](/wiki/Wikipedia) article on the subject:
 
--   <http://en.wikipedia.org/wiki/Kernel_%28computer_science%29>
+- <http://en.wikipedia.org/wiki/Kernel_%28computer_science%29>

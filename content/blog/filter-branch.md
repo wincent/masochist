@@ -26,17 +26,17 @@ Ugh. There are workarounds, of course — disabling SIP temporarily or permanent
 
 This is a terrible but fun idea. When I created Masochist I took all of my content out of a database — with its indices, associations, efficient searches and cheap `ORDER BY` clauses — and shoved it into a bunch of plain text files sitting in a Git repo. There are some really nice properties of this design:
 
--   You get content versioning "for free".
--   Minimal vendor lock-in effects, only minor ones in terms of format (seeing as Markdown is easily translated into other formats).
--   Easy, distributed backups: just push to another (free) Git host, such as [GitHub](https://github.com/wincent/masochist), [GitLab](https://gitlab.com/wincent/masochist), [Bitbucket](https://bitbucket.org/ghurrell/masochist) etc.
+- You get content versioning "for free".
+- Minimal vendor lock-in effects, only minor ones in terms of format (seeing as Markdown is easily translated into other formats).
+- Easy, distributed backups: just push to another (free) Git host, such as [GitHub](https://github.com/wincent/masochist), [GitLab](https://gitlab.com/wincent/masochist), [Bitbucket](https://bitbucket.org/ghurrell/masochist) etc.
 
 Nevertheless, there are some complications too. The first one is that you have to decide how you are going to model the content metadata that previously lived in your neat little DB tables: things like "created at" and "deleted at" timestamps, or which tags apply to which pieces of content.
 
 Let's just consider the timestamps angle for a second. Some of your alternatives include:
 
--   **Ignore it:** Lose all the history and only ever look at the current state of the content tree. This is the dumbest and simplest thing that could possibly work, but it is a bit sad to lose or obscure the richness that an immutable history record can provide.
--   **Shove it in headers inside the content documents:** This would be relatively easy to access and index, but updating it would be a pain: Do you set up editor hooks to update the timestamps when you save a file? Do you have a separate pre-commit tool that enforces timestamps are correctly updated?
--   **Treat the Git history itself as the source of metadata:** That is, infer the "created at" timestamp by detecting when an item first entered the repository and the "updated at" timestamp by looking at when it was last modified. Note that you have to do it this way because Git doesn't manage timestamps on files, so you can't rely on the filesystem timestamps to tell you anything useful; even if they were always correct and consistent on your laptop (a big "if") there's not a chance they'll be right when you start `push`-ing, `pull`-ing and `clone`-ing as part of your deploy process.
+- **Ignore it:** Lose all the history and only ever look at the current state of the content tree. This is the dumbest and simplest thing that could possibly work, but it is a bit sad to lose or obscure the richness that an immutable history record can provide.
+- **Shove it in headers inside the content documents:** This would be relatively easy to access and index, but updating it would be a pain: Do you set up editor hooks to update the timestamps when you save a file? Do you have a separate pre-commit tool that enforces timestamps are correctly updated?
+- **Treat the Git history itself as the source of metadata:** That is, infer the "created at" timestamp by detecting when an item first entered the repository and the "updated at" timestamp by looking at when it was last modified. Note that you have to do it this way because Git doesn't manage timestamps on files, so you can't rely on the filesystem timestamps to tell you anything useful; even if they were always correct and consistent on your laptop (a big "if") there's not a chance they'll be right when you start `push`-ing, `pull`-ing and `clone`-ing as part of your deploy process.
 
 That last one sure sounds the most elegant, doesn't it? But it also obliges us to accept a reality about Git's object database: it's made to be blazingly fast for certain common operations (`git status`, `git commit` etc) but not others. For example, answering that question of "detecting when an item first entered the repository" could require you to traverse back from the current `HEAD` all the way back to the root commit of the repository, which could mean examining a thousands-long commit chain. And note, even if you know how Git works and seek to minimize the number of `git` processes that you need fork and the number of commits that you actually need to examine (eg. by limiting `git log` with a pathspec), Git's internals will still need to traverse that thousands-long chain in the worst case.
 

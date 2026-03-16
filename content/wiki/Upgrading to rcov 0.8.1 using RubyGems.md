@@ -25,4 +25,4 @@ $ fastri-server -b Building index. Indexed: _ 7710 methods _ 1364 classes/module
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=16494>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=16494>

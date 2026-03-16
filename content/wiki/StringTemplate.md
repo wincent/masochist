@@ -8,4 +8,4 @@ From the [StringTemplate](/wiki/StringTemplate) website:
 
 # Official site
 
--   <http://stringtemplate.org/>
+- <http://stringtemplate.org/>

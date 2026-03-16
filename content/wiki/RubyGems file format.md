@@ -4,9 +4,9 @@ tags: gems wiki
 
 A `.gem` package is a `.tar` archive containing:
 
--   a `.tar.gz` archive of contents; and
--   a `.gz` file containing metadata (in [YAML](/wiki/YAML) format)
--   a `.gz` file containing checksums (also in [YAML](/wiki/YAML) format)
+- a `.tar.gz` archive of contents; and
+- a `.gz` file containing metadata (in [YAML](/wiki/YAML) format)
+- a `.gz` file containing checksums (also in [YAML](/wiki/YAML) format)
 
 To break out the outer archive:
 

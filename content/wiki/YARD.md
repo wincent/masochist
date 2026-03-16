@@ -7,8 +7,8 @@ cache_breaker: 1
 
 # Official site
 
--   <http://yardoc.org/>
+- <http://yardoc.org/>
 
 # Example site using YARD-generated documentation
 
--   <http://wikitext.rubyforge.org/>
+- <http://wikitext.rubyforge.org/>

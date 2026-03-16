@@ -41,12 +41,12 @@ For example, to move `/home/jenkins` to `/var/lib/jenkins`:
 $ tar cpf - -C $SRC_DIR . | tar xpf - -C $DEST_DIR
 ```
 
--   `c` → compress
--   `x` → extract
--   `p` → preserve permissions, ownership, attributes, timestamps etc
--   `f directory` → read from/write to file (in this case, `-`, which stands for standard in and standard out)
--   `-C directory` → change into specified directory before proceeding
+- `c` → compress
+- `x` → extract
+- `p` → preserve permissions, ownership, attributes, timestamps etc
+- `f directory` → read from/write to file (in this case, `-`, which stands for standard in and standard out)
+- `-C directory` → change into specified directory before proceeding
 
 ## See also
 
--   [unzip cookbook](/wiki/unzip_cookbook)
+- [unzip cookbook](/wiki/unzip_cookbook)

@@ -11,4 +11,4 @@ The creators of REE have been criticized for producing a fork rather than submit
 
 # Official site
 
--   <http://www.rubyenterpriseedition.com/>
+- <http://www.rubyenterpriseedition.com/>

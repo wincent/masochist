@@ -7,26 +7,26 @@ These notes were made while performing the upgrade from [Bugzilla 3.0.1](/wiki/B
 
 # Upgrade procedure
 
--   Run `sanitycheck.cgi` from within the browser.
--   In the "Parameters" section set `shutdownhtml` to a useful value:
+- Run `sanitycheck.cgi` from within the browser.
+- In the "Parameters" section set `shutdownhtml` to a useful value:
 
 <!-- -->
 
     Currently closed for maintenance, please check back again soon.
 
--   Start a screen session in case we lose our connection:
+- Start a screen session in case we lose our connection:
 
 <!-- -->
 
     screen
 
--   Back up the database:
+- Back up the database:
 
 <!-- -->
 
     mysqldump -u database_user -p database_name | bzip2 -c > bugzilla-3.0.1.sql.bz2
 
--   Back up the installed files:
+- Back up the installed files:
 
 <!-- -->
 
@@ -34,8 +34,8 @@ These notes were made while performing the upgrade from [Bugzilla 3.0.1](/wiki/B
     sudo tar -c -v . > ~/bugzilla-3.0.1.tar
     gzip --verbose -9 ~/bugzilla-3.0.1.tar
 
--   (Optional): Upgrade installed [CPAN](/wiki/CPAN) modules for which newer versions are available. As I wanted this to be a conservative, minimally disruptive upgrade I skipped this step. For examples of what to do see "[Bugzilla 2.22.2 to 3.0 upgrade notes](/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes)".
--   Perform the actual update using [CVS](/wiki/CVS) ([CVS](/wiki/CVS) password is "anonymous"):
+- (Optional): Upgrade installed [CPAN](/wiki/CPAN) modules for which newer versions are available. As I wanted this to be a conservative, minimally disruptive upgrade I skipped this step. For examples of what to do see "[Bugzilla 2.22.2 to 3.0 upgrade notes](/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes)".
+- Perform the actual update using [CVS](/wiki/CVS) ([CVS](/wiki/CVS) password is "anonymous"):
 
 <!-- -->
 
@@ -209,19 +209,19 @@ Output:
     cvs update: Updating template/en/extension
     cvs update: Updating template/en/extension/hook
 
--   Watch for conflicts during update; fix as required.
--   Run `checksetup.pl` from the command line:
+- Watch for conflicts during update; fix as required.
+- Run `checksetup.pl` from the command line:
 
 <!-- -->
 
     ./checksetup.pl
 
--   Use my custom `repair-bugzilla.sh` to repair the ownership and permissions on the installed files.
--   In the "Parameters" section empty the `shutdownhtml` field.
--   Run `sanitycheck.cgi` from within the browser.
--   Update parameters.
--   Test the installation.
--   End root/screen sessions:
+- Use my custom `repair-bugzilla.sh` to repair the ownership and permissions on the installed files.
+- In the "Parameters" section empty the `shutdownhtml` field.
+- Run `sanitycheck.cgi` from within the browser.
+- Update parameters.
+- Test the installation.
+- End root/screen sessions:
 
 <!-- -->
 

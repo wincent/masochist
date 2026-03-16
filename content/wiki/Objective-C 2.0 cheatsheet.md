@@ -20,11 +20,11 @@ For example:
 
 ## Attributes
 
--   `readonly` or `readwrite` (the default)
--   `assign` (the default), `retain`, `copy`
--   `nonatomic`
--   `getter=name`
--   `setter=name`
+- `readonly` or `readwrite` (the default)
+- `assign` (the default), `retain`, `copy`
+- `nonatomic`
+- `getter=name`
+- `setter=name`
 
 ## Common patterns
 
@@ -54,4 +54,4 @@ Including "is" in the getter accessor for booleans:
 
 # See also
 
--   <http://the-lazy-programmer.com/blog/files/Objective-C%20cheat%20sheet.pdf>
+- <http://the-lazy-programmer.com/blog/files/Objective-C%20cheat%20sheet.pdf>

@@ -6,17 +6,17 @@ Frameworks allow you to package frequently-used functionality into an easily re-
 
 # Pros
 
--   Write the code once, use it in multiple apps
-    -   This not only enables you to work faster; but also:
-    -   Means that bug fixes get made once and all apps immediately pick them up
--   Encourages the creation of modular, well-encapsulated code and designs
--   Loadable at runtime without linking, allowing all sorts of otherwise very difficult stuff (like unit testing)
--   If the framework is installed in a shared location then uses less disk space because the code is stored in a single location rather than in every app which uses it
+- Write the code once, use it in multiple apps
+  - This not only enables you to work faster; but also:
+  - Means that bug fixes get made once and all apps immediately pick them up
+- Encourages the creation of modular, well-encapsulated code and designs
+- Loadable at runtime without linking, allowing all sorts of otherwise very difficult stuff (like unit testing)
+- If the framework is installed in a shared location then uses less disk space because the code is stored in a single location rather than in every app which uses it
 
 # Cons
 
--   More complex and therefore slower build procedure
--   Not possible to pull out a single class at a time, must use whole frameworks at a time
+- More complex and therefore slower build procedure
+- Not possible to pull out a single class at a time, must use whole frameworks at a time
 
 # Alternatives
 
@@ -26,24 +26,24 @@ Will Shipley has been [rather outspoken](http://wilshipley.com/blog/2005/11/fram
 
 Up until recently I've respectfully had to disagree with Will on this point. For me the benefits far outweighed the costs. Over the last three years I have invested a huge amount of time developing a number of frameworks for shared use among my applications:
 
--   [WOTest](/wiki/WOTest): a unit testing framework
--   [WODebug](/wiki/WODebug): the lowest-level functionality, likely to be of interest to almost any app
--   [WOBase](/wiki/WOBase): the next level up, functionality of relatively common interest
--   [WOBezel](/wiki/WOBezel): bezel support and some custom window types for apps which want it
--   [WOHotKey](/wiki/WOHotKey): hot key support for apps which want it
+- [WOTest](/wiki/WOTest): a unit testing framework
+- [WODebug](/wiki/WODebug): the lowest-level functionality, likely to be of interest to almost any app
+- [WOBase](/wiki/WOBase): the next level up, functionality of relatively common interest
+- [WOBezel](/wiki/WOBezel): bezel support and some custom window types for apps which want it
+- [WOHotKey](/wiki/WOHotKey): hot key support for apps which want it
 
 As time has gone by I've been increasingly frustrated by the following issues:
 
--   Build times are much longer for apps which depend on multiple frameworks
--   [WOBase](/wiki/WOBase) in particular has grown very large but if I am working on a small project including WOBase will cause it to bloat considerably (not possible to pull out a single class and use it)
--   When writing a command line tool I generally can't link against any of these frameworks because I can't be sure that my users will have a copy of my framework installed on their machines (I've always just shipped my frameworks embedded in the applications that use them, for ease of installation)
+- Build times are much longer for apps which depend on multiple frameworks
+- [WOBase](/wiki/WOBase) in particular has grown very large but if I am working on a small project including WOBase will cause it to bloat considerably (not possible to pull out a single class and use it)
+- When writing a command line tool I generally can't link against any of these frameworks because I can't be sure that my users will have a copy of my framework installed on their machines (I've always just shipped my frameworks embedded in the applications that use them, for ease of installation)
 
 There are some cases in which it is still entirely appropriate in my view to use frameworks. For example:
 
--   [WOTest](/wiki/WOTest) is for unit testing and it is necessary for it to be packaged up in a framework so that it can be injected at run time.
--   [WODebug](/wiki/WODebug) needs to be a loadable bundle because it contains resources (like a crash reporter application) and not just code
--   Likewise for [WOBezel](/wiki/WOBezel) because it contains resources: it is very convenient to link against the framework and have the framework transparently mediate access to, or make use of, those resources
--   [WOHotKey](/wiki/WOHotKey) has such a discrete area of functionality that it can be added to any product without having to worry about bloat or inefficiency
+- [WOTest](/wiki/WOTest) is for unit testing and it is necessary for it to be packaged up in a framework so that it can be injected at run time.
+- [WODebug](/wiki/WODebug) needs to be a loadable bundle because it contains resources (like a crash reporter application) and not just code
+- Likewise for [WOBezel](/wiki/WOBezel) because it contains resources: it is very convenient to link against the framework and have the framework transparently mediate access to, or make use of, those resources
+- [WOHotKey](/wiki/WOHotKey) has such a discrete area of functionality that it can be added to any product without having to worry about bloat or inefficiency
 
 So the major problem area is [WOBase](/wiki/WOBase). Due to its size I've found myself avoiding linking against it in small projects, but that then means I have to re-write the code for the basic functionality that I want to use, and in doing so I've lost what for me was the number one advantage of using frameworks. So what are the alternatives?
 
@@ -69,19 +69,19 @@ From the Subversion book:
 
 I'm starting a new project to replace [WOBase](/wiki/WOBase). It's called [WOCommon](/wiki/WOCommon). [WOCommon](/wiki/WOCommon) contains very small, modular pieces of functionality encapsulated in classes or in task-specific categories:
 
--   common file 1
--   common file 2
--   common file 3 etc
+- common file 1
+- common file 2
+- common file 3 etc
 
 A project which wishes to use a piece of functionality in [WOCommon](/wiki/WOCommon) will have the following structure:
 
--   project file 1
--   project file 2
--   project file 3
--   `WOCommon` subdirectory:
-    -   common file 1
-    -   common file 2
-    -   common file 3 etc
+- project file 1
+- project file 2
+- project file 3
+- `WOCommon` subdirectory:
+  - common file 1
+  - common file 2
+  - common file 3 etc
 
 The `WOCommon` subdirectory is automatically managed by [Subversion](/wiki/Subversion) because of a `svn:externals` property set on the parent folder:
 
@@ -105,10 +105,10 @@ This leads to best practice paradigm: that frameworks should be very small and v
 
 A problem I've yet to overcome is the question of how to handle localization in [WOCommon](/wiki/WOCommon). Frameworks allow you to easily bundle `Localizable.strings` files inside the frameworks, but where would you store localizable strings in code that uses [WOCommon](/wiki/WOCommon)? To date only four alternatives come to mind and none of them are particularly attractive:
 
-1.  Use [NSLocalizedString](/wiki/NSLocalizedString) in [WOCommon](/wiki/WOCommon) source files and expect each including project to maintain localizable strings files independently (downside: you lose the benefits of localizing once, centrally)
-2.  Restrict [WOCommon](/wiki/WOCommon) code to a low level, below the user interface, such that it never needs to display any user-visible strings (downside: severely limits the scope of [WOCommon](/wiki/WOCommon))
-3.  Include localizable strings files in [WOCommon](/wiki/WOCommon), which programmers would then need to remember to include in their projects (downside: centralized but untidy as it increases the number of files involved)
-4.  Don't make any provisions for localization (not acceptable)
+1. Use [NSLocalizedString](/wiki/NSLocalizedString) in [WOCommon](/wiki/WOCommon) source files and expect each including project to maintain localizable strings files independently (downside: you lose the benefits of localizing once, centrally)
+2. Restrict [WOCommon](/wiki/WOCommon) code to a low level, below the user interface, such that it never needs to display any user-visible strings (downside: severely limits the scope of [WOCommon](/wiki/WOCommon))
+3. Include localizable strings files in [WOCommon](/wiki/WOCommon), which programmers would then need to remember to include in their projects (downside: centralized but untidy as it increases the number of files involved)
+4. Don't make any provisions for localization (not acceptable)
 
 In the end, I think I am going to go with a variant of option 3 above, "Include localizable strings files in [WOCommon](/wiki/WOCommon)":
 

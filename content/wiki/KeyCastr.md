@@ -7,8 +7,8 @@ title: KeyCastr
 
 For an example [screencast](/wiki/screencast) showing [KeyCastr](/wiki/KeyCastr) see this [screencast](/wiki/screencast):
 
--   <https://wincent.dev/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php>
+- <https://wincent.dev/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php>
 
 # See also
 
--   Official site: <http://stephendeken.net/software/keycastr/>
+- Official site: <http://stephendeken.net/software/keycastr/>

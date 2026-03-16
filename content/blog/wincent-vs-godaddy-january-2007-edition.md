@@ -11,10 +11,10 @@ So, thankyou Google, for putting a smile on my face prior to today's battle with
 
 Lessons to be learned from that table:
 
--   Multi-year registrations don't give you any discount at all unless you renew more than five domains at once.
--   If you renew more than five days at once you'll be getting a discount anyway in most cases (although not a very steep one).
--   Take dot-com domains for example: you'll save a dollar per domain if you renew more than 5, but in order to save a further 18 cents you'll have to renew all five for five years (the equivalent of at least 30 years in one go) and to get the final 22 cents you'll need to do ten-year renewals (the equivalent of paying GoDaddy for 60 years in one go).
--   As already noted, suckers who get lured in by the offer of discounted privacy will find their renewal prices doubled, forever, until the end of time.
+- Multi-year registrations don't give you any discount at all unless you renew more than five domains at once.
+- If you renew more than five days at once you'll be getting a discount anyway in most cases (although not a very steep one).
+- Take dot-com domains for example: you'll save a dollar per domain if you renew more than 5, but in order to save a further 18 cents you'll have to renew all five for five years (the equivalent of at least 30 years in one go) and to get the final 22 cents you'll need to do ten-year renewals (the equivalent of paying GoDaddy for 60 years in one go).
+- As already noted, suckers who get lured in by the offer of discounted privacy will find their renewal prices doubled, forever, until the end of time.
 
 #### To multi/bulk, or not to multi/bulk?
 

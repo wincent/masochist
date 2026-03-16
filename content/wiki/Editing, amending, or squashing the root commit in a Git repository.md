@@ -21,8 +21,8 @@ $ git tag -d oldroot                      # and temporary tag
 
 From:
 
--   <http://stackoverflow.com/questions/598672/git-how-to-squash-the-first-two-commits>
--   <http://stackoverflow.com/questions/435646/how-do-i-combine-the-first-two-commits-of-a-git-repository>
+- <http://stackoverflow.com/questions/598672/git-how-to-squash-the-first-two-commits>
+- <http://stackoverflow.com/questions/435646/how-do-i-combine-the-first-two-commits-of-a-git-repository>
 
 Based on this history:
 

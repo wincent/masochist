@@ -8,4 +8,4 @@ tags: wiki
 
 # See also
 
--   [tar cookbook](/wiki/tar_cookbook)
+- [tar cookbook](/wiki/tar_cookbook)

@@ -10,8 +10,8 @@ _As a general guideline_, if a developer asks "How much effort should I be inves
 
 If you observe any community of developers trying to make a living from their products you'll see two main factions:
 
--   Those who are worried about piracy and want to implement technical measures to minimize its impact.
--   Those who think that piracy is an inevitable and natural part of the ecosystem, there's not much point in fighting it, and your development efforts are best invested in developing features, enhancements and bug fixes for paying customers.
+- Those who are worried about piracy and want to implement technical measures to minimize its impact.
+- Those who think that piracy is an inevitable and natural part of the ecosystem, there's not much point in fighting it, and your development efforts are best invested in developing features, enhancements and bug fixes for paying customers.
 
 That's a gross simplification, of course, but those are the general tendencies.
 

@@ -11,4 +11,4 @@ Capybara looks set to either replace or merge with Webrat as the dominant means 
 
 # Official site
 
--   <http://github.com/jnicklas/capybara>
+- <http://github.com/jnicklas/capybara>

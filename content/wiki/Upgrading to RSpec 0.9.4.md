@@ -85,15 +85,15 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 
 # Changelog for 0.9.4
 
--   Massive improvements to Spec::Ui. Complete support for all Watir's ie.xxx(how, what) methods. Inline screenshots and HTML.
--   Reactivated --timeout, which had mysteriously been deactivated in a recent release.
--   Fixed \#10669 Kernel\#describe override does not cover Kernel\#context
--   Applied \#10636 Added spec for OptionParser in Runner (Patch from Scott Taylor)
--   Added \#10516 should_include should be able to accept multiple items
--   Applied \#10631 redirect_to matcher doesn't respect request.host (Patch from Tim Lucas)
--   Each formatter now flushes their own IO. This is to avoid buffering of output.
--   Fixed \#10670 IVarProxy\#delete raises exception when instance variable does not exist
+- Massive improvements to Spec::Ui. Complete support for all Watir's ie.xxx(how, what) methods. Inline screenshots and HTML.
+- Reactivated --timeout, which had mysteriously been deactivated in a recent release.
+- Fixed \#10669 Kernel\#describe override does not cover Kernel\#context
+- Applied \#10636 Added spec for OptionParser in Runner (Patch from Scott Taylor)
+- Added \#10516 should_include should be able to accept multiple items
+- Applied \#10631 redirect_to matcher doesn't respect request.host (Patch from Tim Lucas)
+- Each formatter now flushes their own IO. This is to avoid buffering of output.
+- Fixed \#10670 IVarProxy\#delete raises exception when instance variable does not exist
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11611>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11611>

@@ -108,10 +108,10 @@ David Chelimsky [here describes](http://blog.davidchelimsky.net/articles/2007/05
 
 ### Output
 
-      Successfully built RubyGem
-      Name: ZenTest
-      Version: 3.5.2
-      File: ZenTest-3.5.2.gem
+    Successfully built RubyGem
+    Name: ZenTest
+    Version: 3.5.2
+    File: ZenTest-3.5.2.gem
 
 ## [ZenTest](/wiki/ZenTest) install
 
@@ -149,12 +149,12 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 
 # Changelog for 0.9.3
 
--   Fixed \#10594 Failing Custom Matcher show NAME NOT GENERATED description
--   describe(SomeType, "\#message") will not add a space: "SomeType\#message" (likewise for '.')
--   describe(SomeType, "message") will have a decription with a space: "SomeType message"
--   Applied \#10566 prepend_before and prepend_after callbacks
--   Applied \#10567 Call setup and teardown using before and after callbacks
+- Fixed \#10594 Failing Custom Matcher show NAME NOT GENERATED description
+- describe(SomeType, "\#message") will not add a space: "SomeType\#message" (likewise for '.')
+- describe(SomeType, "message") will have a decription with a space: "SomeType message"
+- Applied \#10566 prepend_before and prepend_after callbacks
+- Applied \#10567 Call setup and teardown using before and after callbacks
 
 # See also
 
--   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11541>
+- Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11541>

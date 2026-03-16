@@ -6,4 +6,4 @@ tags: bash macos wiki
 
 # See also
 
--   [bash-handbook](https://github.com/denysdovhan/bash-handbook)
+- [bash-handbook](https://github.com/denysdovhan/bash-handbook)

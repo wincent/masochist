@@ -10,5 +10,5 @@ This is part of a general move towards [open source](/wiki/open_source) that I'v
 
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorous](/wiki/Gitorous):
 
--   <http://github.com/wincent/WOBezel/>
--   <http://gitorious.org/wobezel>
+- <http://github.com/wincent/WOBezel/>
+- <http://gitorious.org/wobezel>

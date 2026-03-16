@@ -64,4 +64,4 @@ I ran `sudo make prefix=/usr/local install` again and this time it worked.
 
 # See also
 
--   Original installation notes: [Installing Git 1.5.2.3 on Red Hat Enterprise Linux](/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux)
+- Original installation notes: [Installing Git 1.5.2.3 on Red Hat Enterprise Linux](/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux)

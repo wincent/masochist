@@ -11,9 +11,9 @@ The main point to note here was the need to produce a new certificate bundle, re
 
 From [this page](https://knowledge.rapidssl.com/support/ssl-certificate-support/index?page=content&id=AR1548):
 
-1.  Server certificate
-2.  Primary intermediate CA cert
-3.  Secondary intermediate CA cert
-4.  [Root CA cert](http://www.geotrust.com/resources/root_certificates/certificates/GeoTrust_Global_CA.pem)
+1. Server certificate
+2. Primary intermediate CA cert
+3. Secondary intermediate CA cert
+4. [Root CA cert](http://www.geotrust.com/resources/root_certificates/certificates/GeoTrust_Global_CA.pem)
 
 For more detail, see the similar notes from "[SSL certificate renewal notes 2010](/wiki/SSL_certificate_renewal_notes_2010)".

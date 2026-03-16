@@ -64,7 +64,7 @@ It turns out that the "nightmare dependency" isn't really asciidoc in itself; it
 
 Note that the Git build itself works but the documentation build fails. It appears that this (`xmlto`) is an unlisted dependency in the Git installation documentation. I found `xmlto` here:
 
--   <http://cyberelk.net/tim/software/xmlto/>
+- <http://cyberelk.net/tim/software/xmlto/>
 
 But it depends on `getoptlong`; although [Mac OS X](/wiki/Mac_OS_X) has it's own, [BSD](/wiki/BSD)-derived `getoptlong`, this doesn't seem to be acceptable to `xmlto`. The [Linux](/wiki/Linux) flavor of `getoptlong` in turn depends on the enormous [GNU](/wiki/GNU) `gettext`.
 
@@ -295,6 +295,6 @@ After again performing the Git documentation build (this time successfully) I wa
 
 # See also
 
--   [Installing Git 1.5.2.3 on Red Hat Enterprise Linux](/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux)
--   [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)
--   [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)
+- [Installing Git 1.5.2.3 on Red Hat Enterprise Linux](/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux)
+- [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)
+- [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)

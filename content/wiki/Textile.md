@@ -6,5 +6,5 @@ tags: walrus wiki
 
 # See also
 
--   Official [Textile](/wiki/Textile) site: <http://www.textism.com/tools/textile/>
--   [Wikipedia](/wiki/Wikipedia) article on [Textile](/wiki/Textile): <http://en.wikipedia.org/wiki/Textile_%28markup_language%29>
+- Official [Textile](/wiki/Textile) site: <http://www.textism.com/tools/textile/>
+- [Wikipedia](/wiki/Wikipedia) article on [Textile](/wiki/Textile): <http://en.wikipedia.org/wiki/Textile_%28markup_language%29>

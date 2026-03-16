@@ -8,12 +8,12 @@ title: Legal Git branch names
 
 A [Git](/wiki/Git) branch name can not:
 
--   Have a path component that begins with `.`
--   Have a double dot `..`
--   Have an ASCII control character, `~`, `^`, `:` or SP, anywhere
--   End with a `/`
--   End with `.lock`
--   Contain a `\` (backslash)
+- Have a path component that begins with `.`
+- Have a double dot `..`
+- Have an ASCII control character, `~`, `^`, `:` or SP, anywhere
+- End with a `/`
+- End with `.lock`
+- Contain a `\` (backslash)
 
 Source: <http://www.spinics.net/lists/git/msg133704.html>
 
@@ -91,6 +91,6 @@ int check_ref_format(const char *ref)
 
 So in addition to the summary posted above, we can also add that:
 
--   the sequence `@{` is not allowed
--   `?` and `[` are not allowed
--   `*` is allowed only if it constitutes an entire path component (eg. `foo/*` or `bar/*/baz`), in which case it is interpreted as a wildcard and not as part of the actual ref name
+- the sequence `@{` is not allowed
+- `?` and `[` are not allowed
+- `*` is allowed only if it constitutes an entire path component (eg. `foo/*` or `bar/*/baz`), in which case it is interpreted as a wildcard and not as part of the actual ref name

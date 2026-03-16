@@ -34,8 +34,8 @@ Convert tabs to spaces:
 
 Indent the whole thing:
 
-     gv
-     >>
+    gv
+    >>
 
 Put the tabstop back the way it was before:
 

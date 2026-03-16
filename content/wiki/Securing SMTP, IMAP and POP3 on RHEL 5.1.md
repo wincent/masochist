@@ -8,4 +8,4 @@ One complication was that I was moving from the [UW-IMAP](/wiki/UW-IMAP) server 
 
 ## Key points
 
--   make sure permissions are set on the certificate and key file so that [Cyrus](/wiki/Cyrus) can read them
+- make sure permissions are set on the certificate and key file so that [Cyrus](/wiki/Cyrus) can read them

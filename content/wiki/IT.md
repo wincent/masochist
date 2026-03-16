@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [IT](/wiki/IT): <http://en.wikipedia.org/wiki/Information_technology>
+- [Wikipedia](/wiki/Wikipedia) article on [IT](/wiki/IT): <http://en.wikipedia.org/wiki/Information_technology>

@@ -72,7 +72,7 @@ respectively.
 
 > **Update (2019-09):** Dropbox is currently [on the record](https://help.dropbox.com/installs-integrations/sync-uploads/symlinks) as saying:
 >
-> > As of mid-2019, Dropbox no longer follows items outside of your Dropbox account that are linked to by a symlink.
+>> As of mid-2019, Dropbox no longer follows items outside of your Dropbox account that are linked to by a symlink.
 >
 > So it seems that the practice of symlinking to stuff outside your Dropbox folder is officially off the table now, and that symlinking inside the folder should be fine. However, in my testing I've found that it is basically useless.
 >
@@ -98,9 +98,9 @@ Nevertheless, I can see that you might want to create copies under some circumst
 
 Sadly, most of the top search results I landed on in my search for best practices contained some really terrible advice, including tips such as:
 
--   _Put the last modified date in file name._
--   _Put the name of the last user to edit the file in file name._
--   _Number folders and files to enforce sort order._
+- _Put the last modified date in file name._
+- _Put the name of the last user to edit the file in file name._
+- _Number folders and files to enforce sort order._
 
 But perhaps there is some good that we can spin out from this web of bad advice. Let's talk about dates and sorting.
 
@@ -234,28 +234,28 @@ There are a lot of rules here and a lot of subtlety. It can be easy to forget wh
 
 So, with all that out the way, here's what we have:
 
--   Never use symlinks or aliases inside Dropbox folders.
--   Items should exist in exactly one place.
--   If you must duplicate a file redundantly, make sure it is an immutable one.
--   Use dates only when they are intrinsic to the nature of the document, or necessary to disambiguate multiple items which would otherwise have the same name.
--   When a date applies to a group of items, put the date in the containing folder.
--   Only encode the date redundantly in the file name if you expect to be searching for the document by date and by name.
--   Base all dates on the YYYY-MM-DD format.
--   Use the briefest date format that provides sufficient specificity for a given need (eg. prefer YYYY over YYYY-MM, and YYYY-MM over YYYY-MM-DD).
--   Break dates up into nested folders (eg. "YYYY/MM/DD") only when the total volume of contained items makes the alternative (eg. "YYYY-MM-DD") impractical.
--   If multiple items of the same type, differentiated only by their date, are grouped together in a folder, put the date at the beginning. Otherwise put the date at the end, to preserve sortability by name as well as by date.
--   File and folder names should start with capital letters, but subsequent words need not start with capital letters unless required by grammar or convention.
--   Use spaces freely in file and folder names.
--   Using Unicode in file names as required.
--   Use whatever language you want, but be consistent.
--   If you must use a separator, use a comma.
--   Don't use a separator unless you must.
--   Place the information with the most discriminating power at the beginning of files and paths.
--   Don't organize by people; organize by topic.
--   Keep the top-level topic list short.
--   Preserve original file names by placing documents from other sources inside folders.
--   Keep things as simple as possible: don't go too far with structure.
--   Be as consistent as possible.
+- Never use symlinks or aliases inside Dropbox folders.
+- Items should exist in exactly one place.
+- If you must duplicate a file redundantly, make sure it is an immutable one.
+- Use dates only when they are intrinsic to the nature of the document, or necessary to disambiguate multiple items which would otherwise have the same name.
+- When a date applies to a group of items, put the date in the containing folder.
+- Only encode the date redundantly in the file name if you expect to be searching for the document by date and by name.
+- Base all dates on the YYYY-MM-DD format.
+- Use the briefest date format that provides sufficient specificity for a given need (eg. prefer YYYY over YYYY-MM, and YYYY-MM over YYYY-MM-DD).
+- Break dates up into nested folders (eg. "YYYY/MM/DD") only when the total volume of contained items makes the alternative (eg. "YYYY-MM-DD") impractical.
+- If multiple items of the same type, differentiated only by their date, are grouped together in a folder, put the date at the beginning. Otherwise put the date at the end, to preserve sortability by name as well as by date.
+- File and folder names should start with capital letters, but subsequent words need not start with capital letters unless required by grammar or convention.
+- Use spaces freely in file and folder names.
+- Using Unicode in file names as required.
+- Use whatever language you want, but be consistent.
+- If you must use a separator, use a comma.
+- Don't use a separator unless you must.
+- Place the information with the most discriminating power at the beginning of files and paths.
+- Don't organize by people; organize by topic.
+- Keep the top-level topic list short.
+- Preserve original file names by placing documents from other sources inside folders.
+- Keep things as simple as possible: don't go too far with structure.
+- Be as consistent as possible.
 
 And this will be my last word on the subject. Until, that is, I change my mind or forget.
 

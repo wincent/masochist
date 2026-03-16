@@ -6,19 +6,19 @@ tags: git wiki
 
 The documentation for [Git](/wiki/Git) is _stunningly_ good, ranging from its concise and useful [man pages](/wiki/man_pages) through to tutorials and the user manual:
 
--   Man pages: <http://www.kernel.org/pub/software/scm/git/docs/>
--   Tutorial:
-    -   Part 1: <http://www.kernel.org/pub/software/scm/git/docs/tutorial.html>
-    -   Part 2: <http://www.kernel.org/pub/software/scm/git/docs/tutorial-2.html>
-    -   Core (for developers): <http://www.kernel.org/pub/software/scm/git/docs/core-tutorial.html>
--   Overview: <http://www.kernel.org/pub/software/scm/git/docs/everyday.html>
--   User manual: <http://www.kernel.org/pub/software/scm/git/docs/user-manual.html>
--   Documentation list on wiki: <http://git.or.cz/gitwiki/GitDocumentation>
--   [Wiki](/wiki/Wiki): <http://git.or.cz/gitwiki>
--   Howtos: <http://www.kernel.org/pub/software/scm/git/docs/howto-index.html>
--   Glossary: <http://www.kernel.org/pub/software/scm/git/docs/glossary.html>
--   Third party tutorials and advocacy:
-    -   <http://utsl.gen.nz/talks/git-svn/intro.html>
+- Man pages: <http://www.kernel.org/pub/software/scm/git/docs/>
+- Tutorial:
+  - Part 1: <http://www.kernel.org/pub/software/scm/git/docs/tutorial.html>
+  - Part 2: <http://www.kernel.org/pub/software/scm/git/docs/tutorial-2.html>
+  - Core (for developers): <http://www.kernel.org/pub/software/scm/git/docs/core-tutorial.html>
+- Overview: <http://www.kernel.org/pub/software/scm/git/docs/everyday.html>
+- User manual: <http://www.kernel.org/pub/software/scm/git/docs/user-manual.html>
+- Documentation list on wiki: <http://git.or.cz/gitwiki/GitDocumentation>
+- [Wiki](/wiki/Wiki): <http://git.or.cz/gitwiki>
+- Howtos: <http://www.kernel.org/pub/software/scm/git/docs/howto-index.html>
+- Glossary: <http://www.kernel.org/pub/software/scm/git/docs/glossary.html>
+- Third party tutorials and advocacy:
+  - <http://utsl.gen.nz/talks/git-svn/intro.html>
 
 For more links, see "[Git documentation](/wiki/Git_documentation)".
 
@@ -56,4 +56,4 @@ It is incredibly easy to start managing code with [Git](/wiki/Git). Unlike [Subv
 
 # See also
 
--   [SVK advantages](/wiki/SVK_advantages)
+- [SVK advantages](/wiki/SVK_advantages)

@@ -6,11 +6,11 @@ cache_breaker: 1
 
 Finally back online as of only a few minutes ago and am starting the long, slow process of catching up:
 
--   synching email accounts (I've been using a web interface on a borrowed laptop, on a borrowed WiFi network up til now)
--   pulling down a few hundred meg of pent-up software updates from [Apple](/wiki/Apple)
--   waiting for [iTunes](/wiki/iTunes) to sync its podcasts
--   pushing more than a hundred commits out to remote [Git](/wiki/Git) repositories
--   getting back on top of support tickets and the like
+- synching email accounts (I've been using a web interface on a borrowed laptop, on a borrowed WiFi network up til now)
+- pulling down a few hundred meg of pent-up software updates from [Apple](/wiki/Apple)
+- waiting for [iTunes](/wiki/iTunes) to sync its podcasts
+- pushing more than a hundred commits out to remote [Git](/wiki/Git) repositories
+- getting back on top of support tickets and the like
 
 So it will take a while, but at least I've turned the corner!
 

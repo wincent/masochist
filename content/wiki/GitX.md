@@ -6,4 +6,4 @@ tags: git gitx wiki
 
 # Links
 
--   Official site: <http://gitx.frim.nl/>
+- Official site: <http://gitx.frim.nl/>

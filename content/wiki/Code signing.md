@@ -7,16 +7,16 @@ cache_breaker: 1
 
 Self-signed certificates:
 
--   free
--   a self-signed Certificate Authority can be created using Keychain Access
--   certificates can then be generated at will and signed by the Certificate Authority, for free
--   adequate for providing a stable proof of application "identity" across versions (for example, if a user authorizes access to an item in the keychain by version 1.0 of an application, version 2.0 will also have access)
--   _users are not bothered with warnings about the nature of the certificate authority_
+- free
+- a self-signed Certificate Authority can be created using Keychain Access
+- certificates can then be generated at will and signed by the Certificate Authority, for free
+- adequate for providing a stable proof of application "identity" across versions (for example, if a user authorizes access to an item in the keychain by version 1.0 of an application, version 2.0 will also have access)
+- _users are not bothered with warnings about the nature of the certificate authority_
 
 "Trusted" Certificate Authorities:
 
--   expensive (prices in the $200-$300 per year range are normal)
--   useful if your application is expected to receive incoming network connections _and_ the user has the application firewall turned on _and_ has also checked the "Automatically allow signed software to receive incoming connections" checkbox in the "Advanced" tab of the "Firewall" settings in the "Security" preference pane
+- expensive (prices in the $200-$300 per year range are normal)
+- useful if your application is expected to receive incoming network connections _and_ the user has the application firewall turned on _and_ has also checked the "Automatically allow signed software to receive incoming connections" checkbox in the "Advanced" tab of the "Firewall" settings in the "Security" preference pane
 
 In my view, commercially available code signing certificates simply aren't worth it for Mac OS X. The system, thankfully, doesn't treat self-signed certificates as second-class citizens for most code signing purposes. (This is not the case with SSL certificates, but it certainly is for code signing certificates.)
 
@@ -24,17 +24,17 @@ If your application is expected to receive incoming network connections and you 
 
 # What happens when your signing certificate expires?
 
--   You can't sign new releases with that certificate
--   Existing (previous) releases continue to work ([Mac OS X](/wiki/Mac_OS_X) ignores certificate expiration in code signing checks)
+- You can't sign new releases with that certificate
+- Existing (previous) releases continue to work ([Mac OS X](/wiki/Mac_OS_X) ignores certificate expiration in code signing checks)
 
 # How do you migrate from an expiring certificate to a new one?
 
--   If you switch certificates without warning, users may see annoying dialogs indicating that the application can not be identified as a legitimate update; this is scary and should be avoided
--   Instead, you should:
-    -   Long before the old certificate expires, release an update which changes your application's designated requirement such that it is satisfied by both the old and the new certificates; allow enough time for the majority of the user base to update to this release
-    -   Sign the update with the old certificate
-    -   Later on, once most of the user base has switched to the new release, prepare another release
-    -   This newest release should be satisfied only by the new certificate, and should be signed with that certificate
+- If you switch certificates without warning, users may see annoying dialogs indicating that the application can not be identified as a legitimate update; this is scary and should be avoided
+- Instead, you should:
+  - Long before the old certificate expires, release an update which changes your application's designated requirement such that it is satisfied by both the old and the new certificates; allow enough time for the majority of the user base to update to this release
+  - Sign the update with the old certificate
+  - Later on, once most of the user base has switched to the new release, prepare another release
+  - This newest release should be satisfied only by the new certificate, and should be signed with that certificate
 
 This implies the need for a release schedule and certificate cycle that are fairly long-term.
 
@@ -46,14 +46,14 @@ This is as close to official word from Apple as I've seen so far, in the form of
 
 > On Jan 13, 2010, at 2:53 PM, Jeff Johnson wrote:
 >
-> > Consider this scenario:
-> >
-> > 1.  MyApp 3.0 is signed with certificate A.
-> > 2.  Certificate A expires.
-> > 3.  I get new certificate B.
-> > 4.  MyApp 4.0 is signed with certificate B.
-> >
-> > By default, the codesign requirements for MyApp 3.0 would include the SHA1 hash from certificate A, and MyApp 4.0 would include the different SHA1 hash from certificate B. However, I'd like to be able to sign MyApp 3.0 and MyApp 4.0 so that they're recognized as the same application, despite using different signing certificates. My thought would be to use custom requirements like this: identifier = com.mydomain.myapp and certificate leaf \[Subject.CN\] = "My Company Name" and certificate leaf \[Subject.O\] = "My Company Name" and anchor trusted The assumption is that if someone tried to use a fake cert with My Company Name, it wouldn't be trusted. Does this seem correct? Or is the whole approach of trying to cover multiple certs with one set of requirements perhaps ill-advised?
+>> Consider this scenario:
+>>
+>> 1. MyApp 3.0 is signed with certificate A.
+>> 2. Certificate A expires.
+>> 3. I get new certificate B.
+>> 4. MyApp 4.0 is signed with certificate B.
+>>
+>> By default, the codesign requirements for MyApp 3.0 would include the SHA1 hash from certificate A, and MyApp 4.0 would include the different SHA1 hash from certificate B. However, I'd like to be able to sign MyApp 3.0 and MyApp 4.0 so that they're recognized as the same application, despite using different signing certificates. My thought would be to use custom requirements like this: identifier = com.mydomain.myapp and certificate leaf \[Subject.CN\] = "My Company Name" and certificate leaf \[Subject.O\] = "My Company Name" and anchor trusted The assumption is that if someone tried to use a fake cert with My Company Name, it wouldn't be trusted. Does this seem correct? Or is the whole approach of trying to cover multiple certs with one set of requirements perhaps ill-advised?
 >
 > Short answer: You're tantalizingly close to a good answer, but far enough away that I'm sending a full explanation on what's actually going on here. Because being \*almost\* right is pretty dangerous in this security business. Besides, you can all point each other to the list archive from now on. Note that you can do all kinds of really nifty things with complex requirements. But the re-issuance situation is a very standard thing, with a standard answer you might as well use.
 >
@@ -101,8 +101,8 @@ Again, "Perry The Cynic" to the rescue:
 >
 > The basic rule is to \*replace\* rather than \*overwrite\* your executables during an update. This means that you want to end up doing a move (aka "rename"), rather than a copy. The two canonical approaches for a bundle are either
 >
-> -   Move the entire bundle aside, then put the new version in its place; or
-> -   Install the new executable elsewhere (on the same filesystem), then move (mv(1), rename(2)) it into place.
+> - Move the entire bundle aside, then put the new version in its place; or
+> - Install the new executable elsewhere (on the same filesystem), then move (mv(1), rename(2)) it into place.
 >
 > And yes, ditto & friends just overwrite the file - not good.
 

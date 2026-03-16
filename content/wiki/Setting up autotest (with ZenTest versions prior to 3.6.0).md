@@ -63,6 +63,6 @@ Exactly the same tweak mentioned in "[Using autotest with Rails](/wiki/Using_aut
 
 # See also
 
--   For use with [Rails](/wiki/Rails): <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
--   For use with non-[Rails](/wiki/Rails) [Ruby](/wiki/Ruby) projects: <http://blog.nicksieger.com/articles/2007/01/30/rspec-autotest-for-standalone-projects>
--   [ZenTest](/wiki/ZenTest) [API](/wiki/API) docs: <http://zentest.rubyforge.org/ZenTest/>
+- For use with [Rails](/wiki/Rails): <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
+- For use with non-[Rails](/wiki/Rails) [Ruby](/wiki/Ruby) projects: <http://blog.nicksieger.com/articles/2007/01/30/rspec-autotest-for-standalone-projects>
+- [ZenTest](/wiki/ZenTest) [API](/wiki/API) docs: <http://zentest.rubyforge.org/ZenTest/>

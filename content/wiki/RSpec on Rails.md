@@ -7,19 +7,19 @@ cache_breaker: 1
 
 There are already quite a few articles on this wiki where I've made notes on testing [Rails](/wiki/Rails) applications using [RSpec](/wiki/RSpec). Some of them are quite old and much has moved on since they were originally written; things which have changed include:
 
--   my thinking
--   Rails itself
--   RSpec
--   the [SCM](/wiki/SCM) I'm using and which I sometimes refer to in the examples
+- my thinking
+- Rails itself
+- RSpec
+- the [SCM](/wiki/SCM) I'm using and which I sometimes refer to in the examples
 
 In light of this I'm starting a new article (mid-April 2008) to document my current thoughts on what constitutes "best practice" for testing Rails applications. Once I've fleshed things out a bit I'll go back and update the older articles; for reference, these are some of the articles I'm talking about:
 
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails) (June 2007)
--   [Mocking in Rails](/wiki/Mocking_in_Rails) (June 2007)
--   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers) (May 2007)
--   [Behaviour-Driven Development of Rails models](/wiki/Behaviour-Driven_Development_of_Rails_models) (May 2007)
--   [Behaviour-Driven Development of Rails views](/wiki/Behaviour-Driven_Development_of_Rails_views) (May 2007)
--   [Behaviour-Driven Development of Rails controllers](/wiki/Behaviour-Driven_Development_of_Rails_controllers) (May 2007)
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails) (June 2007)
+- [Mocking in Rails](/wiki/Mocking_in_Rails) (June 2007)
+- [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers) (May 2007)
+- [Behaviour-Driven Development of Rails models](/wiki/Behaviour-Driven_Development_of_Rails_models) (May 2007)
+- [Behaviour-Driven Development of Rails views](/wiki/Behaviour-Driven_Development_of_Rails_views) (May 2007)
+- [Behaviour-Driven Development of Rails controllers](/wiki/Behaviour-Driven_Development_of_Rails_controllers) (May 2007)
 
 Bear in mind that all those were written by a [Rails](/wiki/Rails) "dabbler" who was mucking around with the framework as a likely candidate for the eventual site revamp, but who had never actually deployed a real Rails application. My oldest wiki article on Rails looks to date back to July 2006 ("[Installing Ruby on Rails on Mac OS X Tiger](/wiki/Installing_Ruby_on_Rails_on_Mac_OS_X_Tiger)", if you're curious), and the new version of this site (the wiki you're reading right now was started (or really, re-re-re-re-re-started from scratch) in October 2007. I was able to work on it for isolated days here and there, often with weeks in between them, up until about mid-to-late January when the pressure of my impending server migration compelled me to start spending more time getting the app ready. (In the end I didn't complete anywhere near as much as I would have liked to in the first revisions; I'll therefore be delivering a lot of features and refinements as time goes on.)
 
@@ -31,10 +31,10 @@ For me there are two fundamental characteristics of [BDD](/wiki/BDD).
 
 The first is that development consists of a (possibly endless and at the very least indeterminate) cycle which consists of four steps:
 
-1.  Write a failing spec that describes the behaviour you're about to implement
-2.  Confirm that it really does fail like you think it should
-3.  Write code to make the spec pass
-4.  Confirm that the spec really does pass
+1. Write a failing spec that describes the behaviour you're about to implement
+2. Confirm that it really does fail like you think it should
+3. Write code to make the spec pass
+4. Confirm that the spec really does pass
 
 In reality the existence of great tools like [autotest](/wiki/autotest) reduces this to a two-step cycle because steps 2 and 4 are automatic and fusioned with steps 1 and 3 which precede them.
 

@@ -23,17 +23,17 @@ At least for my own needs, the assessment of these two options is as follows:
 
 ## Keys stored on instances
 
--   Risk of server being compromised: low, if properly configured and maintained
--   Potential cost if server is compromised: enormous
--   Reliability of backups: total
--   Cost if a backup is delayed or skipped: low (data does not change frequently)
+- Risk of server being compromised: low, if properly configured and maintained
+- Potential cost if server is compromised: enormous
+- Reliability of backups: total
+- Cost if a backup is delayed or skipped: low (data does not change frequently)
 
 ## Keys stored remotely
 
--   Risk of server being compromised: same as above (low)
--   Potential cost if server is compromised: typical/normal for such compromises (data/privacy loss on instance)
--   Reliability of backups: moderate
--   Cost if a backup is delayed or skipped: as above (low)
+- Risk of server being compromised: same as above (low)
+- Potential cost if server is compromised: typical/normal for such compromises (data/privacy loss on instance)
+- Reliability of backups: moderate
+- Cost if a backup is delayed or skipped: as above (low)
 
 ## Conclusion
 

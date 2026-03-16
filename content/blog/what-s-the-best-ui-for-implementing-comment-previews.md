@@ -7,9 +7,9 @@ So I'm going to implement comment previews. I just wrote a [fairly lengthy reply
 
 The problem is, I am not sure on what the best [UI](/wiki/UI) is. The three main options I'm considering right now are:
 
--   an always-visible preview below the comment form, updated via [AJAX](/wiki/AJAX)
--   an on-demand preview opened up in a new pop-up window in response to the push of a button
--   retain the existing "Create" button, but add a new "Preview" button that will take you to new page which allows you to re-edit your submission if necessary and then continue by pressing "Create" or (again) "Preview"
+- an always-visible preview below the comment form, updated via [AJAX](/wiki/AJAX)
+- an on-demand preview opened up in a new pop-up window in response to the push of a button
+- retain the existing "Create" button, but add a new "Preview" button that will take you to new page which allows you to re-edit your submission if necessary and then continue by pressing "Create" or (again) "Preview"
 
 There are other ways, but I think these are the main contenders. For the record the first option (the AJAX approach) is the one I use elsewhere in the application (when writing [blog](/blog) posts, for example), but I am not sure whether that's the best option for comments.
 

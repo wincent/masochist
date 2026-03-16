@@ -8,4 +8,4 @@ An example of a [CGI](/wiki/CGI) program is the [gitweb](/wiki/gitweb) script th
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [CGI](/wiki/CGI): <http://en.wikipedia.org/wiki/Common_Gateway_Interface>
+- [Wikipedia](/wiki/Wikipedia) article on [CGI](/wiki/CGI): <http://en.wikipedia.org/wiki/Common_Gateway_Interface>

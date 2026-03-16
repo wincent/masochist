@@ -6,4 +6,4 @@ tags: apple wiki
 
 # See also
 
--   Official [Apple](/wiki/Apple) website: <http://apple.com/>
+- Official [Apple](/wiki/Apple) website: <http://apple.com/>

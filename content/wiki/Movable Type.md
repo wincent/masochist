@@ -13,4 +13,4 @@ I used to use [Movable Type](/wiki/Movable_Type) to power a number of sections o
 
 ## See also
 
--   Official site: <http://www.sixapart.com/eu/movabletype/>
+- Official site: <http://www.sixapart.com/eu/movabletype/>

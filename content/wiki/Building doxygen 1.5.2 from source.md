@@ -6,4 +6,4 @@ wget http://ftp.stack.nl/pub/users/dimitri/doxygen-1.5.2.src.tar.gz tar xzvf dox
 
 # See also
 
--   Official installation instructions: <http://www.doxygen.org/install.html>
+- Official installation instructions: <http://www.doxygen.org/install.html>

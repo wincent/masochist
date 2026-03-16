@@ -13,8 +13,8 @@ There are many different approaches to controlling access to [Git](/wiki/Git) re
 
 In this approach you have two classes of users:
 
--   Developers: read/write access
--   Users: read-only access
+- Developers: read/write access
+- Users: read-only access
 
 It is very straightforward to provide push (write) access over [SSH](/wiki/SSH) and anonymous read-only access using `git-daemon`.
 
@@ -26,8 +26,8 @@ Set up `git-daemon` and by default anonymous users will have read access but not
 
 Two things to note about this system:
 
--   Write access is shared, meaning that once a developer has write access to a repository he/she has write access to all repositories owned by the `git` user (which typically means all the repositories hosted on the server)
--   It is possible to set up public repositories (for [open source](/wiki/open_source) projects) and private repositories (for closed source projects) on the same server, by specifying which repositories should be exported by `git-daemon`
+- Write access is shared, meaning that once a developer has write access to a repository he/she has write access to all repositories owned by the `git` user (which typically means all the repositories hosted on the server)
+- It is possible to set up public repositories (for [open source](/wiki/open_source) projects) and private repositories (for closed source projects) on the same server, by specifying which repositories should be exported by `git-daemon`
 
 # Complex access control
 
@@ -46,13 +46,13 @@ Specifically, on a filesytem that supports ACLs such as XFS, or ext2/ext3 with a
 
 Explanation.
 
--   `-R`: apply recursively
--   `-m`: modify the ACL
--   `g:<group>`: permissions for group `<group>`
--   `r`: read access
--   `w`: write access
--   `X`: execute permissions, but only if the object is a directory, or already has execute permissions for some user
--   `d:<spec>`: set a default ACL (defined by `<spec>`) to be applied to any new files or directories added to the directory in the future
+- `-R`: apply recursively
+- `-m`: modify the ACL
+- `g:<group>`: permissions for group `<group>`
+- `r`: read access
+- `w`: write access
+- `X`: execute permissions, but only if the object is a directory, or already has execute permissions for some user
+- `d:<spec>`: set a default ACL (defined by `<spec>`) to be applied to any new files or directories added to the directory in the future
 
 In other words the first line grants `rwx` permission on all directories, `rw`permission on all files, and `rwx`permission on all files which already had the `x` bit set, to users in group `<group>`.
 
@@ -89,6 +89,6 @@ Personally I've never needed or wanted this level of control: in the projects I 
 
 # External resources
 
--   overview of sharing methods (see comment by Jakub Narębski: <http://stackoverflow.com/questions/1662205/how-to-make-a-git-repository-read-only>
--   `update-paranoid` hook: <http://git.kernel.org/?p=git/git.git;a=blob;f=contrib/hooks/update-paranoid;hb=HEAD>
--   another overview: <http://www.jedi.be/blog/2009/05/06/8-ways-to-share-your-git-repository/>
+- overview of sharing methods (see comment by Jakub Narębski: <http://stackoverflow.com/questions/1662205/how-to-make-a-git-repository-read-only>
+- `update-paranoid` hook: <http://git.kernel.org/?p=git/git.git;a=blob;f=contrib/hooks/update-paranoid;hb=HEAD>
+- another overview: <http://www.jedi.be/blog/2009/05/06/8-ways-to-share-your-git-repository/>

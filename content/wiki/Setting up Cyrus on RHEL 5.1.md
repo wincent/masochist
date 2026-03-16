@@ -26,11 +26,11 @@ In the configuration suggested above you could find yourself on the receiving en
 
 The mailstorm problem therefore arises as follows:
 
-1.  Spammers connect to [sendmail](/wiki/sendmail)
-2.  Attempt to send to dozens, hundreds or thousands of addresses, most of which do not exist
-3.  Sendmail accepts all the messages, then passes them on to [Cyrus](/wiki/Cyrus)
-4.  Cyrus generates a bounce for each non-existent user
-5.  Bounce message is transmitted by sendmail to remote hosts, but in many or most cases the spammer has used a false email address, so the bounce is itself bounced back to the local postmaster
+1. Spammers connect to [sendmail](/wiki/sendmail)
+2. Attempt to send to dozens, hundreds or thousands of addresses, most of which do not exist
+3. Sendmail accepts all the messages, then passes them on to [Cyrus](/wiki/Cyrus)
+4. Cyrus generates a bounce for each non-existent user
+5. Bounce message is transmitted by sendmail to remote hosts, but in many or most cases the spammer has used a false email address, so the bounce is itself bounced back to the local postmaster
 
 So this is really a double problem because you're generated bounces which you shouldn't be generating (better to refuse delivery as soon as the spammer attempts to deliver to a non-existent user) and then again because most of your bounces generated another wave of bounces, but these latter ones pile up in your postmaster inbox.
 

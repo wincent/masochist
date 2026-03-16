@@ -10,9 +10,9 @@ The [official Apple web page says](http://www.apple.com/macosx/leopard/) that [L
 
 My plan in that timeframe is to continue releasing updates for my products without changing their minimum system requirements:
 
--   [Synergy](/wiki/Synergy) and [Install](/wiki/Install) will continue to run on [Jaguar](/wiki/Jaguar), [Panther](/wiki/Panther) and [Tiger](/wiki/Tiger)
--   A couple of unreleased products I have up my sleeve which require [Tiger](/wiki/Tiger) will maintain that requirement
--   All other products will continue to run on [Panther](/wiki/Panther) and [Tiger](/wiki/Tiger)
+- [Synergy](/wiki/Synergy) and [Install](/wiki/Install) will continue to run on [Jaguar](/wiki/Jaguar), [Panther](/wiki/Panther) and [Tiger](/wiki/Tiger)
+- A couple of unreleased products I have up my sleeve which require [Tiger](/wiki/Tiger) will maintain that requirement
+- All other products will continue to run on [Panther](/wiki/Panther) and [Tiger](/wiki/Tiger)
 
 But once [Leopard](/wiki/Leopard) is out I plan to raise the minimum requirements to take advantage of the new features. Development will be split into two branches: new releases (the main branch) will require [Leopard](/wiki/Leopard); releases on the other branch (maintenance branch) will continue to support the older versions of [Mac OS X](/wiki/Mac_OS_X) but will be basic bug fix and maintenance releases only.
 
@@ -24,9 +24,9 @@ In previous [Mac OS X](/wiki/Mac_OS_X) updates I have held back from increasing 
 
 To the customer the releases will look like this:
 
--   Consider a product with versions 1.0, 1.2, 1.3 that runs on [Panther](/wiki/Panther) and up.
--   Once [Leopard](/wiki/Leopard) is out, most development will occur on a new branch — the 2.0, 2.1, 2.2 (etc) releases — and these releases will only run on [Leopard](/wiki/Leopard).
--   I will continue to do maintenance releases on the old branch (1.3.1, 1.3.2, 1.4 etc) that support the old version of [Mac OS X](/wiki/Mac_OS_X).
+- Consider a product with versions 1.0, 1.2, 1.3 that runs on [Panther](/wiki/Panther) and up.
+- Once [Leopard](/wiki/Leopard) is out, most development will occur on a new branch — the 2.0, 2.1, 2.2 (etc) releases — and these releases will only run on [Leopard](/wiki/Leopard).
+- I will continue to do maintenance releases on the old branch (1.3.1, 1.3.2, 1.4 etc) that support the old version of [Mac OS X](/wiki/Mac_OS_X).
 
 # Phase 1: Jaguar/Panther compatible releases
 

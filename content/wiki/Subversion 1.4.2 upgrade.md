@@ -150,5 +150,5 @@ The resulting static builds work, but I wanted to get my non-static build workin
 
 # See also
 
--   Release notes: <http://subversion.tigris.org/svn_1.4_releasenotes.html>
--   Change log: <http://svn.collab.net/repos/svn/tags/1.4.2/CHANGES>
+- Release notes: <http://subversion.tigris.org/svn_1.4_releasenotes.html>
+- Change log: <http://svn.collab.net/repos/svn/tags/1.4.2/CHANGES>

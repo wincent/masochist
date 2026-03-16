@@ -6,4 +6,4 @@ tags: dike wiki
 
 # See also
 
--   <http://www.codeforpeople.com/lib/ruby/dike/>
+- <http://www.codeforpeople.com/lib/ruby/dike/>

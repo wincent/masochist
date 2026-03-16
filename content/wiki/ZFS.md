@@ -7,12 +7,12 @@ cache_breaker: 1
 
 # [ZFS](/wiki/ZFS) links
 
--   [ZFS](/wiki/ZFS) project page (Sun): <http://www.opensolaris.org/os/community/zfs/>
-    -   [ZFS](/wiki/ZFS) news article at [Sun](/wiki/Sun): <http://www.sun.com/2004-0914/feature/>
--   ZFS project page at Mac OS Forge: <http://zfs.macosforge.org/>
--   [Wikipedia](/wiki/Wikipedia) article on [ZFS](/wiki/ZFS): <http://en.wikipedia.org/wiki/ZFS>
--   Article on [RAID-Z](/wiki/RAID-Z): <http://blogs.sun.com/bonwick/entry/raid_z>
-    -   Summary of the article: <http://solaris.reys.net/english/archives/93-VozmoZhnosti_ZFS_RAID-Z.html>
--   Performance comparison with hardware [RAID](/wiki/RAID):
-    -   <http://milek.blogspot.com/2006/08/hw-raid-vs-zfs-software-raid.html>
-    -   <http://milek.blogspot.com/2006/08/hw-raid-vs-zfs-software-raid-part-ii.html>
+- [ZFS](/wiki/ZFS) project page (Sun): <http://www.opensolaris.org/os/community/zfs/>
+  - [ZFS](/wiki/ZFS) news article at [Sun](/wiki/Sun): <http://www.sun.com/2004-0914/feature/>
+- ZFS project page at Mac OS Forge: <http://zfs.macosforge.org/>
+- [Wikipedia](/wiki/Wikipedia) article on [ZFS](/wiki/ZFS): <http://en.wikipedia.org/wiki/ZFS>
+- Article on [RAID-Z](/wiki/RAID-Z): <http://blogs.sun.com/bonwick/entry/raid_z>
+  - Summary of the article: <http://solaris.reys.net/english/archives/93-VozmoZhnosti_ZFS_RAID-Z.html>
+- Performance comparison with hardware [RAID](/wiki/RAID):
+  - <http://milek.blogspot.com/2006/08/hw-raid-vs-zfs-software-raid.html>
+  - <http://milek.blogspot.com/2006/08/hw-raid-vs-zfs-software-raid-part-ii.html>

@@ -42,19 +42,20 @@ On the front:
 - USB-C port to Lightning + USB-C (via [this expensive cable](https://www.apple.com/es/shop/product/hrjs2zm/a/belt-cable-duo-pro-de-240-w-de-native-union-usb-c-a-usb-c-y-lightning)): This port (the one on the right) offers 36W of "offline" charging[^offline], which I mostly use for the ["Magic" Trackpad](https://en.wikipedia.org/wiki/Magic_Trackpad)[^magic] or random mobile phones.
 
 [^offline]: "Offline" means it provides power even when the "host" device — that is, the laptop — is not connected. This is true of all USB-C ports on the dock, the front USB-A port, and two of the rear USB-A ports.
+
 [^magic]: 🤦‍♂️
 
 On the back, from left to right (as viewed from the back):
 
 - Bottom row:
-    - DisplayPort 2.1 connector: unused.
-    - Thunderbolt 5 (36W port): USB-C/Thunderbolt connector runs to monitor using BenQ-supplied Thunderbolt 4 cable.
-    - ~~Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of "offline" power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).~~[^off]
-    - Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)
-    - DC in (24V 13.75A): power in
+  - DisplayPort 2.1 connector: unused.
+  - Thunderbolt 5 (36W port): USB-C/Thunderbolt connector runs to monitor using BenQ-supplied Thunderbolt 4 cable.
+  - ~~Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of "offline" power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).~~[^off]
+  - Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)
+  - DC in (24V 13.75A): power in
 - Top row:
-    - USB-A 3.2 Gen2: USB-A connector to data port (2) on back of UGREEN switching hub.
-    - 10 GbE: Gigabit ethernet, via crossover cable to desktop PC
+  - USB-A 3.2 Gen2: USB-A connector to data port (2) on back of UGREEN switching hub.
+  - 10 GbE: Gigabit ethernet, via crossover cable to desktop PC
 
 [^off]: After adding the RØDE AI-1, I found the dock was no longer supplying power to the laptop, presumably because it was too taxed supplying power to the hub, so I removed this cable from the dock and replaced it with [a separate power adapter](https://www.amazon.es/dp/B0B618DV8M) providing 15 W / 2 A (again, note that the hub says it optionally uses "5V 2A; ie. 10W"). However, I was still having problems with the dock not powering the laptop, so I tried out a different switch. That worked for less than 24 hours. Finally, a firmware update to the dock seemed to fix things definitively.
 
@@ -65,35 +66,35 @@ See [this page for firmware updates](https://www.caldigit.com/ts5-plus-and-eleme
 [UGREEN 2-in 7-out USB 3.0 switch](https://www.amazon.es/dp/B0FF498RHP):
 
 - Front (inputs, from left to right, as viewed from the front):
-    - Micro-USB: remote control port (unused; I use the button on top of the unit instead)
-    - USB-C port: unused
-    - USB-C port: unused
-    - USB-C port: unused
-    - USB-A port: Realforce keyboard (terminating with a micro-USB connector)
-    - USB-A port: Elgato Facecam (terminating with a USB-C connector)
-    - USB-A port: RØDE AI-1 audio interface for microphone (terminating with a USB-C connector)
-    - USB-A port: [Logitech MX Master](https://www.amazon.es/dp/B07W6JG6Z7) mouse radio receiver
+  - Micro-USB: remote control port (unused; I use the button on top of the unit instead)
+  - USB-C port: unused
+  - USB-C port: unused
+  - USB-C port: unused
+  - USB-A port: Realforce keyboard (terminating with a micro-USB connector)
+  - USB-A port: Elgato Facecam (terminating with a USB-C connector)
+  - USB-A port: RØDE AI-1 audio interface for microphone (terminating with a USB-C connector)
+  - USB-A port: [Logitech MX Master](https://www.amazon.es/dp/B07W6JG6Z7) mouse radio receiver
 - Rear (from right to left, as viewed from the back):
-    - Output 1: USB-A to USB-A cable to desktop PC
-    - Output 2: USB-A to USB-A cable to dock (for use with laptop)
-    - DC in (12V 2A, ie. 24W): power in
+  - Output 1: USB-A to USB-A cable to desktop PC
+  - Output 2: USB-A to USB-A cable to dock (for use with laptop)
+  - DC in (12V 2A, ie. 24W): power in
 
 ![UGREEN ports](/images/ugreen-ports.jpg)
 
 For comparison, here's what I had under the old model (a [UGREEN 4-port USB 3.0 switch](https://www.amazon.es/dp/B01N6GD9JO)):
 
 - Front (inputs, from left to right, as viewed from the front):
-    - USB-A port: Realforce keyboard (terminating with a micro-USB connector); note, the keyboard itself has a small hub, but it's unused.
-    - USB-A port: [RØDE AI-1](https://rode.com/en-us/products/ai-1) audio interface for microphone (terminating with a USB-C connector)
-    - USB-A port: Elgato Facecam (terminating with a USB-C connector)
-    - USB-A port: Radio receiver for the [Logitech MX Master 3](https://www.amazon.es/dp/B07W6JG6Z7) mouse.
+  - USB-A port: Realforce keyboard (terminating with a micro-USB connector); note, the keyboard itself has a small hub, but it's unused.
+  - USB-A port: [RØDE AI-1](https://rode.com/en-us/products/ai-1) audio interface for microphone (terminating with a USB-C connector)
+  - USB-A port: Elgato Facecam (terminating with a USB-C connector)
+  - USB-A port: Radio receiver for the [Logitech MX Master 3](https://www.amazon.es/dp/B07W6JG6Z7) mouse.
 - Rear (from right to left, as viewed from the back):
-    - Output 1: USB-A to USB-A cable to desktop PC
-    - Output 2: USB-A to USB-A cable to dock (for use with laptop)
-    - Micro-USB: additional power in, which should be 5V 2A (ie. 10W) according to the manufacturer
+  - Output 1: USB-A to USB-A cable to desktop PC
+  - Output 2: USB-A to USB-A cable to dock (for use with laptop)
+  - Micro-USB: additional power in, which should be 5V 2A (ie. 10W) according to the manufacturer
 - Top (status lights, from left to right, as viewed from the front):
-    - Output 1 active (desktop PC)
-    - Output 2 active (laptop)
+  - Output 1 active (desktop PC)
+  - Output 2 active (laptop)
 
 Note on the ordering of the outputs/lights: I chose to do it this way so that the light on the left (output "1", the PC) corresponds to the input-selection button to the _left_ on the display; likewise, the light on the right (output "2", the laptop) corresponds to the input-selection button to the _right_ on the display.
 

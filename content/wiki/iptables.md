@@ -5,16 +5,16 @@ cache_breaker: 1
 
 # See
 
--   Official site: <http://www.netfilter.org/projects/iptables/index.html>
--   Official [RHEL](/wiki/RHEL) 5 documentation on [IPTables](/wiki/IPTables): <http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Deployment_Guide-en-US/ch-iptables.html>
--   Tutorials:
-    -   "Simple Firewall Configuration Using NetFilter/iptables": <http://www.novell.com/coolsolutions/feature/18139.html>
-    -   "How To Set Up A Debian Linux Firewall": <http://www.aboutdebian.com/firewall.htm>
-    -   <http://www.cyberciti.biz/faq/howto-rhel-linux-open-port-using-iptables/>
--   Example configs:
-    -   <http://www.avforums.com/forums/linux/733858-iptables-common-port-settings.html>
-    -   <http://forums.devshed.com/security-and-cryptography-17/iptables-block-mysql-port-to-everybody-but-just-one-ip-182005.html>
--   Some random firewall article found on the web: <http://www.linuxtopia.org/online_books/rhel5/rhel5_administration/rhel5_ch-fw.html>
+- Official site: <http://www.netfilter.org/projects/iptables/index.html>
+- Official [RHEL](/wiki/RHEL) 5 documentation on [IPTables](/wiki/IPTables): <http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Deployment_Guide-en-US/ch-iptables.html>
+- Tutorials:
+  - "Simple Firewall Configuration Using NetFilter/iptables": <http://www.novell.com/coolsolutions/feature/18139.html>
+  - "How To Set Up A Debian Linux Firewall": <http://www.aboutdebian.com/firewall.htm>
+  - <http://www.cyberciti.biz/faq/howto-rhel-linux-open-port-using-iptables/>
+- Example configs:
+  - <http://www.avforums.com/forums/linux/733858-iptables-common-port-settings.html>
+  - <http://forums.devshed.com/security-and-cryptography-17/iptables-block-mysql-port-to-everybody-but-just-one-ip-182005.html>
+- Some random firewall article found on the web: <http://www.linuxtopia.org/online_books/rhel5/rhel5_administration/rhel5_ch-fw.html>
 
 # Default [RHEL](/wiki/RHEL) ruleset
 
@@ -43,27 +43,27 @@ Explained [here](http://www.sns.ias.edu/~jns/wp/2006/02/09/confusing-rules-in-th
 
 In short:
 
--   all inbound packets on the loopback interface are accepted
--   all ICMP (ping) traffic is accepted
--   ports 50 and 51 are related to IPSec and are accepted:
+- all inbound packets on the loopback interface are accepted
+- all ICMP (ping) traffic is accepted
+- ports 50 and 51 are related to IPSec and are accepted:
 
 <!-- -->
 
     esp     50      IPSEC-ESP       # Encap Security Payload [RFC2406]
     ah      51      IPSEC-AH        # Authentication Header [RFC2402]
 
--   port 5353 is Apple's Digital Audio Access Protocol (DAAP) and is accepted
--   port 631 is for CUPS, the "Common UNIX Print System":
+- port 5353 is Apple's Digital Audio Access Protocol (DAAP) and is accepted
+- port 631 is for CUPS, the "Common UNIX Print System":
 
 <!-- -->
 
     ipp             631/tcp                         # Internet Printing Protocol
     ipp             631/udp                         # Internet Printing Protocol
 
--   packets pertaining or related to established connections are accepted
--   inbound connections to port 22 (SSH) are accepted
--   everything else is rejected
+- packets pertaining or related to established connections are accepted
+- inbound connections to port 22 (SSH) are accepted
+- everything else is rejected
 
 # Related articles in this [wiki](/wiki)
 
--   [Using at to safely try out iptables configuration changes](/wiki/Using_at_to_safely_try_out_iptables_configuration_changes)
+- [Using at to safely try out iptables configuration changes](/wiki/Using_at_to_safely_try_out_iptables_configuration_changes)

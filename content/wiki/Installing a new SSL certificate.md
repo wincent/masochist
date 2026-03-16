@@ -159,10 +159,10 @@ Unlike [Apache](/wiki/Apache) and [sendmail](/wiki/sendmail), these services don
 
 The rest is straightforward:
 
--   Make a backup of the old [PEM](/wiki/PEM) file(s).
--   `chmod 400` the [PEM](/wiki/PEM) files (the backup and the new one; the old one should already have the right permissions).
--   Drop the new file into place.
--   The same file will work for [POP3S](/wiki/POP3S) as well; on my system the files are named `imapd.pem` and `ipop3d.pem`.
+- Make a backup of the old [PEM](/wiki/PEM) file(s).
+- `chmod 400` the [PEM](/wiki/PEM) files (the backup and the new one; the old one should already have the right permissions).
+- Drop the new file into place.
+- The same file will work for [POP3S](/wiki/POP3S) as well; on my system the files are named `imapd.pem` and `ipop3d.pem`.
 
 Restart the services so that the changes get picked up:
 
@@ -170,4 +170,4 @@ Restart the services so that the changes get picked up:
 
 ## See also
 
--   [SSL certificate renewal notes](/wiki/SSL_certificate_renewal_notes)
+- [SSL certificate renewal notes](/wiki/SSL_certificate_renewal_notes)

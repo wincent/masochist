@@ -48,9 +48,9 @@ Note that there are many, many ways to implement a factorial function in both la
 
 The imperative version is what you write when you think about the computer as a machine that executes algorithms as a series of steps. The design of the method is just a rephrasing of the actual machine code instructions you expect to be executed:
 
--   Check if `n` is equal to zero
--   If it is, then return `1` (the factorial of 0 is 1)
--   Otherwise, multiply `n` by the value of the factorial of `n - 1`
+- Check if `n` is equal to zero
+- If it is, then return `1` (the factorial of 0 is 1)
+- Otherwise, multiply `n` by the value of the factorial of `n - 1`
 
 The fact that the method includes a recursive self-reference doesn't change the fact that the programmer thinks in terms of a series of steps, and that the thinking is predicated on the fact that the computer will execute the method as a series of steps as well.
 
@@ -70,6 +70,6 @@ In a future article I'll provide some more realistic examples which demonstrate 
 
 So we're going to see the number of cores go up exponentially in the future and with it the complexity of the shared-memory model will go through the roof. I see three ways in which innovation is going to prevent all of this collapsing into a horrid mess:
 
--   Companies like Apple will continue to improve their frameworks, languages and tools to make it easier for programmers to do the right thing with respect to threads, and harder to do the wrong thing. Things like garbage collection help to address a bunch of thread-related memory management problems; monolithic APIs like Core Data are great for doing the "heavy lifting" and Apple is free to implement infrastructure there behind the API which works well on multiple cores (ditto for any of the "high-performance" APIs such as Core Image and friends) .
--   Programmers will have to learn to distribute work across multiple processes, not multiple threads, because in many cases this will be more scalable and in most it will be more robust.
--   Those supporting processes which don't need to interact with the user interface will probably be best written in a functional programming language, where the compiler can take on a large part of making the most of the opportunities for parallelism on a multi-core machine. (Even though there are already language bindings for wedding together Haskell and C code, I still expect most UI-level code on [Mac OS X](https://wincent.dev/wiki/Mac%20OS%20X) to be written in Objective-C, if for no other reason than that's what the frameworks do and will use, and that's where the impedance match is.)
+- Companies like Apple will continue to improve their frameworks, languages and tools to make it easier for programmers to do the right thing with respect to threads, and harder to do the wrong thing. Things like garbage collection help to address a bunch of thread-related memory management problems; monolithic APIs like Core Data are great for doing the "heavy lifting" and Apple is free to implement infrastructure there behind the API which works well on multiple cores (ditto for any of the "high-performance" APIs such as Core Image and friends) .
+- Programmers will have to learn to distribute work across multiple processes, not multiple threads, because in many cases this will be more scalable and in most it will be more robust.
+- Those supporting processes which don't need to interact with the user interface will probably be best written in a functional programming language, where the compiler can take on a large part of making the most of the opportunities for parallelism on a multi-core machine. (Even though there are already language bindings for wedding together Haskell and C code, I still expect most UI-level code on [Mac OS X](https://wincent.dev/wiki/Mac%20OS%20X) to be written in Objective-C, if for no other reason than that's what the frameworks do and will use, and that's where the impedance match is.)

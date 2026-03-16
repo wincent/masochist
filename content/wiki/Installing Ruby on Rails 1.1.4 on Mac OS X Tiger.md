@@ -71,10 +71,10 @@ I later (March 2007) found that this `RUBYLIB` export prevented my new [Ruby 1.8
 
 # See also
 
--   [Building and installing Ruby 1.8.4 on Mac OS X Tiger](/wiki/Building_and_installing_Ruby_1.8.4_on_Mac_OS_X_Tiger)
--   [Building and installing RubyGems 0.9.0 on Mac OS X Tiger](/wiki/Building_and_installing_RubyGems_0.9.0_on_Mac_OS_X_Tiger)
--   [Installing Ruby on Rails 1.1.4 on Red Hat Enterprise Linux ES 3](/wiki/Installing_Ruby_on_Rails_1.1.4_on_Red_Hat_Enterprise_Linux_ES_3)
--   [Installing Ruby on Rails](/wiki/Installing_Ruby_on_Rails)
+- [Building and installing Ruby 1.8.4 on Mac OS X Tiger](/wiki/Building_and_installing_Ruby_1.8.4_on_Mac_OS_X_Tiger)
+- [Building and installing RubyGems 0.9.0 on Mac OS X Tiger](/wiki/Building_and_installing_RubyGems_0.9.0_on_Mac_OS_X_Tiger)
+- [Installing Ruby on Rails 1.1.4 on Red Hat Enterprise Linux ES 3](/wiki/Installing_Ruby_on_Rails_1.1.4_on_Red_Hat_Enterprise_Linux_ES_3)
+- [Installing Ruby on Rails](/wiki/Installing_Ruby_on_Rails)
 
 # An alternative approach
 

@@ -7,11 +7,11 @@ Just went out for two hours and when I came back the machine was displaying the 
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5.1
--   **Kernel panics:** 7
--   **Hard resets:** 16
--   **Total failures:** 23
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 602 days
--   **Average time between failures:** 26.17 days
--   **Uptime at moment of failure(s):** a day or so
+- **Operating system version:** 10.5.1
+- **Kernel panics:** 7
+- **Hard resets:** 16
+- **Total failures:** 23
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 602 days
+- **Average time between failures:** 26.17 days
+- **Uptime at moment of failure(s):** a day or so

@@ -6,9 +6,9 @@ Instructions can be found [here](http://wiki.rubyonrails.org/rails/pages/EdgeRai
 
 The pattern followed in the later article is the following:
 
-1.  Import the entire application
-2.  Remove files from the repository that should be ignored
-3.  Set the `svn:ignore` property on those files so that they don't interfere with future check-outs or commits
+1. Import the entire application
+2. Remove files from the repository that should be ignored
+3. Set the `svn:ignore` property on those files so that they don't interfere with future check-outs or commits
 
 # [SVK](/wiki/SVK)
 

@@ -11,21 +11,21 @@ So it's time for my annual review of the spam situation (in fact, I'm a few week
 
 During 2006 I [gradually toughened up my anti-spam arsenal](https://wincent.dev/a/knowledge-base/archives/2006/06/clamping_down_o.php) by introducing a number of new measures at the server level which reduce the amount of spam getting downloaded to the local machine and increase the likelihood that the spam which does get through will be tagged as such before it even hits Mail.app's filters:
 
--   Tougher scoring on non-English messages.
--   Automatic deletion of extremely high-scoring spam.
--   Auto-whitelisting.
--   Bayesian training.
+- Tougher scoring on non-English messages.
+- Automatic deletion of extremely high-scoring spam.
+- Auto-whitelisting.
+- Bayesian training.
 
 I later took [further steps](https://wincent.dev/wiki/Combatting_spam) at the server level:
 
--   [Blocking non-local senders for local-only recipients](https://wincent.dev/wiki/Blocking_non-local_senders_for_local-only_recipients).
--   Conservative [DNS-based blacklisting](https://wincent.dev/wiki/DNS-based_blacklisting).
+- [Blocking non-local senders for local-only recipients](https://wincent.dev/wiki/Blocking_non-local_senders_for_local-only_recipients).
+- Conservative [DNS-based blacklisting](https://wincent.dev/wiki/DNS-based_blacklisting).
 
 And at the policy level:
 
--   Reducing the number of web-visible email addresses on sites that I control.
--   Using easily cancellable addresses when providing email addresses to third parties.
--   Migrating away from old addresses which receive a lot of spam to newer addresses.
+- Reducing the number of web-visible email addresses on sites that I control.
+- Using easily cancellable addresses when providing email addresses to third parties.
+- Migrating away from old addresses which receive a lot of spam to newer addresses.
 
 As [discussed here](https://wincent.dev/wiki/Combatting_spam) these changes combined to significantly reduce the number of spam messages getting to my mail box each day; I don't have any hard figures for the entire period but the evidence I do have suggests that the number of spams thwarted by these measures is of the order of several hundred per day.
 
@@ -61,13 +61,13 @@ Spam that does get through to the client level is largely handled by [SpamSieve]
 
 Observations:
 
--   67,000 good messages where received in the last year.
--   46,000 spam messages where received in the last year.
--   Spam now accounts for 24% of all mail _ever received_ (since statistic recording began), up from 11% at the same time last year; of the messages received in the last year, nearly 41% were spam.
--   There were only 48 false positives in the last year, and 378 false negatives. False negatives accounted for a larger proportion of the mistakes: 76%, up from 66% last year (this is an improvement because false positives are more undesirable than false negatives).
--   Overall the accuracy of SpamSieve remained solid at 99.6%.
--   SpamSieve's corpus of good messages grew by nearly 50%; the corpus of spam message nearly doubled.
--   Likewise the number of rules in the blocklist doubled, and those in the whitelist nearly doubled.
+- 67,000 good messages where received in the last year.
+- 46,000 spam messages where received in the last year.
+- Spam now accounts for 24% of all mail _ever received_ (since statistic recording began), up from 11% at the same time last year; of the messages received in the last year, nearly 41% were spam.
+- There were only 48 false positives in the last year, and 378 false negatives. False negatives accounted for a larger proportion of the mistakes: 76%, up from 66% last year (this is an improvement because false positives are more undesirable than false negatives).
+- Overall the accuracy of SpamSieve remained solid at 99.6%.
+- SpamSieve's corpus of good messages grew by nearly 50%; the corpus of spam message nearly doubled.
+- Likewise the number of rules in the blocklist doubled, and those in the whitelist nearly doubled.
 
 #### Conclusions
 

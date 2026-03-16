@@ -43,5 +43,5 @@ Seeing as I have no intention of ever committing to the old Subversion repo agai
 
 # See also
 
--   [Doing a one-off migration from Subversion to Git](/wiki/Doing_a_one-off_migration_from_Subversion_to_Git) (an older article, detailing my first experiences importing the full history of a [Subversion](/wiki/Subversion) repository into [Git](/wiki/Git))
--   [Commit messages](/blog/commit-messages) ([blog](/wiki/blog) post on the quality of the commit messages in the WinSwitch repo)
+- [Doing a one-off migration from Subversion to Git](/wiki/Doing_a_one-off_migration_from_Subversion_to_Git) (an older article, detailing my first experiences importing the full history of a [Subversion](/wiki/Subversion) repository into [Git](/wiki/Git))
+- [Commit messages](/blog/commit-messages) ([blog](/wiki/blog) post on the quality of the commit messages in the WinSwitch repo)

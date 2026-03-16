@@ -6,4 +6,4 @@ A [regular language](/wiki/regular_language) is one that can be recognized by a 
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [regular languages](/wiki/regular_languages): <http://en.wikipedia.org/wiki/Regular_language>
+- [Wikipedia](/wiki/Wikipedia) article on [regular languages](/wiki/regular_languages): <http://en.wikipedia.org/wiki/Regular_language>

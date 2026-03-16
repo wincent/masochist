@@ -10,9 +10,9 @@ Just lost the re-creation of the exact same thing I had been working on when the
 
 ## Stats to date
 
--   Kernel panics: 9
--   Hard resets: 21
--   Total failures: 30
--   Start of recording keeping: 21 May 2006
--   Total days to date: 677 days
--   Average time between failures: 22.56 days
+- Kernel panics: 9
+- Hard resets: 21
+- Total failures: 30
+- Start of recording keeping: 21 May 2006
+- Total days to date: 677 days
+- Average time between failures: 22.56 days

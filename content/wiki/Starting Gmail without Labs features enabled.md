@@ -6,8 +6,8 @@ I have a few Gmail accounts and suddenly this morning one of them started refusi
 
 You can prevent Labs features from loading by supplying `labs=0` as a query string parameter; for example I changed:
 
--   `https://mail.google.com/mail/u/0/#inbox`; to:
--   `https://mail.google.com/mail/u/0/?labs=0#inbox`
+- `https://mail.google.com/mail/u/0/#inbox`; to:
+- `https://mail.google.com/mail/u/0/?labs=0#inbox`
 
 And now Gmail loads again, as does the "basic" view.
 

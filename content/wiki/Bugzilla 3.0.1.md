@@ -6,5 +6,5 @@ tags: bugzilla wiki
 
 # See also
 
--   Release notes: <http://www.bugzilla.org/releases/3.0.1/release-notes.html>
--   [Upgrading to Bugzilla 3.0.1](/wiki/Upgrading_to_Bugzilla_3.0.1)
+- Release notes: <http://www.bugzilla.org/releases/3.0.1/release-notes.html>
+- [Upgrading to Bugzilla 3.0.1](/wiki/Upgrading_to_Bugzilla_3.0.1)

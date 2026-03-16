@@ -36,8 +36,8 @@ See the docs for more info on installing (and updating) Command-T via Pathogen.
 
 ## Everybody else
 
--   Download the vimball from [the Command-T product page](/products/command-t) (or [www.vim.org](http://www.vim.org/scripts/script.php?script_id=3025), if you prefer)
--   Open the vimball archive in vim, and do `:so %` to unpack it
--   `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
+- Download the vimball from [the Command-T product page](/products/command-t) (or [www.vim.org](http://www.vim.org/scripts/script.php?script_id=3025), if you prefer)
+- Open the vimball archive in vim, and do `:so %` to unpack it
+- `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
 
 Beware that vimballs aren't the most robust packaging system; if your vimball doesn't extract completely on the first try (ie. if only some of the files are extracted), just try again.

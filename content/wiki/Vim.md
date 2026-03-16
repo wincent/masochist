@@ -7,13 +7,13 @@ cache_breaker: 1
 
 # Official site
 
--   <http://www.vim.org/>
+- <http://www.vim.org/>
 
 # Other resources
 
--   <http://www.viemu.com/a-why-vi-vim.html>: "Why, oh WHY, do those \#?@! nutheads use vi?"
+- <http://www.viemu.com/a-why-vi-vim.html>: "Why, oh WHY, do those \#?@! nutheads use vi?"
 
 # See also
 
--   [MacVim](/wiki/MacVim): a [Mac OS X](/wiki/Mac_OS_X)-specific [GUI](/wiki/GUI) version of [Vim](/wiki/Vim)
--   [Command-T](/wiki/Command-T): a plug-in I wrote for VIM that brings fast file navigation inspired by the "Command-T" feature in [TextMate](/wiki/TextMate)
+- [MacVim](/wiki/MacVim): a [Mac OS X](/wiki/Mac_OS_X)-specific [GUI](/wiki/GUI) version of [Vim](/wiki/Vim)
+- [Command-T](/wiki/Command-T): a plug-in I wrote for VIM that brings fast file navigation inspired by the "Command-T" feature in [TextMate](/wiki/TextMate)

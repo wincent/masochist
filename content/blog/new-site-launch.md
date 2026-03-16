@@ -6,12 +6,12 @@ cache_breaker: 1
 
 At the end of last month I completed my migration from my old webhost ([Rackspace](/wiki/Rackspace)) to my new one ([INetU](/wiki/INetU)), but that was only half the story. For some time now I've been working on a custom [Rails](/wiki/Rails) application which would replace the mish-mash of software that I previously used on the old server:
 
--   [UBB.threads](/wiki/UBB.threads) for the forums
--   [Bugzilla](/wiki/Bugzilla) for the bug tracking and feature requests database
--   [MediaWiki](/wiki/MediaWiki) for the wiki
--   [Movable Type](/wiki/Movable_Type) for the various weblog-like parts of the site (like the news pages, my personal weblog, and my commit log)
--   [Mailman](/wiki/Mailman) for mailing lists
--   a bunch of custom [Perl](/wiki/Perl), [PHP](/wiki/PHP) and [Ruby](/wiki/Ruby) code for all the rest
+- [UBB.threads](/wiki/UBB.threads) for the forums
+- [Bugzilla](/wiki/Bugzilla) for the bug tracking and feature requests database
+- [MediaWiki](/wiki/MediaWiki) for the wiki
+- [Movable Type](/wiki/Movable_Type) for the various weblog-like parts of the site (like the news pages, my personal weblog, and my commit log)
+- [Mailman](/wiki/Mailman) for mailing lists
+- a bunch of custom [Perl](/wiki/Perl), [PHP](/wiki/PHP) and [Ruby](/wiki/Ruby) code for all the rest
 
 While these are all fine applications, considered by many to be "best of class", they presented an inconsistent interface and required users to sign up in multiple places if they wanted to participate in all parts of the site.
 

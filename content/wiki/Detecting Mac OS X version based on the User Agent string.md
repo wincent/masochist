@@ -14,10 +14,10 @@ It turns out that browser and operating system detection based on [user agent st
 
 In summary:
 
--   [Jaguar](/wiki/Jaguar) corresponds to Safari versions 1.0 through 1.0.3, WebKit versions 85.7 through 85.8.5.
--   [Panther](/wiki/Panther) corresponds to Safari versions 1.1 through 1.3.2, WebKit versions 100 through 312.8.1.
--   [Tiger](/wiki/Tiger) corresponds to Safari versions 2.0 through 2.0.4, WebKit versions 412 through 419.
--   [Leopard](/wiki/Leopard) numbers are not yet available (as of March 2007).
+- [Jaguar](/wiki/Jaguar) corresponds to Safari versions 1.0 through 1.0.3, WebKit versions 85.7 through 85.8.5.
+- [Panther](/wiki/Panther) corresponds to Safari versions 1.1 through 1.3.2, WebKit versions 100 through 312.8.1.
+- [Tiger](/wiki/Tiger) corresponds to Safari versions 2.0 through 2.0.4, WebKit versions 412 through 419.
+- [Leopard](/wiki/Leopard) numbers are not yet available (as of March 2007).
 
 So checking the [WebKit](/wiki/WebKit) version number in the [user agent string](/wiki/user_agent_string) will provide a reliable way of determining the visitor OS version for people running [Safari](/wiki/Safari) and may also work for other browsers that use [WebKit](/wiki/WebKit) such as [OmniWeb](/wiki/OmniWeb).
 
@@ -41,5 +41,5 @@ Another minority browser probably not worth supporting.
 
 # Resources
 
--   "Safari Developer FAQ": <http://developer.apple.com/internet/safari/faq.html>
--   "Safari and WebKit Version Information": <http://developer.apple.com/internet/safari/uamatrix.html>
+- "Safari Developer FAQ": <http://developer.apple.com/internet/safari/faq.html>
+- "Safari and WebKit Version Information": <http://developer.apple.com/internet/safari/uamatrix.html>

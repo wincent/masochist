@@ -6,4 +6,4 @@ tags: mldonkey wiki
 
 # See also
 
--   Official release notes: <https://sourceforge.net/project/shownotes.php?release_id=513129>
+- Official release notes: <https://sourceforge.net/project/shownotes.php?release_id=513129>

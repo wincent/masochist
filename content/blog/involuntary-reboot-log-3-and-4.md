@@ -25,12 +25,12 @@ Why the crash? Why nothing written to `/Library/Logs/panic.log`? Doesn't the OS 
 
 #### Involuntary reboot stats to date
 
--   **Operating system version:** go figure
--   **Kernel panics:** 4
--   **Hard resets:** 0
--   **Total failures:** 4
--   **Average time between failures:** 32 days
--   **Uptime at moment of failure(s):** Less than one minute
+- **Operating system version:** go figure
+- **Kernel panics:** 4
+- **Hard resets:** 0
+- **Total failures:** 4
+- **Average time between failures:** 32 days
+- **Uptime at moment of failure(s):** Less than one minute
 
 #### Leopard update
 

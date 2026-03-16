@@ -6,4 +6,4 @@ tags: vim vimball wiki
 
 # Official site
 
--   <http://mysite.verizon.net/astronaut/src/index.html#MKVIMBALL>
+- <http://mysite.verizon.net/astronaut/src/index.html#MKVIMBALL>

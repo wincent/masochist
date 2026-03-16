@@ -19,20 +19,20 @@ Additionally the synthetic events system obviates the need for maintaining bulky
 
 # Official links
 
--   Official site: <http://facebook.github.io/react/>
--   "Why did we build React?" (blog post by Pete Hunt): <http://facebook.github.io/react/blog/2013/06/05/why-react.html>
--   "React: Rethinking best practices" (conference presentation video by Pete Hunt): <http://2013.jsconf.eu/speakers/pete-hunt-react-rethinking-best-practices.html>
+- Official site: <http://facebook.github.io/react/>
+- "Why did we build React?" (blog post by Pete Hunt): <http://facebook.github.io/react/blog/2013/06/05/why-react.html>
+- "React: Rethinking best practices" (conference presentation video by Pete Hunt): <http://2013.jsconf.eu/speakers/pete-hunt-react-rethinking-best-practices.html>
 
 # Using React with Backbone
 
--   <https://blog.mayflower.de/3937-Backbone-React.html>
--   <http://joelburget.com/react/index.html>
--   <https://usepropeller.com/blog/posts/from-backbone-to-react/>
--   <http://eldar.djafarov.com/2013/11/reactjs-mixing-with-backbone/>
--   <https://rawgithub.com/calebcassel/react-demo/master/part1.html>
+- <https://blog.mayflower.de/3937-Backbone-React.html>
+- <http://joelburget.com/react/index.html>
+- <https://usepropeller.com/blog/posts/from-backbone-to-react/>
+- <http://eldar.djafarov.com/2013/11/reactjs-mixing-with-backbone/>
+- <https://rawgithub.com/calebcassel/react-demo/master/part1.html>
 
 # Other
 
--   Testing React code: <http://myshareoftech.com/2013/12/unit-testing-react-dot-js-with-jasmine-and-karma.html>
--   On React's DOM diffing algorithm: <http://calendar.perfplanet.com/2013/diff/>
--   Comparison of Angular and React (Quora answer by Pete Hunt): <http://www.quora.com/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look?share=1>
+- Testing React code: <http://myshareoftech.com/2013/12/unit-testing-react-dot-js-with-jasmine-and-karma.html>
+- On React's DOM diffing algorithm: <http://calendar.perfplanet.com/2013/diff/>
+- Comparison of Angular and React (Quora answer by Pete Hunt): <http://www.quora.com/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look?share=1>

@@ -13,21 +13,21 @@ I spent approximately an hour filing six bug reports on 30 April 2005. In the ro
 
 Of the 18 bug reports that I've filed 4 have been fixed and 14 are unresolved. It appears that at least one of the bugs I've filed are no longer shown on the page; in particular I recall one which ended up not being a bug at all but something that I misinterpreted in the documentation.
 
--   _3500363_ (December 2003): Open (fixed)
--   _3562684_ (February 2004): Open (unresolved)
--   _3607237_ (March 2004): Open (unresolved)
--   _3905816_ (December 2004): Closed (fixed)
--   _3931260_ (December 2004): Duplicate (unresolved)
--   _4057211_ (March 2005): Duplicate (fixed)
--   _4103756_ (April 2005): Duplicate (fixed)
--   _4103769_ (April 2005): Open
--   _4103772_ (April 2005): Duplicate (unresolved)
--   _4103786_ (April 2005): Duplicate (unresolved)
--   _4103788_ (April 2005): Open
--   _4103795_ (April 2005): Duplicate (unresolved)
--   _4112685_ (May 2005): Duplicate (unresolved)
--   _4132388_ (May 2005): Duplicate (unresolved)
--   _4150132_ (June 2005): Open
--   _4150155_ (June 2005): Open
--   _4150277_ (June 2005): Open
--   _4150881_ (June 2005): Open
+- _3500363_ (December 2003): Open (fixed)
+- _3562684_ (February 2004): Open (unresolved)
+- _3607237_ (March 2004): Open (unresolved)
+- _3905816_ (December 2004): Closed (fixed)
+- _3931260_ (December 2004): Duplicate (unresolved)
+- _4057211_ (March 2005): Duplicate (fixed)
+- _4103756_ (April 2005): Duplicate (fixed)
+- _4103769_ (April 2005): Open
+- _4103772_ (April 2005): Duplicate (unresolved)
+- _4103786_ (April 2005): Duplicate (unresolved)
+- _4103788_ (April 2005): Open
+- _4103795_ (April 2005): Duplicate (unresolved)
+- _4112685_ (May 2005): Duplicate (unresolved)
+- _4132388_ (May 2005): Duplicate (unresolved)
+- _4150132_ (June 2005): Open
+- _4150155_ (June 2005): Open
+- _4150277_ (June 2005): Open
+- _4150881_ (June 2005): Open

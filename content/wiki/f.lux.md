@@ -4,4 +4,4 @@ tags: f.lux wiki
 
 # Official site
 
--   <http://stereopsis.com/flux/>
+- <http://stereopsis.com/flux/>

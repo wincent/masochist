@@ -25,13 +25,13 @@ Note that although the runtime included with the official 3.0 release is labelle
 
 This installs these libraries:
 
--   `/usr/local/lib/libantlr3c.dylib`
--   `/usr/local/lib/libantlr3c.la`
--   `/usr/local/lib/libantlr3c.a`
+- `/usr/local/lib/libantlr3c.dylib`
+- `/usr/local/lib/libantlr3c.la`
+- `/usr/local/lib/libantlr3c.a`
 
 And the headers are installed as well:
 
--   `/usr/local/include/antlr3.h` (and many others)
+- `/usr/local/include/antlr3.h` (and many others)
 
 Technically, I think it would be more correct if these were installed in `/usr/local/lib/antlr/` because there are quite a few of them.
 
@@ -58,5 +58,5 @@ To overcome the thread-safety issues you'll need to allocate your own tracking s
 
 # See also
 
--   Official [C language target](/wiki/C_language_target) page on the [ANTLR](/wiki/ANTLR) [wiki](/wiki/wiki): <http://www.antlr.org/wiki/display/ANTLR3/ANTLR3+Code+Generation+-+C>
-    -   Further usage notes: <http://www.antlr.org/wiki/display/ANTLR3/Using+the+ANTLR3+C+Target>
+- Official [C language target](/wiki/C_language_target) page on the [ANTLR](/wiki/ANTLR) [wiki](/wiki/wiki): <http://www.antlr.org/wiki/display/ANTLR3/ANTLR3+Code+Generation+-+C>
+  - Further usage notes: <http://www.antlr.org/wiki/display/ANTLR3/Using+the+ANTLR3+C+Target>

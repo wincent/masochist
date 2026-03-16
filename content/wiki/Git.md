@@ -9,11 +9,11 @@ It's been my [VCS](/wiki/VCS) of choice since mid-2007. (Before that I used [SVK
 
 # Official site
 
--   New site: <http://git-scm.com/>
--   Old site: <http://git.or.cz/index.html>
+- New site: <http://git-scm.com/>
+- Old site: <http://git.or.cz/index.html>
 
 # See also
 
--   [Git advantages](/wiki/Git_advantages)
--   [Git quickstart](/wiki/Git_quickstart)
--   [Git recipes](/wiki/Git_recipes)
+- [Git advantages](/wiki/Git_advantages)
+- [Git quickstart](/wiki/Git_quickstart)
+- [Git recipes](/wiki/Git_recipes)

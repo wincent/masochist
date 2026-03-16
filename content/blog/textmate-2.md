@@ -14,8 +14,8 @@ This is an interesting phenomenon, and one that can't be explained away by recou
 
 I personally won't be going back for three reasons:
 
-1.  My experience with [Vim](/wiki/Vim) has convinced me that its modal editing paradigm is the most efficient and pleasant one available.
-2.  Even if TextMate 2 shipped with a special modal "Vim compatibility" mode, it would lack the nearly infinite configurability that Vim (and of course Emacs) offers.
-3.  TextMate's closed source model is fundamentally broken compared to the [open source](/wiki/open_source) one of Vim and Emacs; the latter products will never suffer from frustrated userbases leaving in droves due to lack of development. Being open source, if people are frustrated about a missing feature then there is nothing stopping them from implementing it themselves. (In any case, going back to point \#2 again, actually hacking on the source is seldom required because these products are so much more customizable by nature.)
+1. My experience with [Vim](/wiki/Vim) has convinced me that its modal editing paradigm is the most efficient and pleasant one available.
+2. Even if TextMate 2 shipped with a special modal "Vim compatibility" mode, it would lack the nearly infinite configurability that Vim (and of course Emacs) offers.
+3. TextMate's closed source model is fundamentally broken compared to the [open source](/wiki/open_source) one of Vim and Emacs; the latter products will never suffer from frustrated userbases leaving in droves due to lack of development. Being open source, if people are frustrated about a missing feature then there is nothing stopping them from implementing it themselves. (In any case, going back to point \#2 again, actually hacking on the source is seldom required because these products are so much more customizable by nature.)
 
 TextMate 2 can certainly be a great commercial success, it can provide an ideal editing experience for many kinds of users, and it can also be a proving ground for whatever brilliant new ideas Allan Odgaard might have floating around in his head, _but_ as long as it remains closed source I think it's doomed to (relative) failure in the long term.

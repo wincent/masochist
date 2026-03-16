@@ -7,9 +7,9 @@ My machine has been pretty kind to me lately; it's been quite a while since [the
 
 This is the first time in a while that my "average time between failures" has actually gone _up_ rather than down.
 
--   Kernel panics: 26
--   Hard resets: 26
--   Total failures: 52
--   Start of recording keeping: 21 May 2006
--   Total days to date: 1046 days
--   Average time between failures: 20.12 days
+- Kernel panics: 26
+- Hard resets: 26
+- Total failures: 52
+- Start of recording keeping: 21 May 2006
+- Total days to date: 1046 days
+- Average time between failures: 20.12 days

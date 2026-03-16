@@ -15,7 +15,7 @@ I then did a test remote backup using my `rsync-backup.sh` script and everything
 
 # See also
 
--   Release notes: <http://rsync.samba.org/ftp/rsync/rsync-2.6.9-NEWS>
--   Manual pages:
-    -   <http://rsync.samba.org/ftp/rsync/rsync.html>
-    -   <http://rsync.samba.org/ftp/rsync/rsyncd.conf.html>
+- Release notes: <http://rsync.samba.org/ftp/rsync/rsync-2.6.9-NEWS>
+- Manual pages:
+  - <http://rsync.samba.org/ftp/rsync/rsync.html>
+  - <http://rsync.samba.org/ftp/rsync/rsyncd.conf.html>

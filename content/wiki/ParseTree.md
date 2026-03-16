@@ -8,4 +8,4 @@ From the [description](http://blog.zenspider.com/archives/2007/06/parsetree_vers
 
 # See also
 
--   Official [ParseTree](/wiki/ParseTree) page: <http://zenspider.com/ZSS/Products/ParseTree/index.html>
+- Official [ParseTree](/wiki/ParseTree) page: <http://zenspider.com/ZSS/Products/ParseTree/index.html>

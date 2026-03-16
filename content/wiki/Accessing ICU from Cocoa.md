@@ -8,4 +8,4 @@ Until [Apple](/wiki/Apple) decides to make the [API](/wiki/API) public, one snea
 
 # See also
 
--   <http://www.stiefels.net/2007/01/24/regular-expressions-for-nsstring/>
+- <http://www.stiefels.net/2007/01/24/regular-expressions-for-nsstring/>

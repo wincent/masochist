@@ -7,10 +7,10 @@ Today I released a new product, [Wincent Strings Utility](https://wincent.dev/a/
 
 Firstly, although it's an open source license, it actually makes it very difficult to distribute a derivative work:
 
-1.  You are allowed to distribute verbatim unmodified copies of Omni software at will
-2.  You are allowed to distribute modified binaries
-3.  You are _not allowed_ to distribute modified source
-4.  You are allowed to distribute patches
+1. You are allowed to distribute verbatim unmodified copies of Omni software at will
+2. You are allowed to distribute modified binaries
+3. You are _not allowed_ to distribute modified source
+4. You are allowed to distribute patches
 
 It's that third provision that makes things difficult. In most open source licenses (and certainly in all free software licenses) you are allowed to distribute modified source. In fact, it's that provision which is central to the whole idea of free software.
 
@@ -20,9 +20,9 @@ I'm also left doubting what the rules for _re_-distribution are. That is, what h
 
 Some of the provisions in the license are a little odd or at least (from my point of view) suboptimal:
 
--   You must include in-file changelogs describing modifications (normally that information would be handled by a version control system).
--   You must include a man page (first time I've ever had to write one!).
--   You must rename the executable to avoid confusion.
+- You must include in-file changelogs describing modifications (normally that information would be handled by a version control system).
+- You must include a man page (first time I've ever had to write one!).
+- You must rename the executable to avoid confusion.
 
 This last provision is an interesting one because it's really the only reason that I've released this derivative as new "product". If the source code had been under the BSD license or the GPL I most likely would have kept the old name, rolled it into my buildtools package, and never done a new product release at all. (See [the release announcement](https://wincent.dev/a/news/archives/2006/02/wincent_strings.php) for more comments on the buildtools package and why I am putting it together.)
 

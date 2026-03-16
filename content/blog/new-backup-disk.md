@@ -5,10 +5,10 @@ tags: backup blog
 
 I used to have a pretty robust backup routine:
 
--   automated hourly backups of my home directory (tarred and gzipped to another volume)
--   automated daily backups of my startup volume to an external FireWire drive (via [SuperDuper!](/wiki/SuperDuper%21))
--   automated daily backups of my home directory (burnt to rewritable DVD)
--   multiple copies of source code in local and remote repositories
+- automated hourly backups of my home directory (tarred and gzipped to another volume)
+- automated daily backups of my startup volume to an external FireWire drive (via [SuperDuper!](/wiki/SuperDuper%21))
+- automated daily backups of my home directory (burnt to rewritable DVD)
+- multiple copies of source code in local and remote repositories
 
 But this iMac that I'm currently using has proved to be very flakey. The internal hard disk failed twice requiring formatting and installing from backup. Its third failure was definitive; all of the contents were lost and now the drive won't even format. In all three cases [SuperDuper!](/wiki/SuperDuper%21) saved my butt. I can't sing its praises highly enough.
 

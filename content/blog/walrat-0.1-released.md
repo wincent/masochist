@@ -6,23 +6,23 @@ cache_breaker: 1
 
 [Walrat](/wiki/Walrat) is a sophisticated parser generator written in [Ruby](/wiki/Ruby). It can be used to dynamically generate (at runtime):
 
--   integrated lexers
--   "[packrat](/wiki/packrat)" (memoizing) parsers cable of recognizing [Parsing Expression Grammars](/wiki/Parsing_Expression_Grammars) (PEG), including grammars that use left-recursion
--   [Abstract Syntax Tree](/wiki/Abstract_Syntax_Tree) builders that can build trees of arbitrary complexity
+- integrated lexers
+- "[packrat](/wiki/packrat)" (memoizing) parsers cable of recognizing [Parsing Expression Grammars](/wiki/Parsing_Expression_Grammars) (PEG), including grammars that use left-recursion
+- [Abstract Syntax Tree](/wiki/Abstract_Syntax_Tree) builders that can build trees of arbitrary complexity
 
 Walrat was originally written in early 2007 as part of the [Walrus](/wiki/Walrus) [object-oriented templating](/wiki/object-oriented_templating) system. This 0.1 release marks its extraction into a separate [gem](/wiki/gem) for easier reuse in other projects. The Walrus grammar is an excellent example of some of the more advanced parsing techniques that can be achieved using Walrat, including:
 
--   dynamic definition of grammars and parsers at runtime using a simple DSL
--   standard PEG constructs such as ordered choice, concatenation, repetition, predicates
--   string and regular-expression based "parslets"
--   arbitrarily complex proc/lambda based "parslets"
--   convenient and customizable skipping behavior (in this case, whitespace skipping)
--   left-recursion
--   left-associative and right-associative productions
--   dynamic AST node synthesis
--   addition of custom behavior to AST nodes (in this case, compilation behavior) through custom Ruby code
--   multiline comments, including nested multiline comments
--   "island" parsers for processing "[Here documents](/wiki/Here_documents)" and include files
+- dynamic definition of grammars and parsers at runtime using a simple DSL
+- standard PEG constructs such as ordered choice, concatenation, repetition, predicates
+- string and regular-expression based "parslets"
+- arbitrarily complex proc/lambda based "parslets"
+- convenient and customizable skipping behavior (in this case, whitespace skipping)
+- left-recursion
+- left-associative and right-associative productions
+- dynamic AST node synthesis
+- addition of custom behavior to AST nodes (in this case, compilation behavior) through custom Ruby code
+- multiline comments, including nested multiline comments
+- "island" parsers for processing "[Here documents](/wiki/Here_documents)" and include files
 
 ## Example
 

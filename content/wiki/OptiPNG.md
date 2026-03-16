@@ -44,4 +44,4 @@ Although the savings are modest, and there were many files already compressed wi
 
 # See also
 
--   Official website: <http://optipng.sourceforge.net/>
+- Official website: <http://optipng.sourceforge.net/>

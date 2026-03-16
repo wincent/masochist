@@ -65,8 +65,8 @@ $ sudo -s
 
 Ditto for:
 
--   v1.6.2 (broken)
--   v1.6.1 (works)
+- v1.6.2 (broken)
+- v1.6.1 (works)
 
 That's a relief. We can start the real bisection:
 
@@ -121,23 +121,23 @@ Ultimately, we bisect down to this:
 
 This is on a server with Git installed using `prefix=/usr/local`, but `/usr/local/bin` is not in the default `PATH` so the daemon is launched via xinetd with the following settings in `/etc/xinetd.d/git`:
 
--   `server` is explicitly set to the absolute path, `/usr/local/bin/git`
--   in `server_args`, we pass `--exec-path=/usr/local/bin daemon --inetd` etc
+- `server` is explicitly set to the absolute path, `/usr/local/bin/git`
+- in `server_args`, we pass `--exec-path=/usr/local/bin daemon --inetd` etc
 
 The key paragraph in the commit message for 8e34628 sheds light on what's happening here:
 
-       If a user explicitly overrides the default location (by --exec-path
-       or GIT_EXEC_PATH), we now expect that all the required programs are
-       found there.  Instead of adding the directories "argv_exec_path",
-       "getenv(EXEC_PATH_ENVIRONMENT)", and "system_path(GIT_EXEC_PATH)"
-       to PATH, we now rely on git_exec_path(), which implements the same
-       order, but only returns the highest priority location to search for
-       executables.
+    If a user explicitly overrides the default location (by --exec-path
+    or GIT_EXEC_PATH), we now expect that all the required programs are
+    found there.  Instead of adding the directories "argv_exec_path",
+    "getenv(EXEC_PATH_ENVIRONMENT)", and "system_path(GIT_EXEC_PATH)"
+    to PATH, we now rely on git_exec_path(), which implements the same
+    order, but only returns the highest priority location to search for
+    executables.
 
 So, dropped the explicit `--exec-path` from the `server_args` and the `bad line length character` errors go away. The `git` executable is obviously smart enough to know where the needed binaries are (currently `/usr/local/libexec/git-core`) and so doesn't need the explicit parameter; and in fact, it was something that I only ever added in the first place to fix breakage caused by changes to where the binaries were stored and how they were searched for (see "[Upgrading to Git 1.5.4](/wiki/Upgrading_to_Git_1.5.4)").
 
 # See also
 
--   Entry on the official [Git](/wiki/Git) [FAQ](/wiki/FAQ) for the `protocol error: bad line length character` message (not really helpful/applicable to this specific case as it applies to [SSH](/wiki/SSH)-based access and I am talking about anonymous public access using the Git protocol): <http://git.or.cz/gitwiki/GitFaq#protocolerror.3Abadlinelengthcharacter>
--   Mailing list thread: <http://kerneltrap.org/mailarchive/git/2007/1/20/236259>
--   [Google search for '"protocol error: bad line length character" git'](http://www.google.com/search?client=safari&rls=en&q=%22protocol+error:+bad+line+length+character%22+git&ie=UTF-8&oe=UTF-8) (currently 209 results at time of writing)
+- Entry on the official [Git](/wiki/Git) [FAQ](/wiki/FAQ) for the `protocol error: bad line length character` message (not really helpful/applicable to this specific case as it applies to [SSH](/wiki/SSH)-based access and I am talking about anonymous public access using the Git protocol): <http://git.or.cz/gitwiki/GitFaq#protocolerror.3Abadlinelengthcharacter>
+- Mailing list thread: <http://kerneltrap.org/mailarchive/git/2007/1/20/236259>
+- [Google search for '"protocol error: bad line length character" git'](http://www.google.com/search?client=safari&rls=en&q=%22protocol+error:+bad+line+length+character%22+git&ie=UTF-8&oe=UTF-8) (currently 209 results at time of writing)

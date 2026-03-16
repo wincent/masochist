@@ -11,19 +11,19 @@ This time I went with [Namecheap](http://namecheap.com), as they offered a margi
 
 In many ways the process here was similar to the last time I renewed this certificate (see "[SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008)"). The only catches were that, since last time:
 
--   RapidSSL started using an intermediate CA (Certificate Authority) to sign the issued certificate, rather than directly signing it with the root CA like they used to.
--   Namecheap refuses CSRs (Certificate Signing Requests) made with 1024-bit keys, requiring a minimum of a 2048-bit key
+- RapidSSL started using an intermediate CA (Certificate Authority) to sign the issued certificate, rather than directly signing it with the root CA like they used to.
+- Namecheap refuses CSRs (Certificate Signing Requests) made with 1024-bit keys, requiring a minimum of a 2048-bit key
 
 Things mostly "just work" in any case; it was only with [Cyrus](/wiki/Cyrus) that I had to make adjustments.
 
 As before, the basic process for renewal is:
 
-1.  Go to Namecheap
-2.  Go through the checkout process
-3.  Receive email with link to page where you submit your CSR (Certificate Signing Request)
-4.  Generate the CSR and paste it into the web page from the previous step
-5.  Receive another email requesting approval to generate a new certificate
-6.  Install the new certificate for [Apache](/wiki/Apache), [sendmail](/wiki/sendmail) and [Cyrus](/wiki/Cyrus)
+1. Go to Namecheap
+2. Go through the checkout process
+3. Receive email with link to page where you submit your CSR (Certificate Signing Request)
+4. Generate the CSR and paste it into the web page from the previous step
+5. Receive another email requesting approval to generate a new certificate
+6. Install the new certificate for [Apache](/wiki/Apache), [sendmail](/wiki/sendmail) and [Cyrus](/wiki/Cyrus)
 
 # Generating a new private key
 

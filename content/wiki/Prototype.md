@@ -7,4 +7,4 @@ cache_breaker: 1
 
 # Links
 
--   Official site: <http://www.prototypejs.org/>
+- Official site: <http://www.prototypejs.org/>

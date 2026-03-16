@@ -6,5 +6,5 @@ tags: rspec wiki
 
 # See also
 
--   [Installing Spec::UI 0.2.0 on Mac OS X Tiger](/wiki/Installing_Spec%3a%3aUI_0.2.0_on_Mac_OS_X_Tiger)
--   [Upgrading to RSpec 0.9.4](/wiki/Upgrading_to_RSpec_0.9.4)
+- [Installing Spec::UI 0.2.0 on Mac OS X Tiger](/wiki/Installing_Spec%3a%3aUI_0.2.0_on_Mac_OS_X_Tiger)
+- [Upgrading to RSpec 0.9.4](/wiki/Upgrading_to_RSpec_0.9.4)

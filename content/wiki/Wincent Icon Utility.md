@@ -8,4 +8,4 @@ title: Wincent Icon Utility
 
 # See also
 
--   [Wincent Icon Utility](/wiki/Wincent_Icon_Utility) version 2.0.1 [release announcement](/blog/wincent-icon-utility-2.0.1-released)
+- [Wincent Icon Utility](/wiki/Wincent_Icon_Utility) version 2.0.1 [release announcement](/blog/wincent-icon-utility-2.0.1-released)

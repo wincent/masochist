@@ -33,6 +33,6 @@ The good news is that the tools used to handle the problem (in particular, [Spam
 
 # Observations
 
--   The number of spam messages per day has continued to shoot up since the last report (from 235 per day to 281 per day)
--   Spam now accounts for 58% of all mail I receive
--   [SpamSieve](/wiki/SpamSieve) maintained its accuracy of 99.8% correct, and the number of detected false positives since the last report (8 months) was a very respectable 5.
+- The number of spam messages per day has continued to shoot up since the last report (from 235 per day to 281 per day)
+- Spam now accounts for 58% of all mail I receive
+- [SpamSieve](/wiki/SpamSieve) maintained its accuracy of 99.8% correct, and the number of detected false positives since the last report (8 months) was a very respectable 5.

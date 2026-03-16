@@ -8,4 +8,4 @@ From the [release notes](http://rubyforge.org/frs/shownotes.php?group_id=1513&re
 
 # See also
 
--   Official [hoe](/wiki/hoe) project page: <http://rubyforge.org/projects/seattlerb/>
+- Official [hoe](/wiki/hoe) project page: <http://rubyforge.org/projects/seattlerb/>

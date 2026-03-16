@@ -19,11 +19,11 @@ Alas, trying to copy a file from it resulted in a Finder hang (beachballing) aft
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5
--   **Kernel panics:** 6
--   **Hard resets:** 13
--   **Total failures:** 19
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 539 days
--   **Average time between failures:** 28.36 days
--   **Uptime at moment of failure(s):** various
+- **Operating system version:** 10.5
+- **Kernel panics:** 6
+- **Hard resets:** 13
+- **Total failures:** 19
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 539 days
+- **Average time between failures:** 28.36 days
+- **Uptime at moment of failure(s):** various

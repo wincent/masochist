@@ -5,10 +5,10 @@ cache_breaker: 1
 
 # Tools
 
--   [RSpec 2](/wiki/RSpec_2) (spec framework)
--   [RR](/wiki/RR) ([mocking](/wiki/mocking) library)
--   [Factory Girl](/wiki/Factory_Girl) ([object mother](/wiki/object_mother) library)
--   [Rails 3](/wiki/Rails_3) (application framework)
+- [RSpec 2](/wiki/RSpec_2) (spec framework)
+- [RR](/wiki/RR) ([mocking](/wiki/mocking) library)
+- [Factory Girl](/wiki/Factory_Girl) ([object mother](/wiki/object_mother) library)
+- [Rails 3](/wiki/Rails_3) (application framework)
 
 # Mocking and stubbing
 
@@ -35,9 +35,9 @@ end
 
 # Related
 
--   [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
--   [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
--   [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
--   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
--   [RR cheatsheet](/wiki/RR_cheatsheet)
--   [Steak cheatsheet](/wiki/Steak_cheatsheet)
+- [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
+- [Rails view testing cheatsheet](/wiki/Rails_view_testing_cheatsheet)
+- [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
+- [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
+- [RR cheatsheet](/wiki/RR_cheatsheet)
+- [Steak cheatsheet](/wiki/Steak_cheatsheet)

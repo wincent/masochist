@@ -2,4 +2,4 @@
 tags: webrat testing wiki
 ---
 
--   Official site: <http://github.com/brynary/webrat/wikis>
+- Official site: <http://github.com/brynary/webrat/wikis>

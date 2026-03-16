@@ -6,7 +6,7 @@ tags: zentest ruby rails wiki
 
 # See also
 
--   [Setting up autotest](/wiki/Setting_up_autotest)
--   [Using autotest with Rails](/wiki/Using_autotest_with_Rails)
--   [Setting up autotest to use Growl](/wiki/Setting_up_autotest_to_use_Growl)
--   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
+- [Setting up autotest](/wiki/Setting_up_autotest)
+- [Using autotest with Rails](/wiki/Using_autotest_with_Rails)
+- [Setting up autotest to use Growl](/wiki/Setting_up_autotest_to_use_Growl)
+- [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)

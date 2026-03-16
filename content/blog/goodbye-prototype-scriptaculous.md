@@ -7,12 +7,12 @@ tags: scriptaculous jquery prototype blog
 
 I personally have had to [work a little bit harder](/issues/1278) — I started [back at the beginning of March](/blog/switching-to-jquery) and have had half-done changes hanging around in my work tree since then — but it's finished at last!
 
-     app/views/layouts/application.haml |    2 +-
-     public/javascripts/controls.js     |  963 --------
-     public/javascripts/dragdrop.js     |  973 --------
-     public/javascripts/effects.js      | 1128 ----------
-     public/javascripts/prototype.js    | 4320 ------------------------------------
-     5 files changed, 1 insertions(+), 7385 deletions(-)
+    app/views/layouts/application.haml |    2 +-
+    public/javascripts/controls.js     |  963 --------
+    public/javascripts/dragdrop.js     |  973 --------
+    public/javascripts/effects.js      | 1128 ----------
+    public/javascripts/prototype.js    | 4320 ------------------------------------
+    5 files changed, 1 insertions(+), 7385 deletions(-)
 
 The change to the application layout was just:
 

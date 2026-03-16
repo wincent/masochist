@@ -10,9 +10,9 @@ This time the frontmost application froze, had to force quit it, and noticed one
 
 So in the end had to reluctantly perform a [hard reset](/wiki/hard_reset). Was naïvely hoping that I would have much better luck with this machine than I did with the last one (which averaged one involuntary reboot every 22 days over its lifetime); this machine has operated for 34 days before its first failure, so we'll see how we go.
 
--   Kernel panics: 0
--   Hard resets: 1
--   Total failures: 1
--   Start of recording keeping: 17 March 2010
--   Total days to date: 34 days
--   Average time between failures: 34 days
+- Kernel panics: 0
+- Hard resets: 1
+- Total failures: 1
+- Start of recording keeping: 17 March 2010
+- Total days to date: 34 days
+- Average time between failures: 34 days

@@ -4,5 +4,5 @@ tags: gfx wiki
 
 # Links
 
--   <http://themeforest.net/>
--   <http://graphicriver.net/>
+- <http://themeforest.net/>
+- <http://graphicriver.net/>

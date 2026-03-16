@@ -9,11 +9,11 @@ On a related note, my external USB speakers (SoundSticks) are no longer recogniz
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5
--   **Kernel panics:** 6
--   **Hard resets:** 14
--   **Total failures:** 20
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 540 days
--   **Average time between failures:** 27 days
--   **Uptime at moment of failure(s):** approximately 8 hours
+- **Operating system version:** 10.5
+- **Kernel panics:** 6
+- **Hard resets:** 14
+- **Total failures:** 20
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 540 days
+- **Average time between failures:** 27 days
+- **Uptime at moment of failure(s):** approximately 8 hours

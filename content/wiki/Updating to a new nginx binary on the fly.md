@@ -5,7 +5,7 @@ cache_breaker: 1
 
 This is described on the official wiki at:
 
--   <http://wiki.nginx.org/NginxCommandLine#Upgrading_To_a_New_Binary_On_The_Fly>
+- <http://wiki.nginx.org/NginxCommandLine#Upgrading_To_a_New_Binary_On_The_Fly>
 
 Basically it boils down to the following:
 

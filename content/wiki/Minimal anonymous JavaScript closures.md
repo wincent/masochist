@@ -32,4 +32,4 @@ This is a byte shorter than the alternatives with valid syntax:
 
 # See also
 
--   [IIFE](/wiki/IIFE)
+- [IIFE](/wiki/IIFE)

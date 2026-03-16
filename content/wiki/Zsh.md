@@ -4,4 +4,4 @@ tags: zsh wiki
 
 # Official site
 
--   <http://www.zsh.org/>
+- <http://www.zsh.org/>

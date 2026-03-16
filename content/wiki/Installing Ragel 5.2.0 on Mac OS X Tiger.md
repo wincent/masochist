@@ -2,7 +2,7 @@
 tags: tiger ragel wiki
 ---
 
--   Get link to latest source code from: <http://www.cs.queensu.ca/~thurston/ragel/>
+- Get link to latest source code from: <http://www.cs.queensu.ca/~thurston/ragel/>
 
 <!-- -->
 
@@ -10,7 +10,7 @@ tags: tiger ragel wiki
     tar xzvf ragel-5.20.tar.gz
     cd ragel-5.20
 
--   Or checkout via [Subversion](/wiki/Subversion):
+- Or checkout via [Subversion](/wiki/Subversion):
 
 <!-- -->
 
@@ -44,7 +44,7 @@ Likewise you need [Kelbt](/wiki/Kelbt): <http://www.cs.queensu.ca/~thurston/kelb
     cd ..
     sudo install kelbt/kelbt /usr/local/bin/
 
--   Build:
+- Build:
 
 <!-- -->
 

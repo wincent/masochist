@@ -67,18 +67,18 @@ So does the `ifResponds` HOM pattern come out in front when we compare it with t
 
 Strong points:
 
--   Shorter syntax
--   Works out of the box with any number of parameters
--   Requires only one method, `ifResponds`, to be added to the `NSObject` namespace (unlike the `withObject:` variants of `performSelectorIfResponds:`)
+- Shorter syntax
+- Works out of the box with any number of parameters
+- Requires only one method, `ifResponds`, to be added to the `NSObject` namespace (unlike the `withObject:` variants of `performSelectorIfResponds:`)
 
 Weak points:
 
--   Requires non-obvious invisible trampoline object behind the scenes (which is what I wrote about [here](https://wincent.dev/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php))
--   Runs slower due to said secret magic
+- Requires non-obvious invisible trampoline object behind the scenes (which is what I wrote about [here](https://wincent.dev/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php))
+- Runs slower due to said secret magic
 
 Neutral points:
 
--   Neither method relies on any undocumented or private API so shouldn't break when run on Leopard
+- Neither method relies on any undocumented or private API so shouldn't break when run on Leopard
 
 Weighing these things up, HOM seems like a winner, unless speed is really important to you. How slow is slow? About 100 times slower, believe it or not; here are the results of a quick, unscientific test that I did comparing the speed of four different methods, each doing an "if responds, perform selector" operation 10 million times:
 

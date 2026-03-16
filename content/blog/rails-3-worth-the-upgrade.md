@@ -52,11 +52,11 @@ Well, having fought with Rails 3 for over two months now (I knew it would be a l
 
 I am not going to go into detail and rave about all the wonderful new stuff in Rails 3 — there are already a plethora of blog posts out there that do that — but I will briefly list some of the changes that I have most appreciated so far:
 
--   the new routing [DSL](/wiki/DSL) is a marvel: it transformed my hideously complex, kludge-pocked, spaghetti-like routes file into a clean, readable, easy-to-maintain blueprint
--   Bundler: at last, a robust replacement for the exploding vomit-bag that was the old Gem management and dependency "resolution" system
--   cleaner, safer views due to the new approach to HTML escaping
--   HTML5 by default: I couldn't care less about the "bells and whistles", but switching now to HTML5 enables the move to unobstrusive JavaScript at the framework level:
-    -   Unobtrusive JavaScript: this is something that I've been using almost exclusively for a long time now, but now the framework adopts the same approach, I am no longer fighting against the framework
--   ActiveRelation: apart from producing nicer-looking code, this enables some much more elegant means of query composition (ie. rather than just stitching strings together)
+- the new routing [DSL](/wiki/DSL) is a marvel: it transformed my hideously complex, kludge-pocked, spaghetti-like routes file into a clean, readable, easy-to-maintain blueprint
+- Bundler: at last, a robust replacement for the exploding vomit-bag that was the old Gem management and dependency "resolution" system
+- cleaner, safer views due to the new approach to HTML escaping
+- HTML5 by default: I couldn't care less about the "bells and whistles", but switching now to HTML5 enables the move to unobstrusive JavaScript at the framework level:
+  - Unobtrusive JavaScript: this is something that I've been using almost exclusively for a long time now, but now the framework adopts the same approach, I am no longer fighting against the framework
+- ActiveRelation: apart from producing nicer-looking code, this enables some much more elegant means of query composition (ie. rather than just stitching strings together)
 
 There is a bunch of other stuff, but those are the things that have most captured my attention so far. As a bonus, underneath all this is a much more disciplined focus on modularity within the codebase, and in general a big cleanup. For one thing, this makes it easier for mere mortals to look into the framework and see what's happening inside it. For another, we also hope that it makes it easier for the principal contributors to keep the bug count down.

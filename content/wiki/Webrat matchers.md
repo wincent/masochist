@@ -13,9 +13,9 @@ The matcher documentation can be found at: <http://gitrdoc.com/brynary/webrat>
 
 The matchers, as they are accessed from with RSpec, are:
 
--   `contain`
--   `have_selector`
--   `have_xpath`
+- `contain`
+- `have_selector`
+- `have_xpath`
 
 ## `have_selector` examples
 
@@ -65,7 +65,7 @@ end
 
 For more examples of usage, see Webrat's own specs for the `have_selector` matcher:
 
--   <http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_selector_spec.rb>
+- <http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_selector_spec.rb>
 
 ## `contain` examples
 
@@ -105,7 +105,7 @@ rendered.should contain(/this is a .+ error/)
 
 For more examples of usage, see Webrat's own specs for the `contain` matcher:
 
--   <http://github.com/brynary/webrat/blob/master/spec/public/matchers/contain_spec.rb>
+- <http://github.com/brynary/webrat/blob/master/spec/public/matchers/contain_spec.rb>
 
 ## `have_xpath` selector
 
@@ -118,7 +118,7 @@ rendered.should have_xpath('//p[a]')
 
 For more examples of usage, see Webrat's own specs for the `have_xpath` matcher:
 
--   <http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_xpath_spec.rb>
+- <http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_xpath_spec.rb>
 
 # `Test::Unit`
 
@@ -138,5 +138,5 @@ Source: <http://cheat.errtheblog.com/s/webrat/> (Webrat cheatsheet)
 
 # See also
 
--   [This article](http://ejohn.org/blog/xpath-css-selectors/) ("XPath and CSS Selectors") by John Resig provides a very short overview of the differences between [CSS](/wiki/CSS) and [XPath](/wiki/XPath) selectors
--   [CSS cheatsheet](/wiki/CSS_cheatsheet)
+- [This article](http://ejohn.org/blog/xpath-css-selectors/) ("XPath and CSS Selectors") by John Resig provides a very short overview of the differences between [CSS](/wiki/CSS) and [XPath](/wiki/XPath) selectors
+- [CSS cheatsheet](/wiki/CSS_cheatsheet)

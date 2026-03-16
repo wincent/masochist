@@ -54,4 +54,4 @@ I am not sure whether I will bother with this update, seeing as none of the feat
 
 # See also
 
--   [try_files documentation](http://wiki.nginx.org/NginxHttpMainModule#try_files)
+- [try_files documentation](http://wiki.nginx.org/NginxHttpMainModule#try_files)

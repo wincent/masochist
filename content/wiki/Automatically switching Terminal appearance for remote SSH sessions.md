@@ -8,10 +8,10 @@ Tim Wood posted instructions on how to do this [here](http://blog.omnigroup.com/
 
 I modified Tim's script in a couple of ways:
 
--   get tabs a little more directly (avoid some temporary variables)
--   provide textual feedback to the user on errors
--   don't hardcode name of "default" settings, nor try switching to them in the event of an error
--   shorter variable names ([AppleScript](/wiki/AppleScript) is already verbose enough as it is!)
+- get tabs a little more directly (avoid some temporary variables)
+- provide textual feedback to the user on errors
+- don't hardcode name of "default" settings, nor try switching to them in the event of an error
+- shorter variable names ([AppleScript](/wiki/AppleScript) is already verbose enough as it is!)
 
 The modified script looks like this:
 
@@ -55,9 +55,9 @@ The modified script looks like this:
 
 In my case I wanted to distinguish between three types of session:
 
--   local sessions
--   sessions on my old host, [Rackspace](/wiki/Rackspace)
--   sessions at my new host, [INetU](/wiki/INetU)
+- local sessions
+- sessions on my old host, [Rackspace](/wiki/Rackspace)
+- sessions at my new host, [INetU](/wiki/INetU)
 
 One way of doing this would be to open three [Terminal](/wiki/Terminal) windows, and in the Rackspace window do something like:
 

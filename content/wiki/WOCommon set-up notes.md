@@ -37,8 +37,8 @@ To this:
 
 There are two ways to add new files to [WOCommon](/wiki/WOCommon):
 
--   In the [WOCommon](/wiki/WOCommon) checkout created above, new files can be added to the repository using the normal [Subversion](/wiki/Subversion) `add` and `commit` commands.
--   If you add files to the `WOCommon` directory in an external checkout they will be ignored whenever you perform a `commit` but you can explicitly commit them with a `svn commit WOCommon`.
+- In the [WOCommon](/wiki/WOCommon) checkout created above, new files can be added to the repository using the normal [Subversion](/wiki/Subversion) `add` and `commit` commands.
+- If you add files to the `WOCommon` directory in an external checkout they will be ignored whenever you perform a `commit` but you can explicitly commit them with a `svn commit WOCommon`.
 
 # Keeping copies in sync
 

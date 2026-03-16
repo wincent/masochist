@@ -24,11 +24,11 @@ Also see the official ["Quick Start"](https://yazi-rs.github.io/docs/quick-start
 - `f`: Filter.
 - `<Tab>`: Show info.
 - Sorting:
-    - `,m` / `,M`: modified / reverse modified
-    - `,e` / `,E`: extension / reverse extension
-    - `,a` / `,A`: alphabetical / reverse alphabetical
-    - `,n` / `,N`: natural (ie. folders first, case-insensitive, alphabetical) / reverse natural
-    - `,s` / `,S`: size /reverse size
+  - `,m` / `,M`: modified / reverse modified
+  - `,e` / `,E`: extension / reverse extension
+  - `,a` / `,A`: alphabetical / reverse alphabetical
+  - `,n` / `,N`: natural (ie. folders first, case-insensitive, alphabetical) / reverse natural
+  - `,s` / `,S`: size /reverse size
 
 # Custom bindings
 

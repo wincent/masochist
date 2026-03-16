@@ -5,7 +5,7 @@ cache_breaker: 1
 
 `memcache-top` is a handy perl script for getting insight into things like cache misses and utilization rates for running [memcached](/wiki/memcached) instances.
 
--   <http://code.google.com/p/memcache-top/>
+- <http://code.google.com/p/memcache-top/>
 
 Example command:
 

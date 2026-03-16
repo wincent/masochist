@@ -6,4 +6,4 @@ tags: version.control wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [RCS](/wiki/RCS): <http://en.wikipedia.org/wiki/Revision_Control_System>
+- [Wikipedia](/wiki/Wikipedia) article on [RCS](/wiki/RCS): <http://en.wikipedia.org/wiki/Revision_Control_System>

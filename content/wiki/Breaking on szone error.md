@@ -10,4 +10,4 @@ This doesn't always work. In those cases, try setting a breakpoint on `malloc_pr
 
 # See also
 
--   <http://www.cocoabuilder.com/archive/message/xcode/2005/10/12/43>
+- <http://www.cocoabuilder.com/archive/message/xcode/2005/10/12/43>

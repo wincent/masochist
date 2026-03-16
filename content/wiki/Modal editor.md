@@ -7,11 +7,11 @@ A [modal text editor](/wiki/modal_text_editor) is a, nowadays rare, text editor 
 
 For example, [Vim](/wiki/Vim) has various modes such as:
 
--   Insert mode: this is the mode you use for inserting (typing) most text.
--   Visual mode: this is the mode you use for selecting text; it has various submodes which are especially for selecting characterwise, linewise, and even blockwise (that is, non-contiguous selections defined by a rectangle on the screen)
--   Normal mode: this is the mode you use for issuing basic commands for doing things like copying, pasting, deleting, moving the cursor and so on.
--   Command mode: this is the mode you use for issuing commands, such as opening and closing files, writing files to disk, and performing find-and-replace.
--   Search mode: probably requires no explanation.
+- Insert mode: this is the mode you use for inserting (typing) most text.
+- Visual mode: this is the mode you use for selecting text; it has various submodes which are especially for selecting characterwise, linewise, and even blockwise (that is, non-contiguous selections defined by a rectangle on the screen)
+- Normal mode: this is the mode you use for issuing basic commands for doing things like copying, pasting, deleting, moving the cursor and so on.
+- Command mode: this is the mode you use for issuing commands, such as opening and closing files, writing files to disk, and performing find-and-replace.
+- Search mode: probably requires no explanation.
 
 The idea here is that you make a trade-off of complexity for power. (To be more precise, each mode is often more _simple_ because it is generally optimized for a specific task of reduced scope, but the number of different modes can make the system as a whole seem more complex.)
 

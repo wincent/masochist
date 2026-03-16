@@ -25,4 +25,4 @@ From the official [changelog](http://www.complang.org/ragel/ChangeLog):
 
 # See also
 
--   Release notes: <http://www.complang.org/ragel/RELEASE_NOTES_V6>
+- Release notes: <http://www.complang.org/ragel/RELEASE_NOTES_V6>

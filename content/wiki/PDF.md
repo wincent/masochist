@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [PDF](/wiki/PDF): <http://en.wikipedia.org/wiki/PDF>
+- [Wikipedia](/wiki/Wikipedia) article on [PDF](/wiki/PDF): <http://en.wikipedia.org/wiki/PDF>

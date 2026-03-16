@@ -6,5 +6,5 @@ The [rack-test](/wiki/rack-test) [gem](/wiki/gem) is a tiny test harness for tes
 
 # Links
 
--   <https://rubygems.org/gems/rack-test>
--   <http://github.com/brynary/rack-test>
+- <https://rubygems.org/gems/rack-test>
+- <http://github.com/brynary/rack-test>

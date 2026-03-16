@@ -11,12 +11,12 @@ Now, in my opinion this is a bit of [a bikeshed argument](http://en.wikipedia.or
 
 If you check out the top [Google](https://wincent.dev/wiki/Google) hits on the subject you'll get some nice arguments on both sides, some interesting proposals, as well as some questionable affirmations:
 
-1.  <http://www.jwz.org/doc/tabs-vs-spaces.html>
-2.  <http://blogs.msdn.com/cyrusn/archive/2004/09/14/229474.aspx>
-3.  <http://blogs.msdn.com/stevejs/archive/2005/10/30/487102.aspx>
-4.  <http://www.derkarl.org/why_to_tabs.html>
-5.  <http://xahlee.org/UnixResource_dir/writ/tabs_vs_spaces.html>
-6.  <http://nickgravgaard.com/elastictabstops/>
+1. <http://www.jwz.org/doc/tabs-vs-spaces.html>
+2. <http://blogs.msdn.com/cyrusn/archive/2004/09/14/229474.aspx>
+3. <http://blogs.msdn.com/stevejs/archive/2005/10/30/487102.aspx>
+4. <http://www.derkarl.org/why_to_tabs.html>
+5. <http://xahlee.org/UnixResource_dir/writ/tabs_vs_spaces.html>
+6. <http://nickgravgaard.com/elastictabstops/>
 
 If you skim over those you should have a fairly thorough grounding in both sides of the argument.
 

@@ -4,9 +4,9 @@ tags: warcraft wiki
 
 # Official site
 
--   <http://auctioneeraddon.com/>
+- <http://auctioneeraddon.com/>
 
 # See also
 
--   [World of Warcraft tips](/wiki/World_of_Warcraft_tips)
--   [Warcraft gold guide](/wiki/Warcraft_gold_guide)
+- [World of Warcraft tips](/wiki/World_of_Warcraft_tips)
+- [Warcraft gold guide](/wiki/Warcraft_gold_guide)

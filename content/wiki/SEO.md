@@ -10,10 +10,10 @@ Many people attempt to make money by offering [SEO](/wiki/SEO) consulting servic
 
 Companies like [Google](/wiki/Google) are successful because their search engine delivers high-quality search results; it is in their interests to return the kinds of results that people genuinely want. The market relationships are quite simple:
 
--   The more people want to advertise with [Google](/wiki/Google), the more successful it will be
--   Advertisers will choose [Google](/wiki/Google) if [Google](/wiki/Google) can provide them with maximum exposure
--   [Google](/wiki/Google) maximizes exposure by attracting users
--   [Google](/wiki/Google) attracts users by giving them what they want
+- The more people want to advertise with [Google](/wiki/Google), the more successful it will be
+- Advertisers will choose [Google](/wiki/Google) if [Google](/wiki/Google) can provide them with maximum exposure
+- [Google](/wiki/Google) maximizes exposure by attracting users
+- [Google](/wiki/Google) attracts users by giving them what they want
 
 This is a very healthy symbiotic relationship in which users, advertisers, and [Google](/wiki/Google) acting as a broker between them, get what they want.
 

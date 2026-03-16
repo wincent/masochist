@@ -6,4 +6,4 @@ The recommended strategy is to set the password on the source keychain to an emp
 
 # Source
 
--   <http://hints.macworld.com/article.php?story=20101225081151172>
+- <http://hints.macworld.com/article.php?story=20101225081151172>

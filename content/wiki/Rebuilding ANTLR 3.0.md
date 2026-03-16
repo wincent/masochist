@@ -103,11 +103,11 @@ In order to try out the new build I had to alter my `CLASSPATH` so as to use the
 
 My existing `CLASSPATH` was:
 
--   .
--   `/usr/local/antlr/lib/antlr-3.0.jar`
--   `/usr/local/antlr/lib/antlr-2.7.7.jar`
--   `/usr/local/antlr/lib/antlr-runtime-3.0.jar`
--   `/usr/local/antlr/lib/stringtemplate-3.0.jar`
+- .
+- `/usr/local/antlr/lib/antlr-3.0.jar`
+- `/usr/local/antlr/lib/antlr-2.7.7.jar`
+- `/usr/local/antlr/lib/antlr-runtime-3.0.jar`
+- `/usr/local/antlr/lib/stringtemplate-3.0.jar`
 
 The basic procedure then is:
 
@@ -126,4 +126,4 @@ The basic procedure then is:
 
 # See also
 
--   "How do I rebuild ANTLR v3?": <http://www.antlr.org/wiki/pages/viewpage.action?pageId=732>
+- "How do I rebuild ANTLR v3?": <http://www.antlr.org/wiki/pages/viewpage.action?pageId=732>

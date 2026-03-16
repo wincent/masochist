@@ -98,4 +98,4 @@ tags: rubygems rake wiki
 
     -- Jim Weirich
 
--   <http://rubyforge.org/frs/shownotes.php?release_id=11243>
+- <http://rubyforge.org/frs/shownotes.php?release_id=11243>

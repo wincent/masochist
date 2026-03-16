@@ -7,10 +7,10 @@ The number one [Synergy](/wiki/Synergy) support issue is the failure of the "Lau
 
 If you are seeing this issue the most likely explanation is that your login items are out of date or have a stale entry. You can force a refresh by:
 
-1.  Unchecking the "Launch at login" checkbox in the Synergy preferences
-2.  Clicking "Apply"
-3.  Rechecking the "Launch at login" checkbox in the Synergy preferences
-4.  Clicking "Apply"
+1. Unchecking the "Launch at login" checkbox in the Synergy preferences
+2. Clicking "Apply"
+3. Rechecking the "Launch at login" checkbox in the Synergy preferences
+4. Clicking "Apply"
 
 If you still are seeing the issue after performing these steps there are a couple of other things you can consider:
 

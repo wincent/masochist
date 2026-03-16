@@ -6,4 +6,4 @@ tags: wordpress wiki
 
 # See also
 
--   Official site: <http://wordpress.org/>
+- Official site: <http://wordpress.org/>

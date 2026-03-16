@@ -4,4 +4,4 @@ tags: emacs rinari wiki
 
 ## Official site
 
--   <http://rinari.rubyforge.org/>
+- <http://rinari.rubyforge.org/>

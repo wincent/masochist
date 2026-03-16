@@ -6,4 +6,4 @@ tags: git wiki
 
 # See also
 
--   Official documentation for [gitk](/wiki/gitk): <http://www.kernel.org/pub/software/scm/git/docs/gitk.html>
+- Official documentation for [gitk](/wiki/gitk): <http://www.kernel.org/pub/software/scm/git/docs/gitk.html>

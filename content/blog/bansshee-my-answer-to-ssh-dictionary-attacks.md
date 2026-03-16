@@ -5,13 +5,13 @@ tags: blog
 
 So SSH dictionary attacks are becoming increasingly common. Yesterday my server was hit 2,901 times by a pair of nincompoops trying brute-force dictionary attacks. I think the odds of such an attack succeeding are fairly small:
 
--   All 2,901 attacks were directed at non-existent accounts which, by definition, can never provide access to the server no matter how many passwords are tried.
--   Most of the existing, standard accounts on the server (like `apache` and `mysql`) have their shell set to `/bin/nologin` and again can never provide access no matter how many passwords are tried.
--   Attacking the root account is useless because remote root logins are disabled; again, no matter how many passwords are tried the attacker will never get access (beginning to see a pattern here?).
--   The machine has a negligible number of other accounts, none of them with easy-to-guess names like "wincent" so it's highly unlikely that an attacker will stumble upon an actual valid account username.
--   [OpenSSH](http://openssh.org/) provides no indication to the attacker what the reason for a failed login might be; the attacker doesn't know whether it's because the account is non-existent, logins are disallowed for that account, or the password is wrong, because in all cases the failure message is "Permission denied, please try again."
--   Even if the attacker does chance upon a valid account username he/she must still brute force the password; not easy to do given that I use lengthy, machine-generated passwords.
--   If an attacker gets lucky and guesses a password for a valid account (about a 1 in 218,340,105,584,896 chance) then he will find himself in a chroot jail limited to the home-directory of the user in question; the worst he can do is delete some files in the home directory using an SFTP client, he [doesn't even get shell access](http://www.pizzashack.org/rssh/).
+- All 2,901 attacks were directed at non-existent accounts which, by definition, can never provide access to the server no matter how many passwords are tried.
+- Most of the existing, standard accounts on the server (like `apache` and `mysql`) have their shell set to `/bin/nologin` and again can never provide access no matter how many passwords are tried.
+- Attacking the root account is useless because remote root logins are disabled; again, no matter how many passwords are tried the attacker will never get access (beginning to see a pattern here?).
+- The machine has a negligible number of other accounts, none of them with easy-to-guess names like "wincent" so it's highly unlikely that an attacker will stumble upon an actual valid account username.
+- [OpenSSH](http://openssh.org/) provides no indication to the attacker what the reason for a failed login might be; the attacker doesn't know whether it's because the account is non-existent, logins are disallowed for that account, or the password is wrong, because in all cases the failure message is "Permission denied, please try again."
+- Even if the attacker does chance upon a valid account username he/she must still brute force the password; not easy to do given that I use lengthy, machine-generated passwords.
+- If an attacker gets lucky and guesses a password for a valid account (about a 1 in 218,340,105,584,896 chance) then he will find himself in a chroot jail limited to the home-directory of the user in question; the worst he can do is delete some files in the home directory using an SFTP client, he [doesn't even get shell access](http://www.pizzashack.org/rssh/).
 
 So the risks of a break-in are low but I decided to do something about it anyway for two reasons: firstly, I'm sick of seeing these attacks listed in my daily LogWatch reports; and secondly, if enough clowns get together and try these attacks (for example with an army of compromised zombie PCs) then it could result in a denial-of-service attack on the server, making it harder for legitimate users to connect. A good auto-banner addresses both of these issues by using the firewall to immediately drop packets from attacking IPs.
 
@@ -37,14 +37,14 @@ My favourite of all is this [short perl script](http://www.cpan.org/authors/id/D
 
 I ended up writing my own, as I always do (do I suffer from "Not Invented Here" Syndrome?).
 
--   **Perl, not Python:** Not because I think one is better than the other but for the same reason that I write this weblog in English instead of Chinese.
--   **Short:** The first completed version is 214 lines long, easy to comprehend, easy to audit. I am sure a Perl veteran could re-write the script into five lines or less of obfuscated code but my goal is readability and simplicity.
--   **Uses the [File::Tail](http://search.cpan.org/~mgrabnar/File-Tail-0.99.3/Tail.pm) module from [CPAN](http://cpan.org/):** which means that it can "tail" the `/var/log/secure` logfile in a relatively efficient manner and automatically catch things like rotating logs.
--   **Homegrown regular expressions:** written by me based on my analysis of the logfiles on my Red Hat Enterprise Linux ES release 3 system, so I _know_ that they're right for my system.
--   **Safe:** Blocked IPs are periodically unblocked, thus eliminating the possibility of a legitimate user getting blocked forever by mistake.
--   **Very simple implementation:** the main thread watches for attacks and blocks IPs; a background thread periodically removes the blocks.
--   **Configurable:** Configure the number of "unknown account" attacks allowed from a given IP address before blocking it (defaults to 5); the number of "incorrect password" attacks allowed from a single IP (defaults to 5); the minimum number of seconds an IP must wait before it gets removed from the blocklist (defaults to 1 hour); the number of seconds that must pass before prior illegal/incorrect attempts are forgotten (defaults to 1 hour); the number of seconds between flushes of the blocklist, removing old IPs (defaults to 5 minutes).
--   **Conservative firewalling policy:** Blacklisted IP addresses are only denied access via SSH; their access to the other services on the server is not restricted (for example, HTTP access), thus reducing the risk of "collateral damage" (ie. on shared network, script kiddie tries to brute force SSH, as a result everybody else on the network loses web accesses).
+- **Perl, not Python:** Not because I think one is better than the other but for the same reason that I write this weblog in English instead of Chinese.
+- **Short:** The first completed version is 214 lines long, easy to comprehend, easy to audit. I am sure a Perl veteran could re-write the script into five lines or less of obfuscated code but my goal is readability and simplicity.
+- **Uses the [File::Tail](http://search.cpan.org/~mgrabnar/File-Tail-0.99.3/Tail.pm) module from [CPAN](http://cpan.org/):** which means that it can "tail" the `/var/log/secure` logfile in a relatively efficient manner and automatically catch things like rotating logs.
+- **Homegrown regular expressions:** written by me based on my analysis of the logfiles on my Red Hat Enterprise Linux ES release 3 system, so I _know_ that they're right for my system.
+- **Safe:** Blocked IPs are periodically unblocked, thus eliminating the possibility of a legitimate user getting blocked forever by mistake.
+- **Very simple implementation:** the main thread watches for attacks and blocks IPs; a background thread periodically removes the blocks.
+- **Configurable:** Configure the number of "unknown account" attacks allowed from a given IP address before blocking it (defaults to 5); the number of "incorrect password" attacks allowed from a single IP (defaults to 5); the minimum number of seconds an IP must wait before it gets removed from the blocklist (defaults to 1 hour); the number of seconds that must pass before prior illegal/incorrect attempts are forgotten (defaults to 1 hour); the number of seconds between flushes of the blocklist, removing old IPs (defaults to 5 minutes).
+- **Conservative firewalling policy:** Blacklisted IP addresses are only denied access via SSH; their access to the other services on the server is not restricted (for example, HTTP access), thus reducing the risk of "collateral damage" (ie. on shared network, script kiddie tries to brute force SSH, as a result everybody else on the network loses web accesses).
 
 In the process of doing this I've learnt a lot about iptables (coming from a FreeBSD background I only knew about ipfw). I think the protection should be fairly effective. With the default parameters an attacker can sustain only 5 unknown-user and 5 actual-user-but-incorrect-password attempts per hour without getting blacklisted.
 

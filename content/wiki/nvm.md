@@ -7,8 +7,8 @@ cache_breaker: 1
 
 # Official site
 
--   <https://github.com/creationix/nvm>
+- <https://github.com/creationix/nvm>
 
 # See also
 
--   [Managing multiple versions of node with nvm](/wiki/Managing_multiple_versions_of_node_with_nvm)
+- [Managing multiple versions of node with nvm](/wiki/Managing_multiple_versions_of_node_with_nvm)

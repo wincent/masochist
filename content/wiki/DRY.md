@@ -8,4 +8,4 @@ Although [DRY](/wiki/DRY) is generally a sound idea, it shouldn't be taken to su
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [DRY](/wiki/DRY): <http://en.wikipedia.org/wiki/DRY>
+- [Wikipedia](/wiki/Wikipedia) article on [DRY](/wiki/DRY): <http://en.wikipedia.org/wiki/DRY>

@@ -112,9 +112,9 @@ Then your tables will have the appropriate charsets regardless of the database s
 
 # External links
 
--   <http://happygiraffe.net/presentations/rails-unicode/rails-unicode-notes.pdf>
--   <http://media.fngtps.com/audio/2006/rstm01-unicode_in_rails.m4a>
--   <http://woss.name/2006/10/25/migrating-your-rails-application-to-unicode/>
--   <http://ruby.org.ee/wiki/Unicode_in_Ruby/Rails>
--   <http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/>
--   <http://www.devpals.com/showthread.php?t=136>
+- <http://happygiraffe.net/presentations/rails-unicode/rails-unicode-notes.pdf>
+- <http://media.fngtps.com/audio/2006/rstm01-unicode_in_rails.m4a>
+- <http://woss.name/2006/10/25/migrating-your-rails-application-to-unicode/>
+- <http://ruby.org.ee/wiki/Unicode_in_Ruby/Rails>
+- <http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/>
+- <http://www.devpals.com/showthread.php?t=136>

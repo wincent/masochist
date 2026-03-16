@@ -6,4 +6,4 @@ tags: wiki
 
 # Official site
 
--   <http://www.openpgp.org/>
+- <http://www.openpgp.org/>

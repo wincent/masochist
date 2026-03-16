@@ -5,9 +5,9 @@ cache_breaker: 1
 
 ## Links
 
--   <http://search.cpan.org/dist/ack/>: official site
--   <http://cpanratings.perl.org/dist/ack>: comments and reviews
--   <http://www.perladvent.org/2006/5/>: a fairly detailed review with screenshots
+- <http://search.cpan.org/dist/ack/>: official site
+- <http://cpanratings.perl.org/dist/ack>: comments and reviews
+- <http://www.perladvent.org/2006/5/>: a fairly detailed review with screenshots
 
 ## The `.ackrc` file
 
@@ -21,4 +21,4 @@ Add a `haml` type. Without this your `.haml` files won't get scanned unless you 
 
 ## See also
 
--   My first-time install notes: "[Installing Ack 1.86 on Mac OS X Leopard 10.5.5](/wiki/Installing_Ack_1.86_on_Mac_OS_X_Leopard_10.5.5)"
+- My first-time install notes: "[Installing Ack 1.86 on Mac OS X Leopard 10.5.5](/wiki/Installing_Ack_1.86_on_Mac_OS_X_Leopard_10.5.5)"

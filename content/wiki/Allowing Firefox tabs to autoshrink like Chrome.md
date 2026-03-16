@@ -14,4 +14,4 @@ As noted in that post:
 
 # See also
 
--   [Forcing new Firefox tabs to open to the right of the current tab](/wiki/Forcing_new_Firefox_tabs_to_open_to_the_right_of_the_current_tab)
+- [Forcing new Firefox tabs to open to the right of the current tab](/wiki/Forcing_new_Firefox_tabs_to_open_to_the_right_of_the_current_tab)

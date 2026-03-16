@@ -37,12 +37,12 @@ Thank god for filters. Set your mail client to route all messages from **drunken
 
 Seeing as it hasn't yet gotten through Mr "Batman's" thickened skull, I'll share with him what I believe are the appropriate means of disclosing a vulnerability. Here are some simple steps in "do's and don'ts" format:
 
-1.  _Do_ report the vulnerability to the vendor.
-2.  _Do_ make a public announcement at an appropriate time if and only if you feel it's in the public interest.
-3.  _Do_ provide a reproducible test case, but only to those who are interested: don't ram it down people's throats by trying to remotely exploit vulnerabilities on their computers without warning.
-4.  _Don't_ send emails to specific individuals that disapprove of your conduct (see point 3) in an attempt to cause crashes; for the braindead (that's you, Mr "Batman): this is just as nasty as writing a virus, worm or a trojan.
-5.  If you fail in your first attempt to cause a crash on your target's computer, _don't_ come trying again using low-level spammer tricks; you shouldn't be doing it in the first place.
-6.  If you're upset with your vendor, _do_ feel free to complain about it or write a rational criticism; but being upset is no excuse to start acting like an asshole.
+1. _Do_ report the vulnerability to the vendor.
+2. _Do_ make a public announcement at an appropriate time if and only if you feel it's in the public interest.
+3. _Do_ provide a reproducible test case, but only to those who are interested: don't ram it down people's throats by trying to remotely exploit vulnerabilities on their computers without warning.
+4. _Don't_ send emails to specific individuals that disapprove of your conduct (see point 3) in an attempt to cause crashes; for the braindead (that's you, Mr "Batman): this is just as nasty as writing a virus, worm or a trojan.
+5. If you fail in your first attempt to cause a crash on your target's computer, _don't_ come trying again using low-level spammer tricks; you shouldn't be doing it in the first place.
+6. If you're upset with your vendor, _do_ feel free to complain about it or write a rational criticism; but being upset is no excuse to start acting like an asshole.
 
 The first message in full:
 

@@ -19,4 +19,4 @@ $ sudo gem pristine json
 
 # See also
 
--   <http://blog.zenspider.com/2011/05/rubygems-18-is-coming.html>
+- <http://blog.zenspider.com/2011/05/rubygems-18-is-coming.html>

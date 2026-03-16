@@ -38,8 +38,8 @@ Much more useful would be the ability for [SVK](/wiki/SVK) to work with [Subvers
 
 The question then becomes, what should [SVK](/wiki/SVK) do when it encounters such a path?
 
--   Should it automatically use the local mirror corresponding to that [Subversion](/wiki/Subversion) path (offering to create the mirror if it doesn't yet exist)?
--   Should it use another mirror dedicated exclusively to that particular instance of `svn:externals`?
+- Should it automatically use the local mirror corresponding to that [Subversion](/wiki/Subversion) path (offering to create the mirror if it doesn't yet exist)?
+- Should it use another mirror dedicated exclusively to that particular instance of `svn:externals`?
 
 The first approach is probably the most straightforward and most closely matches the existing behaviour of [Subversion externals](/wiki/Subversion_externals).
 
@@ -47,12 +47,12 @@ The first approach is probably the most straightforward and most closely matches
 
 From a user perspective, the [SVK](/wiki/SVK) commands which would need to be updated are:
 
--   `svk co`: The client should check out any `svn:externals` referenced in the code that is being checked out.
--   `svk st`: The client should separately show the status of the checked out working copy and that of any nested `svn:externals`.
--   `svk up`: The client should update not only the checked out working copy but also any nested `svn:externals`.
--   `svk ci`: When checking in code the client should act on only one thing at a time: either the checked out working copy _or_ a nested `svn:externals`; this matches the behaviours of the [Subversion](/wiki/Subversion) client which insists that all commits be atomic and cannot guarantee that a commit to more than two repositories will be atomic.
+- `svk co`: The client should check out any `svn:externals` referenced in the code that is being checked out.
+- `svk st`: The client should separately show the status of the checked out working copy and that of any nested `svn:externals`.
+- `svk up`: The client should update not only the checked out working copy but also any nested `svn:externals`.
+- `svk ci`: When checking in code the client should act on only one thing at a time: either the checked out working copy _or_ a nested `svn:externals`; this matches the behaviours of the [Subversion](/wiki/Subversion) client which insists that all commits be atomic and cannot guarantee that a commit to more than two repositories will be atomic.
 
 # See also
 
--   [Working around the lack of svn:externals support in SVK](/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK)
--   Initial response to this article by [Chia-Liang Kao](/wiki/Chia-Liang_Kao): <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000787.html>
+- [Working around the lack of svn:externals support in SVK](/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK)
+- Initial response to this article by [Chia-Liang Kao](/wiki/Chia-Liang_Kao): <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000787.html>

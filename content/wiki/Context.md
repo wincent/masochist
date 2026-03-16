@@ -6,4 +6,4 @@ tags: context wiki
 
 # See also
 
--   Official [Git](/wiki/Git) repository: <http://github.com/jeremymcanally/context/tree/master>
+- Official [Git](/wiki/Git) repository: <http://github.com/jeremymcanally/context/tree/master>

@@ -50,9 +50,9 @@ Left-recursion is always a fatal error and so requires that the grammar be modif
 
 Note the following:
 
--   Addition and multiplication are left-associative due to repetition (`*`)
--   Exponentiation is right-associative due to the tail recursion
--   Operator precedence is encoded in the nesting of the rules: as the rules nest deeper and deeper, the operator matched by the rule has a higher precedence (in this case the precedence, from lowest to highest, is `+`, `*`, `^`)
+- Addition and multiplication are left-associative due to repetition (`*`)
+- Exponentiation is right-associative due to the tail recursion
+- Operator precedence is encoded in the nesting of the rules: as the rules nest deeper and deeper, the operator matched by the rule has a higher precedence (in this case the precedence, from lowest to highest, is `+`, `*`, `^`)
 
 As can be seen in the arithmetic expression example above, other types of recursion are often fine. For example, if the recursed element is not the leftmost in an alternative then it is no longer left-recursive:
 

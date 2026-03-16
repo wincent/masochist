@@ -6,5 +6,5 @@ tags: aws ses wiki
 
 # Links
 
--   Official site: <http://aws.amazon.com/ses/>
--   Getting Started Guide: <http://docs.amazonwebservices.com/ses/latest/GettingStartedGuide>
+- Official site: <http://aws.amazon.com/ses/>
+- Getting Started Guide: <http://docs.amazonwebservices.com/ses/latest/GettingStartedGuide>

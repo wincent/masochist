@@ -13,20 +13,20 @@ Although there were some newer versions of installed modules available, none of 
 
 # Upgrade procedure
 
--   Run `sanitycheck.cgi` from within the browser.
--   In the "Parameters" section set `shutdownhtml` to a useful value:
+- Run `sanitycheck.cgi` from within the browser.
+- In the "Parameters" section set `shutdownhtml` to a useful value:
 
 <!-- -->
 
     Currently closed for maintenance, please check back again soon.
 
--   Back up the database:
+- Back up the database:
 
 <!-- -->
 
     mysqldump -u database_user -p database_name | bzip2 -c > bugzilla-3.0.sql.bz2
 
--   Back up the installed files:
+- Back up the installed files:
 
 <!-- -->
 
@@ -34,8 +34,8 @@ Although there were some newer versions of installed modules available, none of 
     sudo tar -c -v . > ~/bugzilla-2.22.2.tar
     gzip --verbose -9 ~/bugzilla-2.22.2.tar
 
--   (Optional): Upgrade installed [CPAN](/wiki/CPAN) modules for which newer versions are available. As I wanted this to be a conservative, minimally disruptive upgrade I skipped this step. For examples of what to do see "[Bugzilla 2.22.2 to 3.0 upgrade notes](/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes)".
--   Perform the actual update using [CVS](/wiki/CVS) ([CVS](/wiki/CVS) password is "anonymous"):
+- (Optional): Upgrade installed [CPAN](/wiki/CPAN) modules for which newer versions are available. As I wanted this to be a conservative, minimally disruptive upgrade I skipped this step. For examples of what to do see "[Bugzilla 2.22.2 to 3.0 upgrade notes](/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes)".
+- Perform the actual update using [CVS](/wiki/CVS) ([CVS](/wiki/CVS) password is "anonymous"):
 
 <!-- -->
 
@@ -288,20 +288,20 @@ Output:
     cvs update: Updating template/en/extension
     cvs update: Updating template/en/extension/hook
 
--   Watch for conflicts during update; in the current case the following conflict was reported:
+- Watch for conflicts during update; in the current case the following conflict was reported:
 
 <!-- -->
 
     cvs update: conflict: globals.pl is modified but no longer in the repository
     C globals.pl
 
--   Fix conflicts; in the example case:
+- Fix conflicts; in the example case:
 
 <!-- -->
 
     rm globals.pl
 
--   Remove auxiliary files created due to the merge conflict:
+- Remove auxiliary files created due to the merge conflict:
 
 <!-- -->
 
@@ -310,7 +310,7 @@ Output:
     find . -name "\.#*" -and -type f
     find . -name "\.#*" -and -type f -ok rm "{}" \;
 
--   Run `checksetup.pl` from the command line:
+- Run `checksetup.pl` from the command line:
 
 <!-- -->
 
@@ -323,16 +323,16 @@ Partial output:
 
 So, after removing that:
 
--   Use my custom `repair-bugzilla.sh` to repair the ownership and permissions on the installed files.
--   In the "Parameters" section empty the `shutdownhtml` field. Like last time (see "[Bugzilla 2.22.2 to 3.0 upgrade notes](/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes)"), this failed due to permissions on the parent directory, so I manually did the following, and updated the `repair-bugzilla.sh` script to take care of this in the future:
+- Use my custom `repair-bugzilla.sh` to repair the ownership and permissions on the installed files.
+- In the "Parameters" section empty the `shutdownhtml` field. Like last time (see "[Bugzilla 2.22.2 to 3.0 upgrade notes](/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes)"), this failed due to permissions on the parent directory, so I manually did the following, and updated the `repair-bugzilla.sh` script to take care of this in the future:
 
 <!-- -->
 
     chmod 755 .
 
--   Run `sanitycheck.cgi` from within the browser.
--   Update parameters.
--   Test the installation.
+- Run `sanitycheck.cgi` from within the browser.
+- Update parameters.
+- Test the installation.
 
 # Future improvements
 
@@ -340,4 +340,4 @@ This process could be largely automated via a shell script.
 
 # See also
 
--   [Bugzilla 3.0.1](/wiki/Bugzilla_3.0.1) release notes: <http://www.bugzilla.org/releases/3.0.1/release-notes.html>
+- [Bugzilla 3.0.1](/wiki/Bugzilla_3.0.1) release notes: <http://www.bugzilla.org/releases/3.0.1/release-notes.html>

@@ -25,4 +25,4 @@ I've also made a script, `new-repository.sh` as a shortcut for this operation.
 
 # See also
 
--   [Creating a new Subversion repository](/wiki/Creating_a_new_Subversion_repository)
+- [Creating a new Subversion repository](/wiki/Creating_a_new_Subversion_repository)

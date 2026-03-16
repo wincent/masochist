@@ -5,9 +5,9 @@ cache_breaker: 1
 
 # Links
 
--   Project information page: <http://rubyforge.org/projects/rubygems/>
--   Manuals: <http://rubygems.org/>
--   Wikipedia article: <http://en.wikipedia.org/wiki/RubyGems>
+- Project information page: <http://rubyforge.org/projects/rubygems/>
+- Manuals: <http://rubygems.org/>
+- Wikipedia article: <http://en.wikipedia.org/wiki/RubyGems>
 
 # Notes
 

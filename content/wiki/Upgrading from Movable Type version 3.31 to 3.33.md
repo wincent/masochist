@@ -19,8 +19,8 @@ As has happened on previous occasions with downloads from Six Apart, the receive
 
 The "upgrade" procedure basically amounts to something very close to re-installing all over again.
 
--   Upgrade instructions (apparently out of date): <http://www.sixapart.com/movabletype/docs/mtupgrade>
--   "Installation Guide": <http://www.sixapart.com/movabletype/docs/Movable_Type_Installation-Upgrade_Guide.pdf>
+- Upgrade instructions (apparently out of date): <http://www.sixapart.com/movabletype/docs/mtupgrade>
+- "Installation Guide": <http://www.sixapart.com/movabletype/docs/Movable_Type_Installation-Upgrade_Guide.pdf>
 
 In the section, "Configuring an Upgrade Installation", the Installation Guide provides information on how to upgrade "to Movable Type Enterprise from an existing Movable Type installation". It says it is "an easy process" and that "simply" requires you to "follow the steps". It says nothing about upgrading from one release of Movable Type to the next. The key "step" is described as follows:
 
@@ -30,13 +30,13 @@ That's all. No more detail provided. No references to the non-enterprise version
 
 # Detailed upgrade procedure
 
-1.  Backup the Movable Type database and installed files on the remote host.
-2.  Rename old Movable Type installation on the local host (for example, to `mt-old`).
-3.  Put the new files in place on the local host as `mt`.
-4.  Copy custom files into `mt`.
-5.  Use [Interarchy](/wiki/Interarchy) to perform a mirror upload (uploading in-place over the old files should preserve their permissions). The purchase price of Interarchy is probably justified by the usefulness of this feature alone (together with "Auto Uploads", it is an amazing time saver). Interarchy provides a detailed transcript of activity so that you can monitor progress, as well as a report of what was actually changed (see below).
-6.  Hit `mt-upgrade.cgi` in your web browser
-7.  For security, remove `mt-upgrade.cgi` from the server
+1. Backup the Movable Type database and installed files on the remote host.
+2. Rename old Movable Type installation on the local host (for example, to `mt-old`).
+3. Put the new files in place on the local host as `mt`.
+4. Copy custom files into `mt`.
+5. Use [Interarchy](/wiki/Interarchy) to perform a mirror upload (uploading in-place over the old files should preserve their permissions). The purchase price of Interarchy is probably justified by the usefulness of this feature alone (together with "Auto Uploads", it is an amazing time saver). Interarchy provides a detailed transcript of activity so that you can monitor progress, as well as a report of what was actually changed (see below).
+6. Hit `mt-upgrade.cgi` in your web browser
+7. For security, remove `mt-upgrade.cgi` from the server
 
 <!-- -->
 
@@ -69,8 +69,8 @@ I neglected to copy some of my custom files and so was forced to restore from a 
 
 Of these deleted files, some were custom files that I neglected to copy into my local `mt` folder before starting the mirror so it was necessary to restore these from backup:
 
--   mt-config.cgi
--   plugins/Markdown.pl
+- mt-config.cgi
+- plugins/Markdown.pl
 
 One file that Interarchy did _not_ delete even though it was not present on the local side was the `.htaccess` file that I use to limit access to the `mt-config.cgi` file:
 
@@ -266,6 +266,6 @@ One file that Interarchy did _not_ delete even though it was not present on the 
 
 # See also
 
--   Release announcement: <http://www.sixapart.com/movabletype/news/2006/09/mt_333-mte_103_updates.html>
--   "Professional Network blog" announcement: <http://www.sixapart.com/pronet/weblog/2006/09/mt_333-mte_103_patches.html>
--   Previous upgrade notes: [Movable Type 3.2 to 3.31 upgrade notes](/wiki/Movable_Type_3.2_to_3.31_upgrade_notes)
+- Release announcement: <http://www.sixapart.com/movabletype/news/2006/09/mt_333-mte_103_updates.html>
+- "Professional Network blog" announcement: <http://www.sixapart.com/pronet/weblog/2006/09/mt_333-mte_103_patches.html>
+- Previous upgrade notes: [Movable Type 3.2 to 3.31 upgrade notes](/wiki/Movable_Type_3.2_to_3.31_upgrade_notes)

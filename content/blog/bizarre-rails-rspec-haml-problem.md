@@ -8,25 +8,25 @@ Not really sure what's going on here but I've run into some really bizarre break
 
 Here's what my work over the last few hours has looked like:
 
-1.  Confirm that all [specs](/wiki/specs) are passing
-2.  Make a bugfix, including specs to catch any future regressions
-3.  Confirm that all specs pass
-4.  Commit changes
-5.  Upgrade to [RSpec 1.1.4](/wiki/RSpec_1.1.4)
-6.  Fix breakage to specs caused by changes in 1.1.4
-7.  Confirm that all specs are passing again
-8.  Commit changes
-9.  Upgrade to [Haml 2.0](/wiki/Haml_2.0)
+1. Confirm that all [specs](/wiki/specs) are passing
+2. Make a bugfix, including specs to catch any future regressions
+3. Confirm that all specs pass
+4. Commit changes
+5. Upgrade to [RSpec 1.1.4](/wiki/RSpec_1.1.4)
+6. Fix breakage to specs caused by changes in 1.1.4
+7. Confirm that all specs are passing again
+8. Commit changes
+9. Upgrade to [Haml 2.0](/wiki/Haml_2.0)
 10. Confirm that all specs are still passing
 11. Commit changes
 12. Make use of Haml 2.0's "ugly" option
 13. Confirm that all specs are still passing
 14. Commit changes
 15. Drop use of `preserve` helper made redundant by recent changes to Haml; really this part consisted of multiple steps:
-    1.  Search for `preserve` in [TextMate](/wiki/TextMate)'s project-wide search
-    2.  Get out-of-memory warning because it tried to search the log files which were far too big
-    3.  Delete the log files
-    4.  Perform the search again and make the substitutions
+    1. Search for `preserve` in [TextMate](/wiki/TextMate)'s project-wide search
+    2. Get out-of-memory warning because it tried to search the log files which were far too big
+    3. Delete the log files
+    4. Perform the search again and make the substitutions
 16. Run the specs and note that there are zillions of failures, all of them relating to [RSpec](/wiki/RSpec)'s mocks returning `nil` values rather than the requested return values
 17. Drop back to previous commit and note that those specs fail as well (these were the same specs and the same code that previously worked)
 18. Note that the specs _do_ work when run from a single file within [TextMate](/wiki/TextMate); `ruby the_spec.rb` and `spec the_spec.rb` also work, although `spec the_spec_dir` doesn't

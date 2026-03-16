@@ -43,8 +43,8 @@ To access the parent of an element _n_.
 
 See:
 
--   _Tidier drawings of trees_: <http://emr.cs.iit.edu/~reingold/tidier-drawings.pdf>
+- _Tidier drawings of trees_: <http://emr.cs.iit.edu/~reingold/tidier-drawings.pdf>
 
 # Variants of binary trees
 
--   [Rope](/wiki/Rope): <http://en.wikipedia.org/wiki/Rope_%28data_structure%29>
+- [Rope](/wiki/Rope): <http://en.wikipedia.org/wiki/Rope_%28data_structure%29>

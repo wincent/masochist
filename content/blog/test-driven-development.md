@@ -7,9 +7,9 @@ I've previously written about [my love affair with Object-Oriented Templating](h
 
 But there are a few minor problems with Cheetah:
 
--   It doesn't have a `#super` directive.
--   It doesn't look in a template's directory to find parents in the inheritance chain, requiring environment variables to be set and ruling out the placement of templates in subdirectories.
--   And finally, it's written in Python; that's a problem for me because I only know enough Python to read and make basic sense of it but not enough to actually write any meaningful Python or tackle the task of working on Cheetah's largish code-base to address these concerns.
+- It doesn't have a `#super` directive.
+- It doesn't look in a template's directory to find parents in the inheritance chain, requiring environment variables to be set and ruling out the placement of templates in subdirectories.
+- And finally, it's written in Python; that's a problem for me because I only know enough Python to read and make basic sense of it but not enough to actually write any meaningful Python or tackle the task of working on Cheetah's largish code-base to address these concerns.
 
 If only Cheetah were written in Ruby... I've dabbled in Ruby enough to at least be able to try _modifying_ Ruby code even though I am pretty slow at bashing out clean-room code myself (requiring constant consultation of the documentation).
 

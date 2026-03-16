@@ -8,16 +8,16 @@ Just ran into a surprising conflict between [the "canonical", recommended way](h
 
 ### How caching works
 
-          # this is the meat of the rails page caching config
-          # it adds .html to the end of the url and then checks
-          # the filesystem for that file. If it exists, then we
-          # rewite the url to have explicit .html on the end
-          # and then send it on its way to the next config rule.
-          # if there is no file on the fs then it sets all the
-          # necessary headers and proxies to our upstream mongrels
-          if (-f $request_filename.html) {
-            rewrite (.*) $1.html break;
-          }
+    # this is the meat of the rails page caching config
+    # it adds .html to the end of the url and then checks
+    # the filesystem for that file. If it exists, then we
+    # rewite the url to have explicit .html on the end
+    # and then send it on its way to the next config rule.
+    # if there is no file on the fs then it sets all the
+    # necessary headers and proxies to our upstream mongrels
+    if (-f $request_filename.html) {
+      rewrite (.*) $1.html break;
+    }
 
 The basic idea is that if you request `/products`, nginx will first check to see if there is a `/products.html` file on the disk. If so, that gets served up directly and nginx doesn't even touch Rails. Very fast. On the other hand, if it's not there then nginx connects upstream to your Rails app.
 
@@ -29,11 +29,11 @@ So, up till now I'd never been bitten by the inherent conflict between this meth
 
 Well, today I set up page caching for the [HTML](/wiki/HTML) format for the first time and I ran into problems.
 
-1.  Request `/products` for first time.
-2.  `/products.html` is written out to disk.
-3.  Visit `/products/new`, fill out the form, and click "Submit".
-4.  The browser makes a POST request to the `/products` URL.
-5.  nginx checks to see if `/products.html` exists, and it does, but POSTing to a static HTML file on disk doesn't make any sense, so it returns a 405 "Not Allowed" error.
+1. Request `/products` for first time.
+2. `/products.html` is written out to disk.
+3. Visit `/products/new`, fill out the form, and click "Submit".
+4. The browser makes a POST request to the `/products` URL.
+5. nginx checks to see if `/products.html` exists, and it does, but POSTing to a static HTML file on disk doesn't make any sense, so it returns a 405 "Not Allowed" error.
 
 In other words, once you've page-cached the HTML for the "index" action, you can no longer perform the "create" action.
 
@@ -41,9 +41,9 @@ In other words, once you've page-cached the HTML for the "index" action, you can
 
 What are our options here?
 
--   Forget about page-caching the HTML format of the "index" action?
--   Set up some alternative, non-RESTful route for performing the "create" action?
--   Make nginx only check for on-disk files for GET requests?
+- Forget about page-caching the HTML format of the "index" action?
+- Set up some alternative, non-RESTful route for performing the "create" action?
+- Make nginx only check for on-disk files for GET requests?
 
 Of those three options, the latter one leaps off the page as the most desirable one.
 
@@ -51,8 +51,8 @@ I check the [nginx wiki](http://wiki.codemongers.com/NginxHttpRewriteModule#if) 
 
 But it turns out that the `if` directive can't be nested, and it doesn't support `&&` or `and`, which would allow you to combine the two conditions that you are interested in:
 
-1.  That the request method is GET; and
-2.  That there exists a cached HTML version of the resource on disk.
+1. That the request method is GET; and
+2. That there exists a cached HTML version of the resource on disk.
 
 In other words, this won't work:
 

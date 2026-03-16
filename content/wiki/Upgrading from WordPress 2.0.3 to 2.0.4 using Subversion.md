@@ -21,9 +21,9 @@ A less reckless upgrade procedure is described below, which includes making a ba
 
 Given that in recent versions the [WordPress](/wiki/WordPress) team hasn't always maintained an [up-to-date set of tags](https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php) in their [Subversion](/wiki/Subversion) repository, it is a good idea to check that recent changes in the `trunk`, `branches` and `tags` directories on the repository all match up. At the time of [the 2.0.4 release announcement](http://wordpress.org/development/2006/07/wordpress-204/) all three directories appeared to be in sync:
 
--   <http://svn.automattic.com/wordpress/tags/2.0.4/>
--   <http://svn.automattic.com/wordpress/branches/2.0/>
--   <http://svn.automattic.com/wordpress/trunk/>
+- <http://svn.automattic.com/wordpress/tags/2.0.4/>
+- <http://svn.automattic.com/wordpress/branches/2.0/>
+- <http://svn.automattic.com/wordpress/trunk/>
 
 I checked using the following commands:
 
@@ -158,5 +158,5 @@ One by one.
 
 # See also
 
--   [WordPress](/wiki/WordPress) 2.0.4 release announcement: <http://wordpress.org/development/2006/07/wordpress-204/>
--   [Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion](/wiki/Upgrading_from_WordPress_2.0.4_to_2.0.5_using_Subversion)
+- [WordPress](/wiki/WordPress) 2.0.4 release announcement: <http://wordpress.org/development/2006/07/wordpress-204/>
+- [Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion](/wiki/Upgrading_from_WordPress_2.0.4_to_2.0.5_using_Subversion)

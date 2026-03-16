@@ -9,4 +9,4 @@ $ sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.Spotlight.plis
 
 # See also
 
--   <http://hints.macworld.com/article.php?story=20071102215912892>
+- <http://hints.macworld.com/article.php?story=20071102215912892>

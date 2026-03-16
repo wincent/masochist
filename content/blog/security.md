@@ -13,7 +13,9 @@ Tools like [`brew`](https://brew.sh) make it absurdly easy to install third-part
 And then there are the language ecosystems, each with its own package manager. Sampling a couple of small web apps on my machine, I find one[^masochist] with 33,265 files in its `node_modules` directory and another[^another] with 21,361. Note I said "small". These are not complex apps. They use React and number of related runtime and dev packages. Taking a non-web example that uses npm (well [Yarn](https://github.com/yarnpkg/berry)), even [my dotfiles repo](https://github.com/wincent/wincent) has 253 files in its `node_modules`, and that's a project where I've tried to keep [my JS dependencies](https://github.com/wincent/wincent/blob/c20d3db2b2c340013eaf8ce5a2927ff187f09dd8/package.json#L15-L21) to a bare minimum[^submodules].
 
 [^masochist]: [Masochist](https://github.com/wincent/masochist).
+
 [^another]: I can't link to this one as it's private.
+
 [^submodules]: And while my npm footprint is small there, I have around 70 submodules in the repo, and the file count across those is over 7.5K.
 
 At the GUI level, I'm far less worried, although I recognize that it's no longer true — if it ever was — that "you don't have to worry about viruses and malware unless you're on Windows". I spend most of my time in the terminal or in the browser, and the other apps I use — few in number — are either provided by Apple or some other megacorp (with the attendant security measures, which are imperfect but better than nothing), installed via the App Store (again, with some layer of filtering via the approval process, which presumably includes some kind of static analysis), or are from third-parties who have built up my trust over a period of time. None of this is bullet-proof, but the surface area is relatively limited, and it doesn't feel like the Swiss-cheese command-line environment, with its barn-door-sized holes.

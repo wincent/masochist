@@ -4,11 +4,11 @@ tags: development macos wiki
 
 The official [Apple](/wiki/Apple) documentation comes in the form of [Technote 2137](/wiki/Technote_2137):
 
--   <http://developer.apple.com/technotes/tn2005/tn2137.html>
+- <http://developer.apple.com/technotes/tn2005/tn2137.html>
 
 And this article, "Building an Open Source Universal Binary":
 
--   <http://developer.apple.com/opensource/buildingopensourceuniversal.html>
+- <http://developer.apple.com/opensource/buildingopensourceuniversal.html>
 
 The former basically boils down to adding `-arch i386 -arch ppc` to your `CFLAGS` and `LDFLAGS`. It briefly mentions that for complex projects it may be necessary to perform two separate builds and then merge them using the `lipo` tool.
 
@@ -18,11 +18,11 @@ The latter uses the [OpenSSL](/wiki/OpenSSL) project as an example, and involves
 
 [This excellent message](http://lists.apple.com/archives/Xcode-users/2007/Jan/msg00308.html) from Apple's Bill Bumgarner (posted in January 2007) makes the following excellent points:
 
--   On the method described in Technote 2137: "It will only yield a correct result in semi-rare cases. Exceedingly simple code is likely to work, but I would only trust code that has a good set of unit tests (that provide decent coverage)."
--   "However, autoconf was not designed to build universal binaries. Not by a long shot. It actually works against universal binaries in that it really wants to create a compilation environment targeted to a particular architecture."
--   "Like I said before, autoconf \*does\* support cross compilation, but many many projects effectively disable cross compilation due to the way that they use autoconf."
--   "What I have done is to convert opensource projects into proper Xcode projects using the Xcode native build system. This has the advantage of also leveraging the indexer, code sense, and the like during development."
--   "This, of course, requires some work. Typically, you need to throw together the equivalent of a config.h that uses [\#ifdef](/tags/ifdef) to switch between the various architecture variants."
+- On the method described in Technote 2137: "It will only yield a correct result in semi-rare cases. Exceedingly simple code is likely to work, but I would only trust code that has a good set of unit tests (that provide decent coverage)."
+- "However, autoconf was not designed to build universal binaries. Not by a long shot. It actually works against universal binaries in that it really wants to create a compilation environment targeted to a particular architecture."
+- "Like I said before, autoconf \*does\* support cross compilation, but many many projects effectively disable cross compilation due to the way that they use autoconf."
+- "What I have done is to convert opensource projects into proper Xcode projects using the Xcode native build system. This has the advantage of also leveraging the indexer, code sense, and the like during development."
+- "This, of course, requires some work. Typically, you need to throw together the equivalent of a config.h that uses [\#ifdef](/tags/ifdef) to switch between the various architecture variants."
 
 Syd Polk, who also works for [Apple](/wiki/Apple) further adds in [this post](http://lists.apple.com/archives/Xcode-users/2006/Jul/msg00628.html):
 
@@ -56,4 +56,4 @@ Syd Polk, who also works for [Apple](/wiki/Apple) further adds in [this post](ht
 
 # Other documentation
 
--   "Compiling for Multiple CPU Architectures": <http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/compiling/chapter_4_section_3.html>
+- "Compiling for Multiple CPU Architectures": <http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/compiling/chapter_4_section_3.html>

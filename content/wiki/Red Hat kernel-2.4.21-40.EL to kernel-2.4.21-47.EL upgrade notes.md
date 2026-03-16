@@ -726,4 +726,4 @@ It turns out that the system update broke my [Bugzilla](/wiki/Bugzilla) install 
 
 # See also
 
--   [Red Hat Enterprise Linux kernel update procedure](/wiki/Red_Hat_Enterprise_Linux_kernel_update_procedure)
+- [Red Hat Enterprise Linux kernel update procedure](/wiki/Red_Hat_Enterprise_Linux_kernel_update_procedure)

@@ -12,16 +12,16 @@ A Subversion repository is a centralized store containing all the files and dire
 
 The benefits of using a version control system like Subversion include:
 
--   Serves as an off-site backup for valuable project files
--   Allows multiple people to work on a project at the same time and share their changes
--   Allows even a single developer working alone to work on a project using several different machines and keep all the versions synchronized
--   Provides a convenient way of rolling back undesired changes
--   Encourages a disciplined working methodology in which a developer works on discrete problems and solves them one by one
--   Provides a convenient way of visualizing and inspecting changes in an evolving code base
--   Provides a convenient way of accepting modifications to a code base ("[diffs](/wiki/diffs)") from third parties
--   Provides a powerful mechanism for [branching](/wiki/branching) a code base and maintaining branches (although note that until recently Subversion only provided half of the picture — the other half, [merging](/wiki/merging), was hideously neglected — and it still trails fair behind the [distributed version control systems](/wiki/distributed_version_control_systems) in this area)
--   Provides a convenient way of [tagging](/wiki/tagging) a code base in a certain state (like taking a "snapshot") and going back to that state at any time in the future
--   Intrinsically maintains of logs of changes to a project (due to the presence of "commit" messages for each change)
+- Serves as an off-site backup for valuable project files
+- Allows multiple people to work on a project at the same time and share their changes
+- Allows even a single developer working alone to work on a project using several different machines and keep all the versions synchronized
+- Provides a convenient way of rolling back undesired changes
+- Encourages a disciplined working methodology in which a developer works on discrete problems and solves them one by one
+- Provides a convenient way of visualizing and inspecting changes in an evolving code base
+- Provides a convenient way of accepting modifications to a code base ("[diffs](/wiki/diffs)") from third parties
+- Provides a powerful mechanism for [branching](/wiki/branching) a code base and maintaining branches (although note that until recently Subversion only provided half of the picture — the other half, [merging](/wiki/merging), was hideously neglected — and it still trails fair behind the [distributed version control systems](/wiki/distributed_version_control_systems) in this area)
+- Provides a convenient way of [tagging](/wiki/tagging) a code base in a certain state (like taking a "snapshot") and going back to that state at any time in the future
+- Intrinsically maintains of logs of changes to a project (due to the presence of "commit" messages for each change)
 
 # Subversion and Wincent products
 
@@ -35,15 +35,15 @@ As of March 2010, however, the Subversion repositories were officially withdrawn
 
 Products for which public Subversion repositories existed include:
 
--   [atosym](/wiki/atosym)
--   [Bansshee](/wiki/Bansshee)
--   [Walrus](/wiki/Walrus)
--   [Wincent Build Tools](/wiki/Wincent_Build_Tools)
--   [Wincent Strings Utility](/wiki/Wincent_Strings_Utility)
--   [WOTest](/wiki/WOTest)
+- [atosym](/wiki/atosym)
+- [Bansshee](/wiki/Bansshee)
+- [Walrus](/wiki/Walrus)
+- [Wincent Build Tools](/wiki/Wincent_Build_Tools)
+- [Wincent Strings Utility](/wiki/Wincent_Strings_Utility)
+- [WOTest](/wiki/WOTest)
 
 All of these projects have been migrated over to [Git](/wiki/Git).
 
 # See also
 
--   Official [Subversion](/wiki/Subversion) website: <http://subversion.tigris.org/>
+- Official [Subversion](/wiki/Subversion) website: <http://subversion.tigris.org/>

@@ -6,4 +6,4 @@ A [Domain Specific Language](/wiki/Domain_Specific_Language) or [DSL](/wiki/DSL)
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [DSLs](/wiki/DSLs): <http://en.wikipedia.org/wiki/Domain-specific_programming_language>
+- [Wikipedia](/wiki/Wikipedia) article on [DSLs](/wiki/DSLs): <http://en.wikipedia.org/wiki/Domain-specific_programming_language>

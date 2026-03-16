@@ -34,8 +34,8 @@ As a temporary workaround I performed the backup as the [MySQL](/wiki/MySQL) roo
 
 So I standardized things; each wiki needs two users:
 
-1.  The user that accesses the wiki database when somebody explores the wiki using a web browser: this user has no special privileges in the user table, and only the defaults in the database table ("Select", "Insert", "Update", "Delete").
-2.  A user with slightly higher privileges that is used for backups and for running maintenance scripts: this user will have the privileges, "Select", "Insert", "Update", "Delete", "Create", "Drop", "References", "Index", "Alter", "Create temp" and "Lock".
+1. The user that accesses the wiki database when somebody explores the wiki using a web browser: this user has no special privileges in the user table, and only the defaults in the database table ("Select", "Insert", "Update", "Delete").
+2. A user with slightly higher privileges that is used for backups and for running maintenance scripts: this user will have the privileges, "Select", "Insert", "Update", "Delete", "Create", "Drop", "References", "Index", "Alter", "Create temp" and "Lock".
 
 Note that as documented in "[UBB.threads 6.5.1.1 to 7.0 upgrade notes](/wiki/UBB.threads_6.5.1.1_to_7.0_upgrade_notes)" it is necessary to use the `OLD_PASSWORD` trick when creating new users, because the version of [PHP](/wiki/PHP) that is shipped with my version [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) is linked against an older version of [MySQL](/wiki/MySQL).
 
@@ -232,5 +232,5 @@ Output:
 
 # See also
 
--   1.6.9 release notes: <http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_6_9/phase3/RELEASE-NOTES>
--   Official [MediaWiki](/wiki/MediaWiki) notes on [Subversion](/wiki/Subversion)-based upgrades: <http://www.mediawiki.org/wiki/Download_from_SVN>
+- 1.6.9 release notes: <http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_6_9/phase3/RELEASE-NOTES>
+- Official [MediaWiki](/wiki/MediaWiki) notes on [Subversion](/wiki/Subversion)-based upgrades: <http://www.mediawiki.org/wiki/Download_from_SVN>

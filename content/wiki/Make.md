@@ -6,6 +6,6 @@ tags: development wiki
 
 # See also
 
--   [GNU](/wiki/GNU) Make: <http://www.gnu.org/software/make/>
--   [Wikipedia](/wiki/Wikipedia) article on [make](/wiki/make): <http://en.wikipedia.org/wiki/Make_%28software%29>
--   [Ruby](/wiki/Ruby)'s make: [Rake](/wiki/Rake)
+- [GNU](/wiki/GNU) Make: <http://www.gnu.org/software/make/>
+- [Wikipedia](/wiki/Wikipedia) article on [make](/wiki/make): <http://en.wikipedia.org/wiki/Make_%28software%29>
+- [Ruby](/wiki/Ruby)'s make: [Rake](/wiki/Rake)

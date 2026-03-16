@@ -21,7 +21,7 @@ $ git cherry -v master rails3
 
 Notes:
 
--   without the `-v` (verbose) option, the output it not so useful to the human reader, as you only see the hashes, not the commit subject lines
--   the list comprises all commits which exist on the topic (`rails3`) and do not exist on the upstream (`master`)
--   commits whose equivalent change exists upstream are prefixed with a `-` (each change-set or diff has a patch ID; if a commit with the same patch ID exists upstream but has a different SHA-1 hash, it will be labelled like this)
--   commits with no equivalent upstream are prefixed with a `+`
+- without the `-v` (verbose) option, the output it not so useful to the human reader, as you only see the hashes, not the commit subject lines
+- the list comprises all commits which exist on the topic (`rails3`) and do not exist on the upstream (`master`)
+- commits whose equivalent change exists upstream are prefixed with a `-` (each change-set or diff has a patch ID; if a commit with the same patch ID exists upstream but has a different SHA-1 hash, it will be labelled like this)
+- commits with no equivalent upstream are prefixed with a `+`

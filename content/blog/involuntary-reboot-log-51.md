@@ -7,9 +7,9 @@ Woke up this morning and the machine was up, the screensaver running with the cl
 
 Looks like we can add "placing mobile phone in proximity when alarm goes off", "disturbing air in room", and "unusual sunspot activity" to the list of things which will cause this machine to panic.
 
--   Kernel panics: 26
--   Hard resets: 25
--   Total failures: 51
--   Start of recording keeping: 21 May 2006
--   Total days to date: 963 days
--   Average time between failures: 18.88 days
+- Kernel panics: 26
+- Hard resets: 25
+- Total failures: 51
+- Start of recording keeping: 21 May 2006
+- Total days to date: 963 days
+- Average time between failures: 18.88 days

@@ -6,8 +6,8 @@ Learning [ANTLR](/wiki/ANTLR) has been one of the hardest programming challenges
 
 The reason for this is the following:
 
--   It is very easy to write a grammar that _describes_ a language; or to put it another way, that specifies how to _generate_ valid sentences in a language
--   It is not so easy to write a parser generator that can take such a grammar and turn it into a recognizer; that is, something that knows how to _recognize_ valid sentences in a language.
+- It is very easy to write a grammar that _describes_ a language; or to put it another way, that specifies how to _generate_ valid sentences in a language
+- It is not so easy to write a parser generator that can take such a grammar and turn it into a recognizer; that is, something that knows how to _recognize_ valid sentences in a language.
 
 So, [ANTLR](/wiki/ANTLR) provides you with a simple yet powerful language for writing descriptive grammars (that specify how to generate valid sentences); but on the other hand, [ANTLR](/wiki/ANTLR) cannot necessarily turn such a grammar into a parser capable of recognizing valid sentences. So this leads us to two classes of grammars: those that describe how to generate valid sentences, and those that describe how to recognize them. In an ideal world both would be exactly the same but in the real world things are different; in order to write grammars that [ANTLR](/wiki/ANTLR) can turn into functioning recognizers you need to have a detailed understanding of exactly what [ANTLR](/wiki/ANTLR) is, how it works, and what kind of recognizers it generates.
 
@@ -40,13 +40,13 @@ This article is my attempt at providing a high-level overview of how [ANTLR](/wi
 
 [ANTLR](/wiki/ANTLR) generates top-down, recursive-descent, LL recognizers. Key points:
 
--   The LL nature of the parser means that you can't do left-recursion; this can be worked around but the key point is that you can forget about direct left-recursion.
--   The generated recognizers are _predictive_: this means that they use lookahead to examine the input and once they have decided what is predicted by that input the attempt to consume it; an exception is raised if the input does not fulfill the prediction.
--   The prediction is done use a [DFA](/wiki/DFA) which means that it can recognize regular language constructs (repetition is fine but not recursion).
--   You can still parse recursive languages, but in cases where the _prediction_ itself requires recursion you have to provide some help in the form of [predicates](/wiki/predicates).
--   The prediction is done in the name of efficiency (to avoid trying and backtracking); but you can do backtracking on an as-needs basis.
+- The LL nature of the parser means that you can't do left-recursion; this can be worked around but the key point is that you can forget about direct left-recursion.
+- The generated recognizers are _predictive_: this means that they use lookahead to examine the input and once they have decided what is predicted by that input the attempt to consume it; an exception is raised if the input does not fulfill the prediction.
+- The prediction is done use a [DFA](/wiki/DFA) which means that it can recognize regular language constructs (repetition is fine but not recursion).
+- You can still parse recursive languages, but in cases where the _prediction_ itself requires recursion you have to provide some help in the form of [predicates](/wiki/predicates).
+- The prediction is done in the name of efficiency (to avoid trying and backtracking); but you can do backtracking on an as-needs basis.
 
 # See also
 
--   [ANTLR lexers in depth](/wiki/ANTLR_lexers_in_depth)
--   [ANTLR prediction](/wiki/ANTLR_prediction)
+- [ANTLR lexers in depth](/wiki/ANTLR_lexers_in_depth)
+- [ANTLR prediction](/wiki/ANTLR_prediction)

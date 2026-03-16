@@ -2,8 +2,8 @@
 tags: clamav wiki
 ---
 
--   Download `clamav-0.90.2.tar.gz` from <http://www.clamav.net/download/sources>
--   Build:
+- Download `clamav-0.90.2.tar.gz` from <http://www.clamav.net/download/sources>
+- Build:
 
 <!-- -->
 
@@ -13,14 +13,14 @@ tags: clamav wiki
     make
     make check
 
--   Backup old configuration:
+- Backup old configuration:
 
 <!-- -->
 
     sudo cp /etc/freshclam.conf /etc/freshclam.conf.old
     sudo cp /etc/clamd.conf /etc/clamd.conf.old
 
--   Uninstall old version, install new version:
+- Uninstall old version, install new version:
 
 <!-- -->
 
@@ -30,7 +30,7 @@ tags: clamav wiki
     sudo make install
     sudo ldconfig -v
 
--   Post install checks:
+- Post install checks:
 
 <!-- -->
 
@@ -50,4 +50,4 @@ tags: clamav wiki
 
 # See also
 
--   Official upgrade instructions: <http://wiki.clamav.net/Main/UpgradeInstructions>
+- Official upgrade instructions: <http://wiki.clamav.net/Main/UpgradeInstructions>

@@ -4,9 +4,9 @@ tags: warcraft wiki
 
 # Official site
 
--   <http://worldofwarcraft.com/>
+- <http://worldofwarcraft.com/>
 
 # Databases
 
--   <http://thottbot.com/>
--   <http://wow.allakhazam.com/>
+- <http://thottbot.com/>
+- <http://wow.allakhazam.com/>

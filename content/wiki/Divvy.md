@@ -5,4 +5,4 @@ cache_breaker: 1
 
 # Official site
 
--   <http://mizage.com/divvy/>
+- <http://mizage.com/divvy/>

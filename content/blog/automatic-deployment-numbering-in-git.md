@@ -50,8 +50,8 @@ In the specific context of a web application that is deployed to a central locat
 
 So this would indeed work for very specific projects which meet the following criteria:
 
--   is a web application (or a non-web application for which the notion of "deployment" makes sense)
--   deployment may occur only to a specific, central location; in other words, it makes sense for an application like the one running this site but not for an open source weblog platform like [Mephisto](http://mephistoblog.com/) which is deployed by many
+- is a web application (or a non-web application for which the notion of "deployment" makes sense)
+- deployment may occur only to a specific, central location; in other words, it makes sense for an application like the one running this site but not for an open source weblog platform like [Mephisto](http://mephistoblog.com/) which is deployed by many
 
 In these cases it's not all that different from manually bumping the revision number in [Git](/wiki/Git) itself; it's just that it happens automatically. I don't know if I deploy often enough to warrant automating this tagging process, but I think it's an interesting idea. The tags I currently use are really just for my own use (so that my deployed versions stand out when I review the history using `gitk`, but it might be worth extending my deployment process to spit this info out into the deployment directory somewhere and make it visible in the interface.
 
@@ -70,8 +70,8 @@ This is what it looks like:
 
 It's by no means perfect but it does get the job done:
 
--   this gives me version numbers like 0.8, 0.9, 0.10, 0.11 and so on; when the code base goes [open source](/wiki/open_source) I'll evidently end up having to change this system and go back to manually tagging "real" releases again
--   it assumes that the latest tagged commit is the latest tag; a necessary evil given that `git rev-list` outputs in reverse-chronological order based on commit dates, not tag dates
--   you might think that this would cause problems if you deploy a version from December on the `master` branch and later decide to deploy an older version from November's `maint` branch, but in practice this is unlikely to come up because...
--   it only applies a new tag if the deployed commit doesn't already have one; so this means that you can deploy version "0.x", then "0.x+1", and end up rolling back to "0.x" without any problems
--   it suits the linear nature of this kind of web development fairly nicely (most development on single branch, no real need to maintain parallel branches for long periods of time etc)
+- this gives me version numbers like 0.8, 0.9, 0.10, 0.11 and so on; when the code base goes [open source](/wiki/open_source) I'll evidently end up having to change this system and go back to manually tagging "real" releases again
+- it assumes that the latest tagged commit is the latest tag; a necessary evil given that `git rev-list` outputs in reverse-chronological order based on commit dates, not tag dates
+- you might think that this would cause problems if you deploy a version from December on the `master` branch and later decide to deploy an older version from November's `maint` branch, but in practice this is unlikely to come up because...
+- it only applies a new tag if the deployed commit doesn't already have one; so this means that you can deploy version "0.x", then "0.x+1", and end up rolling back to "0.x" without any problems
+- it suits the linear nature of this kind of web development fairly nicely (most development on single branch, no real need to maintain parallel branches for long periods of time etc)

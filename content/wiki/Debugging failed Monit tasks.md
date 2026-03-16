@@ -16,4 +16,4 @@ $ /bin/env PATH=/rails-user-home/bin:/sbin:/bin:/usr/sbin:/usr/bin \
 
 # Source
 
--   <http://stackoverflow.com/questions/3356476/debugging-monit>
+- <http://stackoverflow.com/questions/3356476/debugging-monit>

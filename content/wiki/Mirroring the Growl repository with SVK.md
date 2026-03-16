@@ -18,8 +18,8 @@ With a local branch that limitation no longer applies because you can commit cha
 
 About two years ago when I introduced [Growl](/wiki/Growl) support in [Synergy](/wiki/Synergy) I had to make such local changes to correct breakage caused by [Growl](/wiki/Growl) when I couldn't wait for the next official release. The [Growl](/wiki/Growl) codebase is now fairly stable so this kind of emergency action is unlikely to be required, but it is nice to know that one can conveniently do so if required. With a local branch you can:
 
-1.  Perform local modifications.
-2.  If upstream fixes are committed to the remote repository, revert your local changes and pull down the remote fixes.
+1. Perform local modifications.
+2. If upstream fixes are committed to the remote repository, revert your local changes and pull down the remote fixes.
 
 # Initial mirroring
 
@@ -55,12 +55,12 @@ In the nightly builds (and in regular development) a local copy can now be check
 
 ## Deviations of my branch from the official 0.7 branch
 
--   Framework version number is "0.7.6+" (official branch is mislabelled as "0.7.5" anyway).
--   Renamed "Deployment" target to "Release" to bring naming in line with current [Apple](/wiki/Apple) conventions.
--   Target [Tiger](/wiki/Tiger) for both [PowerPC](/wiki/PowerPC) and [Intel](/wiki/Intel) builds (to match [Synergy Advance](/wiki/Synergy_Advance)).
--   Prebinding turned off (causes warnings on [Tiger](/wiki/Tiger)).
--   Set built product and build intermediates directories as relative paths.
+- Framework version number is "0.7.6+" (official branch is mislabelled as "0.7.5" anyway).
+- Renamed "Deployment" target to "Release" to bring naming in line with current [Apple](/wiki/Apple) conventions.
+- Target [Tiger](/wiki/Tiger) for both [PowerPC](/wiki/PowerPC) and [Intel](/wiki/Intel) builds (to match [Synergy Advance](/wiki/Synergy_Advance)).
+- Prebinding turned off (causes warnings on [Tiger](/wiki/Tiger)).
+- Set built product and build intermediates directories as relative paths.
 
 # See also
 
--   <http://growl.info/documentation/developer/growl-source-install.php>
+- <http://growl.info/documentation/developer/growl-source-install.php>

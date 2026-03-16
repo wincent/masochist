@@ -33,29 +33,29 @@ Rails 2.3 didn't use [Bundler](/wiki/Bundler), and neither had I bothered trying
 
 In a normal deploy the sequence runs like this:
 
-1.  Deploy the new version
-2.  Migrate the test database
-3.  Run the spec suite
-4.  If the specs pass, get ready to really go live with the new version:
-    1.  Throw up a maintenance page
-    2.  Migrate the production database
-    3.  Update your symlinks to point at the just-deployed files
-    4.  Restart your application server
-    5.  Remove the maintenance page
+1. Deploy the new version
+2. Migrate the test database
+3. Run the spec suite
+4. If the specs pass, get ready to really go live with the new version:
+   1. Throw up a maintenance page
+   2. Migrate the production database
+   3. Update your symlinks to point at the just-deployed files
+   4. Restart your application server
+   5. Remove the maintenance page
 
 In this case, however, I have to make some tweaks because the move includes a new database adapter (Rails 3 uses the [mysql2](/wiki/mysql2) gem by default for new apps, so I decided to switch over at the same time seeing as I am already changing everything else).
 
 This means I can't migrate the test database without first changing my `config/database.yml`, and I can't change that without potentially impacting the live site (for example, if [Monit](/wiki/Monit) decides top restart the application server while I'm working). So the sequence for this deployment will be:
 
-1.  Deploy the new version
-2.  Throw up the maintenance page
-3.  Tweak `config/database.yml`
-4.  Migrate the test database
-5.  Run the spec suite
-6.  Migrate the production database
-7.  Update the symlinks
-8.  Restart the application server
-9.  Remove the maintenance page
+1. Deploy the new version
+2. Throw up the maintenance page
+3. Tweak `config/database.yml`
+4. Migrate the test database
+5. Run the spec suite
+6. Migrate the production database
+7. Update the symlinks
+8. Restart the application server
+9. Remove the maintenance page
 
 # Unicorn
 
@@ -71,9 +71,9 @@ Well, this is exactly the problem Bundler is designed to solve, so what the heck
 
 So this makes the upgrade pattern look like this:
 
-1.  Edit `/etc/monitrc` to let [Monit](/wiki/Monit) know about the new path to the `unicorn` executable, in a shared `BUNDLE_PATH` location (it needs to be a shared location so Monit can reliably start up Unicorn as different versions are deployed and potentially rolled back).
-2.  Deploy, so that Unicorn gets installed where Monit will look for it.
-3.  Send Monit the `HUP` signal so that it will re-read its configuration file.
+1. Edit `/etc/monitrc` to let [Monit](/wiki/Monit) know about the new path to the `unicorn` executable, in a shared `BUNDLE_PATH` location (it needs to be a shared location so Monit can reliably start up Unicorn as different versions are deployed and potentially rolled back).
+2. Deploy, so that Unicorn gets installed where Monit will look for it.
+3. Send Monit the `HUP` signal so that it will re-read its configuration file.
 
 # Memcache
 
@@ -83,20 +83,20 @@ I had a lot of trouble building the [memcache](/wiki/memcache) Gem on the server
 
 The problem was twofold:
 
--   It would only build if `--disable-64bit CFLAGS='-march=i686'` was passed to `./configure`
--   Setting that up with `bundle config build.memcache` didn't work because the memcache gem ignores any special settings passed in on the [command line](/wiki/command_line); note that this means that a manual build using `gem install memcache -- --my-custom-flags-here` wouldn't work either
+- It would only build if `--disable-64bit CFLAGS='-march=i686'` was passed to `./configure`
+- Setting that up with `bundle config build.memcache` didn't work because the memcache gem ignores any special settings passed in on the [command line](/wiki/command_line); note that this means that a manual build using `gem install memcache -- --my-custom-flags-here` wouldn't work either
 
 ## Workaround 1
 
 This was my first attempt; it worked, but was hideously ugly, so I continued searching for a better solution:
 
-1.  Run `bundle install` and watch it fail
-2.  `cd` into the `BUNDLE_PATH` and the directory containing the unpacked memcache gem
-3.  Hack the `extconf.rb` file to include the needed arguments to `configure`
-4.  Build using `ruby extconf.rb && make`
-5.  Get up to the directory inside `BUNDLE_PATH` where the `cache` and `specification` folders are (ie. `cd ../../..`)
-6.  Manually generate a gemspec so that Bundler can "see" that the gem is installed (ie. `gem spec cache/memcache-1.2.12.gem --ruby > specifications/memcache-1.2.12.gemspec`)
-7.  Repeat `bundle install` and watch it work (it won't try to reinstall or rebuild the memcache gem)
+1. Run `bundle install` and watch it fail
+2. `cd` into the `BUNDLE_PATH` and the directory containing the unpacked memcache gem
+3. Hack the `extconf.rb` file to include the needed arguments to `configure`
+4. Build using `ruby extconf.rb && make`
+5. Get up to the directory inside `BUNDLE_PATH` where the `cache` and `specification` folders are (ie. `cd ../../..`)
+6. Manually generate a gemspec so that Bundler can "see" that the gem is installed (ie. `gem spec cache/memcache-1.2.12.gem --ruby > specifications/memcache-1.2.12.gemspec`)
+7. Repeat `bundle install` and watch it work (it won't try to reinstall or rebuild the memcache gem)
 
 ## Workaround 2
 
@@ -142,10 +142,10 @@ $ bundle config build.memcache --disable-64-bit "CFLAGS=\'-march=i686\'"
 
 A couple of other issues did pop-up, but they were cases of [PEBKAC](/wiki/PEBKAC) more than anything else:
 
--   I forgot to name my outgoing mailer templates with an extension of `.text.erb`, so they ended up going out marked as `text/html` rather than `text/plain` (under Rails 2 they had just had `.erb` as their extension)
+- I forgot to name my outgoing mailer templates with an extension of `.text.erb`, so they ended up going out marked as `text/html` rather than `text/plain` (under Rails 2 they had just had `.erb` as their extension)
 
 And this one, which has really nothing to do with Rails 3 at all:
 
--   Ignorance led me to add my `db/schema.rb` to my `.gitignore` file a long time ago, and lack of vigilance meant that the the column types in my local and remote databases gradually drifted out of sync sufficiently that some new code worked perfectly locally and passed all specs, but exploded on the production server
+- Ignorance led me to add my `db/schema.rb` to my `.gitignore` file a long time ago, and lack of vigilance meant that the the column types in my local and remote databases gradually drifted out of sync sufficiently that some new code worked perfectly locally and passed all specs, but exploded on the production server
 
 Those were really the only hiccups I encountered in the deployment; not bad at all considering it is the biggest deployment I've ever done, apart from the initial launch of the site several years ago.

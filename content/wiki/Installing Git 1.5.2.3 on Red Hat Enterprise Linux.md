@@ -41,5 +41,5 @@ My first attempt at installing didn't work because of a period in my `CDPATH` en
 
 # See also
 
--   [Installing Git 1.5.2.3 on Mac OS X Tiger](/wiki/Installing_Git_1.5.2.3_on_Mac_OS_X_Tiger)
--   [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)
+- [Installing Git 1.5.2.3 on Mac OS X Tiger](/wiki/Installing_Git_1.5.2.3_on_Mac_OS_X_Tiger)
+- [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)

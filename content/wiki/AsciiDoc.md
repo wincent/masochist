@@ -7,8 +7,8 @@ cache_breaker: 1
 
 # Official site
 
--   <http://www.methods.co.nz/asciidoc/>
+- <http://www.methods.co.nz/asciidoc/>
 
 # See also
 
--   [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)
+- [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)

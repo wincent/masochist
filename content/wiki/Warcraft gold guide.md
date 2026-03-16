@@ -54,9 +54,9 @@ One exception to this rule is manufacturable quest items. If an item is needed f
 
 For very high level items things get a little more complicated. There are some items which are very coveted and very difficult to make and they'll fetch insanely high prices in the auction house. You'll need to use Auctioneer here to help you figure out what the quickest way to make a profit is:
 
--   selling the materials directly
--   buying the materials yourself (if they're not too expensive) and then selling the produced item
--   collecting the materials yourself (if they are too expensive) and then selling the produced item
+- selling the materials directly
+- buying the materials yourself (if they're not too expensive) and then selling the produced item
+- collecting the materials yourself (if they are too expensive) and then selling the produced item
 
 You'll need to weigh up the costs (both money and time) and the possible profit margins.
 

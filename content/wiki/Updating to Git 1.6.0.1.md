@@ -136,5 +136,5 @@ I tried playing with the `--exec-path` setting in `/etc/xinetd.d/git` without su
 
 Should have noticed that `git-shell` also got moved in the change to 1.6.0. So the solution was:
 
-1.  Change `/usr/local/bin/git-shell` to `/usr/local/libexec/git-core/git-shell` in `/etc/shells`
-2.  Change the shell for the user: `chsh -s /usr/local/libexec/git-core/git-shell wincenzo`
+1. Change `/usr/local/bin/git-shell` to `/usr/local/libexec/git-core/git-shell` in `/etc/shells`
+2. Change the shell for the user: `chsh -s /usr/local/libexec/git-core/git-shell wincenzo`

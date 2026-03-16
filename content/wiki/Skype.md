@@ -4,4 +4,4 @@ tags: skype wiki
 
 # Official site
 
--   <http://www.skype.com/>
+- <http://www.skype.com/>

@@ -7,11 +7,11 @@ cache_breaker: 1
 
 The basic cycle is:
 
-1.  Write a test which specifies the desired behaviour
-2.  Run the test; it should fail (this is an important step to confirm that you haven't accidentally written a faulty test which passes even when the application doesn't work)
-3.  Write the code which makes the test pass
-4.  Run the test; it should pass
+1. Write a test which specifies the desired behaviour
+2. Run the test; it should fail (this is an important step to confirm that you haven't accidentally written a faulty test which passes even when the application doesn't work)
+3. Write the code which makes the test pass
+4. Run the test; it should pass
 
 # See also
 
--   [Behaviour-Driven Development](/wiki/Behaviour-Driven_Development)
+- [Behaviour-Driven Development](/wiki/Behaviour-Driven_Development)

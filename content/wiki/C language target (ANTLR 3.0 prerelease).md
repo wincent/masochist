@@ -15,9 +15,9 @@ Specify the target language in the `options` block:
 
 To run [ANTLR](/wiki/ANTLR) from the [command line](/wiki/command_line) you must set up the `CLASSPATH` environment variable correctly. For example, on my system where [ANTLR](/wiki/ANTLR) 3.0b7 is installed under `/usr/local/` I have the following in my `CLASSPATH`:
 
--   `/usr/local/antlr/lib/antlr-3.0b7.jar`
--   `/usr/local/antlr/lib/antlr-2.7.7.jar`
--   `/usr/local/antlr/lib/stringtemplate-3.0.jar`
+- `/usr/local/antlr/lib/antlr-3.0b7.jar`
+- `/usr/local/antlr/lib/antlr-2.7.7.jar`
+- `/usr/local/antlr/lib/stringtemplate-3.0.jar`
 
 I set this in my [Bash](/wiki/Bash) shell with the following command:
 
@@ -35,61 +35,61 @@ Given a grammar file, `Walrus.g`:
 
 Produces the following files:
 
--   `Walrus.tokens`
--   `WalrusLexer.c`
--   `WalrusLexer.h`
--   `WalrusParser.c`
--   `WalrusParser.h`
--   `Walrus__.g`
+- `Walrus.tokens`
+- `WalrusLexer.c`
+- `WalrusLexer.h`
+- `WalrusParser.c`
+- `WalrusParser.h`
+- `Walrus__.g`
 
 The lexer header contains information about how to actually use it; for example, an extremely simple lexer with only a few different token types yields:
 
-     * The lexer WalrusLexerhas the callable functions (rules) shown below,
-     * which will invoke the code for the associated rule in the source grammar
-     * assuming that the input stream is pointing to a token/text stream that could begin
-     * this rule.
-     *
-     * For instance if you call the first (topmost) rule in a parser grammar, you will
-     * get the results of a full parse, but calling a rule half way through the grammar will
-     * allow you to pass part of a full token stream to the parser, such as for syntax checking
-     * in editors and so on.
-     *
-     * The parser entry points are called indirectly (by function pointer to function) via
-     * a parser context typedef pWalrusLexer, which is returned from a call to WalrusLexerNew().
-     *
-     * As this is a generated lexer, it is unlikely you will call it 'manually'. However
-     * the entry points are provided anyway.
-     * * The entry points for WalrusLexer are  as follows:
-     *
-     *  - void      pWalrusLexer->SPECIAL_CHAR(pWalrusLexer)
-     *  - void      pWalrusLexer->RAW_TEXT(pWalrusLexer)
-     *  - void      pWalrusLexer->WALRUS_ESCAPE_SEQUENCE(pWalrusLexer)
-     *  - void      pWalrusLexer->Tokens(pWalrusLexer)
-     *
-     * The return type for any particular rule is of course determined by the source
-     * grammar file.
+    * The lexer WalrusLexerhas the callable functions (rules) shown below,
+    * which will invoke the code for the associated rule in the source grammar
+    * assuming that the input stream is pointing to a token/text stream that could begin
+    * this rule.
+    *
+    * For instance if you call the first (topmost) rule in a parser grammar, you will
+    * get the results of a full parse, but calling a rule half way through the grammar will
+    * allow you to pass part of a full token stream to the parser, such as for syntax checking
+    * in editors and so on.
+    *
+    * The parser entry points are called indirectly (by function pointer to function) via
+    * a parser context typedef pWalrusLexer, which is returned from a call to WalrusLexerNew().
+    *
+    * As this is a generated lexer, it is unlikely you will call it 'manually'. However
+    * the entry points are provided anyway.
+    * * The entry points for WalrusLexer are  as follows:
+    *
+    *  - void      pWalrusLexer->SPECIAL_CHAR(pWalrusLexer)
+    *  - void      pWalrusLexer->RAW_TEXT(pWalrusLexer)
+    *  - void      pWalrusLexer->WALRUS_ESCAPE_SEQUENCE(pWalrusLexer)
+    *  - void      pWalrusLexer->Tokens(pWalrusLexer)
+    *
+    * The return type for any particular rule is of course determined by the source
+    * grammar file.
 
 And here is the parser header for an extremely simple parser with only one rule:
 
-     * The parser WalrusParserhas the callable functions (rules) shown below,
-     * which will invoke the code for the associated rule in the source grammar
-     * assuming that the input stream is pointing to a token/text stream that could begin
-     * this rule.
-     *
-     * For instance if you call the first (topmost) rule in a parser grammar, you will
-     * get the results of a full parse, but calling a rule half way through the grammar will
-     * allow you to pass part of a full token stream to the parser, such as for syntax checking
-     * in editors and so on.
-     *
-     * The parser entry points are called indirectly (by function pointer to function) via
-     * a parser context typedef pWalrusParser, which is returned from a call to WalrusParserNew().
-     *
-     * The entry points for WalrusParser are  as follows:
-     *
-     *  - WalrusParser_anything_return      pWalrusParser->anything(pWalrusParser)
-     *
-     * The return type for any particular rule is of course determined by the source
-     * grammar file.
+    * The parser WalrusParserhas the callable functions (rules) shown below,
+    * which will invoke the code for the associated rule in the source grammar
+    * assuming that the input stream is pointing to a token/text stream that could begin
+    * this rule.
+    *
+    * For instance if you call the first (topmost) rule in a parser grammar, you will
+    * get the results of a full parse, but calling a rule half way through the grammar will
+    * allow you to pass part of a full token stream to the parser, such as for syntax checking
+    * in editors and so on.
+    *
+    * The parser entry points are called indirectly (by function pointer to function) via
+    * a parser context typedef pWalrusParser, which is returned from a call to WalrusParserNew().
+    *
+    * The entry points for WalrusParser are  as follows:
+    *
+    *  - WalrusParser_anything_return      pWalrusParser->anything(pWalrusParser)
+    *
+    * The return type for any particular rule is of course determined by the source
+    * grammar file.
 
 ## Compiling the generated C code
 
@@ -110,13 +110,13 @@ At least in 3.0b7 the [ANTLR](/wiki/ANTLR) C runtime libraries are not shipped i
 
 This installs the following libraries:
 
--   `/usr/local/lib/libantlr3c.dylib`
--   `/usr/local/lib/libantlr3c.la`
--   `/usr/local/lib/libantlr3c.a`
+- `/usr/local/lib/libantlr3c.dylib`
+- `/usr/local/lib/libantlr3c.la`
+- `/usr/local/lib/libantlr3c.a`
 
 As well as the headers in `/usr/local/include/`:
 
--   `/usr/local/include/antlr3.h` (and various others)
+- `/usr/local/include/antlr3.h` (and various others)
 
 Technically, I think it would be more correct if these were installed in `/usr/local/lib/antlr/` because there are quite a few of them.
 
@@ -135,10 +135,10 @@ A `main.c` file is required because otherwise the linker will complain about a m
 
 Now an example which actually does something:
 
--   Initialize a stream from a string at runtime
--   Check for errors
--   Manually invoke the lexer and print tokens one at a time
--   Invoke the parser (commented out; comment out the lexer instead to see what happens)
+- Initialize a stream from a string at runtime
+- Check for errors
+- Manually invoke the lexer and print tokens one at a time
+- Invoke the parser (commented out; comment out the lexer instead to see what happens)
 
 <!-- -->
 

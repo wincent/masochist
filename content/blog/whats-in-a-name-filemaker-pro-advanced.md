@@ -17,9 +17,9 @@ But adding _yet another_ adjective to form "FileMaker Pro 8 Advanced" when there
 
 Here's my free advice to FileMaker Inc: simplify your naming and center on the FileMaker brand. Dump the word "Pro" from the entire product range. In fact, dump the version number as well. It's good to know that you're currently shipping version 7, and that 8 will be coming out in the future, but there's no need to use the version number on every single page on your website. If you insist on having multiple versions of the same product go with this lineup:
 
--   FileMaker
--   FileMaker Server
--   FileMaker Developer
+- FileMaker
+- FileMaker Server
+- FileMaker Developer
 
 No need for "FileMaker Pro Mobile 7" (which runs on Palm OS and Pocket PC); just call it "FileMaker". Hard to see why you have "FileMaker Pro Server 7" and "FileMaker Pro Server 7 Advanced"; these should probably be collapsed into a single product. In fact, I'm not even sure I like the fact that you've got that client/server/developer distinction. I think it should be one product with a single name, "FileMaker". If you want to charge more for server licenses then go for it, but keep the unified name (it's good enough for [MySQL](http://www.mysql.com/), after all).
 

@@ -4,4 +4,4 @@ tags: ragel wiki
 
 # Links
 
--   Changelog: <http://www.complang.org/ragel/ChangeLog>
+- Changelog: <http://www.complang.org/ragel/ChangeLog>

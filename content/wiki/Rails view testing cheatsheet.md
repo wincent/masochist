@@ -5,10 +5,10 @@ cache_breaker: 1
 
 # Tools
 
--   [RSpec 2](/wiki/RSpec_2) (spec framework)
--   [RR](/wiki/RR) ([mocking](/wiki/mocking) library)
--   [Factory Girl](/wiki/Factory_Girl) ([object mother](/wiki/object_mother) library)
--   [Rails 3](/wiki/Rails_3) (application framework)
+- [RSpec 2](/wiki/RSpec_2) (spec framework)
+- [RR](/wiki/RR) ([mocking](/wiki/mocking) library)
+- [Factory Girl](/wiki/Factory_Girl) ([object mother](/wiki/object_mother) library)
+- [Rails 3](/wiki/Rails_3) (application framework)
 
 # Context and example naming
 
@@ -76,8 +76,8 @@ rendered.should have_selector('a[href="/issues/new"]', :content => 'link text')
 
 Options:
 
--   `:content` is optional and may be either a string or a regular expression
--   `:count` may also be supplied and accepts a number
+- `:content` is optional and may be either a string or a regular expression
+- `:count` may also be supplied and accepts a number
 
 Arbitrary attributes can be specified via the options hash:
 
@@ -180,25 +180,25 @@ There is also a milder variant of "outside-in" BDD, which doesn't require you to
 
 State-based testing can avoid some problems with using [test doubles](/wiki/test_doubles), such as:
 
--   Overhead: a potentially large amount of additional set-up must be performed to configure all the required mocks and stubs
--   Repetition: between implementation and spec, because the test doubles end up replicating the work done by the implementation but using a different "language"
--   Brittleness: due to the close ties to the implementation details, changes to the implementation may break the spec even if the externally-observable behavior of the template hasn't changed
--   Disconnection from actual API changes: because the test doubles stand between the view and the actual objects to be displayed, they can cause specs to spuriously continue passing in the face of API changes
+- Overhead: a potentially large amount of additional set-up must be performed to configure all the required mocks and stubs
+- Repetition: between implementation and spec, because the test doubles end up replicating the work done by the implementation but using a different "language"
+- Brittleness: due to the close ties to the implementation details, changes to the implementation may break the spec even if the externally-observable behavior of the template hasn't changed
+- Disconnection from actual API changes: because the test doubles stand between the view and the actual objects to be displayed, they can cause specs to spuriously continue passing in the face of API changes
 
 The state-based approach instead relies on an easy-to-use [object mother](/wiki/object_mother) to provide objects for the spec.
 
 Downsides of using object mothers here are:
 
--   They couple view specs to real model instances, so model failures can cascade and cause view spec failures
--   Involving real model instances may be noticeably slower for extremely large test suites
+- They couple view specs to real model instances, so model failures can cascade and cause view spec failures
+- Involving real model instances may be noticeably slower for extremely large test suites
 
 In general I prefer the state-based testing approach for views because of the speed and ease of writing specs. I also like the fact that the specs are "pure" in the sense that they are _only_ interested in the externally-observable behavior of the application, which is, by definition, the reason why we write code; this can actually be a useful design tool (if you find yourself writing code that has no externally-observable behavior, then it's quite possible that you shouldn't be writing the code). If and when performance starts to become a problem, emphasis can be shifted away from state-based testing.
 
 The basic pattern is:
 
-1.  Set up state beforehand (either in `before` block for state which is common to all examples, or inside the `it` block for example-specific state)
-2.  Call `render`
-3.  Check state afterwards
+1. Set up state beforehand (either in `before` block for state which is common to all examples, or inside the `it` block for example-specific state)
+2. Call `render`
+3. Check state afterwards
 
 # Behavior-Driven Development of views
 
@@ -210,19 +210,19 @@ I personally do write view specs, but I most definitely do not follow the rule t
 
 Instead, I add specs for all "significant" aspects of the template's behavior. "Significant" does not mean things like markup choices (ie. ordered or unordered lists), but it does mean things like:
 
--   which partials get rendered
--   what helper methods get called
--   what models, and what attributes on them, are shown
--   conditional display (ie. if the template should look significantly different depending on some variable criterion)
--   edge cases: things that might behave differently given extreme inputs
+- which partials get rendered
+- what helper methods get called
+- what models, and what attributes on them, are shown
+- conditional display (ie. if the template should look significantly different depending on some variable criterion)
+- edge cases: things that might behave differently given extreme inputs
 
 Merely aesthetic or presentational aspects of the template _are_ eligible for speccing if they can be considered actual bugs in the application.
 
 # Related
 
--   [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
--   [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
--   [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
--   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
--   [RR cheatsheet](/wiki/RR_cheatsheet)
--   [Steak cheatsheet](/wiki/Steak_cheatsheet)
+- [Rails model testing cheatsheet](/wiki/Rails_model_testing_cheatsheet)
+- [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
+- [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
+- [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
+- [RR cheatsheet](/wiki/RR_cheatsheet)
+- [Steak cheatsheet](/wiki/Steak_cheatsheet)

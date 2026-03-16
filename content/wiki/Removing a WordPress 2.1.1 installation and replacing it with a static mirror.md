@@ -16,6 +16,6 @@ And uploaded it to the server in the place of my [WordPress](/wiki/WordPress) in
 
 # See also
 
--   [Slashdot](/wiki/Slashdot) coverage of 2.1.1 incident: <http://it.slashdot.org/article.pl?sid=07/03/03/0427211>
--   [Netcraft](/wiki/Netcraft) coverage: <http://news.netcraft.com/archives/2007/03/03/wordpress_distribution_compromised_update_released.html>
--   Other reactions: <http://fukamachi.org/wp/2007/03/03/wordpress-211-dangerous-upgrade-to-212/>
+- [Slashdot](/wiki/Slashdot) coverage of 2.1.1 incident: <http://it.slashdot.org/article.pl?sid=07/03/03/0427211>
+- [Netcraft](/wiki/Netcraft) coverage: <http://news.netcraft.com/archives/2007/03/03/wordpress_distribution_compromised_update_released.html>
+- Other reactions: <http://fukamachi.org/wp/2007/03/03/wordpress-211-dangerous-upgrade-to-212/>

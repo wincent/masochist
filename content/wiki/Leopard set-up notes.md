@@ -4,40 +4,40 @@ tags: leopard wiki
 
 # Preferences
 
--   Appearance
-    -   Up "Recent items" to 50 each
--   Screensavers
-    -   Show clock
--   Spaces (System Preferences crashes)
-    -   Enable (2 rows, 2 columns)
-    -   Use Control-Option to switch spaces (Control alone is far too common)
--   Accounts
-    -   Remove old (Tiger) guest account
-    -   Set-up new (Leopard) guest account
--   Sound
-    -   Input
-        -   Use ambient noise reduction
--   Sharing
-    -   Turn off Bluetooth, File sharing
-    -   Turn on SSH
--   Software update
-    -   Search daily
--   Date and time
-    -   Turn on NTP updates
+- Appearance
+  - Up "Recent items" to 50 each
+- Screensavers
+  - Show clock
+- Spaces (System Preferences crashes)
+  - Enable (2 rows, 2 columns)
+  - Use Control-Option to switch spaces (Control alone is far too common)
+- Accounts
+  - Remove old (Tiger) guest account
+  - Set-up new (Leopard) guest account
+- Sound
+  - Input
+    - Use ambient noise reduction
+- Sharing
+  - Turn off Bluetooth, File sharing
+  - Turn on SSH
+- Software update
+  - Search daily
+- Date and time
+  - Turn on NTP updates
 
 # Developer tools
 
--   Install Xcode Tools
+- Install Xcode Tools
 
 # Other tools
 
--   LittleSnitch 2 public beta: <http://obdev.at/products/littlesnitch/public-beta.html>
--   Net Monitor <http://homepage.mac.com/rominar/net4.3.14.dmg>
--   Remove StuffIt "MagicMenu" from login items
+- LittleSnitch 2 public beta: <http://obdev.at/products/littlesnitch/public-beta.html>
+- Net Monitor <http://homepage.mac.com/rominar/net4.3.14.dmg>
+- Remove StuffIt "MagicMenu" from login items
 
 # `sudoers`
 
--   Add self back to sudoers file:
+- Add self back to sudoers file:
 
 <!-- -->
 
@@ -47,13 +47,13 @@ tags: leopard wiki
 
 # Set up backups
 
--   Set up cron job for automated backups of home directory (following instructions in `~/bin/homedir-backup.sh`)
+- Set up cron job for automated backups of home directory (following instructions in `~/bin/homedir-backup.sh`)
 
 <!-- -->
 
     sudo crontab -e
 
--   Confirm set-up:
+- Confirm set-up:
 
 <!-- -->
 
@@ -124,11 +124,11 @@ In most cases I already had a copy of the source archive for the latest version 
 
 # [MySQL](/wiki/MySQL)
 
--   See: <http://dev.mysql.com/doc/refman/5.0/en/installing-source.html>
+- See: <http://dev.mysql.com/doc/refman/5.0/en/installing-source.html>
 
 Get public key from:
 
--   <http://dev.mysql.com/doc/refman/5.0/en/checking-gpg-signature.html>
+- <http://dev.mysql.com/doc/refman/5.0/en/checking-gpg-signature.html>
 
 <!-- -->
 
@@ -215,8 +215,8 @@ The output of the `./configure --help` reveals the problem:
 
 At this point I have two options:
 
--   Create the directories that MySQL expects to find, like `PREFIX/var` (in this case that would be `/usr/local/var/`).
--   Rebuild after configuring using `--prefix=/usr/local/mysql` or similar.
+- Create the directories that MySQL expects to find, like `PREFIX/var` (in this case that would be `/usr/local/var/`).
+- Rebuild after configuring using `--prefix=/usr/local/mysql` or similar.
 
 In hindsight it would have been better to use a prefix like `/usr/local/mysql` all along and keep all the MySQL files in a single place, and make that place writable by the `mysql` user, but rebuilding now would mean leaving behind all the files previously installed at various points under `/usr/local/`.
 
@@ -255,14 +255,14 @@ It turns out that this still doesn't work:
 
 As you can see, the `--sharedstatedir` and `--localstatedir` configuration options seem to have no effect as MySQL is still looking inside `/usr/local/var/`. Running `mysql_config` prints:
 
-            --cflags         [-I/usr/local/include/mysql]
-            --include        [-I/usr/local/include/mysql]
-            --libs           [-L/usr/local/lib/mysql -lmysqlclient -lz -lm]
-            --libs_r         [-L/usr/local/lib/mysql -lmysqlclient_r -lz -lm]
-            --socket         [/tmp/mysql.sock]
-            --port           [3306]
-            --version        [5.0.45]
-            --libmysqld-libs [-L/usr/local/lib/mysql -lmysqld -lz -lm]
+    --cflags         [-I/usr/local/include/mysql]
+    --include        [-I/usr/local/include/mysql]
+    --libs           [-L/usr/local/lib/mysql -lmysqlclient -lz -lm]
+    --libs_r         [-L/usr/local/lib/mysql -lmysqlclient_r -lz -lm]
+    --socket         [/tmp/mysql.sock]
+    --port           [3306]
+    --version        [5.0.45]
+    --libmysqld-libs [-L/usr/local/lib/mysql -lmysqld -lz -lm]
 
 So I decided to wipe the slate clean and do it the way MySQL evidently wants me to:
 
@@ -327,7 +327,7 @@ Now things work on starting the server:
 
 For more notes on installing MySQL on Leopard, see:
 
--   <http://hivelogic.com/narrative/articles/installing-mysql-on-mac-os-x>
+- <http://hivelogic.com/narrative/articles/installing-mysql-on-mac-os-x>
 
 # Install and update [RubyGems](/wiki/RubyGems)
 

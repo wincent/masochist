@@ -18,10 +18,10 @@ Seeing as the final deployment will take place on a server running [MySQL](/wiki
 
 For the latest download [URL](/wiki/URL), see:
 
--   <http://mysql.com/>
--   <http://dev.mysql.com/downloads/mysql/>
--   <http://dev.mysql.com/downloads/mysql/4.1.html#macosx>
--   <http://dev.mysql.com/get/Downloads/MySQL-4.1/mysql-standard-4.1.22-apple-darwin8.5.1-i686.tar.gz/from/pick>
+- <http://mysql.com/>
+- <http://dev.mysql.com/downloads/mysql/>
+- <http://dev.mysql.com/downloads/mysql/4.1.html#macosx>
+- <http://dev.mysql.com/get/Downloads/MySQL-4.1/mysql-standard-4.1.22-apple-darwin8.5.1-i686.tar.gz/from/pick>
 
 This is a binary distribution so we extract directly to `/usr/local/` and proceed with the set-up:
 

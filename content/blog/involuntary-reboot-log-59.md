@@ -8,9 +8,9 @@ This time the Finder was [beachballing](/wiki/beachballing) repeatedly while try
 
 I. Cannot. Wait. To. Replace. This. Machine.
 
--   Kernel panics: 27
--   Hard resets: 32
--   Total failures: 59
--   Start of recording keeping: 21 May 2006
--   Total days to date: 1326 days
--   Average time between failures: 22.48 days
+- Kernel panics: 27
+- Hard resets: 32
+- Total failures: 59
+- Start of recording keeping: 21 May 2006
+- Total days to date: 1326 days
+- Average time between failures: 22.48 days

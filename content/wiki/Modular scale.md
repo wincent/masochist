@@ -9,9 +9,9 @@ We can superimpose another scale (using a different base value and ratio) to pro
 
 # Resources
 
--   Original talk by Tim Brown at Build 2010: <http://vimeo.com/17079380>
--   Tim's "A List Apart" article: <http://www.alistapart.com/articles/more-meaningful-typography/>
--   Tim's calculator: <http://modularscale.com/>
--   Dead simple example of using [Sass](/wiki/Sass) mix-ins to produce modular scaling: <http://mrandmrsok.com/blog/modular-scale-calculator-using-scss>
--   Full fledged Compass (RubyGem)/Sass (SCSS) modular scaling library: <https://github.com/scottkellum/modular-scale>
--   Typeplate take on modular scaling: <http://typeplate.com/#base-type>
+- Original talk by Tim Brown at Build 2010: <http://vimeo.com/17079380>
+- Tim's "A List Apart" article: <http://www.alistapart.com/articles/more-meaningful-typography/>
+- Tim's calculator: <http://modularscale.com/>
+- Dead simple example of using [Sass](/wiki/Sass) mix-ins to produce modular scaling: <http://mrandmrsok.com/blog/modular-scale-calculator-using-scss>
+- Full fledged Compass (RubyGem)/Sass (SCSS) modular scaling library: <https://github.com/scottkellum/modular-scale>
+- Typeplate take on modular scaling: <http://typeplate.com/#base-type>

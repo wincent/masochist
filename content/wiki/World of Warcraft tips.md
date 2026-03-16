@@ -14,11 +14,11 @@ Playing both the Horde and the Alliance can be fun.
 
 Pretty much exactly the same point here. There is no need to agonize over this choice because all classes are fun to play. Here are some of the nice things about the classes I've played so far:
 
--   Druid: Great first-character class as the druid has a feline form (allows you to play like a rogue), bear form (allows you to play like a warrior), travel form at level 30 (allows you to travel fast before getting to level 40 and getting your mount), and can play in the roles of healer or DPS (player who specializes in maximum Damage Per Second). This gives you a glimpse of many styles of play and can help you select what your next character will be. Above all, the constant shape changing is great fun and you won't get bored. When you die you get a spirit form that has a speed bonus so you'll spend less time journeying back to your corpse.
--   Hunter: Once you get your pet at level 10 you are from that point on basically always in a group; your pet is quite a dependable tank. This means that you can solo more missions and level up fast, and you won't die as often as other classes. You get a high-speed travel aspect at level 20, even sooner than the druid gets its travel form. Being a hunter combines really well with skinning, leather-working and cooking; you'll kill lots of beasts to get meat for your pet, you can cook it, and make your own armour.
--   Priest: The priest is a weakling compared to the other classes but its healing ability is its saving grace. You might think that you'll die more often as a priest because you're so weak but that's not true: you can heal yourself and in the early stages it is fairly easy to avoid dying. Once you get to a level where you can participate in instances you'll be in constant demand to join groups, so you'll get lots of treasure and level quickly.
--   Mage: Awesome DPS and the ability to make your own mana-restoring drinks make this a very fun class to play.
--   Warrior: Of the classes mentioned so far, the warrior is actually one of the least rewarding to play in the early levels. Basically you're only as good as your equipment and that can be hard to get at low levels. You will die often unless you're in a group, preferably with a healer. If your other characters find high-level weapons and armour, send them to your warrior through the in-game mail system.
+- Druid: Great first-character class as the druid has a feline form (allows you to play like a rogue), bear form (allows you to play like a warrior), travel form at level 30 (allows you to travel fast before getting to level 40 and getting your mount), and can play in the roles of healer or DPS (player who specializes in maximum Damage Per Second). This gives you a glimpse of many styles of play and can help you select what your next character will be. Above all, the constant shape changing is great fun and you won't get bored. When you die you get a spirit form that has a speed bonus so you'll spend less time journeying back to your corpse.
+- Hunter: Once you get your pet at level 10 you are from that point on basically always in a group; your pet is quite a dependable tank. This means that you can solo more missions and level up fast, and you won't die as often as other classes. You get a high-speed travel aspect at level 20, even sooner than the druid gets its travel form. Being a hunter combines really well with skinning, leather-working and cooking; you'll kill lots of beasts to get meat for your pet, you can cook it, and make your own armour.
+- Priest: The priest is a weakling compared to the other classes but its healing ability is its saving grace. You might think that you'll die more often as a priest because you're so weak but that's not true: you can heal yourself and in the early stages it is fairly easy to avoid dying. Once you get to a level where you can participate in instances you'll be in constant demand to join groups, so you'll get lots of treasure and level quickly.
+- Mage: Awesome DPS and the ability to make your own mana-restoring drinks make this a very fun class to play.
+- Warrior: Of the classes mentioned so far, the warrior is actually one of the least rewarding to play in the early levels. Basically you're only as good as your equipment and that can be hard to get at low levels. You will die often unless you're in a group, preferably with a healer. If your other characters find high-level weapons and armour, send them to your warrior through the in-game mail system.
 
 # Start on your professions early
 
@@ -38,9 +38,9 @@ At first these skills might just seem like novelties; it is generally fairly eas
 
 The moral of the story is simple:
 
--   Start working on your professions and secondary skills as soon as possible
--   Try to keep your different skills roughly in sync with one another
--   Grab all the secondary professions, not just one of them
+- Start working on your professions and secondary skills as soon as possible
+- Try to keep your different skills roughly in sync with one another
+- Grab all the secondary professions, not just one of them
 
 ## Combinations
 
@@ -60,8 +60,8 @@ In this way by the time you start to move outside of your start zone you should 
 
 Other combinations I have tried that have worked well are:
 
--   Warrior/Miner/Blacksmith: can create his or her own (chainmail) armour.
--   Hunter/Skinner/Leatherworker: once again can create his or her own (leather) armour; in addition you'll need to kill beasts for their meat (so you can feed your pet) and you can kill two birds with one stone by not only killing them for their meat but skinning them as well.
+- Warrior/Miner/Blacksmith: can create his or her own (chainmail) armour.
+- Hunter/Skinner/Leatherworker: once again can create his or her own (leather) armour; in addition you'll need to kill beasts for their meat (so you can feed your pet) and you can kill two birds with one stone by not only killing them for their meat but skinning them as well.
 
 # Add-ons
 

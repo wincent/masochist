@@ -55,4 +55,4 @@ tags: git wiki
 
 ## See also
 
--   [Upgrading to Git 1.5.5.3](/wiki/Upgrading_to_Git_1.5.5.3)
+- [Upgrading to Git 1.5.5.3](/wiki/Upgrading_to_Git_1.5.5.3)

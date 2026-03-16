@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Linux](/wiki/Linux): <http://en.wikipedia.org/wiki/Linux>
+- [Wikipedia](/wiki/Wikipedia) article on [Linux](/wiki/Linux): <http://en.wikipedia.org/wiki/Linux>

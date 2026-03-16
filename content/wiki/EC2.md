@@ -9,4 +9,4 @@ The abbreviation is the result of turning "[Elastic Compute Cloud](/wiki/Elastic
 
 # Links
 
--   Official [EC2](/wiki/EC2) site: <http://aws.amazon.com/ec2/>
+- Official [EC2](/wiki/EC2) site: <http://aws.amazon.com/ec2/>

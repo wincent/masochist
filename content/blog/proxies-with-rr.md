@@ -79,9 +79,9 @@ This is possible because in reality the only call that we need to "let through" 
 
 The situation here is a view spec which contains a partial, so:
 
--   We want to stub out the partial call to keep its effects out of the parent template's spec (the partial is itself tested in a different spec so there is no sense in testing it here, rather, it is better to keep the two templates isolated from each other, so that errors in the partial don't "bubble up" into the spec for the parent template)
--   Even though we don't want the contents of the partial to influence the parent template's specs, we do want to include one spec that mocks the partial call to confirm that the partial is actually called
--   We want all other `render` calls to be let through automatically
+- We want to stub out the partial call to keep its effects out of the parent template's spec (the partial is itself tested in a different spec so there is no sense in testing it here, rather, it is better to keep the two templates isolated from each other, so that errors in the partial don't "bubble up" into the spec for the parent template)
+- Even though we don't want the contents of the partial to influence the parent template's specs, we do want to include one spec that mocks the partial call to confirm that the partial is actually called
+- We want all other `render` calls to be let through automatically
 
 So this is what that looks like with RR:
 

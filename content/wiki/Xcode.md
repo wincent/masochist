@@ -6,4 +6,4 @@ tags: xcode wiki
 
 # See also
 
--   [Xcode tips](/wiki/Xcode_tips)
+- [Xcode tips](/wiki/Xcode_tips)

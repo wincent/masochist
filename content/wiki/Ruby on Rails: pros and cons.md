@@ -24,15 +24,15 @@ Every application comes with all the testing infrastructure built-in allowing yo
 
 [Rails](/wiki/Rails) is written in [Ruby](/wiki/Ruby), which delivers:
 
--   The [Object-Oriented](/wiki/Object-Oriented) purity of [Smalltalk](/wiki/Smalltalk)
--   Highly dynamic, like [Objective-C](/wiki/Objective-C) or [Smalltalk](/wiki/Smalltalk)
--   Allows you to write readable, [natural language](/wiki/natural_language)-like source code
--   Easy to write quick and powerful functionality in few lines of code (like [Perl](/wiki/Perl))
--   A clean, predictable, concise and flexible syntax
--   Not as whitespace-sensitive as [Python](/wiki/Python)
--   Stable, mature, reliable codebase
--   Quick and easy to learn
--   Excellent core documentation: <http://www.rubycentral.com/ref/>
+- The [Object-Oriented](/wiki/Object-Oriented) purity of [Smalltalk](/wiki/Smalltalk)
+- Highly dynamic, like [Objective-C](/wiki/Objective-C) or [Smalltalk](/wiki/Smalltalk)
+- Allows you to write readable, [natural language](/wiki/natural_language)-like source code
+- Easy to write quick and powerful functionality in few lines of code (like [Perl](/wiki/Perl))
+- A clean, predictable, concise and flexible syntax
+- Not as whitespace-sensitive as [Python](/wiki/Python)
+- Stable, mature, reliable codebase
+- Quick and easy to learn
+- Excellent core documentation: <http://www.rubycentral.com/ref/>
 
 # Things I don't like about Ruby on Rails
 
@@ -62,18 +62,18 @@ From IRC:
 
 So the rules of thumb are:
 
-1.  Call your controllers whatever you want
-2.  When using `generate scaffold`, Rails will create a singular model (compulsory) and a plural controller
-3.  When using `generate controller`, Rails will use whatever name you pass in
-4.  Therefore for consistency it is a good idea to pass a plural controller name in to `generate controller`
+1. Call your controllers whatever you want
+2. When using `generate scaffold`, Rails will create a singular model (compulsory) and a plural controller
+3. When using `generate controller`, Rails will use whatever name you pass in
+4. Therefore for consistency it is a good idea to pass a plural controller name in to `generate controller`
 
 ## Documentation shortcomings
 
 In general I find the documentation (<http://api.rubyonrails.org/>) too hard to navigate, cluttered and overly concise. Some attempts at filling the gaps are available elsewhere:
 
--   "[Four Days on Rails](http://www.rails4days.pwp.blueyonder.co.uk/Rails4Days.pdf)": <http://rails.homelinux.org/>
--   "[InVisible Ruby On Rails Reference 1.1.2](http://blog.invisible.ch/files/rails-reference-1.1.pdf)": <http://blog.invisible.ch/2006/05/01/ruby-on-rails-reference/>
--   "Ruby On Rails–A Cheatsheet": <http://www.blainekendall.com/uploads/RubyOnRails-Cheatsheet-BlaineKendall.pdf>
+- "[Four Days on Rails](http://www.rails4days.pwp.blueyonder.co.uk/Rails4Days.pdf)": <http://rails.homelinux.org/>
+- "[InVisible Ruby On Rails Reference 1.1.2](http://blog.invisible.ch/files/rails-reference-1.1.pdf)": <http://blog.invisible.ch/2006/05/01/ruby-on-rails-reference/>
+- "Ruby On Rails–A Cheatsheet": <http://www.blainekendall.com/uploads/RubyOnRails-Cheatsheet-BlaineKendall.pdf>
 
 ### How are booleans handled?
 

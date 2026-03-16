@@ -7,4 +7,4 @@ cache_breaker: 1
 
 ## Official site
 
--   <http://groupee.com/> (formerly <http://infopop.com/>)
+- <http://groupee.com/> (formerly <http://infopop.com/>)

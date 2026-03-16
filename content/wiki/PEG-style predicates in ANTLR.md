@@ -21,11 +21,11 @@ Apparently, [ANTLR](/wiki/ANTLR) can achieve the equivalent effect using a combi
 
 Paraphrased, this means:
 
--   At the outermost level we will match **bar** only if the [syntactic predicate](/wiki/syntactic_predicate) succeeds; the syntactic predicate consists of:
-    -   First trying to match **bar**
-    -   Then try to match **baz** using a nested syntactic predicate
-        -   If the nested predicate succeeds (not what we wanted), must fail; we do that using a [validating semantic predicate](/wiki/validating_semantic_predicate) which always evaluates to `false`
-        -   If the nested predicate fails (which is what we wanted), fall through to the alternative subrule, which is an empty match (the `|` followed by nothing) and will always succeed
+- At the outermost level we will match **bar** only if the [syntactic predicate](/wiki/syntactic_predicate) succeeds; the syntactic predicate consists of:
+  - First trying to match **bar**
+  - Then try to match **baz** using a nested syntactic predicate
+    - If the nested predicate succeeds (not what we wanted), must fail; we do that using a [validating semantic predicate](/wiki/validating_semantic_predicate) which always evaluates to `false`
+    - If the nested predicate fails (which is what we wanted), fall through to the alternative subrule, which is an empty match (the `|` followed by nothing) and will always succeed
 
 [Terence Parr](/wiki/Terence_Parr) notes the following about "not" predicates:
 
@@ -50,7 +50,7 @@ Using a similar trick to that already shown above, [ANTLR](/wiki/ANTLR) can achi
 
 It seems that this technique cannot be used for the reasons discussed in this mailing list post:
 
--   <http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021958.html>
+- <http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021958.html>
 
 In the thread [Jim Idle](/wiki/Jim_Idle) suggests the following workaround for the [C target](/wiki/C_target):
 
@@ -60,4 +60,4 @@ In the thread [Jim Idle](/wiki/Jim_Idle) suggests the following workaround for t
 
 # See also
 
--   [ANTLR predicates](/wiki/ANTLR_predicates)
+- [ANTLR predicates](/wiki/ANTLR_predicates)

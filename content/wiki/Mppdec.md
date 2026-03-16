@@ -6,8 +6,8 @@ tags: macos wiki
 
 # Download
 
--   <http://www.musepack.net/index.php?pg=osx>
+- <http://www.musepack.net/index.php?pg=osx>
 
 # Example
 
--   [Converting MPC audio files to MP3](/wiki/Converting_MPC_audio_files_to_MP3)
+- [Converting MPC audio files to MP3](/wiki/Converting_MPC_audio_files_to_MP3)

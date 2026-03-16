@@ -6,16 +6,16 @@ These notes were made while trying to put together my first ever [Rails](/wiki/R
 
 # Basic setup
 
-1.  Install and run [Locomotive](/wiki/Locomotive).
-2.  Choose "Create New…" from the [Locomotive](/wiki/Locomotive) "File" menu.
-3.  Choose "Edit in TextMate" from the "File" menu.
-4.  In the Terminal, change to your [Rails](/wiki/Rails) project's application root.
-5.  Run `` command `locomotive bash-environment` `` to enable command line manipulation.
-6.  Set up your initial databases as described in "[Using SQLite for Ruby on Rails development on Mac OS X Tiger](/wiki/Using_SQLite_for_Ruby_on_Rails_development_on_Mac_OS_X_Tiger)"; skip over the "Manual database creation" step.
+1. Install and run [Locomotive](/wiki/Locomotive).
+2. Choose "Create New…" from the [Locomotive](/wiki/Locomotive) "File" menu.
+3. Choose "Edit in TextMate" from the "File" menu.
+4. In the Terminal, change to your [Rails](/wiki/Rails) project's application root.
+5. Run `` command `locomotive bash-environment` `` to enable command line manipulation.
+6. Set up your initial databases as described in "[Using SQLite for Ruby on Rails development on Mac OS X Tiger](/wiki/Using_SQLite_for_Ruby_on_Rails_development_on_Mac_OS_X_Tiger)"; skip over the "Manual database creation" step.
 
 # Creating your database files
 
-1.  Create initial databases and an empty schema
+1. Create initial databases and an empty schema
 
 <!-- -->
 
@@ -35,7 +35,7 @@ Alternatively using the `env` command:
     env RAILS_ENV=test rake db_schema_dump
     env RAILS_ENV=development rake db_schema_dump
 
-1.  Creating your first table:
+1. Creating your first table:
 
 One way of doing this:
 
@@ -103,17 +103,17 @@ Adding columns to a table:
 
 In the file, `config/environment.rb`, change:
 
-      # Use SQL instead of Active Record's schema dumper when creating the test database.
-      # This is necessary if your schema can't be completely dumped by the schema dumper,
-      # like if you have constraints or database-specific column types
-      # config.active_record.schema_format = :sql
+    # Use SQL instead of Active Record's schema dumper when creating the test database.
+    # This is necessary if your schema can't be completely dumped by the schema dumper,
+    # like if you have constraints or database-specific column types
+    # config.active_record.schema_format = :sql
 
 To:
 
-      # Use SQL instead of Active Record's schema dumper when creating the test database.
-      # This is necessary if your schema can't be completely dumped by the schema dumper,
-      # like if you have constraints or database-specific column types
-      config.active_record.schema_format = :ruby
+    # Use SQL instead of Active Record's schema dumper when creating the test database.
+    # This is necessary if your schema can't be completely dumped by the schema dumper,
+    # like if you have constraints or database-specific column types
+    config.active_record.schema_format = :ruby
 
 ## Adding a column to an existing table
 
@@ -165,7 +165,7 @@ Create a file at `app/views/layouts/application.rhtml`, indicating where include
 
 # See also
 
--   "UsingMigrations": <http://wiki.rubyonrails.org/rails/pages/UsingMigrations>
--   "UnderstandingMigrations": <http://wiki.rubyonrails.com/rails/pages/UnderstandingMigrations>
--   "Using migrations to evolve your database schema without loosing \[sic\] your data": <http://media.rubyonrails.org/video/migrations.mov>
--   "Using Ruby on Rails for Web Development on Mac OS X": <http://developer.apple.com/tools/rubyonrails.html>
+- "UsingMigrations": <http://wiki.rubyonrails.org/rails/pages/UsingMigrations>
+- "UnderstandingMigrations": <http://wiki.rubyonrails.com/rails/pages/UnderstandingMigrations>
+- "Using migrations to evolve your database schema without loosing \[sic\] your data": <http://media.rubyonrails.org/video/migrations.mov>
+- "Using Ruby on Rails for Web Development on Mac OS X": <http://developer.apple.com/tools/rubyonrails.html>

@@ -17,10 +17,10 @@ The other improvement is that for the first time in many moons the [tar](/wiki/t
 
 Just as I did earlier today with my [UBB.threads](/wiki/UBB.threads) upgrade, I decided to make a helper shell script to guide and automate the upgrade process insofar as it is possible (see "[UBB.threads 7.1 to 7.1.1 upgrade notes](/wiki/UBB.threads_7.1_to_7.1.1_upgrade_notes)"). The overall procedure is:
 
-1.  Merge custom files from the old install into the new install; unfortunately, this is time-consuming process that can only be done manually: please see the separate article, "[Determining which custom files need to be merged when performing Movable Type upgrades](/wiki/Determining_which_custom_files_need_to_be_merged_when_performing_Movable_Type_upgrades)".
-2.  Backup the database.
-3.  Backup the installed files.
-4.  Perform the upload
+1. Merge custom files from the old install into the new install; unfortunately, this is time-consuming process that can only be done manually: please see the separate article, "[Determining which custom files need to be merged when performing Movable Type upgrades](/wiki/Determining_which_custom_files_need_to_be_merged_when_performing_Movable_Type_upgrades)".
+2. Backup the database.
+3. Backup the installed files.
+4. Perform the upload
 
 There is much less for this helper script to do, so it is quite simple:
 
@@ -113,4 +113,4 @@ See: <http://www.sixapart.com/movabletype/news/2007/04/mt335_released.html>
 
 # See also
 
--   Notes for other versions: [Movable Type upgrade notes](/wiki/Movable_Type_upgrade_notes)
+- Notes for other versions: [Movable Type upgrade notes](/wiki/Movable_Type_upgrade_notes)

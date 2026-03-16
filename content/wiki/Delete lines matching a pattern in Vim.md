@@ -21,4 +21,4 @@ Or:
 
 # See also
 
--   <http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern>
+- <http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern>

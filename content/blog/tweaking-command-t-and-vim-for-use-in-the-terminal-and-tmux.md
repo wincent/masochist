@@ -6,10 +6,10 @@ cache_breaker: 1
 
 For a long time I used [Command-T](/wiki/Command-T) principally only inside of [MacVim](/wiki/MacVim). Partly because the version of [Vim](/wiki/Vim) that comes with [Mac OS X](/wiki/Mac_OS_X) doesn't have the necessary [Ruby](/wiki/Ruby) support, and partly because MacVim has some niceties that make it pleasant to use compared to using [Apple's](/wiki/Apple%27s) `vim` inside [Terminal.app](/wiki/Terminal.app):
 
--   MacVim supports 256-color schemes out of the box
--   Key bindings simply work; you can even set up ones like "Command-T"
--   It has a nice full-screen mode
--   You can get fast-and-easy context switching between your editor and the terminal with "Command-Tab"
+- MacVim supports 256-color schemes out of the box
+- Key bindings simply work; you can even set up ones like "Command-T"
+- It has a nice full-screen mode
+- You can get fast-and-easy context switching between your editor and the terminal with "Command-Tab"
 
 Starting in 2011, however, I've spent a fair bit of time beating the [command line](/wiki/command_line) version of Vim into shape and making it work the way I want, even over [SSH](/wiki/SSH) connections or inside [tmux](/wiki/tmux) sessions. It's now about basically the whole way there.
 
@@ -97,9 +97,9 @@ With some complicated shenanigans (see [my dotfiles repo](https://github.com/win
 
 # Gotchas
 
--   on machines without a "screen-256color" terminfo entry, I had to copy one over (into `~/.terminfo/s/screen-256color`); I originally ran with "xterm-256color", despite the warnings in the tmux FAQ, as it tended to work pretty well anyway
--   after a while I settled on running "screen" as my `$TERM` inside tmux, regardless of whether the outer terminal was actually "xterm-256color"; Solarized still looks great; this requires setting `t_Co=16` in my `~/.vimrc`
--   changes to `default-terminal` in `~/.tmux.conf` don't take effect if you already have a tmux session running (ie. a tmux server is running), even for new sessions; you have to exit all sessions, or manually run the `set` command yourself
+- on machines without a "screen-256color" terminfo entry, I had to copy one over (into `~/.terminfo/s/screen-256color`); I originally ran with "xterm-256color", despite the warnings in the tmux FAQ, as it tended to work pretty well anyway
+- after a while I settled on running "screen" as my `$TERM` inside tmux, regardless of whether the outer terminal was actually "xterm-256color"; Solarized still looks great; this requires setting `t_Co=16` in my `~/.vimrc`
+- changes to `default-terminal` in `~/.tmux.conf` don't take effect if you already have a tmux session running (ie. a tmux server is running), even for new sessions; you have to exit all sessions, or manually run the `set` command yourself
 
 # Conclusion
 

@@ -6,5 +6,5 @@ tags: jruby wiki
 
 # See also
 
--   Current official [JRuby](/wiki/JRuby) site: <http://jruby.codehaus.org/>
--   Previous official [JRuby](/wiki/JRuby) site: <http://jruby.sourceforge.net/>
+- Current official [JRuby](/wiki/JRuby) site: <http://jruby.codehaus.org/>
+- Previous official [JRuby](/wiki/JRuby) site: <http://jruby.sourceforge.net/>

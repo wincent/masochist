@@ -4,23 +4,23 @@ tags: wiki
 
 # C
 
--   `if`: `if` block, `if/else` block
--   `for`: `for` block
--   `fori`: `for` block
--   `while`: `while` block (alias to w)
--   `switch`: `switch` block
--   `case`: `case` block
--   `pm`: `#pragma mark` (customized)
--   `pim`: `#import` statement
--   `pif`: `#if/#else/#endif` statement
+- `if`: `if` block, `if/else` block
+- `for`: `for` block
+- `fori`: `for` block
+- `while`: `while` block (alias to w)
+- `switch`: `switch` block
+- `case`: `case` block
+- `pm`: `#pragma mark` (customized)
+- `pim`: `#import` statement
+- `pif`: `#if/#else/#endif` statement
 
 # Objective-C
 
--   `a`: alloc/init pattern
--   ``:
--   ``:
--   ``:
--   ``:
+- `a`: alloc/init pattern
+- ``:
+- ``:
+- ``:
+- ``:
 
 <!-- -->
 
@@ -28,9 +28,9 @@ tags: wiki
 
 # Doxygen
 
--   `dc`: Doxygen comment
--   `dgs`: Doxygen group start
--   `dge`: Doxygen group end
+- `dc`: Doxygen comment
+- `dgs`: Doxygen group start
+- `dge`: Doxygen group end
 
 # Customization
 
@@ -62,32 +62,32 @@ Open the copied file in [Property List Editor](/wiki/Property_List_Editor) and s
 
 Now you can override Apple's definitions, delete those you don't wish to override, and add your own. Settings "cascade". For example, I changed the C `BlockSeparator` setting and all the C-language block definitions inherited the new behaviour (after restarting [Xcode](/wiki/Xcode)):
 
-        {
-            ComputerLanguages = (c);
-            DefaultSettings = {
-                BlockSeparator = "\n";
-                CaseStatementSpacing = "";
-                InExpressionsSpacing = "";
-                PostBlockSeparator = "\n";
-                PreExpressionsSpacing = " ";
-            };
-            Identifier = c;
-            IsMenu = YES;
-            Name = C;
-        },
+    {
+        ComputerLanguages = (c);
+        DefaultSettings = {
+            BlockSeparator = "\n";
+            CaseStatementSpacing = "";
+            InExpressionsSpacing = "";
+            PostBlockSeparator = "\n";
+            PreExpressionsSpacing = " ";
+        };
+        Identifier = c;
+        IsMenu = YES;
+        Name = C;
+    },
 
 To:
 
-        {
-            ComputerLanguages = (c);
-            DefaultSettings = {
-                BlockSeparator = " ";
-                CaseStatementSpacing = "";
-                InExpressionsSpacing = "";
-                PostBlockSeparator = "\n";
-                PreExpressionsSpacing = " ";
-            };
-            Identifier = c;
-            IsMenu = YES;
-            Name = C;
-        },
+    {
+        ComputerLanguages = (c);
+        DefaultSettings = {
+            BlockSeparator = " ";
+            CaseStatementSpacing = "";
+            InExpressionsSpacing = "";
+            PostBlockSeparator = "\n";
+            PreExpressionsSpacing = " ";
+        };
+        Identifier = c;
+        IsMenu = YES;
+        Name = C;
+    },

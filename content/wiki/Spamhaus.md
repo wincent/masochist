@@ -8,5 +8,5 @@ Their [SBL Advisory](http://www.spamhaus.org/sbl/index.lasso) is "free for indiv
 
 # See also
 
--   Official website: <http://www.spamhaus.org/>
--   "Guide to Effective Spam Filtering for Networks": <http://www.spamhaus.org/effective_filtering.html>
+- Official website: <http://www.spamhaus.org/>
+- "Guide to Effective Spam Filtering for Networks": <http://www.spamhaus.org/effective_filtering.html>

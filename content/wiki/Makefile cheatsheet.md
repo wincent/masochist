@@ -6,15 +6,15 @@ title: Makefile cheatsheet
 
 # Automatic variables
 
--   `$@`: File being generated (ie. the "target" in Make parlance).
--   `$<`: First pre-requisite.
--   `$^`: All prerequisites (separated by spaces).
--   `$?`: All prerequisites newer than the target (separated by spaces).
+- `$@`: File being generated (ie. the "target" in Make parlance).
+- `$<`: First pre-requisite.
+- `$^`: All prerequisites (separated by spaces).
+- `$?`: All prerequisites newer than the target (separated by spaces).
 
 # Functions
 
--   `wildcard`
--   `addprefix`
+- `wildcard`
+- `addprefix`
 
 # Order-only prerequisites
 
@@ -31,9 +31,9 @@ title: Makefile cheatsheet
 
 See also:
 
--   <https://www.gnu.org/software/make/manual/html_node/Force-Targets.html>
+- <https://www.gnu.org/software/make/manual/html_node/Force-Targets.html>
 
 # External resources
 
--   List of automatic variables (`$@` etc): <https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>
--   <http://www.schacherer.de/frank/technology/tools/make.html>
+- List of automatic variables (`$@` etc): <https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>
+- <http://www.schacherer.de/frank/technology/tools/make.html>

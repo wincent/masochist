@@ -29,8 +29,8 @@ This in turn led me to "Static linking of user binaries on Mac OS X" (<http://de
 
 So I downloaded Csu:
 
--   <http://www.opensource.apple.com/darwinsource/10.4.8.x86/>
--   <http://www.opensource.apple.com/darwinsource/tarballs/apsl/Csu-71.tar.gz>
+- <http://www.opensource.apple.com/darwinsource/10.4.8.x86/>
+- <http://www.opensource.apple.com/darwinsource/tarballs/apsl/Csu-71.tar.gz>
 
 And tried again:
 
@@ -88,4 +88,4 @@ At this point I gave up and just did a non-static build.
 
 # See also
 
--   Release notes: <https://sourceforge.net/project/shownotes.php?group_id=156414&release_id=467566>
+- Release notes: <https://sourceforge.net/project/shownotes.php?group_id=156414&release_id=467566>

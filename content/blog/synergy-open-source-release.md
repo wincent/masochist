@@ -20,8 +20,8 @@ Synergy will still be available for download and purchase on wincent.dev. Maybe 
 
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorious](/wiki/Gitorious):
 
--   <http://github.com/wincent/synergy/>
--   <http://gitorious.org/synergy>
+- <http://github.com/wincent/synergy/>
+- <http://gitorious.org/synergy>
 
 This was the first time I'd written a piece of software that went beyond a pet project. Looking back at it now, I truly shudder at some of the ghastly code I wrote while I was learning C, learning Objective-C, learning Apple's APIs, learning object-oriented programming, learning MVC architecture, learning design patterns etc, all at once. Some of this stuff, particularly the files and methods that were written earlier on, is truly cringe-worthy and would not look out of place on thedailywtf.com.
 

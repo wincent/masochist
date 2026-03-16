@@ -6,4 +6,4 @@ Before preparing the [ANTLR lexer cheat sheet](/wiki/ANTLR_lexer_cheat_sheet) I 
 
 # See also
 
--   [ANTLR lexers in depth](/wiki/ANTLR_lexers_in_depth)
+- [ANTLR lexers in depth](/wiki/ANTLR_lexers_in_depth)

@@ -33,10 +33,10 @@ Great, just great. No local testing with Firefox. Looks like I'll have to stick 
 
 Played with it a little more and was able to manually force Firefox to add an exception for me. For the curious, my initial error was that I had gone to:
 
--   "Preferencias" -&gt; "Avanzado" -&gt; "Cifrado" -&gt; "Ver certificados" -&gt; "Sus certificados" (that is, "Your certificates") -&gt; "Importar"
+- "Preferencias" -&gt; "Avanzado" -&gt; "Cifrado" -&gt; "Ver certificados" -&gt; "Sus certificados" (that is, "Your certificates") -&gt; "Importar"
 
 And I _should_ have gone to:
 
--   "Preferencias" -&gt; "Avanzado" -&gt; "Cifrado" -&gt; "Ver certificados" -&gt; "Servidores" (that is, "Servers") -&gt; "Añadir excepción"
+- "Preferencias" -&gt; "Avanzado" -&gt; "Cifrado" -&gt; "Ver certificados" -&gt; "Servidores" (that is, "Servers") -&gt; "Añadir excepción"
 
 (That's 6 clicks, and after that you still have to type in the server URL and hit "Obtener certificado" and "Confirmar excepción de seguridad"; 2 more clicks. So in addition to the unhelpful error message, we have another hideous UI failure in no uncertain terms, but at least I'm able to do local testing in Firefox again.)

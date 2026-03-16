@@ -76,4 +76,4 @@ From the official release announcement posted to the [Git mailing list](/wiki/Gi
 
 # See also
 
--   [Updating to Git 1.7.3.3 on Mac OS X 10.6.5 Snow Leopard](/wiki/Updating_to_Git_1.7.3.3_on_Mac_OS_X_10.6.5_Snow_Leopard)
+- [Updating to Git 1.7.3.3 on Mac OS X 10.6.5 Snow Leopard](/wiki/Updating_to_Git_1.7.3.3_on_Mac_OS_X_10.6.5_Snow_Leopard)

@@ -48,9 +48,9 @@ Finally, log out so that the environment changes will take effect. The `~/.ssh/c
 
 To make life a little bit more bearable on the unconfigured machine, copy over the following as well:
 
--   `.bash_profile`
--   `.inputrc`
--   `.profile`
+- `.bash_profile`
+- `.inputrc`
+- `.profile`
 
 I also find it pretty frusting to use the Terminal unless Option-Left and Option-Right are bound to `\033b` and `\033f` respectively.
 

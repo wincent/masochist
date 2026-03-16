@@ -37,7 +37,7 @@ In this latter case `port` is most likely to be `465`.
 
 But note that, [as commented here](http://www.forbiddenweb.org/topic/78761/index.html), any line beginning with `R` will trigger a renegotiation of the [SSL/TLS](/wiki/SSL%2fTLS) session so you must enter:
 
-     RCPT TO:
+    RCPT TO:
 
 And not:
 
@@ -59,4 +59,4 @@ $ openssl s_client -host smtp.gmail.com -port 587 -starttls smtp
 
 # See also
 
--   [This page](http://www.unixreview.com/documents/s=9700/ur0504l/ur0504l.html) has lots of examples on how you can use [telnet](/wiki/telnet) to manually test various services \[February 2010, the link is now dead\].
+- [This page](http://www.unixreview.com/documents/s=9700/ur0504l/ur0504l.html) has lots of examples on how you can use [telnet](/wiki/telnet) to manually test various services \[February 2010, the link is now dead\].

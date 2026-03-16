@@ -9,9 +9,9 @@ Well, I guess that settles it: I'm not going to be shipping any more products us
 
 ## Stats to date
 
--   Kernel panics: 11
--   Hard resets: 21
--   Total failures: 32
--   Start of recording keeping: 21 May 2006
--   Total days to date: 709 days
--   Average time between failures: 22.15 days
+- Kernel panics: 11
+- Hard resets: 21
+- Total failures: 32
+- Start of recording keeping: 21 May 2006
+- Total days to date: 709 days
+- Average time between failures: 22.15 days

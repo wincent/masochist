@@ -35,13 +35,13 @@ There are a small number of Mac developers who have earned places in my mental "
 
 In order to strike a balance between increased revenue (motivation and means) and customer satisfaction you need to make sure that:
 
--   Paid upgrades should be few and far between.
--   Paid upgrades should be reasonably priced (not like buying the software all over again).
--   Paid upgrades should be _major_ upgrades incorporating new features.
--   You should offer a lenient grace period (if a user purchases version 2.0 a couple of weeks before 3.0 comes out he or she most likely won't be too happy at the idea of being forced to pay for the upgrade); I think that at least 3 and as many as 6 months is about right.
--   Free upgrades should be often, but not so often as to annoy customers.
--   Bug fixes should be free.
--   Compatibility updates should be free.
+- Paid upgrades should be few and far between.
+- Paid upgrades should be reasonably priced (not like buying the software all over again).
+- Paid upgrades should be _major_ upgrades incorporating new features.
+- You should offer a lenient grace period (if a user purchases version 2.0 a couple of weeks before 3.0 comes out he or she most likely won't be too happy at the idea of being forced to pay for the upgrade); I think that at least 3 and as many as 6 months is about right.
+- Free upgrades should be often, but not so often as to annoy customers.
+- Bug fixes should be free.
+- Compatibility updates should be free.
 
 Those latter two points are important. Customers will feel resentful if they are forced to pay for bug fixes (if you sold them the software with bugs in the first place, it is by definition defective and you should therefore not seek to profit from fixing that defect). They'll also feel resentful if the software won't run on the next version of Apple's OS, or Apple's new hardware, and you try to get money out of them in exchange for working versions. One day it worked, the next day it didn't: why should they have to pay you again? This is why I've offered Universal Binary versions of my applications as free upgrades, even though it cost me money to prepare those versions (the $999 Developer Transition Kit and the $500 ADC membership).
 

@@ -17,17 +17,17 @@ title: Vim command line history
 
 From in here, you can:
 
--   edit previous commands
--   hit `<CR>` to run a command
--   hit `<C-c>` to close the command window
--   yank commands, then:
-    -   `:@"<CR>` to run them; or
-    -   write them to a file and source it (eg. with `:source <file>`)
+- edit previous commands
+- hit `<CR>` to run a command
+- hit `<C-c>` to close the command window
+- yank commands, then:
+  - `:@"<CR>` to run them; or
+  - write them to a file and source it (eg. with `:source <file>`)
 
 # Registers
 
--   `":` holds last command (paste it with `":p`, run it with `@:`)
--   `"/` holds last search (paste it with `"/p`)
+- `":` holds last command (paste it with `":p`, run it with `@:`)
+- `"/` holds last search (paste it with `"/p`)
 
 # Example use case
 

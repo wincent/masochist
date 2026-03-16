@@ -9,8 +9,8 @@ Each member has a pointer to a "leader" element that identifies the partition. T
 
 # Operations
 
--   **Union**: Given two partitions, fuse them into a single partition. This is an _O(n)_ operation in the worst case, although in specific applications it can amortize to be _O(log n)_ globally over the course of an algorithm
--   **Find**: Given an element, return the "leader" identifying the partition to which the element belongs. This is an _O(1)_ operation.
+- **Union**: Given two partitions, fuse them into a single partition. This is an _O(n)_ operation in the worst case, although in specific applications it can amortize to be _O(log n)_ globally over the course of an algorithm
+- **Find**: Given an element, return the "leader" identifying the partition to which the element belongs. This is an _O(1)_ operation.
 
 ## Union
 
@@ -20,7 +20,7 @@ In an algorithm like [Kruskal's Algorithm](/wiki/Kruskal%27s_Algorithm), the uni
 
 # Example applications
 
--   The [Union-Find](/wiki/Union-Find) data structure can be used to speed up [Kruskal's Algorithm](/wiki/Kruskal%27s_Algorithm) for computing [Minimum Spanning Trees](/wiki/Minimum_Spanning_Trees) (making it run in _O(m log n)_, compared with _O(mn)_ for the naïve approach)
+- The [Union-Find](/wiki/Union-Find) data structure can be used to speed up [Kruskal's Algorithm](/wiki/Kruskal%27s_Algorithm) for computing [Minimum Spanning Trees](/wiki/Minimum_Spanning_Trees) (making it run in _O(m log n)_, compared with _O(mn)_ for the naïve approach)
 
 # Optimizations of the Union-Find data structure
 
@@ -54,4 +54,4 @@ In most implementations, an underlying array implementation would be used to sto
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [disjoint-sets](/wiki/disjoint-sets): <http://en.wikipedia.org/wiki/Disjoint-set_data_structure>
+- [Wikipedia](/wiki/Wikipedia) article on [disjoint-sets](/wiki/disjoint-sets): <http://en.wikipedia.org/wiki/Disjoint-set_data_structure>

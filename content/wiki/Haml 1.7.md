@@ -8,5 +8,5 @@ It primarily brings speed increases and enhancements to the Sass.
 
 # See also
 
--   Release notes: <http://haml.hamptoncatlin.com/release-notes>
--   My upgrade notes: [Upgrading to Haml 1.7 on Mac OS X Tiger](/wiki/Upgrading_to_Haml_1.7_on_Mac_OS_X_Tiger)
+- Release notes: <http://haml.hamptoncatlin.com/release-notes>
+- My upgrade notes: [Upgrading to Haml 1.7 on Mac OS X Tiger](/wiki/Upgrading_to_Haml_1.7_on_Mac_OS_X_Tiger)

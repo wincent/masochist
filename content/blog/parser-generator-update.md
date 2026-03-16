@@ -5,12 +5,12 @@ tags: blog
 
 One of the things that's been so good about [writing the parser generator](https://wincent.dev/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) [for Walrus](https://wincent.dev/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) is that it has made the code much more flexible, much easier to develop iteratively. In my original design I had a hand-coded parser and a simple grammar that imposed a number of restrictions to make the parser's job easier:
 
--   There were only three characters with special meaning, `#`, `$` and `\`.
--   The parser was strictly line-oriented:
-    -   Comments extended to the end of the line as did directives.
-    -   As a special case, a comment could follow a directive on the same line.
-    -   Directives could not span lines.
-    -   Placeholders couldn't span lines either.
+- There were only three characters with special meaning, `#`, `$` and `\`.
+- The parser was strictly line-oriented:
+  - Comments extended to the end of the line as did directives.
+  - As a special case, a comment could follow a directive on the same line.
+  - Directives could not span lines.
+  - Placeholders couldn't span lines either.
 
 The notion of "what is a Ruby expression" was extremely simplified. The basic idea was that when expecting a Ruby expression the lexer would drop into a mode where it would blindly consume characters until it hit something that marked the end of the expression; it would do this without analysing the internal structure of the expression in anything but the simplest of ways.
 
@@ -22,17 +22,17 @@ To illustrate, consider the case of parsing a placeholder:
 
 On seeing the initial `$` the lexer knew that a placeholder was coming and so looked for an identifier (in this case, `my_placeholder`). On hitting the opening bracket the lexer new that a parameter list containing zero or more Ruby expressions was coming, but it could really only prepare itself for three eventualities:
 
-1.  Hitting a `)` would mean that the end of the parameter list
-2.  Hitting a `,` would mean the end of one parameter and the beginning of another
-3.  "Everything else" would be part of an parameter expression
+1. Hitting a `)` would mean that the end of the parameter list
+2. Hitting a `,` would mean the end of one parameter and the beginning of another
+3. "Everything else" would be part of an parameter expression
 
 I didn't want to write a full Ruby lexer/parser given that Ruby is such a complex language (in the syntactic sense). In order to be able to parse basic structures like Array and Hash literals I had to put in some special case handling. In practice while lexing a Ruby expression the process looked something like this:
 
-1.  Keep going until you hit something that marks the end of an expression (`)`, `,`, or the end of the current line)
-2.  If you hit a `,` start scanning a new expression
-3.  If you hit a `[` you're inside an array and `,` no longer marks the end of the current expression; scan recursively for zero or more Ruby expressions; finally, `]` marks the end of the array.
-4.  Similar rules applied for hashes (looking for `{`) and bracketed expressions (looking for "`(`").
-5.  Different rules applied inside string literals (where `[`, `(`, `{` and their counterparts lost their special meaning) and escaping meant that `"` or `'` didn't necessarily mark the end of the string due to escaping.
+1. Keep going until you hit something that marks the end of an expression (`)`, `,`, or the end of the current line)
+2. If you hit a `,` start scanning a new expression
+3. If you hit a `[` you're inside an array and `,` no longer marks the end of the current expression; scan recursively for zero or more Ruby expressions; finally, `]` marks the end of the array.
+4. Similar rules applied for hashes (looking for `{`) and bracketed expressions (looking for "`(`").
+5. Different rules applied inside string literals (where `[`, `(`, `{` and their counterparts lost their special meaning) and escaping meant that `"` or `'` didn't necessarily mark the end of the string due to escaping.
 
 In short, even unsophisticated parsing of Ruby expressions soon lead to an ugly rats nest of imprecise generalizations, exceptions and code.
 
@@ -70,9 +70,9 @@ With the hand-coded parser this would have required painful rewriting but with t
 
 Other stuff that was quick to add:
 
--   Explicit directive end markers (for example, `#silent foo#`) which allow you to embed directives within the flow of a single line; this syntax would have been difficult to implement with the hand-coded parser because of the previous design decision that directives should always extend to the end of the current line.
--   Ability to span directives across multiple lines using the backslash at the end of the line as a "line continuation" marker.
--   Ability to specify multiple semi-colon separated expressions in `#silent` directives.
+- Explicit directive end markers (for example, `#silent foo#`) which allow you to embed directives within the flow of a single line; this syntax would have been difficult to implement with the hand-coded parser because of the previous design decision that directives should always extend to the end of the current line.
+- Ability to span directives across multiple lines using the backslash at the end of the line as a "line continuation" marker.
+- Ability to specify multiple semi-colon separated expressions in `#silent` directives.
 
 Then there was other stuff that I never would even have attempted with the hand-written parser, such as multiline comments, and nested ones at that.
 

@@ -40,4 +40,4 @@ title: Doxygen cheatsheet
 
 # See also
 
--   <http://developer.apple.com/tools/creatingdocsetswithdoxygen.html>: "Using Doxygen to Create Xcode Documentation Sets"
+- <http://developer.apple.com/tools/creatingdocsetswithdoxygen.html>: "Using Doxygen to Create Xcode Documentation Sets"

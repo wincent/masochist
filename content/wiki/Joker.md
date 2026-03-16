@@ -6,4 +6,4 @@ tags: joker wiki
 
 # Official Site
 
--   <http://joker.com>
+- <http://joker.com>

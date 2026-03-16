@@ -11,5 +11,5 @@ The main advantage of this approach is that applying a set of Puppet recipes is 
 
 # Links
 
--   Official documentation: <http://docs.puppetlabs.com/>
--   Puppet Labs (company) info on CrunchBase: <http://www.crunchbase.com/organization/puppet-labs>
+- Official documentation: <http://docs.puppetlabs.com/>
+- Puppet Labs (company) info on CrunchBase: <http://www.crunchbase.com/organization/puppet-labs>

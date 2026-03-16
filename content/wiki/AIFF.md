@@ -6,4 +6,4 @@ tags: wiki
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [AIFF](/wiki/AIFF): <http://en.wikipedia.org/wiki/AIFF>
+- [Wikipedia](/wiki/Wikipedia) article on [AIFF](/wiki/AIFF): <http://en.wikipedia.org/wiki/AIFF>

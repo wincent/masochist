@@ -4,4 +4,4 @@ tags: redis wiki
 
 # Official site
 
--   <http://redis.io/>
+- <http://redis.io/>

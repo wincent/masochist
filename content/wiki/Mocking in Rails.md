@@ -9,20 +9,20 @@ cache_breaker: 1
 
 The basic arguments of the initial poster can be paraphrased as:
 
--   If the [API](/wiki/API) of a class being mocked changes, then [specs](/wiki/specs) which mock the class must be updated as well:
-    -   This is duplicative because parallel changes have to be made in multiple sites.
-    -   Because the mock's behaviour is constant, the underlying [API](/wiki/API) can change and [specs](/wiki/specs) which depend on the [API](/wiki/API) won't fail because the mock will continue to deliver the old behaviour.
-    -   This latter problem is exacerbated when working in teams, where a person changing an [API](/wiki/API) might not know about all the places where it is being mocked.
+- If the [API](/wiki/API) of a class being mocked changes, then [specs](/wiki/specs) which mock the class must be updated as well:
+  - This is duplicative because parallel changes have to be made in multiple sites.
+  - Because the mock's behaviour is constant, the underlying [API](/wiki/API) can change and [specs](/wiki/specs) which depend on the [API](/wiki/API) won't fail because the mock will continue to deliver the old behaviour.
+  - This latter problem is exacerbated when working in teams, where a person changing an [API](/wiki/API) might not know about all the places where it is being mocked.
 
 The counter-solutions offered were:
 
--   Don't use mocks (or use them less).
--   Don't change [APIs](/wiki/APIs) (or change them less).
--   Rely on [integration testing](/wiki/integration_testing) to catch bugs caused by changing [APIs](/wiki/APIs) when [specs](/wiki/specs) that use mocks fail to catch them.
+- Don't use mocks (or use them less).
+- Don't change [APIs](/wiki/APIs) (or change them less).
+- Rely on [integration testing](/wiki/integration_testing) to catch bugs caused by changing [APIs](/wiki/APIs) when [specs](/wiki/specs) that use mocks fail to catch them.
 
 Another, hypothetical solution was:
 
--   Baked in support in [RSpec](/wiki/RSpec) to use [mocks](/wiki/mocks) by default, but have the runner optionally use the real objects instead when a particular command line switch is passed in.
+- Baked in support in [RSpec](/wiki/RSpec) to use [mocks](/wiki/mocks) by default, but have the runner optionally use the real objects instead when a particular command line switch is passed in.
 
 ## My assessment
 
@@ -62,5 +62,5 @@ Using [mocks](/wiki/mocks) in [controller](/wiki/controller) [specs](/wiki/specs
 
 ## See also
 
--   "Testing: Replace Mock with Stub": <http://blog.jayfields.com/2007/05/testing-replace-mock-with-stub.html>
--   [David Chelimsky](/wiki/David_Chelimsky) on when to [mock](/wiki/mock) and when to [stub](/wiki/stub): <http://blog.davidchelimsky.net/articles/2006/11/09/tutorial-rspec-stubs-and-mocks>
+- "Testing: Replace Mock with Stub": <http://blog.jayfields.com/2007/05/testing-replace-mock-with-stub.html>
+- [David Chelimsky](/wiki/David_Chelimsky) on when to [mock](/wiki/mock) and when to [stub](/wiki/stub): <http://blog.davidchelimsky.net/articles/2006/11/09/tutorial-rspec-stubs-and-mocks>

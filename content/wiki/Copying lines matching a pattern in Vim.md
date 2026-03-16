@@ -16,8 +16,8 @@ But it turns out [there is a shorter form](http://vim.wikia.com/wiki/Power_of_g)
 
 To inspect the fruits of your labors:
 
-     :registers
+    :registers
 
 _Note:_ if you want to clear the register `a` you can do `qaq` (which starts recording a macro into the register and immediately stops recording, leaving the register empty), or:
 
-     :let @a=''
+    :let @a=''

@@ -110,7 +110,7 @@ Do an emergency rollback to version 4.1.20:
 
 This is the first time I've ever been bitten by a problem with a MySQL-produced package. Fortunately it only cost me a few minutes of downtime, and some stress. Have filed a bug report with MySQL; see:
 
--   <http://bugs.mysql.com/21341>
+- <http://bugs.mysql.com/21341>
 
 ## Update
 
@@ -136,11 +136,11 @@ Check that [Apache](/wiki/Apache) and [MySQL](/wiki/MySQL) is running:
 
 Check that website works:
 
--   PHP + MySQL still works?
--   Perl + MySQL still works?
--   Python + Apache still works?
--   Regular HTTP still works?
--   HTTPS still works?
+- PHP + MySQL still works?
+- Perl + MySQL still works?
+- Python + Apache still works?
+- Regular HTTP still works?
+- HTTPS still works?
 
 Check to see versions of installed RPMs:
 
@@ -152,4 +152,4 @@ Check that [MySQL](/wiki/MySQL) is still configured to start automatically at bo
 
 # See also
 
--   [Upgrading MySQL on Red Hat Enterprise Linux](/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux)
+- [Upgrading MySQL on Red Hat Enterprise Linux](/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux)

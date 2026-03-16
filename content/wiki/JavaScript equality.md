@@ -6,4 +6,4 @@ tags: javascript wiki
 
 # See also
 
--   [Reddit](/wiki/Reddit) discussion of the above: <http://www.reddit.com/r/programming/comments/21ezh3/javascript_equality_table/>
+- [Reddit](/wiki/Reddit) discussion of the above: <http://www.reddit.com/r/programming/comments/21ezh3/javascript_equality_table/>

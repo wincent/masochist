@@ -6,4 +6,4 @@ tags: rspec micronaut wiki
 
 # Official site
 
--   <http://github.com/spicycode/micronaut>
+- <http://github.com/spicycode/micronaut>

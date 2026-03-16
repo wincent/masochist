@@ -8,9 +8,9 @@ Just had a kernel panic while mounting/dismounting disk images. Still one of the
 
 ## Stats to date
 
--   Kernel panics: 10
--   Hard resets: 21
--   Total failures: 31
--   Start of recording keeping: 21 May 2006
--   Total days to date: 709 days
--   Average time between failures: 22.87 days
+- Kernel panics: 10
+- Hard resets: 21
+- Total failures: 31
+- Start of recording keeping: 21 May 2006
+- Total days to date: 709 days
+- Average time between failures: 22.87 days

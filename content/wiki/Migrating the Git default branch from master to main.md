@@ -11,42 +11,42 @@ GitHub allows you to rename a branch and "redirect" requests from the old branch
 
 So, as [reported here](https://twitter.com/wincent/status/1401338775175892994), I recently "migrated" the main branch on [my dotfiles repo](https://github.com/wincent/wincent) from "master" to "main" in the following way.
 
-1.  Create a new "main" branch locally, based on "master":
+1. Create a new "main" branch locally, based on "master":
 
-    ```
-    git checkout -b main
-    ```
+   ```
+   git checkout -b main
+   ```
 
-2.  Tweak settings to make local `master` track local `main` rather than the other way around, while local `main` will track the remote `main` on the origin:
+2. Tweak settings to make local `master` track local `main` rather than the other way around, while local `main` will track the remote `main` on the origin:
 
-    ```
-    git config branch.master.merge refs/heads/main
-    git config branch.master.remote .
-    git config branch.main.remote origin
-    git config branch.main.merge refs/heads/main
-    ```
+   ```
+   git config branch.master.merge refs/heads/main
+   git config branch.master.remote .
+   git config branch.main.remote origin
+   git config branch.main.merge refs/heads/main
+   ```
 
-3.  Add [a hook](https://github.com/wincent/wincent/blob/main/support/hooks/pre-push) to `.git/hooks/pre-push` that will update the local `master` whenever `main` is pushed, and a [remote `post-receive` hook](https://github.com/wincent/wincent/blob/main/support/hooks/post-receive) that does the analogous job on git.wincent.dev, where I am running my own `git-daemon`.
+3. Add [a hook](https://github.com/wincent/wincent/blob/main/support/hooks/pre-push) to `.git/hooks/pre-push` that will update the local `master` whenever `main` is pushed, and a [remote `post-receive` hook](https://github.com/wincent/wincent/blob/main/support/hooks/post-receive) that does the analogous job on git.wincent.dev, where I am running my own `git-daemon`.
 
-4.  Push `main` for the first time.
+4. Push `main` for the first time.
 
-5.  Set the default branch to `main` in GitHub, GitLab, and BitBucket.
+5. Set the default branch to `main` in GitHub, GitLab, and BitBucket.
 
-6.  Additionally, on git.wincent.dev, it is necessary to update the `HEAD` so that `git clone` operations from it check out `main` instead of `master`:
+6. Additionally, on git.wincent.dev, it is necessary to update the `HEAD` so that `git clone` operations from it check out `main` instead of `master`:
 
-    ```
-    sudo -u git git symbolic-ref HEAD refs/heads/main
-    ```
+   ```
+   sudo -u git git symbolic-ref HEAD refs/heads/main
+   ```
 
 ## Appendix: gitweb
 
 I looked into the source code for [`gitweb`](https://git-scm.com/docs/gitweb) to see how it figures out which order to display the branch heads in the UI. At the time I write this, it's currently showing this order for my dotfiles repo:
 
--   `master`
--   `main`
--   `pu`
--   `next`
--   `media`
+- `master`
+- `main`
+- `pu`
+- `next`
+- `media`
 
 It is [using `--sort=-committerdate` in its `git_get_heads_list()` function](https://github.com/git/git/blob/c09b6306c6ca275ed9d0348a8c8014b2ff723cfb/gitweb/gitweb.perl#L3798-L3802) as seen here:
 

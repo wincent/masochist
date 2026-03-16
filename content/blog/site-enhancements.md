@@ -13,8 +13,8 @@ For the time being, however, I'm not going to start using the functionality imme
 
 Among other user-visible enhancements and fixes in this deployment include:
 
--   some tweaks to the CSS (nicer-looking buttons and links, for example)
--   prettier icons in many places (for things like pagination, external links and email addresses)
--   more obvious Atom feed links (via icons)
--   removal of some stray divs on static HTML pages
--   XHTML validation fix-ups
+- some tweaks to the CSS (nicer-looking buttons and links, for example)
+- prettier icons in many places (for things like pagination, external links and email addresses)
+- more obvious Atom feed links (via icons)
+- removal of some stray divs on static HTML pages
+- XHTML validation fix-ups

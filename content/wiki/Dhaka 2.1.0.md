@@ -6,4 +6,4 @@ tags: dhaka wiki
 
 # See also
 
--   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=10309>
+- Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=10309>

@@ -4,7 +4,7 @@ tags: vim wiki
 
 # Official notes
 
--   <http://code.google.com/p/macvim/wiki/Building>
+- <http://code.google.com/p/macvim/wiki/Building>
 
 # Local notes
 

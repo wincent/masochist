@@ -7,4 +7,4 @@ This website was hosting with [INetU](/wiki/INetU) from late February 2008 throu
 
 ## See also
 
--   Official website: <http://inetu.net/>
+- Official website: <http://inetu.net/>

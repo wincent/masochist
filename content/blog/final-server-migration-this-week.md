@@ -13,4 +13,4 @@ At some point during this week email might temporarily go down, hopefully only f
 
 Keep your eye on my Twitter account if you'd like to be kept posted with updates; it will be my only avenue of communication during my brief stint in limbo:
 
--   <http://twitter.com/wincent>
+- <http://twitter.com/wincent>

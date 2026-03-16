@@ -5,11 +5,11 @@ cache_breaker: 1
 
 This article provides a comparative overview of the major [version control systems](/wiki/version_control_systems) that I've worked with over the years. The following is a summary of my experience with each system:
 
--   [CVS](/wiki/CVS): used for internal version control (no public server) from 2002 to 2004
--   [Subversion](/wiki/Subversion): used since 2004, when Subversion hit version 1.0
--   [Perforce](/wiki/Perforce): never used, but it was one of the options I evaluated when looking for something that addressed the shortcomings of Subversion
--   [SVK](/wiki/SVK): user since early 2007, but retired soon after
--   [Git](/wiki/Git): user since mid-2007
+- [CVS](/wiki/CVS): used for internal version control (no public server) from 2002 to 2004
+- [Subversion](/wiki/Subversion): used since 2004, when Subversion hit version 1.0
+- [Perforce](/wiki/Perforce): never used, but it was one of the options I evaluated when looking for something that addressed the shortcomings of Subversion
+- [SVK](/wiki/SVK): user since early 2007, but retired soon after
+- [Git](/wiki/Git): user since mid-2007
 
 **Spoiler:** The clear "winner" of this comparison is Git. I've now switched permanently to Git for all of the projects which I control, which basically means that I no longer use SVK (or CVS or Perforce either, obviously) and _only_ use Subversion when forced to because an upstream project uses it. I am happy to make Subversion checkouts and exports if I am basically just a "read-only" consumer of the code, but if I have to make changes to the code I prefer to get it into Git by some means. Fortunately for me, almost all the projects I care about have moved or are moving to Git.
 
@@ -37,11 +37,11 @@ The clear winners in this section are Subversion and Git.
 
 The distributed systems have numerous advantages, including:
 
--   Offline operation (even commits, branches, merges)
--   Speed (because many operations can be done without network access)
--   Redundancy (because a copy of the repository's history is kept locally)
--   The ability to try out experimental development without cluttering the visible history in a public repository
--   Convenience of tracking upstream projects (and modifying them locally)
+- Offline operation (even commits, branches, merges)
+- Speed (because many operations can be done without network access)
+- Redundancy (because a copy of the repository's history is kept locally)
+- The ability to try out experimental development without cluttering the visible history in a public repository
+- Convenience of tracking upstream projects (and modifying them locally)
 
 Here CVS, Subversion and Perforce all suffer from the limitations imposed by their model, with Perforce representing the extreme case. SVK overcomes many of the limitations of the client-server model, but doesn't go as far as Git, which is totally free of the limitations imposed by legacy model.
 
@@ -109,4 +109,4 @@ So as was the case in the "Learning curve" section above, Subversion might win o
 
 # See also
 
--   [Wikipedia](/wiki/Wikipedia) article: <http://en.wikipedia.org/wiki/Comparison_of_revision_control_software>
+- [Wikipedia](/wiki/Wikipedia) article: <http://en.wikipedia.org/wiki/Comparison_of_revision_control_software>

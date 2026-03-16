@@ -11,4 +11,4 @@ $ repoquery --list '*gitweb*'
 
 # Source
 
--   <http://cimarron-taylor.appspot.com/html/0901/090107-yum.html>
+- <http://cimarron-taylor.appspot.com/html/0901/090107-yum.html>

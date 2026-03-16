@@ -37,9 +37,9 @@ Use [Doxgen](http://doxygen.org/) to document your code, even if it is not for a
 
 Writing a program is really a three-fold thing, comprising three interdependent activities:
 
-1.  The code itself: does what you think it should do
-2.  The unit tests: confirm that the code does what you think it should do
-3.  The documentation: explicitly states what you think the code should do
+1. The code itself: does what you think it should do
+2. The unit tests: confirm that the code does what you think it should do
+3. The documentation: explicitly states what you think the code should do
 
 In reality, the three are closely interwoven and you often go back and forth between writing each. For example, sometimes the things you've specified in the documentation provide you with a guide for what you should test in your unit tests; and in turn, your unit tests help you decide what to write (and when to stop writing) in the code.
 

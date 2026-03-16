@@ -18,16 +18,16 @@ It's been a while since I submitted any patches via `git send-email`, and since 
 
 My first trouble-shooting technique was seeing if [CPAN](/wiki/CPAN) updates -- chosen based on [Google](/wiki/Google) searches and module names appearing in error messages -- would fix the problem, and fairly consistently with my previous experience with CPAN, it proved to be a broken, brittle, wonky stack of teetering shards:
 
--   `cpan Net::SMTP::SSL`: "Net::SMTP::SSL is up to date (1.01)."
--   `cpan CPAN`: fails.
--   `cpan Scalar::Util`: "Scalar::Util is up to date (1.19)."
--   `cpan IO:Socket::SSL`: fails.
--   `cpan ExtUtils::F77`: fails.
--   `cpan ExtUtils::XSBuilder`: works.
--   `cpan Scalar::List::Utils`: not found.
--   `cpan Archive::Zip`: fails.
--   `cpan Compress::Zlib`: fails.
--   `cpan List::Utils`: not found.
+- `cpan Net::SMTP::SSL`: "Net::SMTP::SSL is up to date (1.01)."
+- `cpan CPAN`: fails.
+- `cpan Scalar::Util`: "Scalar::Util is up to date (1.19)."
+- `cpan IO:Socket::SSL`: fails.
+- `cpan ExtUtils::F77`: fails.
+- `cpan ExtUtils::XSBuilder`: works.
+- `cpan Scalar::List::Utils`: not found.
+- `cpan Archive::Zip`: fails.
+- `cpan Compress::Zlib`: fails.
+- `cpan List::Utils`: not found.
 
 In the end, the only thing that would make `git send-email` work was to manually install `Scalar::List::Utils` after grabbing it manually from <http://search.cpan.org/dist/Scalar-List-Utils/>:
 
@@ -49,13 +49,13 @@ So at this point it looks like the breakage wasn't caused by any changes to `git
 
 The next step was to find out why authentication was failing. Before getting into true debug mode, I decided to have some more "fun" with [CPAN](/wiki/CPAN):
 
--   `cpan IO:Socket::SSL`: still fails.
--   `cpan Net::SSLeay`: works.
--   `cpan IO:Socket::SSL`: still fails.
--   `cpan IO::Socket::INET`: works.
--   `cpan Net::IDN::Encode`: not available.
--   `cpan Net::LibIDN`: fails.
--   `cpan IO:Socket::SSL`: still fails.
+- `cpan IO:Socket::SSL`: still fails.
+- `cpan Net::SSLeay`: works.
+- `cpan IO:Socket::SSL`: still fails.
+- `cpan IO::Socket::INET`: works.
+- `cpan Net::IDN::Encode`: not available.
+- `cpan Net::LibIDN`: fails.
+- `cpan IO:Socket::SSL`: still fails.
 
 So time to see what's going on using a debugging script:
 
@@ -100,5 +100,5 @@ Quickly disable those authentication methods with a quick `cd /etc/mail && vim s
 
 # See also
 
--   [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
--   [Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3A%3ASMTP%3A%3ASSL_for_sending_patches_with_Git_over_secure_SMTP)
+- [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
+- [Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3A%3ASMTP%3A%3ASSL_for_sending_patches_with_Git_over_secure_SMTP)

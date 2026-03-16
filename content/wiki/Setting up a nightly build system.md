@@ -11,12 +11,12 @@ This article was written back when I was still using [Subversion](/wiki/Subversi
 
 A single [Ruby](/wiki/Ruby) script is responsible for performing all nightly builds and uploading them to the server. Its basic responsibilities include (for each product):
 
-1.  Check the [Subversion](/wiki/Subversion) revision number of the last version of the code base; if it has not increased since the last nightly build for that product then the product will be skipped.
-2.  Export a clean, complete copy of the latest version of code base.
-3.  Build using the `xcodebuild` command-line tool.
-4.  Run unit tests.
-5.  Upload the built product to the webserver.
-6.  Publish a new entry to the "Nightlog" (provides an [RSS](/wiki/RSS) feed so that users can keep informed about new nightlies).
+1. Check the [Subversion](/wiki/Subversion) revision number of the last version of the code base; if it has not increased since the last nightly build for that product then the product will be skipped.
+2. Export a clean, complete copy of the latest version of code base.
+3. Build using the `xcodebuild` command-line tool.
+4. Run unit tests.
+5. Upload the built product to the webserver.
+6. Publish a new entry to the "Nightlog" (provides an [RSS](/wiki/RSS) feed so that users can keep informed about new nightlies).
 
 The upload only proceeds if all of the previous steps complete successfully; the build must be error-free and all unit tests must pass.
 
@@ -26,8 +26,8 @@ In daily use I like to have `PBXBuildsContinueAfterErrors` set to `YES` so that 
 
 At first I turned the setting off (there is also a setting for it in the [Xcode](/wiki/Xcode) [GUI](/wiki/GUI)). I tried overriding the setting temporarily from the command line but that didn't work; the only other solutions that sprang to mind were:
 
-1.  Run `xcodebuild` as a different user.
-2.  Use `defaults` tool to temporarily override the setting.
+1. Run `xcodebuild` as a different user.
+2. Use `defaults` tool to temporarily override the setting.
 
 In August 2007 Apple's [Scott Tooker](/wiki/Scott_Tooker) posted [this message](http://lists.apple.com/archives/Xcode-users/2007/Aug/msg00075.html) to the [xcode-users](/wiki/xcode-users) mailing list explaining how to override the setting from the [command line](/wiki/command_line):
 
@@ -77,11 +77,11 @@ When I was first trying to get this to work with an existing project ([Synergy](
 
 Cleaning and re-building, as well as blowing away the "Build" and "Build-intermediates" folders had no effect. In the end, Xcode finally decided to start doing the right thing. So the moral of the story is, if you're convinced that you're doing everything correctly but Xcode is still not doing as requested then you may just have to keep trying until things come around:
 
--   Quit Xcode.
--   Remove absolutely everything in your "Build" and "Build-intermediates" folders.
--   Touch the time stamp on you `Info.plist` files.
--   Try, try, and try again.
+- Quit Xcode.
+- Remove absolutely everything in your "Build" and "Build-intermediates" folders.
+- Touch the time stamp on you `Info.plist` files.
+- Try, try, and try again.
 
 # See also
 
--   Wincent nightlies information page: <https://wincent.dev/s/nightlies/>
+- Wincent nightlies information page: <https://wincent.dev/s/nightlies/>

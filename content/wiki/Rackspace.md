@@ -6,4 +6,4 @@ tags: rackspace wiki
 
 ## See also
 
--   Official site: <http://rackspace.com/>
+- Official site: <http://rackspace.com/>

@@ -15,4 +15,4 @@ Then there are some "[Web 2.0](/wiki/Web_2.0)" characteristics which have never 
 
 ## See also
 
--   [Wikipedia](/wiki/Wikipedia) article on [Web 2.0](/wiki/Web_2.0): <http://en.wikipedia.org/wiki/Web_2.0>
+- [Wikipedia](/wiki/Wikipedia) article on [Web 2.0](/wiki/Web_2.0): <http://en.wikipedia.org/wiki/Web_2.0>

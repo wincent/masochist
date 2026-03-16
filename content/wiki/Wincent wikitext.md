@@ -16,30 +16,30 @@ So I started working on an [ANTLR](/wiki/ANTLR) grammar for [parsing](/wiki/pars
 
 ## Overall characteristics
 
--   **The input markup should be extremely simple and clean**: As a result I plan to support only a subset of the [MediaWiki](/wiki/MediaWiki) [markup](/wiki/markup); this means omitting complex features like tables and supporting a single syntax for each desired output style (for example, '''apostrophes around text''' to indicate strong) rather than multiple alternative syntaxes (such as &lt;strong&gt;HTML tags&lt;/strong&gt; for the same effect).
--   **The parser should be extremely tolerant of bad input**: Like [MediaWiki](/wiki/MediaWiki), the parser should never bail upon receiving bad input and it should do an excellent job of cleaning up illegal tags, invalid nesting and the like.
--   **The parser should handle [Unicode](/wiki/Unicode)**.
--   **The parser should be fast**: this was why I decided to use the [ANTLR](/wiki/ANTLR) [C target](/wiki/C_target), combined with a [Ruby](/wiki/Ruby) extension written in [C](/wiki/C).
+- **The input markup should be extremely simple and clean**: As a result I plan to support only a subset of the [MediaWiki](/wiki/MediaWiki) [markup](/wiki/markup); this means omitting complex features like tables and supporting a single syntax for each desired output style (for example, '''apostrophes around text''' to indicate strong) rather than multiple alternative syntaxes (such as &lt;strong&gt;HTML tags&lt;/strong&gt; for the same effect).
+- **The parser should be extremely tolerant of bad input**: Like [MediaWiki](/wiki/MediaWiki), the parser should never bail upon receiving bad input and it should do an excellent job of cleaning up illegal tags, invalid nesting and the like.
+- **The parser should handle [Unicode](/wiki/Unicode)**.
+- **The parser should be fast**: this was why I decided to use the [ANTLR](/wiki/ANTLR) [C target](/wiki/C_target), combined with a [Ruby](/wiki/Ruby) extension written in [C](/wiki/C).
 
 ## Nesting
 
 As the target output of the parser is [HTML](/wiki/HTML) the [HTML](/wiki/HTML) nesting rules apply to the input source as well. There are two basic classes of elements:
 
--   **Block-level elements**: these are elements which can appear in the outermost scope of the input; these include &lt;pre&gt;, &lt;blockquote&gt;, &lt;p&gt;, &lt;ol&gt;, &lt;ul&gt; and the headings (&lt;h1&gt; through &lt;h6&gt;).
--   **Inline elements**: these elements may online appear within blocks; they include &lt;em&gt;, &lt;strong&gt; and &lt;tt&gt; spans, links, [entities](/wiki/entities) and regular characters.
+- **Block-level elements**: these are elements which can appear in the outermost scope of the input; these include &lt;pre&gt;, &lt;blockquote&gt;, &lt;p&gt;, &lt;ol&gt;, &lt;ul&gt; and the headings (&lt;h1&gt; through &lt;h6&gt;).
+- **Inline elements**: these elements may online appear within blocks; they include &lt;em&gt;, &lt;strong&gt; and &lt;tt&gt; spans, links, [entities](/wiki/entities) and regular characters.
 
 Some nesting of block-level elements is permitted:
 
--   _Any_ block-level element may be nested inside &lt;blockquote&gt;, including other &lt;blockquote&gt; elements.
--   List block-level elements (&lt;ol&gt; and &lt;ul&gt;) may be nested inside list items (&lt;li&gt;); this allows nested, multi-level lists.
+- _Any_ block-level element may be nested inside &lt;blockquote&gt;, including other &lt;blockquote&gt; elements.
+- List block-level elements (&lt;ol&gt; and &lt;ul&gt;) may be nested inside list items (&lt;li&gt;); this allows nested, multi-level lists.
 
 All other nesting of block-level elements is disallowed.
 
 In general, nesting of inline elements is allowed provided the same element is not nested twice. For example:
 
--   An &lt;em&gt; span may be nested inside a &lt;strong&gt; span
--   A &lt;strong&gt; span may be nested inside an &lt;em&gt; span
--   An &lt;em&gt; span may _not_ be nested inside another &lt;em&gt; span, directly or indirectly; neither may a &lt;strong&gt; span be nested inside another &lt;strong&gt; span
+- An &lt;em&gt; span may be nested inside a &lt;strong&gt; span
+- A &lt;strong&gt; span may be nested inside an &lt;em&gt; span
+- An &lt;em&gt; span may _not_ be nested inside another &lt;em&gt; span, directly or indirectly; neither may a &lt;strong&gt; span be nested inside another &lt;strong&gt; span
 
 This complex, context-sensitive nesting requirement made it prohibitively difficult to produce an [ANTLR](/wiki/ANTLR) [parser](/wiki/parser), especially when combined with the need for the parser to accept and reasonably handle even the most malformed input. So I decided to use a filtering [ANTLR](/wiki/ANTLR) [lexer](/wiki/lexer) to tokenize the input and process it with a hand-written [parser](/wiki/parser).
 
@@ -51,10 +51,10 @@ If we could be sure that the input were always perfectly formed the translator c
 
 Such a parser would most likely produce invalid [HTML](/wiki/HTML) when fed bad input, so we need an appropriate error-handling strategy. Our error handling strategy must balance the following concerns:
 
--   **Speed**: the strategy shouldn't be so involved as to be slow
--   **Complexity**: the strategy shouldn't be so complex that maintenance of the translator becomes difficult
--   **Correctness**: the strategy should produce correct [HTML](/wiki/HTML)
--   **Cleverness**: the strategy should try to "guess" what the input author intended and "correct" the input to match it
+- **Speed**: the strategy shouldn't be so involved as to be slow
+- **Complexity**: the strategy shouldn't be so complex that maintenance of the translator becomes difficult
+- **Correctness**: the strategy should produce correct [HTML](/wiki/HTML)
+- **Cleverness**: the strategy should try to "guess" what the input author intended and "correct" the input to match it
 
 I chose the simplest possible strategy, valuing speed and correctness while keeping complexity down, and pretty much ignoring the "cleverness" criterion. The basic strategy is to emit [HTML](/wiki/HTML) tags upon seeing markup symbols, and upon seeing an invalid or unexpected symbol either automatically inserting any missing HTML tags required for correctness, or outputting the unexpected symbol in plain text (thus providing feedback to the author).
 

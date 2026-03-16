@@ -18,9 +18,9 @@ There are three "windows" in the process: before the downtime, the downtime itse
 
 We do as much preparation on the new machine here as possible:
 
--   Set the [TTL](/wiki/TTL) on the [DNS](/wiki/DNS) to a relatively low value like 600 seconds (10 minutes) so that any changes made to the DNS propagate out quickly
--   Create accounts for the email addresses to be transferred
--   Create (empty) mailboxes as required that will be used when it comes time to import
+- Set the [TTL](/wiki/TTL) on the [DNS](/wiki/DNS) to a relatively low value like 600 seconds (10 minutes) so that any changes made to the DNS propagate out quickly
+- Create accounts for the email addresses to be transferred
+- Create (empty) mailboxes as required that will be used when it comes time to import
 
 We'll also want to do some trial runs at this point, and make sure that we have working scripts for doing stuff like importing mailboxes. Developing such scripts may not be a trivial task if your migration is between machines with different operating systems and different software, so they should be prepared well in advance.
 

@@ -28,4 +28,4 @@ We work around the space problem by piping the output through [perl](/wiki/perl)
 
 # See also
 
--   [Find tricks](/wiki/Find_tricks)
+- [Find tricks](/wiki/Find_tricks)

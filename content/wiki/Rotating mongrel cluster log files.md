@@ -5,17 +5,17 @@ cache_breaker: 1
 
 In my set-up both [mongrel cluster](/wiki/mongrel_cluster) and my [Rails](/wiki/Rails) application itself log to the same directory, and I wind up with a bunch of log files that look like this:
 
--   access_log
--   access_log.1
--   development.log
--   error_log
--   migrations.log
--   mongrel.123.log
--   mongrel.124.log
--   mongrel.125.log
--   mongrel.126.log
--   production.log
--   test.log
+- access_log
+- access_log.1
+- development.log
+- error_log
+- migrations.log
+- mongrel.123.log
+- mongrel.124.log
+- mongrel.125.log
+- mongrel.126.log
+- production.log
+- test.log
 
 The files ending in `_log` are actually [nginx](/wiki/nginx) log files and are handled separately (see "[nginx log rotation](/wiki/nginx_log_rotation)"); you can see that at the time I took this snapshot the file `access_log` had already been rotated once, producing `access_log.1`.
 
@@ -51,5 +51,5 @@ I opted to go with the `copytruncate` option because it enables me to rotate the
 
 # See also
 
--   [nginx log rotation](/wiki/nginx_log_rotation)
--   [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)
+- [nginx log rotation](/wiki/nginx_log_rotation)
+- [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)

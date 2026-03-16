@@ -6,4 +6,4 @@ tags: development wiki
 
 # Official site
 
--   <http://www.oreilly.com/>
+- <http://www.oreilly.com/>

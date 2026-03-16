@@ -370,7 +370,7 @@ This release introduced a major bug that rendered the "Manage -&gt; Posts" secti
 
 # See also
 
--   Release announcement: <http://wordpress.org/development/2007/01/ella-21/>
--   Corresponding [Akismet](/wiki/Akismet) release announcement: <http://akismet.com/blog/2007/01/version-20/>
--   2.1 tag in [Subversion](/wiki/Subversion) repository: <http://svn.automattic.com/wordpress/tags/2.1/>
--   Upgrade notes from other versions: [Upgrading WordPress using Subversion](/wiki/Upgrading_WordPress_using_Subversion)
+- Release announcement: <http://wordpress.org/development/2007/01/ella-21/>
+- Corresponding [Akismet](/wiki/Akismet) release announcement: <http://akismet.com/blog/2007/01/version-20/>
+- 2.1 tag in [Subversion](/wiki/Subversion) repository: <http://svn.automattic.com/wordpress/tags/2.1/>
+- Upgrade notes from other versions: [Upgrading WordPress using Subversion](/wiki/Upgrading_WordPress_using_Subversion)

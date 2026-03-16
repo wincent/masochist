@@ -7,8 +7,8 @@ Cheetah is an [object-oriented template](/wiki/object-oriented_template) engine 
 
 # Official site
 
--   <http://cheetahtemplate.org/>
+- <http://cheetahtemplate.org/>
 
 # See also
 
--   [Walrus](/wiki/Walrus) ([object-oriented template](/wiki/object-oriented_template) engine written in [Ruby](/wiki/Ruby))
+- [Walrus](/wiki/Walrus) ([object-oriented template](/wiki/object-oriented_template) engine written in [Ruby](/wiki/Ruby))

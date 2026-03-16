@@ -81,7 +81,7 @@ gpg: sending key 134D9429 to hkp server keys.gnupg.net
 
 ## Further reading on key servers
 
--   <http://pgp.mit.edu/faq.html>
+- <http://pgp.mit.edu/faq.html>
 
 # Importing a key from a key server
 
@@ -139,4 +139,4 @@ $ gpg --edit-key user@example.com # at prompt: `passwd`, then `quit`
 
 # See also
 
--   Another cheat sheet: <http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html>
+- Another cheat sheet: <http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html>

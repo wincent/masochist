@@ -27,8 +27,8 @@ Slightly more sophisticated load average reports can be obtained using a command
 
 This does the following:
 
--   Get a list of load averages for the day at 10 minute intervals
--   Cut all but the 3rd and 6th columns of the input (columns delimited by a semicolon)
--   Replace spaces and semicolons with commas (useful for importing into a database or spreadsheet)
--   Further cut the input, leaving only the 2nd and 3rd columns (now delimited by a comma)
--   Mail the output to the specified email address
+- Get a list of load averages for the day at 10 minute intervals
+- Cut all but the 3rd and 6th columns of the input (columns delimited by a semicolon)
+- Replace spaces and semicolons with commas (useful for importing into a database or spreadsheet)
+- Further cut the input, leaving only the 2nd and 3rd columns (now delimited by a comma)
+- Mail the output to the specified email address

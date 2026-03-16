@@ -6,4 +6,4 @@ A compatibility layer for using [JQuery](/wiki/JQuery) as a drop-in replacement 
 
 # Links
 
--   Official site: <http://ennerchi.com/projects/jrails>
+- Official site: <http://ennerchi.com/projects/jrails>

@@ -7,5 +7,5 @@ cache_breaker: 1
 
 # See also
 
--   [Rails 3.0.0.rc2](/wiki/Rails_3.0.0.rc2) (aggregated changelog)
--   [Rails 3.0.0.rc](/wiki/Rails_3.0.0.rc) (aggregated changelog)
+- [Rails 3.0.0.rc2](/wiki/Rails_3.0.0.rc2) (aggregated changelog)
+- [Rails 3.0.0.rc](/wiki/Rails_3.0.0.rc) (aggregated changelog)

@@ -18,6 +18,6 @@ There still seems to be a way to go before this will become useful. In a brand n
 
 # See also
 
--   [TextMate](/wiki/TextMate) changelog feed: <http://macromates.com/textmate/changelog.rss>
--   <http://sofanaranja.com/2007/01/20/textmate-rcodetools-el-paraiso-de-ruby/>
--   <http://marcus.ahnve.net/2007/01/30/ruby-code-completion-in-textmate/>
+- [TextMate](/wiki/TextMate) changelog feed: <http://macromates.com/textmate/changelog.rss>
+- <http://sofanaranja.com/2007/01/20/textmate-rcodetools-el-paraiso-de-ruby/>
+- <http://marcus.ahnve.net/2007/01/30/ruby-code-completion-in-textmate/>

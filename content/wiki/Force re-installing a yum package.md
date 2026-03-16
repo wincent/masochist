@@ -9,4 +9,4 @@ $ sudo yum install package
 
 # Source
 
--   <http://hacktux.com/yum/force/reinstall>
+- <http://hacktux.com/yum/force/reinstall>

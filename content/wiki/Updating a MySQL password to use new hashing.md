@@ -6,5 +6,5 @@ tags: mysql wiki
 
 # See also
 
--   <http://dev.mysql.com/doc/refman/5.0/en/password-hashing.html>
--   <http://code.openark.org/blog/mysql/upgrading-passwords-from-old_passwords-to-new-passwords>
+- <http://dev.mysql.com/doc/refman/5.0/en/password-hashing.html>
+- <http://code.openark.org/blog/mysql/upgrading-passwords-from-old_passwords-to-new-passwords>

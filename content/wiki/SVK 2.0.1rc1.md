@@ -6,4 +6,4 @@ tags: svk wiki
 
 # See also
 
--   Changelog: <http://code.bestpractical.com/svk/branches/2.0-releng/CHANGES>
+- Changelog: <http://code.bestpractical.com/svk/branches/2.0-releng/CHANGES>

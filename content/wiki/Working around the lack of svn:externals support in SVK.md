@@ -64,9 +64,9 @@ Now that I have yet another migration I'm going to remove the [SCM](/wiki/SCM) s
 
 Without proper externals you miss out on the following functionality:
 
--   `svk co` doesn't automatically check out dependent modules the way `svn co` does.
--   `svk up` doesn't automatically update dependent modules the way `svn up` does.
--   `svk st` doesn't report on changes in dependent modules the way `svn st` does.
+- `svk co` doesn't automatically check out dependent modules the way `svn co` does.
+- `svk up` doesn't automatically update dependent modules the way `svn up` does.
+- `svk st` doesn't report on changes in dependent modules the way `svn st` does.
 
 One way to work around this would be to write a set of helper scripts, `checkout`, `up` and `st` (`co` can't be used as a name because there is already an [RCS](/wiki/RCS) tool with that name), which would serve as a wrapper for `svk` and add the desired "dependency" functionality.
 
@@ -96,5 +96,5 @@ This is a brute force way of making sure that changes made to one external get p
 
 # See also
 
--   Mailing list thread: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000741.html>
--   [Implementing svn:externals support in SVK](/wiki/Implementing_svn%3aexternals_support_in_SVK)
+- Mailing list thread: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000741.html>
+- [Implementing svn:externals support in SVK](/wiki/Implementing_svn%3aexternals_support_in_SVK)

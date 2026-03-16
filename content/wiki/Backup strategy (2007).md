@@ -45,21 +45,21 @@ Encryption
 
 ## Backup products
 
--   <http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html>
+- <http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html>
 
 ## Apple command line documentation
 
--   <http://developer.apple.com/macosx/backuponmacosx.html>
+- <http://developer.apple.com/macosx/backuponmacosx.html>
 
 ## Other people's backup strategies
 
--   <http://matt.makalumedia.com/archives/000833.html>
--   <http://mjtsai.com/blog/2005/05/24/my-new-backup-strategy/>
+- <http://matt.makalumedia.com/archives/000833.html>
+- <http://mjtsai.com/blog/2005/05/24/my-new-backup-strategy/>
 
 ## Local links
 
--   An article about my new backup strategy as of July 2007: <https://wincent.dev/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php>
+- An article about my new backup strategy as of July 2007: <https://wincent.dev/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php>
 
 # See also
 
--   [Backup strategy](/wiki/Backup_strategy)
+- [Backup strategy](/wiki/Backup_strategy)

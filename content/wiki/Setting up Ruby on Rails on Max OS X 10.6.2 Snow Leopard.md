@@ -20,9 +20,9 @@ $ sudo gem install rails # update from version 2.2.2 to 2.3.5
 
 My deployment target uses [nginx](/wiki/nginx), [memcached](/wiki/memcached) and [MySQL](/wiki/MySQL), so I install each of those on my local machine as well:
 
--   [Installing nginx 0.7.65 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_nginx_0.7.65_on_Mac_OS_X_10.6.2_Snow_Leopard)
--   [Installing memcached 1.4.4 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_memcached_1.4.4_on_Mac_OS_X_10.6.2_Snow_Leopard)
--   [Installing MySQL 5.1.45 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_MySQL_5.1.45_on_Mac_OS_X_10.6.2_Snow_Leopard)
+- [Installing nginx 0.7.65 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_nginx_0.7.65_on_Mac_OS_X_10.6.2_Snow_Leopard)
+- [Installing memcached 1.4.4 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_memcached_1.4.4_on_Mac_OS_X_10.6.2_Snow_Leopard)
+- [Installing MySQL 5.1.45 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_MySQL_5.1.45_on_Mac_OS_X_10.6.2_Snow_Leopard)
 
 # Application-level preparation
 

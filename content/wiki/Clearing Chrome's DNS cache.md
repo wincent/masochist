@@ -9,4 +9,4 @@ Note that that page also has a handy list of what's currently in the cache, maki
 
 # Source
 
--   <http://superuser.com/questions/203674/how-to-clear-flush-the-dns-cache-in-google-chrome>
+- <http://superuser.com/questions/203674/how-to-clear-flush-the-dns-cache-in-google-chrome>

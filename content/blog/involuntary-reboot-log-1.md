@@ -7,11 +7,11 @@ Resetting the IRL counter to "celebrate" the first kernel panic on the new iMac 
 
 The old machine, the G5, gave me 39 involuntary reboots in its short lifetime (18 months). And funnily enough, the day I started using the new iMac was the day of [the last involuntary hard reset](https://wincent.dev/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php) of the G5. The whole reason I made the switch was because of that last scary episode, one scary episode too many... (Little did I know about the [performance benefits](https://wincent.dev/a/about/wincent/weblog/archives/2006/05/imac_memory_upg.php).) So that was 21 May 2006 (confirmed by looking at the volume creation date on the startup disk and also the creation date on `/var/log/OSInstall.custom`); the new machine didn't even get to the two month mark before hitting its first panic.
 
--   **Operating system version:** Mac OS X 10.4.7
--   **Average time between failures:** 53 days
--   **Uptime at moment of failure:** Less than one day
--   **Kernel panics:** 1
--   **Hard resets:** 0
+- **Operating system version:** Mac OS X 10.4.7
+- **Average time between failures:** 53 days
+- **Uptime at moment of failure:** Less than one day
+- **Kernel panics:** 1
+- **Hard resets:** 0
 
 As always, the first thing I did was boot from the system install disc and run Disk First Aid; no errors found but the decision to boot from the DVD rather than the usual start-up disk probably explains why there was no `panic.log` anywhere to be found on the disk (searched everywhere, not just in `/Library/Logs/`. It would be handy to have that information but given my [terrible experiences with disk integrity](https://wincent.dev/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php#more) and Apple software in the past I prefer to not take any risks, and booting from a file system in a potentially inconsistent state sounds like asking for trouble.
 

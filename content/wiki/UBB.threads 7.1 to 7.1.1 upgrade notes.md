@@ -7,15 +7,15 @@ A little tired of doing multi-step manual upgrades to [UBB.threads](/wiki/UBB.th
 
 The basic procedure is as follows:
 
-1.  Download new version from Members Area: <http://www.infopop.com/members/members.php>
-2.  Log in to control panel and close board
-3.  Backup the database
-4.  Backup the installed files
-5.  Temporarily relax permissions (so that the uploads will work)
-6.  Perform the upload using [Interarchy](/wiki/Interarchy)'s Auto Upload feature
-7.  Restore the permissions
-8.  Run the upgrade script `install/upgrade.php` from within the browser
-9.  Remove the install directory from the server
+1. Download new version from Members Area: <http://www.infopop.com/members/members.php>
+2. Log in to control panel and close board
+3. Backup the database
+4. Backup the installed files
+5. Temporarily relax permissions (so that the uploads will work)
+6. Perform the upload using [Interarchy](/wiki/Interarchy)'s Auto Upload feature
+7. Restore the permissions
+8. Run the upgrade script `install/upgrade.php` from within the browser
+9. Remove the install directory from the server
 10. Open the forums again
 
 Quite tedious to do all this manually, especially if you have more than one install to upgrade.
@@ -155,7 +155,7 @@ This found one other minor error elsewhere in the installation, so I recommend r
 
 # See also
 
--   Release announcement: <http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&Number=182825>
--   Change log: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182824>
--   Release discussion: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182202>
--   Previous release list: <http://www.ubbcentral.com/support/version.php?product=UBB.threads>
+- Release announcement: <http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&Number=182825>
+- Change log: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182824>
+- Release discussion: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182202>
+- Previous release list: <http://www.ubbcentral.com/support/version.php?product=UBB.threads>

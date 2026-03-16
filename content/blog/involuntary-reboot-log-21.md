@@ -11,11 +11,11 @@ Didn't quite work, spewing lots of flickering white text on a black screen; I co
 
 ### Involuntary reboot stats to date
 
--   **Operating system version:** 10.5
--   **Kernel panics:** 6
--   **Hard resets:** 15
--   **Total failures:** 21
--   **Start of recording keeping:** 21 May 2006
--   **Total days to date:** 545 days
--   **Average time between failures:** 25.95 days
--   **Uptime at moment of failure(s):** less than 60 seconds
+- **Operating system version:** 10.5
+- **Kernel panics:** 6
+- **Hard resets:** 15
+- **Total failures:** 21
+- **Start of recording keeping:** 21 May 2006
+- **Total days to date:** 545 days
+- **Average time between failures:** 25.95 days
+- **Uptime at moment of failure(s):** less than 60 seconds
