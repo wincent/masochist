@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+configure_worktree() {
+  local BRANCH="$1"
+  local REMOTE="$2"
+
+  if ! git worktree list --porcelain | grep -q "branch refs/heads/$BRANCH"; then
+    echo "⚡Creating \`$BRANCH\` worktree"
+    git worktree add "$BRANCH" "$BRANCH"
+  fi
+
+  echo "⚡Enforcing config for worktree: \`$BRANCH\`"
+  git config branch."$BRANCH".remote "$REMOTE"
+  git config branch."$BRANCH".merge "refs/heads/$BRANCH"
+}
+
+configure_worktree content masochist
+configure_worktree public masochist

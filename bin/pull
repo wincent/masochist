@@ -12,6 +12,8 @@ source bin/configure-remotes
 echo "⚡Refreshing all remotes"
 git remote update --prune
 
+source bin/configure-worktrees
+
 echo "⚡Updating \`main\` checkout"
 git pull --ff-only || EXIT_STATUS=1
 
