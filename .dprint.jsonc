@@ -1,0 +1,14 @@
+{
+  "markdown": {
+    "textWrap": "maintain",
+  },
+  "includes": [
+    "**/*.md",
+  ],
+  "excludes": [
+    "content/static",
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/markdown-0.21.1.wasm",
+  ],
+}
