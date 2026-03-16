@@ -51,11 +51,14 @@ While the "if responds" HOM is about 100 times slower than the non-HOM equivalen
 
 It's interesting to compare these speed figures with the results reported in Marcel Weiher's [HOM paper](http://www.metaobject.com/papers/Higher_Order_Messaging_OOPSLA_2005.pdf) (co-authored with Stéphane Ducasse), which were collected using "techniques for optimizing message sends":
 
-Array size HOM relative speed (optimized) HOM relative speed (unoptimized)
-
----
-
-1 Not tested 1133% 10 218% 238% 100 122% 148% 1000 98% 139% 10000 94% 141% 100000 Not tested 134%
+| Array size | HOM relative speed (optimized) | HOM relative speed (unoptimized) |
+| ---------- | ------------------------------ | -------------------------------- |
+| 1          | Not tested                     | 1133%                            |
+| 10         | 218%                           | 238%                             |
+| 100        | 122%                           | 148%                             |
+| 1000       | 98%                            | 139%                             |
+| 10000      | 94%                            | 141%                             |
+| 100000     | Not tested                     | 134%                             |
 
 So for very small collections the performance difference is negligible, but as the collection size grows the optimized HOM implementation approaches better-than-100% performance penalty whereas the non-optimized case tends towards somewhere between 130 and 140% performance penalty. [Premature optimization is the root of all evil](http://en.wikipedia.org/wiki/Optimization_(computer_science)), so I think I'll leave things the way they are until real-application profiling indicates that I should be optimizing my HOM stuff or replacing it with non-HOM alternatives.
 
