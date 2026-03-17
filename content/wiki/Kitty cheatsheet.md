@@ -7,16 +7,17 @@ title: Kitty cheatsheet
 
 # General
 
-- "Kitty modifier" AKA `kitty_mod`: `^⇧` (`Control-Shift`)
+- "Kitty modifier" AKA `kitty_mod`: `^⇧` (`Control+Shift`)
+- Show command palette: `^⇧F3` (`Control+Shift+F3`)
 
 # Configuration
 
-- Reload configuration: `^⌘,` (`Control-Command-Comma`); also available from the main "kitty" menu in the UI.
+- Reload configuration: `^⌘,` (`Control+Command+Comma`); also available from the main "kitty" menu in the UI.
 
 # Fonts
 
-- Increase font size: `^⇧+` (`Control-Shift-Plus`)
-- Decrease font size: `^⇧-` (`Control-Shift-Minus`)
+- Increase font size: `^⇧+` (`Control+Shift+Plus`)
+- Decrease font size: `^⇧-` (`Control+Shift+Minus`)
 
 # Tabs
 
