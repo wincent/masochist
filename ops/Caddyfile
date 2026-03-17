@@ -40,8 +40,8 @@ import /etc/caddy/conf.d/*
 		file_server
 	}
 
-	# Hide other internal build artifacts (prefixed with underscore).
-	@hidden path /_*
+	# Hide internal build artifacts (prefixed with underscore) and dotfiles.
+	@hidden path /.* /_*
 	handle @hidden {
 		root * /var/www/public
 		rewrite * /404.html

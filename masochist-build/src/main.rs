@@ -636,6 +636,7 @@ fn sync_to_output(staging: &str, output_dir: &str) {
             "-a",
             "--delete",
             "--exclude=/.git",
+            "--exclude=/.mailmap",
             "--exclude=/_assets/",
             &staging_src,
             output_dir,
