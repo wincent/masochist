@@ -670,10 +670,10 @@
         <h3 id="a002270">Small steps</h3>
 
         $ irb -r wiki_text irb(main):001:0&gt;
-        WikiText::Parser.new.parse("foobar") => "&lt;p&gt;foobar&lt;/p&gt;\n" A
-        small step for man, a giant small step for mankind... Ah well, from here
-        on the rest should be pretty easy. (How many times have I said that
-        before?)...
+        WikiText::Parser.new.parse("foobar") => "&lt;p&gt;foobar&lt;/p&gt;\n" One
+        small step for man, a <span style="text-decoration: line-through;">giant</span>
+        small step for humankind... Ah well, from here on the rest should be pretty
+        easy. (How many times have I said that before?)...
         <p>
           <a
             href="https://wincent.dev/a/about/wincent/weblog/archives/2007/06/small_steps.php"
