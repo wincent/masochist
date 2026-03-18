@@ -5,7 +5,7 @@ This repo contains the source code and content for my website at [wincent.dev].
 Content (stored on [the `content` branch](https://github.com/wincent/masochist/tree/content)) is authored in plain-text-friendly markup formats like [Markdown], written to static HTML output files on [the `public` branch](https://github.com/wincent/masochist/tree/public), and a small Rust application (built from [the `main` branch](https://github.com/wincent/masochist/tree/public)) is used to handle dynamic parts of the site, such as [search](https://wincent.dev/search).
 
 > [!NOTE]
-> While Masochist is mostly a static site generator, in it's original form it was a dynamic stack built using [React], [Relay], and [GraphQL]. If you're interested in that, take a look at [the `main` branch](https://github.com/wincent/masochist/commits/main/) as it used to exist at commit [b06dbb8488f88b3d](https://github.com/wincent/masochist/tree/b06dbb8488f88b3dbecda2a448a2c2cfb5883224).
+> While Masochist is mostly a static site generator, in its original form it was a dynamic stack built using [React], [Relay], and [GraphQL]. If you're interested in that, take a look at [the `main` branch](https://github.com/wincent/masochist/commits/main/) as it used to exist at commit [b06dbb8488f88b3d](https://github.com/wincent/masochist/tree/b06dbb8488f88b3dbecda2a448a2c2cfb5883224).
 
 ## Stack
 
