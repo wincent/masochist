@@ -50,8 +50,8 @@ Last month another wake-up call for the JS ecosystem [in the form of a new versi
 
 # Update (2026-03)
 
-Things are changing quickly. When I first wrote this I was mostly concern of malicious actors smuggling bad code in through supply chain attacks. With AI and "agentic coding" hitting an inflection point over the last few months I'm now more worried about vibe-coded garbage flooding the ecosystem and making its way onto your machine via a `brew upgrade` or an `npm update`[^ai].
+Things are changing quickly. When I first wrote this I was mostly concerned about malicious actors smuggling bad code in through supply chain attacks. With AI and "agentic coding" hitting an inflection point over the last few months I'm now more worried about vibe-coded garbage flooding the ecosystem and making its way onto your machine via a `brew upgrade` or an `npm update`[^ai].
 
-[^ai]: I'm not even talking about your own coding agent going rogue (which is yet another thing you do have to worry about) but rather the effect of vibe-coding on the projects that form your dependency tree.
+[^ai]: I'm not even talking about your own coding agent going rogue (another thing you do have to worry about) but rather the effect of vibe-coding on the projects that form part of your dependency tree.
 
 That is, a project that you selected years ago — based on your assessment of the code, the issue tracker, your knowledge of the developer and so on — may be fundamentally compromised overnight, turning from a thoughtfully architected and carefully maintained piece of software craftmanship into a recklessly "ported to Rust for shits and giggles" AI bragging project whose developer not only didn't write its code, but perhaps didn't even read it. These are unnerving times.
