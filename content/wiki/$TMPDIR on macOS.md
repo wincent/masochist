@@ -7,7 +7,7 @@ This [splendid answer](https://unix.stackexchange.com/a/555214/140622) on [unix.
 
 [^security]: Sharing your `$USER` on the internet is relatively benign, when it has already been published in dotfiles, on YouTube, and possibly elsewhere. Sharing a BSD UID like `502` is relatively benign, as it just means it was the third local account created on the Mac (such a value is easily guessed). Sharing the UUID is also benign, as it is an effectively random local identifier generated for macOS directory services; it isn't tied to an Apple ID, or iCloud, or any online service, and has no authentication value (it's an identifier, not a credential). Knowing the value of `$TMPDIR` is not useful for a non-privileged local attacker, because filesystem permissions prevent them from accessing it, and if you have a _privileged_ local attacker then you're already hosed.
 
-- The name under `/var/folders/` is a modified [Base32](https://en.wikipedia.org/wiki/Base32) encoding — described below — of the concatenation your MacOS User UUID and your MacOS (BSD) user ID.
+- The name under `/var/folders/` is a modified [Base32](https://en.wikipedia.org/wiki/Base32) encoding — described below — of the concatenation your macOS User UUID and your macOS (BSD) user ID.
 - Directories are "bucketed" based on the first 2 characters of the encoding (eg. `vw`).
 - The `T` subdirectory is the "user-local temp" directory, and the `C` subdirectory is the "user-local cache" directory.
 - Historically, these used to be `-Tmp-` and `-Caches-` respectively.
