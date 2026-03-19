@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>$TMPDIR on macOS • wincent.dev</title><meta property="og:title" content="$TMPDIR on macOS"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-297b92a0.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/$TMPDIR_on_macOS">$TMPDIR on macOS</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/%24TMPDIR%20on%20macOS.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1773916694" updated="1773916694">2026-03-19</relative-time></div><div class="prerendered"><p>This <a href="https://unix.stackexchange.com/a/555214/140622">splendid answer</a> on <a href="https://unix.stackexchange.com/">unix.stackexchange.com</a> explains how <code>$TMPDIR</code> values like <code>/var/folders/vw/zqs18mzx6w5849bkmxdst7lc0000gp/T/</code> are produced and used on <a href="/wiki/macOS">macOS</a>. I was interested in this because I wanted to know whether <code>$TMDDIR</code> was stable across reboots (tl;dr: it is), and whether it's safe to share the random-looking <code>$TMPDIR</code> value on the internet (tl;dr: it is<sup class="footnote-ref"><a href="#fn-security" id="fnref-security" data-footnote-ref>1</a></sup>).</p>
+<ul>
+<li>The name under <code>/var/folders/</code> is a modified <a href="https://en.wikipedia.org/wiki/Base32">Base32</a> encoding — described below — of the concatenation your MacOS User UUID and your MacOS (BSD) user ID.</li>
+<li>Directories are &quot;bucketed&quot; based on the first 2 characters of the encoding (eg. <code>vw</code>).</li>
+<li>The <code>T</code> subdirectory is the &quot;user-local temp&quot; directory, and the <code>C</code> subdirectory is the &quot;user-local cache&quot; directory.</li>
+<li>Historically, these used to be <code>-Tmp-</code> and <code>-Caches-</code> respectively.</li>
+<li>Because the inputs are stable across time, absent UID and UUID changes, the location of <code>$TMPDIR</code> is stable over time.</li>
+<li>Creation and management of these directories is complicated but handled by a Launch Daemon (<code>/System/Library/LaunchDaemons/com.apple.bsd.dirhelper.plist</code>) that runs the <code>/usr/libexec/dirhelper</code> (see <code>man dirhelper</code>); more details in the appendix below.</li>
+</ul>
+<h2>Worked example</h2>
+<p>Grab BSD and macOS UUIDs:</p>
+<pre><code>$ whoami
+greg.hurrell
+$ id
+uid=502(greg.hurrell) ...
+$ dscl . -read /Users/$USER GeneratedUID
+GeneratedUID: DF3F7C85-14FF-4DC2-A089-5CA9D6E7479B
+</code></pre>
+<p>The <code>base32</code> executable uses RFC4648 encoding, but Apple uses a modified encoding. I initially thought it was <a href="https://en.wikipedia.org/wiki/Base32#Crockford&#x27;s_Base32">&quot;Crockford's Base32&quot;</a>, so I defined this shell function:</p>
+<pre><code>crockford32() {
+  python3 -c &quot;
+    a = '0123456789abcdefghjkmnpqrstvwxyz'
+    h = '$1'
+    b = int.from_bytes(bytes.fromhex(h), 'big')
+    nbits = len(h) * 4
+    padded = ((nbits + 4) // 5) * 5
+    b &lt;&lt;= (padded - nbits)
+    print(''.join(a[(b &gt;&gt; (padded - i - 5)) &amp; 0x1f] for i in range(0, padded, 5)))
+  &quot;
+}
+</code></pre>
+<p>Concatenating the UUID (128 bits) and the BSD UID (in hexadecimal), and Base32 encoding gives us the following:</p>
+<pre><code>$ uuid=$(dscl . -read /Users/$USER GeneratedUID | awk '{print $2}' | tr -d '-')
+$ uid=$(printf '%08x' &quot;$(id -u)&quot;)
+$ crockford32 &quot;${uuid}${uid}&quot;
+vwzqs18mzx6w5849bjmxdst7kc0000fp
+</code></pre>
+<p>This mostly matches the expected output, but starts to diverge after a while because they evidently use different alphabets which skip different letters:</p>
+<pre><code>Crockford: 0123456789abcdefgh jk mnpqrst vwxyz  (skips i,l,o,u)
+Apple:     0123456789abcd fgh jklmnpqrst vwxyz  (skips e,i,o,u)
+</code></pre>
+<p>ie. they agree on values 0–13 and 20–31, but diverge for 14–19.</p>
+<p>So, trying again with this function:</p>
+<pre><code>apple32() {
+  python3 -c &quot;
+    a = '0123456789abcdfghjklmnpqrstvwxyz'
+    h = '$1'
+    b = int.from_bytes(bytes.fromhex(h), 'big')
+    nbits = len(h) * 4
+    padded = ((nbits + 4) // 5) * 5
+    b &lt;&lt;= (padded - nbits)
+    print(''.join(a[(b &gt;&gt; (padded - i - 5)) &amp; 0x1f] for i in range(0, padded, 5)))
+  &quot;
+}
+</code></pre>
+<p>we get:</p>
+<pre><code>$ apple32 &quot;${uuid}${uid}&quot;
+vwzqs18mzx6w5849bkmxdst7lc0000gp
+</code></pre>
+<p>which matches.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585-SW10">&quot;Create Temporary Files Correctly&quot;, from Apple's Secure Coding Guide</a></li>
+<li><a href="https://github.com/rust-lang/rust/pull/131505">rust-lang#131505</a> showing use of <code>confstr(_CS_DARWIN_USER_TEMP_DIR, ...)</code> as a fallback when <code>$TMPDIR</code> is not set.</li>
+</ul>
+<h2>Appendix</h2>
+<h3>Snapshot of <code>/System/Library/LaunchDaemons/com.apple.bsd.dirhelper.plist</code>:</h3>
+<p>Produced with <code>plutil -p</code>:</p>
+<pre><code>{
+  &quot;EnablePressuredExit&quot; =&gt; true
+  &quot;EnvironmentVariables&quot; =&gt; {
+    &quot;CLEAN_FILES_OLDER_THAN_DAYS&quot; =&gt; &quot;3&quot;
+  }
+  &quot;Label&quot; =&gt; &quot;com.apple.bsd.dirhelper&quot;
+  &quot;MachServices&quot; =&gt; {
+    &quot;com.apple.bsd.dirhelper&quot; =&gt; true
+  }
+  &quot;ProcessType&quot; =&gt; &quot;Adaptive&quot;
+  &quot;ProgramArguments&quot; =&gt; [
+    0 =&gt; &quot;/usr/libexec/dirhelper&quot;
+  ]
+  &quot;RunAtLoad&quot; =&gt; true
+  &quot;StartCalendarInterval&quot; =&gt; {
+    &quot;Hour&quot; =&gt; 3
+    &quot;Minute&quot; =&gt; 35
+  }
+}
+</code></pre>
+<p>ie.</p>
+<ul>
+<li>Registers the <code>com.apple.bsd.dirhelper</code> Mach service (which is how <code>confstr()</code> communicates with the helper).</li>
+<li>Runs at boot.</li>
+<li>Runs every day at 3:35 AM, and cleans only files older than 3 days.</li>
+</ul>
+<h3>Snapshot of <code>man dirhelper</code>:</h3>
+<pre><code>dirhelper(8)      System Manager's Manual     dirhelper(8)
+
+NAME
+     dirhelper – helper for special directory creation
+
+SYNOPSIS
+     dirhelper
+
+DESCRIPTION
+     The dirhelper command is a launch-on-demand helper
+     for special directory creation.  It is launched in a
+     privileged context via launchd in order to create
+     special directories where the user would not
+     otherwise have permission to do so.
+
+     The dirhelper command should not be invoked directly.
+     It will exit automatically after a period of
+     inactivity.
+
+FILES
+     /System/Library/LaunchDaemons/com.apple.bsd.dirhelper.plist
+
+SEE ALSO
+     launchd(8), launchd.plist(5)
+
+Mac OS X             November 1, 2006             Mac OS X
+</code></pre>
+<!-- References -->
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-security">
+<p>Sharing your <code>$USER</code> on the internet is relatively benign, when it has already been published in dotfiles, on YouTube, and possibly elsewhere. Sharing a BSD UID like <code>502</code> is relatively benign, as it just means it was the third local account created on the Mac (such a value is easily guessed). Sharing the UUID is also benign, as it is an effectively random local identifier generated for macOS directory services; it isn't tied to an Apple ID, or iCloud, or any online service, and has no authentication value (it's an identifier, not a credential). Knowing the value of <code>$TMPDIR</code> is not useful for a non-privileged local attacker, because filesystem permissions prevent them from accessing it, and if you have a <em>privileged</em> local attacker then you're already hosed. <a href="#fnref-security" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+</div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/macos">macos</a></li></ul></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://twitter.com/wincent">Twitter</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-02271de7.js"></script></body></html>
