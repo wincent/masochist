@@ -919,7 +919,7 @@ blog	your-branch-is-ahead-of-origin-master-by-1-commit	Your branch is ahead of '
 blog	zfs	ZFS	1425193020	1584053324	zfs macos blog
 wiki	"HTML is probably what you want"	"HTML is probably what you want"	1161280621	1773679445	wiki
 wiki	"before filter" in Ruby on Rails	"before filter" in Ruby on Rails	1180115977	1495119989	ruby rails wiki
-wiki	$TMPDIR on macOS	$TMPDIR on macOS	1773916694	1773916694	wiki macos
+wiki	$TMPDIR on macOS	$TMPDIR on macOS	1773916694	1773916954	wiki macos
 wiki	1Password	1Password	1448756583	1773679445	1password wiki
 wiki	37signals	37signals	1180804586	1773679445	rails wiki
 wiki	@executable path, @load path and @rpath	@executable path, @load path and @rpath	1288981596	1773679445	dynamic.linker macos wiki
