@@ -267,6 +267,12 @@ Another subject is implementation languages for a prototype. I immediately thoug
 
 Nevertheless, I'm going to leave a proper exploration of those matters for another day and another post. Maybe next time I'll be able to tackle my original goal of providing a somewhat concise technical summary of how all this is going to look like.
 
+# 2026 update
+
+Now that coding agents have gotten as good as they have lately[^good], this project has gone from "something I'd like to implement one day when I have time" to "something I can create a proof-of-concept for in a weekend".
+
+After working in the capricious Apple ecosystem for years, I was wary of making a new investment in an Apple-dependent language and toolchain, but the cost of producing this kind of POC is now so low that I feel totally fine calling it "throwaway code" and moving forward with it. The work-in-progress is up on GitHub at [wincent/filechute](https://github.com/wincent/filechute)).
+
 [^skein]: I'm inclined to use Skein because the implementation is relatively simple and I've used it happily elsewhere, but in reality I'd be fine with using _any_ reasonable hash function that has a well-vetted implementation written by actual, practical cryptography experts in the programming environment that I'm working in.
 
 [^support]: Apple's quaint(?) decision to encourage the usage of a space-containing path ("Application Support") for use by applications is probably a blessing in disguise; the presence of the space has probably caused countless latent bugs to manifest themselves over the years, but it's good to have a forcing function that obliges you to flush out the possibly invalid assumptions you're making about the context in which your code is going to run.
@@ -286,3 +292,5 @@ Nevertheless, I'm going to leave a proper exploration of those matters for anoth
 [^kv]: It may be tempting to treat both key-value metadata and tags as two instances of the same thing (specifically, tags being a special case key-value pair where the value is null), but I suspect this is probably a mistake. Giving primacy to tags obliges us to put them front and center in the design, and while I can't predict where this emphasis will lead, I think it's important to explore it — we can always change our minds later.
 
 [^modes]: See also [the Wikipedia article on block cipher modes](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation).
+
+[^good]: So good, in fact, that I am able to supervise the agent writing Swift, a language I've never written and barely read, and it produces a working result in pretty short order.
