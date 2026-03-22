@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Recovering unsyncable images in Photos.app • wincent.dev</title><meta property="og:title" content="Recovering unsyncable images in Photos.app"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-297b92a0.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Recovering_unsyncable_images_in_Photos.app">Recovering unsyncable images in Photos.app</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Recovering%20unsyncable%20images%20in%20Photos%2Eapp.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1774215461" updated="1774215461">2026-03-22</relative-time></div><div class="prerendered"><p>I've long had several hundred images (not videos) that refused to sync to iCloud and which cannot be exported from Photos.app. Nevertheless, you can double-click them to see a relatively high quality preview, and you can copy that preview image onto the clipboard.</p>
+<p>I asked Claude to write an AppleScript for me that would take a Command-A selection of all the items in the &quot;Unable to Sync&quot; smart album (which is not a real smart album), and have it copy them one at a time and write them into a folder at <code>~/Recovered Images</code>:</p>
+<pre><code class="language-applescript">use AppleScript version &quot;2.4&quot;
+use scripting additions
+
+set outputPath to (POSIX path of (path to desktop)) &amp; &quot;Recovered Images/&quot;
+set logFile to (POSIX path of (path to desktop)) &amp; &quot;recover-photos.log&quot;
+do shell script &quot;mkdir -p &quot; &amp; quoted form of outputPath
+do shell script &quot;echo 'Starting recovery' &gt; &quot; &amp; quoted form of logFile
+
+-- Work with the current selection in Photos (Cmd+A to select all first)
+tell application &quot;Photos&quot;
+    activate
+    delay 1
+    set allItems to selection
+    set totalCount to count of allItems
+    if totalCount = 0 then
+        display alert &quot;No Selection&quot; message &quot;Select items in Photos first (Cmd+A to select all in the album).&quot;
+        return
+    end if
+end tell
+
+-- Collect filenames upfront
+set filenames to {}
+tell application &quot;Photos&quot;
+    repeat with anItem in allItems
+        set end of filenames to filename of anItem
+    end repeat
+end tell
+
+display alert &quot;Ready&quot; message &quot;Found &quot; &amp; totalCount &amp; &quot; items. Do not touch mouse/keyboard after clicking OK.&quot; buttons {&quot;Cancel&quot;, &quot;OK&quot;} default button &quot;OK&quot;
+
+set successCount to 0
+set failCount to 0
+
+repeat with i from 1 to totalCount
+    set currentFilename to item i of filenames
+    set baseName to do shell script &quot;echo &quot; &amp; quoted form of currentFilename &amp; &quot; | sed 's/\\.[^.]*$//'&quot;
+
+    try
+        -- Select the item in Photos
+        tell application &quot;Photos&quot;
+            activate
+            spotlight item i of allItems
+        end tell
+        delay 2
+
+        -- Copy via Edit menu
+        tell application &quot;System Events&quot;
+            tell process &quot;Photos&quot;
+                click menu item &quot;Copy&quot; of menu &quot;Edit&quot; of menu bar 1
+            end tell
+        end tell
+        delay 2
+
+        -- Save clipboard image data directly to file (no Preview needed)
+        set tiffData to the clipboard as «class TIFF»
+        set filePath to outputPath &amp; baseName &amp; &quot;.tiff&quot;
+        set fileRef to open for access (POSIX file filePath) with write permission
+        write tiffData to fileRef
+        close access fileRef
+
+        -- Convert TIFF to PNG using sips
+        do shell script &quot;sips -s format png &quot; &amp; quoted form of filePath &amp; &quot; --out &quot; &amp; quoted form of (outputPath &amp; baseName &amp; &quot;.png&quot;) &amp; &quot; &amp;&amp; rm &quot; &amp; quoted form of filePath
+
+        set successCount to successCount + 1
+        do shell script &quot;echo 'OK: &quot; &amp; currentFilename &amp; &quot;' &gt;&gt; &quot; &amp; quoted form of logFile
+
+    on error errMsg
+        set failCount to failCount + 1
+        do shell script &quot;echo 'FAIL: &quot; &amp; currentFilename &amp; &quot;: &quot; &amp; errMsg &amp; &quot;' &gt;&gt; &quot; &amp; quoted form of logFile
+    end try
+end repeat
+
+display alert &quot;Recovery Complete&quot; message &quot;Recovered &quot; &amp; successCount &amp; &quot; of &quot; &amp; totalCount &amp; &quot; images.&quot; &amp; return &amp; &quot;Failed: &quot; &amp; failCount &amp; return &amp; outputPath
+</code></pre>
+<p>Save to <code>recover-photos.applescript</code> and run with:</p>
+<pre><code>osascript recover-photos.applescript
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/photos">photos</a></li></ul></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://twitter.com/wincent">Twitter</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-02271de7.js"></script></body></html>
