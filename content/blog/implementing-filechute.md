@@ -271,7 +271,7 @@ Nevertheless, I'm going to leave a proper exploration of those matters for anoth
 
 Now that coding agents have gotten as good as they have lately[^good], this project has gone from "something I'd like to implement one day when I have time" to "something I can create a proof-of-concept for in a weekend".
 
-After working in the capricious Apple ecosystem for years, I was wary of making a new investment in an Apple-dependent language and toolchain, but the cost of producing this kind of POC is now so low that I feel totally fine calling it "throwaway code" and moving forward with it. The work-in-progress is up on GitHub at [wincent/filechute](https://github.com/wincent/filechute)).
+After working in the capricious Apple ecosystem for years, I was wary of making a new investment in an Apple-dependent language and toolchain, but the cost of producing this kind of POC is now so low that I feel totally fine calling it "throwaway code" and moving forward with it. The work-in-progress is up on GitHub at [wincent/filechute](https://github.com/wincent/filechute).
 
 [^skein]: I'm inclined to use Skein because the implementation is relatively simple and I've used it happily elsewhere, but in reality I'd be fine with using _any_ reasonable hash function that has a well-vetted implementation written by actual, practical cryptography experts in the programming environment that I'm working in.
 
