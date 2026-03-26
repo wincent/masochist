@@ -76,7 +76,32 @@ bin/build
 
 ## Running with Docker Compose (dev mode)
 
-First build the static site, then start the stack:
+Install Docker and Colima (CLI alternative to docker-desktop cask):
+
+```
+brew install docker docker-buildx docker-compose colima
+
+# Start Colima.
+# --vm-type=vz: uses Apple's Virtualization Framework (faster on Apple silicon).
+# --vz-rosetta: allows running x86_64 (Intel) container images; not needed but a useful default.
+colima start --cpu 4 --memory 16 --vm-type=vz --vz-rosetta
+
+# Confirm Colima is working.
+docker ps
+docker context ls # Should show Colima is current context (indicated with "*").
+docker info
+docker compose version
+colima status
+
+# Configure Colima to start at boot.
+brew services start colima
+
+# (Optional) For tools that expect standard docker.sock path, provide symlink as a convenience:
+mkdir -p ~/.docker/run
+ln -sf ~/.colima/default/docker.sock ~/.docker/run/docker.sock
+```
+
+Build the static site, then start the stack:
 
 ```
 bin/build
