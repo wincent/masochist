@@ -17,7 +17,7 @@ So, without further ado, I present my list.
 
 ## Version control
 
-[Git](/wiki/Git) is the best version control system. Choosing [Mercurial](/wiki/Mercurial) is incorrect. Choosing anything else is absurd.
+[Git](/wiki/Git) is the best version control system. [Jujutsu](https://jj-vcs.github.io/) is permitted for experimentation. Choosing [Mercurial](/wiki/Mercurial) is incorrect. Choosing anything else is absurd.
 
 ## Text editing
 
@@ -27,11 +27,11 @@ Using a full-fledged IDE is unjustified, unless your employer forces you to do s
 
 ## Code font
 
-You should be using Adobe's [Source Code Pro](http://adobe-fonts.github.io/source-code-pro/) in its "Light" weight. You may be forgiven for using [a baseline-corrected version](/wiki/Fixing_the_baseline_on_the_Consolas_font_on_OS_X) of Microsoft's [Consolas](/wiki/Consolas), but only if you didn't know about Source Code Pro (and now, you do). Using any other font is, by definition, invalid.
+You should be using ~~Adobe's [Source Code Pro](http://adobe-fonts.github.io/source-code-pro/) in its "Light" weight~~ [MonoLisa](https://www.monolisa.dev/). Using any other font is, by definition, invalid.
 
 ## Color scheme
 
-You should use the `bright` scheme from [Base16](http://chriskempson.com/projects/base16/). Under extremely bright ambient conditions, you may switch to `grayscale-light`. Other color schemes are factual errors and should be erased.
+You should use [the `bright` scheme](https://tinted-theming.github.io/tinted-gallery/) from [Tinted Theming](https://github.com/tinted-theming). Under extremely bright ambient conditions, you may switch to `grayscale-light`. Other color schemes are factual errors and should be erased.
 
 ## Operating systems
 
@@ -39,11 +39,11 @@ macOS is the best desktop operating system. It is permitted (encouraged, even) t
 
 For mobile, [iOS](http://www.apple.com/ios/) is the only logical choice (all other choices are illogical, especially Android). Note the corollary here, which is that [the iPhone](http://www.apple.com/iphone/) itself is the only logical choice of mobile phone.
 
-On the server, you should be using a Red Hat-ish strain of Linux, specifically, [Amazon Linux](https://aws.amazon.com/amazon-linux-2). This is because you should be using [AWS](https://aws.amazon.com/) for your cloud computing needs. (And on the subject of Amazon, make sure that you use a [Kindle](http://www.amazon.com/kindle), because all other e-readers are suboptimal.)
+On the server, you should be using a Red Hat-ish strain of Linux, specifically, [Amazon Linux](https://aws.amazon.com/linux/amazon-linux-2023/). This is because you should be using [AWS](https://aws.amazon.com/) for your cloud computing needs. (And on the subject of Amazon, make sure that you use a [Kindle](http://www.amazon.com/kindle), because all other e-readers are suboptimal.)
 
 ## Window management
 
-[Hammerspoon](/wiki/Hammerspoon) is the correct way to manage window layouts, and specifically, the right way to use it is to configure it [like I do](https://github.com/wincent/wincent/tree/master/roles/dotfiles/files/.hammerspoon). Anything else is wrong.
+[Hammerspoon](/wiki/Hammerspoon) is the correct way to manage window layouts, and specifically, the right way to use it is to configure it [like I do](https://github.com/wincent/wincent/tree/main/aspects/dotfiles/files/.hammerspoon). Anything else is wrong.
 
 ## Shell
 
@@ -59,13 +59,13 @@ In olden times, [Ansible](http://docs.ansible.com/) was the anointed solution fo
 
 ## Calendar, Mail and "Todos"
 
-After an exhaustive search, I have established that [Fantastical](https://flexibits.com/fantastical) is the best calendar, the [Fastmail iOS app](https://apps.apple.com/us/app/fastmail-email-calendar/id931370077) and the [Fastmail website](https://www.fastmail.com/) inside [Chrome](https://www.google.com/chrome/browser/desktop/) on the desktop are the only way to read and send email, and [Things](https://culturedcode.com/things/) is the best todo list.
+After an exhaustive search, I have established that ~~[Fantastical](https://flexibits.com/fantastical) is the best calendar,~~ the [Fastmail iOS app](https://apps.apple.com/us/app/fastmail-email-calendar/id931370077) and the [Fastmail website](https://www.fastmail.com/) inside [Chrome](https://www.google.com/chrome/browser/desktop/) on the desktop are the only way to read and send email or use calendars, and ~~[Things](https://culturedcode.com/things/)~~ [Godspeed](https://godspeedapp.com) is the best todo list.
 
 Beware of your choices here: choosing to use Microsoft Outlook is as bad as using child labor to produce internet-enabled home thermostats, and picking an email provider like Google is morally equivalent to destroying the Amazonian rain forest.
 
 ## Backup solution
 
-You should backup your data with [Arq](https://www.arqbackup.com/). Using Time Machine is a faux pas. All other alternatives are ill-advised.
+You should backup your data with [Arq](https://www.arqbackup.com/), as God intended. Using Time Machine is a faux pas. All other alternatives are ill-advised.
 
 ## Keyboard
 
@@ -85,7 +85,7 @@ If in doubt about what kind of Topre-equipped keyboard you should buy, just buy 
 
 ## Terminal
 
-Use [iTerm](http://www.iterm2.com/) or [Kitty](https://sw.kovidgoyal.net/kitty/), unless you want to be wrong (but note: wanting to be wrong is itself wrong). Use [tmux](/wiki/tmux) for terminal multiplexing, and never [screen](/wiki/screen).
+Use [Kitty](https://sw.kovidgoyal.net/kitty/), unless you want to be wrong (but note: wanting to be wrong is itself wrong). Special permission to use [Ghostty](https://ghostty.org) is available [upon request](mailto:greg@hurrell.net). Use [tmux](/wiki/tmux) for terminal multiplexing, and never use [screen](/wiki/screen), as the latter may cause irreversible neurological deterioration.
 
 On the subject of GUI versus terminal, remember to use Neovim and tmux preferentially over MacVim. The former is self-evidently correct.
 
@@ -95,7 +95,7 @@ Store your secrets in [1Password](https://1password.com/). Using the same passwo
 
 ## System add-ons
 
-Failing to install [iStat Menus](http://bjango.com/mac/istatmenus/), [Bartender](http://www.macbartender.com/) and ~~[Alfred](https://www.alfredapp.com/)~~ [Raycast](https://www.raycast.com/) is a configuration error and should be corrected at your earliest convenience.
+Failing to install [iStat Menus](http://bjango.com/mac/istatmenus/), ~~[Bartender](http://www.macbartender.com/)~~ [Ice](https://icemenubar.app/) and ~~[Alfred](https://www.alfredapp.com/)~~ [Raycast](https://www.raycast.com/) is a configuration error and should be corrected at your earliest convenience.
 
 # Conclusion
 
