@@ -50,7 +50,7 @@ It does feel like a bigger leap to make, because the sense of selfhood that we a
 
 There is an almost ineludible sense that there is a "you-ness" located somewhere inside you, most usually inside your head, looking out into the world through the windows of your eyes. This sensation is so normal and so continuous that we rarely speak of it, taking it for granted, and we instead name _other_ states — like "flow states" — for those much rarer moments when you somehow lose your sense of self; like when you get absorbed in a good book, or lost in a task that captivates your attention and makes you lose track of time.
 
-But if you think that a human being is a deterministic machine chugging along according to the rule of physics, it's hard to explain how consciousness arises within that machine, and once it does arise, how and when it crosses the threshold of self-awareness[^panpsychism]. Clearly, it _does_ cross that threshold, but doing doing so doesn't necessarily give us a handle on _what_ the self is.
+But if you think that a human being is a deterministic machine chugging along according to the rule of physics, it's hard to explain how consciousness arises within that machine, and once it does arise, how and when it crosses the threshold of self-awareness[^panpsychism]. Clearly, it _does_ cross that threshold, but doing so doesn't necessarily give us a handle on _what_ the self is.
 
 [^panpsychism]: So many fun rabbit holes to go down here, leading to interesting (but in my opinion implausible) places like [panpsychism](https://en.wikipedia.org/wiki/Panpsychism) and such.
 
