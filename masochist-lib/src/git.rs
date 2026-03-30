@@ -73,7 +73,7 @@ impl GitRepo {
     pub fn cat_file_batch<I, K>(&self, objects: I) -> HashMap<K, String>
     where
         I: IntoIterator<Item = (String, K)>,
-        K: Eq + std::hash::Hash,
+        K: Eq + std::hash::Hash + Send,
     {
         let mut child = self
             .command()
@@ -87,14 +87,16 @@ impl GitRepo {
         let stdout = child.stdout.take().expect("failed to open stdout");
         let mut reader = BufReader::new(stdout);
 
-        let mut results = HashMap::new();
         let objects: Vec<_> = objects.into_iter().collect();
 
-        for (hash, _) in &objects {
-            writeln!(stdin, "{hash}").expect("failed to write to git cat-file stdin");
-        }
-        drop(stdin);
+        let hashes: Vec<String> = objects.iter().map(|(h, _)| h.clone()).collect();
+        let writer = std::thread::spawn(move || {
+            for hash in &hashes {
+                writeln!(stdin, "{hash}").expect("failed to write to git cat-file stdin");
+            }
+        });
 
+        let mut results = HashMap::new();
         for (_, key) in objects {
             let mut header = String::new();
             reader
@@ -121,6 +123,7 @@ impl GitRepo {
             }
         }
 
+        writer.join().expect("stdin writer thread panicked");
         let _ = child.wait();
         results
     }
