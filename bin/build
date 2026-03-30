@@ -4,16 +4,25 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+cd "$REPO_DIR"
+
+if [ ! -e public/.git ]; then
+    git worktree add public public
+fi
+
 OUTPUT_DIR="${REPO_DIR}/public"
 
-echo "Checking public branch is up to date..."
-git -C "${OUTPUT_DIR}" fetch masochist
-LOCAL=$(git -C "${OUTPUT_DIR}" rev-parse HEAD)
-REMOTE=$(git -C "${OUTPUT_DIR}" rev-parse masochist/public)
-if [ "$LOCAL" != "$REMOTE" ] && ! git -C "${OUTPUT_DIR}" merge-base --is-ancestor "$REMOTE" "$LOCAL"; then
-    echo "Error: public worktree has diverged from masochist/public."
-    echo "Pull or rebase before building."
-    exit 1
+if git -C "${OUTPUT_DIR}" config remote.masochist.url &>/dev/null; then
+    echo "Checking public branch is up to date..."
+    git -C "${OUTPUT_DIR}" fetch masochist
+    LOCAL=$(git -C "${OUTPUT_DIR}" rev-parse HEAD)
+    REMOTE=$(git -C "${OUTPUT_DIR}" rev-parse masochist/public)
+    if [ "$LOCAL" != "$REMOTE" ] && ! git -C "${OUTPUT_DIR}" merge-base --is-ancestor "$REMOTE" "$LOCAL"; then
+        echo "Error: public worktree has diverged from masochist/public."
+        echo "Pull or rebase before building."
+        exit 1
+    fi
 fi
 
 echo "Building static site..."

@@ -67,6 +67,9 @@ There are 3 remotes:
 - `bin/pull`: Fetches all remotes and updates `main`, `content`, and `public` checkouts.
 - `bin/prod`: Runs Docker Compose on remote host.
 - `bin/push`: Pushes all branches (`main`, `content`, `public`) to all remotes (`origin`, `github`, `masochist`).
+- `bin/sandbox`: Manages a [Tart](https://tart.run/) VM for isolated AI-assisted development.
+- `bin/inject`: Pushes branches from the host into the VM.
+- `bin/extract`: Fetches branches from the VM for review.
 
 ## Building the static site
 
@@ -109,6 +112,28 @@ bin/dev
 ```
 
 This starts Caddy on `https://localhost:2443` (self-signed cert) with the Rocket search server proxied behind it.
+
+## Running in a VM sandbox
+
+For isolated development using a [Tart](https://tart.run/) VM (recommended for AI-assisted workflows):
+
+```
+brew install sshpass cirruslabs/cli/tart
+
+bin/sandbox create    # One-time: creates and provisions the VM
+bin/sandbox ssh       # SSH into the VM
+# Inside the VM:
+cd masochist && bin/dev
+```
+
+To move changes between host and VM:
+
+```
+bin/inject            # Push host branches into the VM
+bin/extract           # Show what changed in the VM
+bin/extract apply     # Fast-forward host branches to match VM
+bin/push              # Push to production remotes (from host)
+```
 
 ## Server setup (EC2)
 

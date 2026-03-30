@@ -1,0 +1,234 @@
+#!/bin/bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+VM_NAME="masochist-sandbox"
+VM_IMAGE="ghcr.io/cirruslabs/ubuntu:latest"
+VM_USER="admin"
+VM_PASS="admin"
+VM_REPO_PATH="/home/admin/masochist"
+
+SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=5"
+
+vm_ssh() {
+    sshpass -p "$VM_PASS" ssh $SSH_OPTS "$VM_USER@$1" "${@:2}"
+}
+
+vm_scp() {
+    sshpass -p "$VM_PASS" scp $SSH_OPTS "$@"
+}
+
+vm_exists() {
+    tart list | grep -q "$VM_NAME"
+}
+
+vm_ip() {
+    tart ip "$VM_NAME"
+}
+
+wait_for_ip() {
+    echo "⚡Waiting for VM to get an IP..." >&2
+    local attempts=0
+    while ! tart ip "$VM_NAME" &>/dev/null; do
+        attempts=$((attempts + 1))
+        if [ "$attempts" -ge 60 ]; then
+            echo "Error: timed out waiting for VM IP" >&2
+            exit 1
+        fi
+        sleep 2
+    done
+    tart ip "$VM_NAME"
+}
+
+wait_for_ssh() {
+    local ip="$1"
+    echo "⚡Waiting for SSH to become available..." >&2
+    local attempts=0
+    while ! vm_ssh "$ip" true &>/dev/null; do
+        attempts=$((attempts + 1))
+        if [ "$attempts" -ge 30 ]; then
+            echo "Error: timed out waiting for SSH" >&2
+            exit 1
+        fi
+        sleep 2
+    done
+}
+
+provision() {
+    local ip="$1"
+
+    echo "⚡Installing system packages..."
+    vm_ssh "$ip" 'sudo apt-get update && sudo apt-get install -y build-essential git'
+
+    echo "⚡Installing Docker..."
+    vm_ssh "$ip" bash <<'DOCKER_EOF'
+sudo apt-get install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker admin
+DOCKER_EOF
+
+    echo "⚡Configuring SSH environment forwarding..."
+    vm_ssh "$ip" "echo 'AcceptEnv ANTHROPIC_API_KEY' | sudo tee -a /etc/ssh/sshd_config && sudo systemctl restart ssh"
+
+    echo "⚡Installing Rust..."
+    vm_ssh "$ip" "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+
+    echo "⚡Installing Claude Code..."
+    vm_ssh "$ip" 'curl -fsSL https://claude.ai/install.sh | bash'
+
+    echo "⚡Configuring PATH..."
+    vm_ssh "$ip" 'echo '\''export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"'\'' >> ~/.bashrc'
+
+    echo "⚡Configuring git..."
+    local host_name host_email
+    host_name="$(git config user.name)"
+    host_email="$(git config user.email)"
+    vm_ssh "$ip" "git config --global user.name '$host_name' && git config --global user.email '$host_email' && git config --global init.defaultBranch main"
+}
+
+init_repo() {
+    local ip="$1"
+
+    echo "⚡Initializing repo in VM..."
+    vm_ssh "$ip" bash <<'INIT_EOF'
+git init ~/masochist
+cd ~/masochist
+git config receive.denyCurrentBranch updateInstead
+INIT_EOF
+}
+
+copy_oauth_credentials() {
+    local ip="$1"
+    local creds="$HOME/.claude/.credentials.json"
+    if [ -f "$creds" ]; then
+        echo "⚡Copying OAuth credentials to VM..."
+        vm_ssh "$ip" 'mkdir -p ~/.claude'
+        vm_scp "$creds" "$VM_USER@$ip:~/.claude/.credentials.json"
+    fi
+}
+
+cmd_create() {
+    if vm_exists; then
+        echo "Error: VM '$VM_NAME' already exists"
+        echo "Use \`bin/sandbox destroy\` first, or \`bin/sandbox reset\` to recreate."
+        exit 1
+    fi
+
+    echo "⚡Cloning VM image..."
+    tart clone "$VM_IMAGE" "$VM_NAME"
+
+    echo "⚡Configuring VM resources..."
+    tart set "$VM_NAME" --cpu 4 --memory 8192
+
+    echo "⚡Starting VM..."
+    tart run --no-graphics "$VM_NAME" &
+
+    local ip
+    ip="$(wait_for_ip)"
+    echo "⚡VM IP: $ip"
+
+    wait_for_ssh "$ip"
+
+    provision "$ip"
+    init_repo "$ip"
+    copy_oauth_credentials "$ip"
+
+    echo "⚡Injecting branches into VM..."
+    "$SCRIPT_DIR/inject"
+
+    echo ""
+    echo "VM '$VM_NAME' is ready."
+    echo "To connect: \`bin/sandbox ssh\`"
+    echo "To push code in: \`bin/inject\`"
+}
+
+cmd_ssh() {
+    local ip
+    ip="$(vm_ip)"
+    local ssh_args=($SSH_OPTS)
+    if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+        ssh_args+=(-o SendEnv=ANTHROPIC_API_KEY)
+    fi
+    exec sshpass -p "$VM_PASS" ssh "${ssh_args[@]}" "$VM_USER@$ip"
+}
+
+cmd_destroy() {
+    tart stop "$VM_NAME" 2>/dev/null || true
+    tart delete "$VM_NAME" 2>/dev/null || true
+    git -C "$REPO_DIR" remote remove vm 2>/dev/null || true
+    echo "VM '$VM_NAME' destroyed."
+}
+
+cmd_reset() {
+    cmd_destroy
+    cmd_create
+}
+
+cmd_status() {
+    if ! vm_exists; then
+        echo "VM '$VM_NAME' does not exist."
+        echo "Create with: \`bin/sandbox create\`"
+        return
+    fi
+
+    local ip
+    if ip="$(vm_ip 2>/dev/null)"; then
+        echo "VM '$VM_NAME' is running."
+        echo "IP: $ip"
+    else
+        echo "VM '$VM_NAME' exists but is not running."
+        echo "Start with: \`tart run --no-graphics $VM_NAME &\`"
+    fi
+}
+
+cmd_ip() {
+    vm_ip
+}
+
+case "${1:-}" in
+    create)
+        cmd_create
+        ;;
+    ssh)
+        cmd_ssh
+        ;;
+    destroy)
+        cmd_destroy
+        ;;
+    reset)
+        cmd_reset
+        ;;
+    status)
+        cmd_status
+        ;;
+    ip)
+        cmd_ip
+        ;;
+    --help)
+        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|status|ip>"
+        ;;
+    "")
+        if vm_exists; then
+            cmd_ssh
+        else
+            echo "Usage: $(basename "$0") <create|ssh|destroy|reset|status|ip>"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|status|ip>"
+        exit 1
+        ;;
+esac

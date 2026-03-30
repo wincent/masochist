@@ -1,0 +1,114 @@
+#!/bin/bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+VM_USER="admin"
+VM_PASS="admin"
+VM_REPO_PATH="/home/admin/masochist"
+SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=5"
+
+BRANCHES=(main content public)
+
+cd "$REPO_DIR"
+
+IP="$("$SCRIPT_DIR/sandbox" ip)" || {
+    echo "Error: VM is not running."
+    exit 1
+}
+
+export GIT_SSH_COMMAND="sshpass -p $VM_PASS ssh $SSH_OPTS"
+
+echo "⚡Configuring vm remote ($IP)..."
+git remote remove vm 2>/dev/null || true
+git remote add vm "ssh://${VM_USER}@${IP}${VM_REPO_PATH}"
+
+echo "⚡Fetching from VM..."
+git fetch vm "${BRANCHES[@]}"
+
+cmd_show() {
+    local has_changes=false
+
+    for branch in "${BRANCHES[@]}"; do
+        local log
+        log="$(git log --oneline "$branch..vm/$branch" 2>/dev/null || true)"
+        echo "$branch:"
+        if [ -n "$log" ]; then
+            echo "$log"
+            has_changes=true
+        else
+            echo "  (no changes)"
+        fi
+        echo ""
+    done
+
+    if [ "$has_changes" = false ]; then
+        echo "No changes in VM."
+        return
+    fi
+
+    echo "To apply: \`bin/extract apply\`"
+}
+
+cmd_apply() {
+    local applied=false
+
+    for branch in "${BRANCHES[@]}"; do
+        local log
+        log="$(git log --oneline "$branch..vm/$branch" 2>/dev/null || true)"
+        if [ -z "$log" ]; then
+            continue
+        fi
+
+        echo "⚡Fast-forwarding $branch..."
+        if [ "$branch" = "main" ]; then
+            git checkout main
+            if ! git merge --ff-only vm/main; then
+                echo "Error: cannot fast-forward main (branches diverged)."
+                echo "Resolve manually with: git rebase vm/main"
+                exit 1
+            fi
+        else
+            if ! git -C "$branch" merge --ff-only "vm/$branch"; then
+                echo "Error: cannot fast-forward $branch (branches diverged)."
+                echo "Resolve manually."
+                exit 1
+            fi
+        fi
+        applied=true
+    done
+
+    if [ "$applied" = false ]; then
+        echo "No changes to apply."
+        return
+    fi
+
+    echo ""
+    echo "Branches updated. Review with \`git log\`, then push with: \`bin/push\`"
+}
+
+case "${1:-}" in
+    "")
+        cmd_show
+        ;;
+    apply)
+        cmd_apply
+        ;;
+    cherry-pick)
+        echo "cherry-pick is not yet implemented. Use \`bin/extract apply\` or manual cherry-pick."
+        exit 1
+        ;;
+    --help)
+        echo "Usage: $(basename "$0") [apply|cherry-pick]"
+        echo ""
+        echo "  (no args)    Show what changed in the VM"
+        echo "  apply        Fast-forward host branches to match VM"
+        echo "  cherry-pick  (v2) Interactive cherry-pick"
+        ;;
+    *)
+        echo "Usage: $(basename "$0") [apply|cherry-pick]"
+        exit 1
+        ;;
+esac

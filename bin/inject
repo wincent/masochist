@@ -1,0 +1,76 @@
+#!/bin/bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+VM_USER="admin"
+VM_PASS="admin"
+VM_REPO_PATH="/home/admin/masochist"
+SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=5"
+
+FORCE=false
+BRANCHES=()
+for arg in "$@"; do
+    if [ "$arg" = "--force" ] || [ "$arg" = "-f" ]; then
+        FORCE=true
+    else
+        BRANCHES+=("$arg")
+    fi
+done
+if [ ${#BRANCHES[@]} -eq 0 ]; then
+    BRANCHES=(main content public)
+fi
+
+cd "$REPO_DIR"
+
+IP="$("$SCRIPT_DIR/sandbox" ip)" || {
+    echo "Error: VM is not running."
+    echo "Start with: \`bin/sandbox create\` or \`tart run --no-graphics masochist-sandbox &\`"
+    exit 1
+}
+
+export GIT_SSH_COMMAND="sshpass -p $VM_PASS ssh $SSH_OPTS"
+
+echo "⚡Configuring vm remote ($IP)..."
+git remote remove vm 2>/dev/null || true
+git remote add vm "ssh://${VM_USER}@${IP}${VM_REPO_PATH}"
+
+HAS_COMMITS=$(sshpass -p "$VM_PASS" ssh $SSH_OPTS "$VM_USER@$IP" \
+    "cd $VM_REPO_PATH && git rev-parse HEAD 2>/dev/null && echo yes || echo no")
+
+if [ "$HAS_COMMITS" = "yes" ]; then
+    echo "⚡Checking for uncommitted changes in VM..."
+    if ! sshpass -p "$VM_PASS" ssh $SSH_OPTS "$VM_USER@$IP" \
+        "cd $VM_REPO_PATH && git diff --quiet HEAD && git diff --quiet --cached" 2>/dev/null; then
+        echo "Warning: VM repo has uncommitted changes."
+        read -r -p "Continue anyway? [y/N] " answer
+        if [[ ! "$answer" =~ ^[Yy]$ ]]; then
+            exit 1
+        fi
+    fi
+fi
+
+echo "⚡Pushing ${BRANCHES[*]} to VM..."
+if [ "$FORCE" = true ]; then
+    git push --force vm "${BRANCHES[@]}"
+else
+    git push vm "${BRANCHES[@]}"
+fi
+
+echo "⚡Updating worktrees in VM..."
+sshpass -p "$VM_PASS" ssh $SSH_OPTS "$VM_USER@$IP" bash <<'EOF'
+cd ~/masochist
+for branch in content public; do
+    if [ -d "$branch" ] && git -C "$branch" rev-parse --git-dir &>/dev/null; then
+        git -C "$branch" reset --hard "refs/heads/$branch"
+    else
+        git worktree add "$branch" "$branch" 2>/dev/null || true
+    fi
+done
+EOF
+
+echo ""
+echo "Pushed: ${BRANCHES[*]}"
+echo "To connect: \`bin/sandbox ssh\`"
