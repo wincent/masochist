@@ -7,4 +7,6 @@ REPO_DIR="$(dirname "$SCRIPT_DIR")"
 OPS_DIR="${REPO_DIR}/ops"
 
 cd "${OPS_DIR}"
+export APP_UID="$(id -u)"
+export APP_GID="$(id -g)"
 docker compose -f compose.base.yml -f compose.dev.yml up --build "$@"

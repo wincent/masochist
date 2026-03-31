@@ -6,6 +6,7 @@ services:
       context: ..
       dockerfile: ops/Dockerfile
     image: masochist-app
+    user: "${APP_UID:-0}:${APP_GID:-0}"
     volumes:
       - ..:/srv/content:ro
       - ../public:/var/www/public:ro
