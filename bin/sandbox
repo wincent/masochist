@@ -178,6 +178,22 @@ cmd_reset() {
     cmd_create
 }
 
+cmd_restart() {
+    echo "⚡Stopping VM..."
+    tart stop "$VM_NAME" 2>/dev/null || true
+
+    echo "⚡Starting VM..."
+    tart run --no-graphics "$VM_NAME" &
+
+    local ip
+    ip="$(wait_for_ip)"
+    echo "⚡VM IP: $ip"
+
+    wait_for_ssh "$ip"
+    echo "VM '$VM_NAME' is ready."
+    echo "To connect: \`bin/sandbox ssh\`"
+}
+
 cmd_status() {
     if ! vm_exists; then
         echo "VM '$VM_NAME' does not exist."
@@ -191,7 +207,7 @@ cmd_status() {
         echo "IP: $ip"
     else
         echo "VM '$VM_NAME' exists but is not running."
-        echo "Start with: \`tart run --no-graphics $VM_NAME &\`"
+        echo "Start with: \`bin/sandbox restart\`"
     fi
 }
 
@@ -212,6 +228,9 @@ case "${1:-}" in
     reset)
         cmd_reset
         ;;
+    restart)
+        cmd_restart
+        ;;
     status)
         cmd_status
         ;;
@@ -219,18 +238,18 @@ case "${1:-}" in
         cmd_ip
         ;;
     --help)
-        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|status|ip>"
+        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|restart|status|ip>"
         ;;
     "")
         if vm_exists; then
             cmd_ssh
         else
-            echo "Usage: $(basename "$0") <create|ssh|destroy|reset|status|ip>"
+            echo "Usage: $(basename "$0") <create|ssh|destroy|reset|restart|status|ip>"
             exit 1
         fi
         ;;
     *)
-        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|status|ip>"
+        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|restart|status|ip>"
         exit 1
         ;;
 esac
