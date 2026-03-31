@@ -80,7 +80,7 @@ sudo usermod -aG docker admin
 DOCKER_EOF
 
     echo "⚡Configuring SSH environment forwarding..."
-    vm_ssh "$ip" "echo 'AcceptEnv ANTHROPIC_API_KEY' | sudo tee -a /etc/ssh/sshd_config && sudo systemctl restart ssh"
+    vm_ssh "$ip" "echo 'AcceptEnv ANTHROPIC_API_KEY CLAUDE_CODE_OAUTH_TOKEN' | sudo tee -a /etc/ssh/sshd_config && sudo systemctl restart ssh"
 
     echo "⚡Installing Rust..."
     vm_ssh "$ip" "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
@@ -109,13 +109,20 @@ git config receive.denyCurrentBranch updateInstead
 INIT_EOF
 }
 
-copy_oauth_credentials() {
+configure_claude_auth() {
     local ip="$1"
-    local creds="$HOME/.claude/.credentials.json"
-    if [ -f "$creds" ]; then
-        echo "⚡Copying OAuth credentials to VM..."
-        vm_ssh "$ip" 'mkdir -p ~/.claude'
-        vm_scp "$creds" "$VM_USER@$ip:~/.claude/.credentials.json"
+
+    echo "⚡Configuring Claude Code auth..."
+    vm_ssh "$ip" 'mkdir -p ~/.claude && cat > ~/.claude.json <<AUTHEOF
+{"hasCompletedOnboarding": true}
+AUTHEOF'
+
+    if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+        echo "  Using CLAUDE_CODE_OAUTH_TOKEN (forwarded via SSH)"
+    elif [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+        echo "  Using ANTHROPIC_API_KEY (forwarded via SSH)"
+    else
+        echo "  Warning: no auth token found. Set CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY, or run \`claude login\` inside the VM."
     fi
 }
 
@@ -143,7 +150,7 @@ cmd_create() {
 
     provision "$ip"
     init_repo "$ip"
-    copy_oauth_credentials "$ip"
+    configure_claude_auth "$ip"
 
     echo "⚡Injecting branches into VM..."
     "$SCRIPT_DIR/inject"
@@ -160,6 +167,9 @@ cmd_ssh() {
     local ssh_args=($SSH_OPTS)
     if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
         ssh_args+=(-o SendEnv=ANTHROPIC_API_KEY)
+    fi
+    if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+        ssh_args+=(-o SendEnv=CLAUDE_CODE_OAUTH_TOKEN)
     fi
     exec sshpass -p "$VM_PASS" ssh "${ssh_args[@]}" \
         -L 3443:localhost:2443 -L 3080:localhost:2080 \

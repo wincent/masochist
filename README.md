@@ -120,12 +120,18 @@ For isolated development using a [Tart](https://tart.run/) VM (recommended for A
 ```
 brew install sshpass cirruslabs/cli/tart
 
+# Generate a long-lived OAuth token for Claude Code (valid 1 year):
+claude setup-token
+export CLAUDE_CODE_OAUTH_TOKEN=<token>   # Add to shell profile
+
 bin/sandbox create    # One-time: creates and provisions the VM
 bin/sandbox ssh       # SSH into the VM (forwards ports 3443/3080 to host)
 # Inside the VM:
 cd masochist && bin/dev
 # Visit https://localhost:3443 on the host
 ```
+
+`bin/sandbox ssh` forwards `CLAUDE_CODE_OAUTH_TOKEN` (or `ANTHROPIC_API_KEY`) to the VM automatically.
 
 To move changes between host and VM:
 
