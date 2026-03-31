@@ -237,19 +237,29 @@ case "${1:-}" in
     ip)
         cmd_ip
         ;;
-    --help)
-        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|restart|status|ip>"
+    help|--help|-h)
+        echo "Usage: $(basename "$0") <command>"
+        echo ""
+        echo "Commands:"
+        echo "  create    Create and provision the VM"
+        echo "  ssh       SSH into the VM (default if VM exists)"
+        echo "  destroy   Stop and delete the VM"
+        echo "  reset     Destroy, recreate, and re-inject from host"
+        echo "  restart   Stop and restart the VM (preserves state)"
+        echo "  status    Show VM state and IP"
+        echo "  ip        Print VM IP (for scripting)"
         ;;
     "")
         if vm_exists; then
             cmd_ssh
         else
-            echo "Usage: $(basename "$0") <create|ssh|destroy|reset|restart|status|ip>"
+            echo "No VM found. Run \`bin/sandbox create\` to get started."
             exit 1
         fi
         ;;
     *)
-        echo "Usage: $(basename "$0") <create|ssh|destroy|reset|restart|status|ip>"
+        echo "Unknown command: $1"
+        echo "Run \`bin/sandbox help\` for usage."
         exit 1
         ;;
 esac
