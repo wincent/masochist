@@ -56,7 +56,12 @@ echo "⚡Pushing ${BRANCHES[*]} to VM..."
 if [ "$FORCE" = true ]; then
     git push --force vm "${BRANCHES[@]}"
 else
-    git push vm "${BRANCHES[@]}"
+    if ! git push vm "${BRANCHES[@]}"; then
+        echo ""
+        echo "Push failed. If the VM has commits you want to discard, re-run with: \`bin/inject --force\`"
+        echo "If you want to keep the VM's commits, run \`bin/extract\` first."
+        exit 1
+    fi
 fi
 
 echo "⚡Updating worktrees in VM..."

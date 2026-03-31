@@ -13,8 +13,8 @@ services:
 
   web:
     ports:
-      - "127.0.0.1:2080:80"
-      - "127.0.0.1:2443:443"
+      - "0.0.0.0:2080:80"
+      - "0.0.0.0:2443:443"
     environment:
       SITE_ADDRESS: "localhost"
       TLS_CONFIG: "tls internal"
