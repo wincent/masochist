@@ -161,7 +161,9 @@ cmd_ssh() {
     if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
         ssh_args+=(-o SendEnv=ANTHROPIC_API_KEY)
     fi
-    exec sshpass -p "$VM_PASS" ssh "${ssh_args[@]}" "$VM_USER@$ip" -t 'exec sg docker "exec bash -l"'
+    exec sshpass -p "$VM_PASS" ssh "${ssh_args[@]}" \
+        -L 3443:localhost:2443 -L 3080:localhost:2080 \
+        "$VM_USER@$ip" -t 'exec sg docker "exec bash -l"'
 }
 
 cmd_destroy() {

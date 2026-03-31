@@ -121,15 +121,17 @@ For isolated development using a [Tart](https://tart.run/) VM (recommended for A
 brew install sshpass cirruslabs/cli/tart
 
 bin/sandbox create    # One-time: creates and provisions the VM
-bin/sandbox ssh       # SSH into the VM
+bin/sandbox ssh       # SSH into the VM (forwards ports 3443/3080 to host)
 # Inside the VM:
 cd masochist && bin/dev
+# Visit https://localhost:3443 on the host
 ```
 
 To move changes between host and VM:
 
 ```
 bin/inject            # Push host branches into the VM
+bin/inject --force    # Force-push (discard VM-only commits)
 bin/extract           # Show what changed in the VM
 bin/extract apply     # Fast-forward host branches to match VM
 bin/push              # Push to production remotes (from host)
