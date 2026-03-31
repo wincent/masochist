@@ -117,10 +117,14 @@ configure_claude_auth() {
 {"hasCompletedOnboarding": true}
 AUTHEOF'
 
+    vm_ssh "$ip" 'chmod 600 ~/.bashrc'
+
     if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
-        echo "  Using CLAUDE_CODE_OAUTH_TOKEN (forwarded via SSH)"
+        echo "  Writing CLAUDE_CODE_OAUTH_TOKEN to VM..."
+        vm_ssh "$ip" "echo 'export CLAUDE_CODE_OAUTH_TOKEN=$CLAUDE_CODE_OAUTH_TOKEN' >> ~/.bashrc"
     elif [ -n "${ANTHROPIC_API_KEY:-}" ]; then
-        echo "  Using ANTHROPIC_API_KEY (forwarded via SSH)"
+        echo "  Writing ANTHROPIC_API_KEY to VM..."
+        vm_ssh "$ip" "echo 'export ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY' >> ~/.bashrc"
     else
         echo "  Warning: no auth token found. Set CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY, or run \`claude login\` inside the VM."
     fi
@@ -165,12 +169,6 @@ cmd_ssh() {
     local ip
     ip="$(vm_ip)"
     local ssh_args=($SSH_OPTS)
-    if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
-        ssh_args+=(-o SendEnv=ANTHROPIC_API_KEY)
-    fi
-    if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
-        ssh_args+=(-o SendEnv=CLAUDE_CODE_OAUTH_TOKEN)
-    fi
     exec sshpass -p "$VM_PASS" ssh "${ssh_args[@]}" \
         -L 3443:localhost:2443 -L 3080:localhost:2080 \
         "$VM_USER@$ip" -t 'exec sg docker "exec bash -l"'
