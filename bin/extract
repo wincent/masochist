@@ -62,18 +62,18 @@ cmd_apply() {
             continue
         fi
 
-        echo "⚡Fast-forwarding $branch..."
+        echo "⚡Rebasing and signing $branch..."
         if [ "$branch" = "main" ]; then
             git checkout main
-            if ! git merge --ff-only vm/main; then
-                echo "Error: cannot fast-forward main (branches diverged)."
-                echo "Resolve manually with: git rebase vm/main"
+            if ! git rebase --gpg-sign vm/main; then
+                echo "Error: rebase failed for main."
+                echo "Resolve conflicts, then: git rebase --continue"
                 exit 1
             fi
         else
-            if ! git -C "$branch" merge --ff-only "vm/$branch"; then
-                echo "Error: cannot fast-forward $branch (branches diverged)."
-                echo "Resolve manually."
+            if ! git -C "$branch" rebase --gpg-sign "vm/$branch"; then
+                echo "Error: rebase failed for $branch."
+                echo "Resolve conflicts in the $branch worktree, then: git rebase --continue"
                 exit 1
             fi
         fi
