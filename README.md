@@ -63,13 +63,10 @@ There are 3 remotes:
 - `bin/deploy`: Deploys to EC2.
 - `bin/dev`: Runs Docker Compose locally.
 - `bin/ecr`: Builds and uploads container images to Amazon [ECR] (Elastic Container Registry)..
-- `bin/extract`: Fetches branches from the VM for review.
 - `bin/format`: Fix formatting.
-- `bin/inject`: Pushes branches from the host into the VM.
 - `bin/prod`: Runs Docker Compose on remote host.
 - `bin/pull`: Fetches all remotes and updates `main`, `content`, and `public` checkouts.
 - `bin/push`: Pushes all branches (`main`, `content`, `public`) to all remotes (`origin`, `github`, `masochist`).
-- `bin/sandbox`: Manages a [Tart](https://tart.run/) VM for isolated AI-assisted development.
 
 ## Building the static site
 
@@ -115,7 +112,9 @@ This starts Caddy on `https://localhost:2443` (self-signed cert) with the Rocket
 
 ## Running in a VM sandbox
 
-For isolated development using a [Tart](https://tart.run/) VM (recommended for AI-assisted workflows):
+For isolated development using a [Tart](https://tart.run/) VM (recommended for AI-assisted workflows). VM management is handled by `sb`, a general-purpose sandbox tool installed via the [wincent/wincent](https://github.com/wincent/wincent) dotfiles repo. Project-specific configuration lives in `.sandboxrc` at the repo root.
+
+### Prerequisites
 
 ```
 brew install sshpass cirruslabs/cli/tart
@@ -123,25 +122,31 @@ brew install sshpass cirruslabs/cli/tart
 # Generate a long-lived OAuth token for Claude Code (valid 1 year):
 claude setup-token
 export CLAUDE_CODE_OAUTH_TOKEN=<token>   # Add to shell profile
+```
 
-bin/sandbox create    # One-time: creates and provisions the VM
-bin/sandbox ssh       # SSH into the VM (forwards ports 3443/3080 to host)
+### Usage
+
+```
+sb create             # One-time: creates and provisions the VM
+sb ssh                # SSH into the VM (forwards ports 3443/3080 to host)
 # Inside the VM:
 cd masochist && bin/dev
 # Visit https://localhost:3443 on the host
 ```
 
-`bin/sandbox ssh` forwards `CLAUDE_CODE_OAUTH_TOKEN` (or `ANTHROPIC_API_KEY`) to the VM automatically.
+`sb` writes `CLAUDE_CODE_OAUTH_TOKEN` (or `ANTHROPIC_API_KEY`) into the VM automatically during provisioning.
 
 To move changes between host and VM:
 
 ```
-bin/inject            # Push host branches into the VM
-bin/inject --force    # Force-push (discard VM-only commits)
-bin/extract           # Show what changed in the VM
-bin/extract apply     # Fast-forward host branches to match VM
+sb inject             # Push host branches into the VM
+sb inject --force     # Force-push (discard VM-only commits)
+sb extract            # Show what changed in the VM
+sb apply              # Rebase and GPG-sign VM changes onto host branches
 bin/push              # Push to production remotes (from host)
 ```
+
+Other commands: `sb destroy`, `sb reset`, `sb restart`, `sb status`, `sb ip`. Run `sb help` for full usage.
 
 ## Server setup (EC2)
 
