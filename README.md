@@ -63,13 +63,13 @@ There are 3 remotes:
 - `bin/deploy`: Deploys to EC2.
 - `bin/dev`: Runs Docker Compose locally.
 - `bin/ecr`: Builds and uploads container images to Amazon [ECR] (Elastic Container Registry)..
+- `bin/extract`: Fetches branches from the VM for review.
 - `bin/format`: Fix formatting.
-- `bin/pull`: Fetches all remotes and updates `main`, `content`, and `public` checkouts.
+- `bin/inject`: Pushes branches from the host into the VM.
 - `bin/prod`: Runs Docker Compose on remote host.
+- `bin/pull`: Fetches all remotes and updates `main`, `content`, and `public` checkouts.
 - `bin/push`: Pushes all branches (`main`, `content`, `public`) to all remotes (`origin`, `github`, `masochist`).
 - `bin/sandbox`: Manages a [Tart](https://tart.run/) VM for isolated AI-assisted development.
-- `bin/inject`: Pushes branches from the host into the VM.
-- `bin/extract`: Fetches branches from the VM for review.
 
 ## Building the static site
 
