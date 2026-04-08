@@ -112,7 +112,7 @@ This starts Caddy on `https://localhost:2443` (self-signed cert) with the Rocket
 
 ## Running in a VM sandbox
 
-For isolated development using a [Tart](https://tart.run/) VM (recommended for AI-assisted workflows). VM management is handled by `sb`, a general-purpose sandbox tool installed via the [wincent/wincent](https://github.com/wincent/wincent) dotfiles repo. Project-specific configuration lives in `.sandboxrc` at the repo root.
+For isolated development using [Tart](https://tart.run/) (to more safely run AI coding agents), VM management is handled by `sb`, a general-purpose sandbox tool installed via the [wincent/wincent](https://github.com/wincent/wincent) dotfiles repo. Project-specific configuration lives in `.sandboxrc` at the repo root.
 
 ### Prerequisites
 
@@ -253,7 +253,7 @@ Each step is independent and can be retried on failure.
 
 ### Why the name "Masochist"?
 
-Please see the introductory blog post, "[Introducing Masochist](https://wincent.dev/blog/masochist)".
+See the introductory blog post, "[Introducing Masochist](https://wincent.dev/blog/masochist)".
 
 [Ansible]: https://docs.ansible.com
 [Caddy]: https://caddyserver.com
