@@ -121,32 +121,51 @@ brew install sshpass cirruslabs/cli/tart
 
 # Generate a long-lived OAuth token for Claude Code (valid 1 year):
 claude setup-token
-export CLAUDE_CODE_OAUTH_TOKEN=<token>   # Add to shell profile
+export CLAUDE_CODE_OAUTH_TOKEN=<token> # Add to shell profile
 ```
 
-### Usage
+### Creating and starting the VM
 
 ```
-sb create             # One-time: creates and provisions the VM
-sb ssh                # SSH into the VM (forwards ports 3443/3080 to host)
-# Inside the VM:
-cd masochist && bin/dev
-# Visit https://localhost:3443 on the host
+sb create # One-time: clones base image, provisions Docker + Rust, injects branches.
+sb status # Check whether the VM is running and its IP.
 ```
 
-`sb` writes `CLAUDE_CODE_OAUTH_TOKEN` (or `ANTHROPIC_API_KEY`) into the VM automatically during provisioning.
+`sb create` writes `CLAUDE_CODE_OAUTH_TOKEN` (or `ANTHROPIC_API_KEY`) into the VM automatically. Other lifecycle commands include: `sb destroy`, `sb reset`, `sb restart`, `sb start`, `sb stop`, and `sb pull`.
 
-To move changes between host and VM:
+### Running the service
 
 ```
-sb inject             # Push host branches into the VM
-sb inject --force     # Force-push (discard VM-only commits)
-sb extract            # Show what changed in the VM
-sb apply              # Rebase and GPG-sign VM changes onto host branches
-bin/push              # Push to production remotes (from host)
+sb ssh
+cd code/masochist && bin/dev
 ```
 
-Other commands: `sb destroy`, `sb reset`, `sb restart`, `sb status`, `sb ip`. Run `sb help` for full usage.
+On the host, visit `https://localhost:3443` (accept the self-signed cert). Port 3080 reaches the Rocket backend directly, bypassing Caddy.
+
+### Moving code between host and VM
+
+Push host branches into the VM:
+
+```
+sb inject         # Push all branches (main, content, public).
+sb inject --force # Force-push (discard VM-only commits).
+```
+
+Pull VM changes back to the host:
+
+```
+sb extract # Show VM-only commits per branch.
+sb apply   # Rebase and GPG-sign VM commits onto host branches.
+```
+
+After applying, verify and push:
+
+```
+cargo check && bin/test && bin/check-format && bin/clippy
+bin/push # Push to production remotes (from host).
+```
+
+Run `sb help` for the full command list.
 
 ## Server setup (EC2)
 
