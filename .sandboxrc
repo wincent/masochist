@@ -1,7 +1,7 @@
 SB_BRANCHES=(main content public)
 SB_WORKTREES=(content public)
 SB_PORTS=(3443:2443 3080:2080)
-SB_SSH_EXEC='exec sg docker "exec bash -l"'
+SB_SSH_EXEC='if getent group docker > /dev/null 2>&1; then exec sg docker "exec zsh -l"; else exec zsh -l; fi'
 
 sb_provision() {
     local ip="$1"
