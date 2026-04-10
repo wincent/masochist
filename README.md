@@ -136,8 +136,7 @@ sb status # Check whether the VM is running and its IP.
 ### Running the service
 
 ```
-sb ssh
-cd code/masochist && bin/dev
+sb ssh code/masochist/bin/dev
 ```
 
 On the host, visit `https://localhost:3443` (accept the self-signed cert). Port 3080 reaches the Rocket backend directly, bypassing Caddy.
