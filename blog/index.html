@@ -1,4 +1,75 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>blog • wincent.dev</title><meta property="og:title" content="blog"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="canonical" href="https://wincent.dev/blog"><meta property="og:url" content="https://wincent.dev/blog"><link rel="stylesheet" href="/_assets/styles-297b92a0.css"><link rel="alternate" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/dreamscape">Dreamscape</a></h1><div class="metadata"><relative-time created="1773350430" updated="1773413759">Created 2026-03-12, updated 2026-03-13</relative-time><span>5 minute read</span></div><div class="prerendered"><p><strong>tl;dr:</strong></p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>blog • wincent.dev</title><meta property="og:title" content="blog"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="canonical" href="https://wincent.dev/blog"><meta property="og:url" content="https://wincent.dev/blog"><link rel="stylesheet" href="/_assets/styles-297b92a0.css"><link rel="alternate" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/arq-restore">Arq restore notes</a></h1><div class="metadata"><relative-time created="1777648678" updated="1777648678">2026-05-01</relative-time><span>5 minute read</span></div><div class="prerendered"><p>About a month ago, <a href="/snippets/1180">my personal laptop died</a>, requiring the logic board to be replaced. All the data on the previous incarnation of the machine was irrecoverably lost, requiring me to restore from backup. Unless my memory deceives me, this was the second time I've restored a backup made with <a href="/wiki/Arq">Arq</a><sup class="footnote-ref"><a href="#fn-superduper" id="fnref-superduper" data-footnote-ref>1</a></sup>.</p>
+<p>This time, things didn't go quite as smoothly, but overall, it still worked out ok. I'm going to put some notes here about the road bumps that I ran into while restoring, for reference by my Future Self™. Given that &quot;past road bumps are no guarantee of future road bumps&quot;, I'm dumping this in a blog article rather than a wiki post, as I consider these to be more &quot;moment in time&quot; observations than an enduring record of what to do in the future.</p>
+<p>A SuperDuper! backup is a full disk copy, and pretty close to being something that you can just restore and then run with. Arq, on the other hand, only backs up my home folder, which means I need to reinstall a bunch of apps after doing the restore. Additionally, there appear to be quite a few settings (particularly permission-related settings) that don't survive across a backup/restore cycle, and these need to be set up manually afterwards.</p>
+<p>First steps:</p>
+<ul>
+<li>Install Arq, so I can initiate the restore.</li>
+<li>Install 1Password, so I can get the credentials necessary for the restore.</li>
+<li>Actually start the restore; after many hours, Arq used all the memory on the system, requiring me to start again<sup class="footnote-ref"><a href="#fn-glacier" id="fnref-glacier" data-footnote-ref>2</a></sup>.</li>
+<li>Sign in to iCloud, because apparently thanks to Apple &quot;magic&quot; none of my photos were actually on my device, or at least, the couldn't be restored by Arq; after signing in, photos start syncing and I eventually got access to them all again.</li>
+</ul>
+<p>Next up, set the hostname, because otherwise Fig won't know what machine it is running on, and my machine will only get a lowest-common-denominator set-up as opposed to the specific one I want for this machine:</p>
+<pre><code>scutil --set HostName latina
+scutil --set ComputerName 'MacBook Pro'
+scutil --set LocalHostName latina
+</code></pre>
+<p>We then try running <code>git</code> in terminal, which triggers a command line tools download and install, and can finally at that point run <code>install</code> under <code>~/code/wincent/</code>. That died with:</p>
+<pre><code>$HOME/code/wincent/vendor/n/bin/n: fork: Resource temporarily unavailable
+</code></pre>
+<p>A <code>bin/n --cleanup</code> should supposedly delete all versions, but I ended up having to <code>rm -r vendor/node/n/versions</code> to actually get <code>n</code> working, at which point I could run <code>install</code> again.</p>
+<p>You have to run <code>vendor/homebrew/install.sh</code> in order for this to work, and additionally you have to open a new window after installing in order to have the Homebrew directory appear in your <code>$PATH</code> (merely running <code>hash -r</code> isn't going to cut it).</p>
+<p>Homebrew helpfully points out the following:</p>
+<pre><code>stderr: 'Error: homebrew/bundle was deprecated. This tap is now empty and all its contents were either deleted or migrated.\n',
+</code></pre>
+<p>So I deleted than, and it then says:</p>
+<pre><code>'Error: No available formula with the name &quot;bun&quot;. Did you mean bup, buf or run?\n'
+</code></pre>
+<p>Turns out that you need fully-qualified (tap + brew) formula and cask names, as noted in <a href="https://github.com/Homebrew/brew/issues/21416">Homebrew/brew#21416</a>, so I fixed that.</p>
+<p>There are a number of apps that you have to open or twiddle in order to get things working, even though Homebrew installs them:</p>
+<ul>
+<li>Karabiner-Elements (have to open it and grant privileges).</li>
+<li>Hammerspoon (have to open once, let it prompt for permission, set to load at login, hit Ctrl-Opt-Command-F2 to set two-monitor layout and F4 to set horizontal display arrangement).</li>
+<li>Raycast (somehow it couldn't read its settings, so I had to import a backup, set Command-Space in the System Settings to not open Spotlight, grant accessibility access for snippets to work, and the same for 1Password while I was at it, and set it to launch at login).</li>
+<li>Before using tmux, had to go to System Settings -&gt; Keyboard -&gt; Shortcuts -&gt; Input Sources and turn off these trouble-makers:
+<ul>
+<li>Select the previous input source (ctrl-space)</li>
+<li>Select next source in input menu (ctrl-option-space)</li>
+</ul>
+</li>
+<li>Kitty (have to open it and set it to stay in the Dock)</li>
+<li>Godspeed (open it, set it to stay in dock, launch at login)</li>
+<li><code>terminal-notifier</code>: run a command like <code>terminal-notifier -title hi -message there</code> so it appears in System Settings; then you can allow notifications from it.</li>
+<li>Resilio Sync (set to launch at login)</li>
+<li>Orion (installed via cask, but have to open and set to default browser in System Settings)</li>
+<li>CleanShot X (open and set to start at login, grant accessibility settings, turn off conflicting shortcuts in System Settings)</li>
+<li>iStatMenus (launch and grant permissions)</li>
+</ul>
+<p>And general house-keeping:</p>
+<ul>
+<li>Remove cruft from dock.</li>
+<li>Dock settings: turn hiding on (I thought I had a default for that; maybe all I needed was to log out and in again for it to take effect)</li>
+<li>System settings: under the lock screen settings, require password immediately.</li>
+</ul>
+<p>For some reason, I couldn't get Screenflow to make use of my microphone (it would claim I needed to grant it access to the microphone, but it didn't actually ask for access and there was no way to force it in the System Settings). In the end, I blew away the settings and data and it eventually prompted:</p>
+<pre><code>rm -rf \
+  ~/Library/Preferences/net.telestream.screenflow10.plist \
+  ~/Library/Preferences/WSG985FR47.net.telestream.screenflowhelper.plist \
+  ~/Library/Containers/net.telestream.screenflow10 \
+  &quot;~/Library/Group Containers/WSG985FR47.net.telestream.screenflow10&quot; \
+  &quot;~/Library/Application Support/ScreenFlow*&quot;
+</code></pre>
+<p>The above is what I've discovered so far over the course of several days. Hopefully that's the end of it!</p>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-superduper">
+<p>The other backup tool that has saved my hide in the past is <a href="/wiki/SuperDuper!">SuperDuper!</a>, but on this occasion I didn't have access to my physical (SuperDuper!) backup, so restoring from the cloud (Arq) was my only option. <a href="#fnref-superduper" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+<li id="fn-glacier">
+<p>Restarting is a bit annoying, because I use Glacier storage for my backups, meaning that you can't just start downloading the data from the cloud; instead, you request for it to be made available and then wait 5 hours before actually beginning the download. Downloading from Glacier also hurts the wallet a bit, to the tune of about a hundred bucks for all the retrieval costs associated with the repeated attempts. <a href="#fnref-glacier" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="2" aria-label="Back to reference 2">↩</a></p>
+</li>
+</ol>
+</section>
+</div><ul class="tags left compact"><li><a href="/tags/blog">blog</a></li></ul></div></article><article><div class="readability"><h1><a href="/blog/dreamscape">Dreamscape</a></h1><div class="metadata"><relative-time created="1773350430" updated="1773413759">Created 2026-03-12, updated 2026-03-13</relative-time><span>5 minute read</span></div><div class="prerendered"><p><strong>tl;dr:</strong></p>
 <ul>
 <li>The bizarre otherworldliness of dreams makes them seem foreign, almost as though they came from some weird place &quot;out there&quot;, not of our own making.</li>
 <li>This in turn makes recurring dreams puzzling, especially when they are separated by long intervals (sometimes years); if dreams come from &quot;out there&quot;, where the heck is that and why can it store these recurring patterns and places stably over time?</li>
@@ -68,32 +139,4 @@
 </li>
 </ol>
 </section>
-</div><ul class="tags left compact"><li><a href="/tags/blog">blog</a></li></ul></div></article><article><div class="readability"><h1><a href="/blog/lockout">Lockout horror stories</a></h1><div class="metadata"><relative-time created="1766220363" updated="1773679445">Created 2025-12-20, updated 2026-03-16</relative-time><span>3 minute read</span></div><div class="prerendered"><h2>Amazon</h2>
-<blockquote>
-<p>My account was banned recently because, years ago, I ordered two paper books that Amazon said would be split into two shipments. Both books arrived without any issues, but later Amazon refunded me for one of them, claiming that one package never arrived. This happened 4–5 years ago.
-Apparently, during a recent review, they decided this counted as fraud and banned my account. As a result, I can no longer log in and lost access to all my Kindle e-books. They also remotely wiped my Kindle, so my entire library is gone. I appealed the decision, but I've been waiting for over six months with no resolution.</p>
-</blockquote>
-<p>— <a href="https://news.ycombinator.com/item?id=46325241">icqFDR on Hacker News, 2025-12-19</a></p>
-<blockquote>
-<p>A friend of mine received a double shipment for a $300 order. Being honest, he contacted customer service to arrange a return. Everything seemed fine until a few days later when he noticed they had also refunded his original payment. He reached out again to let them know, and they said they'd just recharge his card. Apparently, that transaction failed (no clear reason why), and without any warning, they banned his account, wiping out his entire Kindle library in the process.</p>
-</blockquote>
-<p>— <a href="https://news.ycombinator.com/item?id=46325413">egeozcan on Hacker News, 2025-12-19</a></p>
-<h2>Apple</h2>
-<blockquote>
-<p>My Apple ID, which I have held for around 25 years (it was originally a username, before they had to be email addresses; it's from the iTools era), has been permanently disabled. This isn't just an email address; it is my core digital identity. It holds terabytes of family photos, my entire message history, and is the key to syncing my work across the ecosystem.</p>
-<p>The only recent activity on my account was a recent attempt to redeem a $500 Apple Gift Card to pay for my 6TB iCloud+ storage plan. The code failed. The vendor suggested that the card number was likely compromised and agreed to reissue it. Shortly after, my account was locked.</p>
-<p>I effectively have over $30,000 worth of previously-active “bricked&quot; hardware. My iPhone, iPad, Watch, and Macs cannot sync, update, or function properly. I have lost access to thousands of dollars in purchased software and media.</p>
-</blockquote>
-<p>— <a href="https://hey.paris/posts/appleid/">Paris Buttfield-Addison, 2025-12-13</a></p>
-<p>(For additional context, see <a href="https://daringfireball.net/linked/2025/12/17/are-apple-gift-cards-safe-to-redeem">Daring Fireball</a> and <a href="https://tidbits.com/2025/12/17/compromised-apple-gift-card-leads-to-apple-account-lockout/">TidBITS</a>.)</p>
-<h2>Google</h2>
-<blockquote>
-<p>Google strategically avoids the crush of users by offering little in the way of direct customer service. My calls to Mountain View HQ landed me in a labyrinth of recorded messages that inevitably led to one of a man, sounding only slightly less exasperated than I felt, shutting me down with a &quot;Thankyougoodbye.&quot;</p>
-<p>A few minutes into my Google-less existence, I realized how dependent I had become. I couldn't finish my work or my taxes, because my notes and expenses were stored in Google Drive, and I didn't know what else I should work on because my Google calendar had disappeared. I couldn't publicly gripe about what I was going through, because my Blogger no longer existed. My Picasa albums were gone. I'd lost my contacts and calling plan through Google Voice; otherwise I would have called friends to cry.</p>
-<p>Living in the Bay Area, I have a fair number of Googler-friends, but the Googleplex has apparently grown so vast that none of them had any idea where to start.</p>
-<p>In case you're wondering, in the end, I was fortunate. By Monday, a Googler filed the right internal escalation paperwork on my behalf and on Tuesday morning, six days after I lost access to my account, relayed that it had been restored.</p>
-<p>My data was intact save for the last thing I'd worked on–a spreadsheet containing a client's account numbers and passwords. It seems that Google's engineers determined this single document violated policy and locked down my entire account. My request to get that document back is still pending.</p>
-<p>I returned to the Google fold with eyes wide open to my responsibilities as a user. In relationship terms, I am no longer monogamous. I store my data on other servers maintained by providers like Evernote, Dropbox, and WordPress, and the cloud is my standby, not my steady. I've swapped convenience for control: I back up my email and what I care about most on physical hard drives.</p>
-</blockquote>
-<p>— <a href="http://lastwordonnothing.com/2013/04/22/dumped-by-google/">Tienlon Ho, 2013-04-22</a></p>
-</div><ul class="tags left compact"><li><a href="/tags/blog">blog</a></li></ul></div></article><div class="post-nav"><div class="post-nav-next"><a href="/blog/aoc-2025">Advent of Code 2025 →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://twitter.com/wincent">Twitter</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-02271de7.js"></script></body></html>
+</div><ul class="tags left compact"><li><a href="/tags/blog">blog</a></li></ul></div></article><div class="post-nav"><div class="post-nav-next"><a href="/blog/lockout">Lockout horror stories →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://twitter.com/wincent">Twitter</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-02271de7.js"></script></body></html>
