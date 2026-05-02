@@ -140,6 +140,23 @@ sb ssh code/masochist/bin/dev
 
 On the host, visit `https://localhost:3443` (accept the self-signed cert). Port 3080 reaches the Rocket backend directly, bypassing Caddy.
 
+### Failure to run the service in the local development environment
+
+If the service fails to start with:
+
+```
+runc run failed: unable to start container process: error during container init: unable to apply apparmor profile
+```
+
+the cause may be a corrupt `/etc/apparmor.d/tunables/home.d/ubuntu` file[^nul]; you can regenerate it and have Docker pick it up by running the following in the VM:
+
+[^nul]: For some reason, I've seen this file corrupt with a series of trailing NUL bytes.
+
+```
+sudo dpkg-reconfigure apparmor
+sudo systemctl restart docker
+```
+
 ### Moving code between host and VM
 
 Push host branches into the VM:
