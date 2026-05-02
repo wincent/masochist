@@ -7,6 +7,19 @@ services:
       dockerfile: ops/Dockerfile
     image: masochist-app
     user: "${APP_UID:-0}:${APP_GID:-0}"
+    environment:
+      # In local dev, bind-mount is owned by root and files inside are owned by
+      # an unprivileged user, so Git will complain unless we configure it to trust
+      # the repo:
+      #
+      #    git ls-tree failed: fatal: detected dubious ownership in repository at '/srv/content'
+      #    To add an exception for this directory, call:
+      #
+      #      git config --global --add safe.directory /srv/content
+      #
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: safe.directory
+      GIT_CONFIG_VALUE_0: /srv/content
     volumes:
       - ..:/srv/content:ro
       - ../public:/var/www/public:ro
