@@ -4,7 +4,7 @@ The content and history of this branch may be re-written at any time.
 
 ## Setup
 
-For editing, use `git worktree add content content` to create a nested checkout of the "content" branch inside the main repo.
+For editing, run `bin/configure-worktrees` from the repo root with the `main` branch checked out; this will create a `content` worktree where you can commit and edit the source files, and a `public` worktree where the static assets get built.
 
 ## `scripts/`
 
