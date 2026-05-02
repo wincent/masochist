@@ -28,6 +28,8 @@ Supporting tools and technologies:
 
 - Rust toolchain (install via [rustup](https://rustup.rs/) or with `brew install rust` or similar).
 - [Git] (used during build and deployment; the system installed Git[^macosgit] may be adequate, but I use Homebrew's Git, via `brew install git`).
+- [Colima] (`brew install colima`).
+- [Docker] (`brew install docker docker-buildx docker-compose`).
 - [dprint] (`brew install dprint`).
 
 [^macosgit]: At the time of writing, macOS ships with Git v2.50.1, but Homebrew has v2.53.0.
@@ -43,11 +45,10 @@ The repo uses three branches, each with its own role:
 Set up worktrees for the other two branches:
 
 ```
-git worktree add content content
-git worktree add public public
+bin/configure-worktrees
 ```
 
-There are 3 remotes:
+There are 3 remotes, configured with `bin/configure-remotes`:
 
 - `origin`: Canonical repo at git.wincent.dev.
 - `github`: Main mirror at github.com.
@@ -60,6 +61,7 @@ There are 3 remotes:
 - `bin/check-links`: Check for broken internal links.
 - `bin/clippy`: Run Clippy linter.
 - `bin/configure-remotes`: Configures `origin`, `github`, `masochist` and `all` remotes.
+- `bin/configure-worktrees`: Configures `content` and `public` worktrees.
 - `bin/deploy`: Deploys to EC2.
 - `bin/dev`: Runs Docker Compose locally.
 - `bin/ecr`: Builds and uploads container images to Amazon [ECR] (Elastic Container Registry)..
@@ -67,12 +69,6 @@ There are 3 remotes:
 - `bin/prod`: Runs Docker Compose on remote host.
 - `bin/pull`: Fetches all remotes and updates `main`, `content`, and `public` checkouts.
 - `bin/push`: Pushes all branches (`main`, `content`, `public`) to all remotes (`origin`, `github`, `masochist`).
-
-## Building the static site
-
-```
-bin/build
-```
 
 ## Running with Docker Compose (dev mode)
 
@@ -121,7 +117,10 @@ brew install sshpass cirruslabs/cli/tart
 
 # Generate a long-lived OAuth token for Claude Code (valid 1 year):
 claude setup-token
-export CLAUDE_CODE_OAUTH_TOKEN=<token> # Add to shell profile
+export CLAUDE_CODE_OAUTH_TOKEN=<token> # Add to shell profile.
+
+# Alternatively if using Pi (or similar) use an API key:
+export ANTHROPIC_API_KEY=<key> # Add to shell profile.
 ```
 
 ### Creating and starting the VM
@@ -131,7 +130,7 @@ sb create # One-time: clones base image, provisions Docker + Rust, injects branc
 sb status # Check whether the VM is running and its IP.
 ```
 
-`sb create` writes `CLAUDE_CODE_OAUTH_TOKEN` (or `ANTHROPIC_API_KEY`) into the VM automatically. Other lifecycle commands include: `sb destroy`, `sb reset`, `sb restart`, `sb start`, `sb stop`, and `sb pull`.
+Other lifecycle commands include: `sb destroy`, `sb reset`, `sb restart`, `sb start`, `sb stop`, and `sb pull`.
 
 ### Running the service
 
@@ -219,6 +218,14 @@ EOF
 
 Create the repository (one-time).
 
+## Building the static site
+
+As noted in the previously, you need Colima installed in order to complete the build.
+
+```
+bin/build
+```
+
 ## Deploying
 
 ```
@@ -256,6 +263,7 @@ See the introductory blog post, "[Introducing Masochist](https://wincent.dev/blo
 
 [Ansible]: https://docs.ansible.com
 [Caddy]: https://caddyserver.com
+[Colima]: https://github.com/abiosoft/colima
 [Corpus]: https://github.com/wincent/corpus
 [Docker]: https://www.docker.com
 [ECR]: https://docs.aws.amazon.com/ecr/
