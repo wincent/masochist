@@ -243,7 +243,11 @@ As noted in the previously, you need Colima installed in order to complete the b
 bin/build
 ```
 
+This runs the Rust generator, which writes out static HTML, configures redirects, emits a search index, and commits the result to the `public` branch.
+
 ## Deploying
+
+### Full deploy (including Rust changes)
 
 ```
 aws login
@@ -261,6 +265,19 @@ bin/deploy
 ```
 
 Each step is independent and can be retried on failure.
+
+### Content-only deploy
+
+Similar to a full deploy, but you don't need to `aws login`, and you won't be doing `bin/ecr build` or `bin/ecr upload` (because the Rust image isn't changing). Note that you still need to `export ECR_ACCOUNT_ID=...` because the final `bin/prod` step performed by `bin/deploy` needs it[^technically].
+
+[^technically]: Technically it doesn't _need_ it, but it does a no-op pull (not a real, side-effectful pull, because it already has the necessary image), and that will fail without the account ID.
+
+```
+bin/push
+bin/deploy
+```
+
+Note that running `bin/build` still involves doing a Rust build, it's just that we don't need to produce a new server image. `bin/deploy` does restart the app container though, which is necessary for it to re-read the (potentially updated) `_search_index.tsv` file.
 
 ## Project structure
 
