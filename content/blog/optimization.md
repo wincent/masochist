@@ -69,7 +69,7 @@ chromium (subset)   3.650000   0.180000   3.830000 (  1.790363)
 chromium (whole)   24.210000   0.060000  24.270000 (  9.096863)
 ```
 
-"Pathological" here refers to those "aaaa" vs "aaaaaaa" type search scenarios that I mentioned earlier, "command-t" is a typical small project, "chromium (subset)" is around the 10k file mark, and "chromium (whole)" around half a million files. These timings are produced by [a benchmark script](https://github.com/wincent/command-t/blob/master/bin/benchmarks/matcher.rb) that does many thousands of searches.
+"Pathological" here refers to those "aaaa" vs "aaaaaaa" type search scenarios that I mentioned earlier, "command-t" is a typical small project, "chromium (subset)" is around the 10k file mark, and "chromium (whole)" around half a million files. These timings are produced by [a benchmark script](https://github.com/wincent/command-t/blob/main/lua/wincent/commandt/private/benchmark.lua) that does many thousands of searches.
 
 A couple of things to note. One is how the "user" CPU time is some multiple of "real" (wall-clock) time, evidencing the parallelism of the search. The other is how these numbers have evolved over time, simultaneously getting faster even as we fix small bugs that required us to tighten up some loop holes and short-cuts in the name of correctness. To illustrate this, here are the results from version 1.6 (the first version to use parallelized search):
 
@@ -83,7 +83,7 @@ chromium (whole)   51.960000   0.070000  52.030000 ( 13.503562)
 
 You can see that it was doing a lot more work (note the "user" time in the "chromium (whole)" scenario), and a fair chunk of this was showing up in wall-clock time. Also note the much quicker "pathological" times, enabled only by a bug that made the search unfairly cheap. Nevertheless, 1.6 was very fast in its own right. It's just that a few years later, we'd made things faster still.
 
-So, 3.0.2 represents the culmination of a substantial series of improvements, and I was doubtful that much low-hanging fruit remained, until a colleague of mine, Hanson Wang, came along and ported the Command-T algorithm to C++ and wrapped it in [a Node module](https://github.com/hansonw/fuzzy-native), adding a few optimizations of his own.
+So, 3.0.2 represents the culmination of a substantial series of improvements, and I was doubtful that much low-hanging fruit remained, until a colleague of mine, Hanson Wang, came along and ported the Command-T algorithm to C++ and wrapped it in [a Node module](https://github.com/hansonw/fuzzy-native), adding a few optimizations of his own:
 
 ## Prescan
 
@@ -387,7 +387,7 @@ After finding and fixing the memoization bug, I discovered a 10x speed boost. Pr
 
 ## Heaps
 
-Heaps are one of my favorite data structures. They're easy to understand, remember and implement, and a great example of how you can implement a higher-order utility (like a priority queue or a sorting algorithm) on top of something lower-level like a simple binary tree. They feel like a great fit for C, where they can be [easily and efficiently implemented on top of an underlying array](https://github.com/wincent/command-t/blob/master/ruby/command-t/heap.c).
+Heaps are one of my favorite data structures. They're easy to understand, remember and implement, and a great example of how you can implement a higher-order utility (like a priority queue or a sorting algorithm) on top of something lower-level like a simple binary tree. They feel like a great fit for C, where they can be [easily and efficiently implemented on top of an underlying array](https://github.com/wincent/command-t/blob/main/lua/wincent/commandt/lib/heap.c).
 
 I immediately thought of heaps when I ran the benchmark suite under a profiler and saw that `qsort` was taking up about half the time in the run. Tim Roughgarden of Stanford University [says](https://www.coursera.org/course/algo) that the `O(n log n)` nature of comparison sorts is cheap enough that you can often consider it to be "free" within the context of a long-running algorithm. But clearly, make `n` large enough and the rest of the code fast enough, and that `O(n log n)` will eventually dominate your costs.
 
@@ -423,7 +423,7 @@ Time to move on to instruction-level profiling and start porting bits of this su
 
 <small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153216194746307) - [Twitter](https://twitter.com/wincent/status/704567011288838145)</em></small>
 
-# Appendix: Hello from 2024
+# Appendix I: Hello from 2024
 
 It's been ~~84 years~~ 8 years since I originally published this, and funnily enough, I haven't yet moved into the realms of instruction-level profiling, as foreshadowed above. I have, however, continued to find performance improvements. Here are some highlights:
 
@@ -437,8 +437,16 @@ As I wrote about in ["Command-T v6.0 — the Lua rewrite"](/blog/command-t-lua-r
 
 ## Improve CPU cache utilization
 
-`a91c298fb2e2f` (["perf: speed up workers by processing chunks of consecutive haystacks"](https://github.com/wincent/command-t/commit/a91c298fb2e2f4eb9286db7c01a6e0d92294dd10)) addresses a long-standing "TODO"[^added] by changing the way the load is distributed across worker threads. Previously, haystacks were distributed among the worker pool in cyclical fashion, causing workers to end up loading the same memory regions into their CPU caches. After this commit, workers handle consecutive ranges of haystacks, improving the CPU cache utilization considerably. In the benchmarks, heavy workloads like our "400K-file" test case saw improvements of 33.4% less CPU time and 29.1% less wall clock time.
+`a91c298fb2e2f` (["perf: speed up workers by processing chunks of consecutive haystacks"](https://github.com/wincent/command-t/commit/a91c298fb2e2f4eb9286db7c01a6e0d92294dd10), 2024-08-13) addresses a long-standing "TODO"[^added] by changing the way the load is distributed across worker threads. Previously, haystacks were distributed among the worker pool in cyclical fashion, causing workers to end up loading the same memory regions into their CPU caches. After this commit, workers handle consecutive ranges of haystacks, improving the CPU cache utilization considerably. In the benchmarks, heavy workloads like our "400K-file" test case saw improvements of 33.4% less CPU time and 29.1% less wall clock time.
 
 [^added]: [Added in 2022](https://github.com/wincent/command-t/commit/fdab907e8d9bfc804da970fc8661d1f5fcbb91a5), and probably in my head for quite a long time before that 😁.
+
+# Appendix II: Hello from 2026
+
+## Skip scoring of candidates that can't possibly enter the results list
+
+Taking advantage of our earlier transition to using a heap data structure, `8e8e6c374f43c` (["perf: skip scoring candidates that can't reach the heap threshold"](https://github.com/wincent/command-t/commit/8e8e6c374f43c24685d21c54770241d71dd43fe7), 2026-06-16) delivers another tasty speed up of 33.1% less CPU time and 9.1% less wall clock time. For large repos, the wins are even starker; for example, in the Chromium repo, the benchmarks show a 69.1% improvement in CPU time and a 54.1% improvement in wall clock time.
+
+The improvement is impressive in its own right, but when you consider that the wins compound, the overall effect is even more stunning. That is, improving wall clock time by 54.1% relative to a base that was itself 29.1% better than what came before means that the combined improvement is  about 67.5%. And that trend is ongoing and long-running; the 67.5% improvement is relative to an already highly-optimized base. To give a flavor of this, I captured some longer-term deltas in `dddab8a97fd4a` (["perf: record hash in benchmark log and ability to diff against it"](https://github.com/wincent/command-t/commit/dddab8a97fd4a4b58d008e0c15303e1a2c9d8a5e), 2025-08-07), where we see speed-ups of 23% (CPU time) and 13.6% (wall time) after `a91c298fb2e2f` (mentioned in Appendix I), which itself was built on earlier wins. It would be fiddly to run the current benchmarks against very old versions of Command-T (as noted in `dddab8a97fd4a`, the oldest build I can easily use dates back to 2022-07-29), but I suspect that it's literally _orders of magnitude_ faster than it was back in the early days, after the initial port to C happened (in 2010), when it was _already_ blazingly faster than it had been when it was first written (in Ruby).
 
 [vim]: /wiki/vim
