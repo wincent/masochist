@@ -3,9 +3,9 @@ title: Markdown sucks
 tags: wikitext blog
 ---
 
-As the author of a [lightweight markup translator](http://wikitext.rubyforge.org/), it was with some interest that I read [this post](http://eigenclass.org/R2/writings/fast-extensible-simplified-markdown-in-ocaml) by Mauricio Fernández titled "On the sad state of markdown processors, and getting thousandfold speed-ups".
+As the author of a [lightweight markup translator](https://github.com/wincent/wikitext), it was with some interest that I read [this post](http://eigenclass.org/R2/writings/fast-extensible-simplified-markdown-in-ocaml) by Mauricio Fernández titled "On the sad state of markdown processors, and getting thousandfold speed-ups".
 
-I know of [some people](http://fukamachi.org/) who will no doubt be delighted to hear John Gruber's [Markdown](http://daringfireball.net/projects/markdown/) described thusly:
+I know of [some people](http://fukamachi.org/) who will no doubt be delighted to hear John Gruber's [Markdown](https://daringfireball.net/projects/markdown/) described thusly:
 
 > To add insult to injury, Bluecloth, markdown and python-markdown are ugly hacks that boil down to iterated regexp-based gsubs. I can see why they have a long history of bugs: it is easy for a gsub pass to interfere accidentally with another, and such regexp-based transformations are full of corner cases.
 
