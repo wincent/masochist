@@ -8,7 +8,7 @@ My relationship with Markdown has traversed the following arc: **Contempt**, **A
 
 # Contempt
 
-In 2009, I thought ["Markdown sucks"](/blog/markdown). There was a burgeoning assortment of markup languages, having been driven by (and driving) the rising tide of the blogosphere, and Markdown seemed to be decidedly inferior. I knew about ["Worse is better"](https://en.wikipedia.org/wiki/Worse_is_better) back then, but I didn't have the acumen to realize I was seeing it in action.
+In 2009, I thought ["Markdown sucks"](/blog/markdown-sucks). There was a burgeoning assortment of markup languages, having been driven by (and driving) the rising tide of the blogosphere, and Markdown seemed to be decidedly inferior. I knew about ["Worse is better"](https://en.wikipedia.org/wiki/Worse_is_better) back then, but I didn't have the acumen to realize I was seeing it in action.
 
 # Acceptance
 
