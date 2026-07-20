@@ -266,9 +266,11 @@ bin/deploy
 
 Each step is independent and can be retried on failure.
 
-### Content-only deploy
+### Deploying content changes and static asset changes
 
-Similar to a full deploy, but you don't need to `aws login`, and you won't be doing `bin/ecr build` or `bin/ecr upload` (because the Rust image isn't changing). Note that you still need to `export ECR_ACCOUNT_ID=...` because the final `bin/prod` step performed by `bin/deploy` needs it[^technically].
+A common case is deploying content changes (eg. new additions or modifications to the `content` branch), and a slightly less common case it deploying static assets changes (ie. CSS and JS changes on the `main` branch under `masochist-lib/src/styles/` and `masochist-lib/src/javascript/`). In these cases, we don't need to deploy a new version of the Rust app or rebuild Docker images; we just need to update the `public` branch, upload the changes, and restart the service.
+
+So, this is similar to a full deploy, but you don't need to `aws login`, and you won't be doing `bin/ecr build` or `bin/ecr upload` (because the Rust image isn't changing). Note that you still need to `export ECR_ACCOUNT_ID=...` because the final `bin/prod` step performed by `bin/deploy` needs it[^technically].
 
 [^technically]: Technically it doesn't _need_ it, but it does a no-op pull (not a real, side-effectful pull, because it already has the necessary image), and that will fail without the account ID.
 
@@ -277,7 +279,7 @@ bin/push
 bin/deploy
 ```
 
-Note that running `bin/build` still involves doing a Rust build, it's just that we don't need to produce a new server image. `bin/deploy` does restart the app container though, which is necessary for it to re-read the (potentially updated) `_search_index.tsv` file.
+Note that running `bin/build` still involves doing a Rust build locally, it's just that we don't need to produce a new server image. `bin/deploy` does restart the app container though, which is necessary for it to re-read the (potentially updated) `_search_index.tsv` and `_assets_manifest` files.
 
 ## Project structure
 
