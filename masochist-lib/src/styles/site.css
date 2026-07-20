@@ -162,13 +162,10 @@ h1 a { text-decoration: none; }
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  content: ' ';
-  display: inline-block;
-  height: .6em;
-  margin-left: .25rem;
-  overflow: hidden;
-  vertical-align: .1em;
-  width: .6em;
+  content: '';
+  display: inline;
+  margin-inline-start: .05em;
+  padding-inline-start: .6em;
 }
 button:disabled, input:disabled { opacity: .5; }
 
