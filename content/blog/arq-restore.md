@@ -64,7 +64,7 @@ There are a number of apps that you have to open or twiddle in order to get thin
 - Kitty (have to open it and set it to stay in the Dock)
 - Godspeed (open it, set it to stay in dock, launch at login)
 - `terminal-notifier`: run a command like `terminal-notifier -title hi -message there` so it appears in System Settings; then you can allow notifications from it.
-- Resilio Sync (set to launch at login)
+- Syncthing (set to launch at login)
 - Orion (installed via cask, but have to open and set to default browser in System Settings)
 - CleanShot X (open and set to start at login, grant accessibility settings, turn off conflicting shortcuts in System Settings)
 - iStatMenus (launch and grant permissions)
