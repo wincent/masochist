@@ -1,0 +1,35 @@
+---
+description: Another migration story, this time about file sync
+tags: blog
+title: Sync in 2026
+---
+
+File this one under ["betting on the wrong horse"](/blog/betting-on-the-wrong-horse), because I'm about to tell you how — yet again — I've migrated an important piece of my digital life to a new platform. This chapter's subject is file syncing.
+
+Many years ago I started off as a free-tier [Dropbox](/wiki/Dropbox) user. I became a paying user for a while as my storage needs grew, but I eventually felt the need to move away given their gradual transmogrification into an evil megacorp. By this time, my needs were clear: I wanted something that allowed me to view my files in the native file browser on my Mac, and an iOS app so that I could both view files and save files in a way that shared them back to my laptop. At times I would sync to multiple machines, and occasionally I'd need to share a folder with somebody else, but for the most part, what mostly concerned me was keeping one laptop in sync with one phone.
+
+I switched to [Sync](/wiki/Sync) from [sync.com](https://www.sync.com) in order to get away from the evil. The app was uglier, and syncing was slow and inscrutable. Eventually the thing that drove me away from that was the flakiness of the sync with another computer, another user, and a shared folder in the mix; I had a support thread open for months about synchronization that silently failed to complete and never got a resolution. Finally, I got sick of waiting and switched again.
+
+I can't remember exactly where in this chronology, but along the way I experimented with both [Google Drive](https://en.wikipedia.org/wiki/Google_Drive) and [Microsoft OneDrive](https://en.wikipedia.org/wiki/OneDrive). Both proved to be — wait for it — slow, unreliable, and inscrutable. These attributes seem to be a recurring theme in this space...
+
+[Syncthing](https://syncthing.net) would have been the obvious choice — [open source](/wiki/Open_source), popular, battle-tested — but it lacked an official iOS app, and the most popular third-party one, Möbius Sync, seemed to be in maintenance limbo. So I ended up going with [Resilio Sync](https://wincent.dev/wiki/Resilio_Sync). Like sync.com's Sync, this one was closed source and proprietary, but it also happened to be free. I wouldn't have minded paying for it if it had been good (I'd paid Dropbox, Sync, Google, and Microsoft in the past, after all), but it turned out that I didn't have to.
+
+In 2026, [Resilio was acquired by Nasuni](https://www.resilio.com/news/nasuni-acquires-resilio/), and the writing very much appears to be "on the wall", so to speak. The FAQ is laden with the usual verbiage that "future updates or options will be communicated clearly and well in advance", and that there "are no immediate changes to product availability or customer support processes", but the release cadence of late and the number of historical bug reports and feature requests makes it clear that the software is on the merest of life support. I'd been eyeing the exits for a while, ever since I adopted Resilio Sync, really, but this made me seriously consider switching solutions, yet again.
+
+The good news is that there is a bright and upcoming third-party iOS app for Syncthing now: [Synctrain](https://github.com/pixelspark/sushitrain). It's open source, like Syncthing itself, and feels like a real iOS app. I also tried out a couple of lightweight text-editing apps for iOS which looked like they'd integrate well with Synctrain for on-device editing of text files (something I don't often have to do, but which I like being able to do when necessary): I haven't settled on one yet, but the candidates are [Runestone](https://runestone.app) and [Textastic](https://www.textasticapp.com).
+
+Now Syncthing is a bit "promiscuous" out of the box, in the name of ease of use: it uses a global discovery mechanism, and there's a network of relays that anybody can participate it to shuffle encrypted traffic between devices, allowing you to sync between computers and phones regardless of which local network you're on. While your data is encrypted, metadata about your IP address, the device IDs you're talking to, and the amount of data your sending, is all available to these peers. That makes me feel a bit squeamish (Resilio Sync had a similar problem, to be fair), so it seemed reasonable to test Syncthing with all of these convenience features turned off in the name of privacy.
+
+In my first round of testing I had everything turned off and local discovery only. Given my network topology (a mobile phone, a laptop computer mostly only used on the home network but sometimes traveling outside it, and an always-on Raspberry Pi on the home network as a centralized sync point) my plan was to test it all out while assuming the limitation that I would only actually synchronize when at home.
+
+This worked ok, but I wanted to see if I could have my cake and eat it too. The other relatively new circumstance in my life is that last year, I picked up a decent router (a UniFi one) and it has a couple of built-in features that make it trivially easy to set up a VPN with a minimum of effort and only a single extra dependency ([WireGuard](https://en.wikipedia.org/wiki/WireGuard)) installed on the client devices[^client]:
+
+[^client]: Only needed on the client devices that will be outside the home network (ie. the laptop and the phone, but notably _not_ the Raspberry Pi).
+
+- The UniFi router supports many dynamic DNS services. In my case, I'm using Cloudflare for DNS, so I minted an API key with the minimal privileges needed to edit a single DNS zone, and configured the UniFi to update an `A` record any time my public IP changes (fortunately, my ISP assigns a dynamic public IP without any CGNAT nonsense in the way). This means my devices can find my router's public IP by name (`router.example.com`) whenever they need it.
+- The router also let's you create WireGuard VPNs with a few clicks, and set up client configurations that you can use on your laptop (by importing a file into the open source WireGuard app, which you can get from the App Store) and your phone (by scanning a QR code).
+- Both WireGuard on iOS and macOS let's you configure a VPN as "On-Demand", which means that it can automatically connect to the VPN s soon as you leave the home network, and disconnect when you come back to it.
+
+The combination of the dynamic DNS and the VPN mean your devices can always see the home network, no matter where they are, which means that Syncthing on the Raspberry Pi or the laptop, and Synctrain on the phone, can sync up at any time. The "On-Demand" activation means you don't even need to think about the connection.
+
+Overall, I am pretty happy with this setup so far. There are lots more details that I could go into, but nothing that a quick search or LLM query can't rapidly resolve. I don't feel like I had to get very far into the weeds at all to make this work. Here's hoping it keeps working for a good few years now, so I don't end up having to write another "wrong horse" post too soon in the future.
