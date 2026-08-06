@@ -28,7 +28,7 @@ This worked ok, but I wanted to see if I could have my cake and eat it too. The 
 
 - The UniFi router supports many dynamic DNS services. In my case, I'm using Cloudflare for DNS, so I minted an API key with the minimal privileges needed to edit a single DNS zone, and configured the UniFi to update an `A` record any time my public IP changes (fortunately, my ISP assigns a dynamic public IP without any CGNAT nonsense in the way). This means my devices can find my router's public IP by name (`router.example.com`) whenever they need it.
 - The router also let's you create WireGuard VPNs with a few clicks, and set up client configurations that you can use on your laptop (by importing a file into the open source WireGuard app, which you can get from the App Store) and your phone (by scanning a QR code).
-- Both WireGuard on iOS and macOS let's you configure a VPN as "On-Demand", which means that it can automatically connect to the VPN s soon as you leave the home network, and disconnect when you come back to it.
+- Both WireGuard on iOS and macOS let's you configure a VPN as "On-Demand", which means that it can automatically connect to the VPN as soon as you leave the home network, and disconnect when you come back to it.
 
 The combination of the dynamic DNS and the VPN mean your devices can always see the home network, no matter where they are, which means that Syncthing on the Raspberry Pi or the laptop, and Synctrain on the phone, can sync up at any time. The "On-Demand" activation means you don't even need to think about the connection.
 
